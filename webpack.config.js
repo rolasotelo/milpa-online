@@ -62,6 +62,7 @@ const config = {
     new HtmlWebpackPlugin({
       appMountId: "app",
       filename: "index.html",
+      template: "src/static/index.html",
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
