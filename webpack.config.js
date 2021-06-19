@@ -9,7 +9,7 @@ const config = {
   entry: ["react-hot-loader/patch", "./src/index.tsx"],
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "[name].[contenthash].js",
   },
   module: {
     rules: [
@@ -69,6 +69,25 @@ const config = {
     }),
     new CleanWebpackPlugin(),
   ],
+  optimization: {
+    runtimeChunk: "single",
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all",
+        },
+      },
+    },
+  },
 };
 
-module.exports = config;
+module.exports = (env, argv) => {
+  if (argv.hot) {
+    // Cannot use 'contenthash' when hot reloading is enabled.
+    config.output.filename = "[name].[hash].js";
+  }
+
+  return config;
+};
