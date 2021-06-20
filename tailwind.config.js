@@ -26,6 +26,13 @@ module.exports = {
       indigo: colors.indigo,
       purple: colors.violet,
       pink: colors.pink,
+      mexicanPink: "#d91a60",
+      mexicanBlue: "#253659",
+      mexicanGreen: {
+        dark: "#1a2601",
+        DEFAULT: "#324001",
+        light: "#7c8c03",
+      },
     },
     spacing: {
       px: "1px",
