@@ -10,7 +10,9 @@ class App extends React.Component<Props> {
     const { name } = this.props;
     return (
       <>
-        <h1 className="text-4xl text-white bg-black">Hola {name}</h1>
+        <h1 className="text-4xl text-white bg-black hover:bg-gray-700">
+          Hola {name}
+        </h1>
       </>
     );
   }
