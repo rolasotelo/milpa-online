@@ -2,6 +2,6 @@
 
 exports[`<CreateOrJoinGame /> render 1`] = `
 <div>
-  MILPA
+  Create or Join a Game
 </div>
 `;

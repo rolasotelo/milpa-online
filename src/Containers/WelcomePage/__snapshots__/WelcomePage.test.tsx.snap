@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<WelcomePage /> render 1`] = `
+Array [
+  <h1
+    className="text-4xl text-white bg-mexicanGreen hover:bg-mexicanGreen-light"
+  >
+    MILPA
+  </h1>,
+  <a
+    href="/play"
+  >
+    A play
+  </a>,
+]
+`;
