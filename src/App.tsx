@@ -1,21 +1,33 @@
-import React from "react";
-import { hot } from "react-hot-loader/root";
+import React, { ReactElement } from "react";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
+import CreateOrJoinGame from "./Containers/CreateOrJoinGame/CreateOrJoinGame";
+import TestContainer from "./Containers/TestConatiner/TestContainer";
 
-interface Props {
-  name: string;
+interface Props {}
+
+function App({}: Props): JSX.Element {
+  return (
+    <Router>
+      <Switch>
+        <Route path="/" exact>
+          <TestContainer name="🦙" />
+        </Route>
+        <Route
+          path="/play"
+          render={(props) => {
+            return CreateOrJoinGame(props);
+          }}
+          exact
+        />
+        <Redirect to="/" />
+      </Switch>
+    </Router>
+  );
 }
 
-class App extends React.Component<Props> {
-  render() {
-    const { name } = this.props;
-    return (
-      <>
-        <h1 className="text-4xl text-white bg-mexicanGreen hover:bg-mexicanGreen-light">
-          Hola {name}
-        </h1>
-      </>
-    );
-  }
-}
-
-export default hot(App);
+export default App;
