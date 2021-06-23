@@ -6,7 +6,7 @@ interface Props {
 
 const Layout = (props: Props) => {
   return (
-    <div>
+    <div className="bg-mexicanBone">
       <div className="bg-mexicanBlue">
         <div className="container mx-auto  p-5">
           <nav className="flex justify-between text-mexicanPink">

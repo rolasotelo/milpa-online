@@ -33,6 +33,7 @@ module.exports = {
         DEFAULT: "#324001",
         light: "#7c8c03",
       },
+      mexicanBone: "#c7b299",
     },
     spacing: {
       px: "1px",
