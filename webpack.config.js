@@ -65,6 +65,7 @@ const config = {
       appMountId: "app",
       filename: "index.html",
       template: "static/index.html",
+      favicon: "static/favicon.ico",
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
