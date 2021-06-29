@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import logo from "./../../../static/logo.png";
 
 interface Props {
   children: ReactNode;
@@ -14,7 +15,7 @@ const Layout = (props: Props) => {
               <a href="#">Menu</a>
             </div>
             <div>
-              <img src="../../../static/logo.png" />
+              <img src={logo} />
             </div>
             <div>
               <a href="#">Leaderboard</a>
