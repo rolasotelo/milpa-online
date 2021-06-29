@@ -9,15 +9,15 @@ const Layout = (props: Props) => {
   return (
     <div className="bg-mexicanBone">
       <div className="bg-mexicanBlue">
-        <div className="container mx-auto  p-5">
+        <div className="container mx-auto p-2">
           <nav className="flex justify-between text-mexicanPink">
-            <div>
+            <div className="self-center">
               <a href="#">Menu</a>
             </div>
             <div>
-              <img src={logo} />
+              <img src={logo} className="h-10" />
             </div>
-            <div>
+            <div className="self-center">
               <a href="#">Leaderboard</a>
             </div>
           </nav>
