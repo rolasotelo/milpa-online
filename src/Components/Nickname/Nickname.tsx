@@ -4,7 +4,7 @@ interface Props {}
 
 const Nickname = (props: Props) => {
   return (
-    <div className="max-w-md flex justify-evenly bg-mexicanGreen-light p-3">
+    <div className="max-w-md w-1/4 flex justify-around bg-mexicanGreen-light p-3">
       <div className="self-center">
         <a href="/play">Ahoj</a>
       </div>
