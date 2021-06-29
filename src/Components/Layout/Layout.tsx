@@ -14,7 +14,7 @@ const Layout = (props: Props) => {
               <a href="#">Menu</a>
             </div>
             <div>
-              <a href="#">Logo</a>
+              <img src="../../../static/logo.png" />
             </div>
             <div>
               <a href="#">Leaderboard</a>
