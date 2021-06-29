@@ -7,7 +7,7 @@ interface Props {
 
 const Layout = (props: Props) => {
   return (
-    <div className="bg-mexicanBone">
+    <div className="bg-mexicanBone min-h-screen">
       <div className="bg-mexicanBlue">
         <div className="container mx-auto p-2">
           <nav className="flex justify-between text-mexicanPink">
@@ -23,7 +23,7 @@ const Layout = (props: Props) => {
           </nav>
         </div>
       </div>
-      <div>{props.children}</div>
+      <div className="h-full">{props.children}</div>
     </div>
   );
 };
