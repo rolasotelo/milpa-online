@@ -4,9 +4,16 @@ interface Props {}
 
 const Nickname = (props: Props) => {
   return (
-    <div>
-      <h1 className="text-4xl text-black">MIROSLAVA</h1>
-      <a href="/play">A play</a>
+    <div className="max-w-md flex justify-evenly bg-mexicanGreen-light p-3">
+      <div className="self-center">
+        <a href="/play">Ahoj</a>
+      </div>
+      <div>
+        <input
+          className="placeholder-gray-500 placeholder-opacity-100 ..."
+          placeholder="Miroslava"
+        />
+      </div>
     </div>
   );
 };
