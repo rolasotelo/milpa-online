@@ -9,10 +9,18 @@ const JoinGame = (props: Props) => {
       className="w-80 h-96 bg-contain bg-no-repeat"
       style={{ backgroundImage: `url(${JoinGameImage})` }}
     >
-      <div className="flex justify-center">
-        <button className="bg-white border-4 border-mexicanPink rounded-full px-2 my-4">
-          JOIN
-        </button>
+      <div className="flex flex-col">
+        <div className="mx-auto">
+          <button className="bg-white border-4 border-mexicanPink rounded-full px-2 my-4">
+            JOIN
+          </button>
+        </div>
+        <div className="mx-auto">
+          <input
+            className="placeholder-gray-500 placeholder-opacity-100 ..."
+            placeholder="dkfgSDF3466GF"
+          />
+        </div>
       </div>
     </div>
   );
