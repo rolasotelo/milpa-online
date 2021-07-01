@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { JoinOrCreateGameContext } from "../../Components/CreateOrJoinGameProvider/CreateOrJoinGameProvider";
+import { CreateOrJoinGameContext } from "../../Components/CreateOrJoinGameProvider/CreateOrJoinGameProvider";
 
-export default function useJoinOrCreateGameContext() {
-  const context = useContext(JoinOrCreateGameContext);
+export default function useCreateorJoinGameContext() {
+  const context = useContext(CreateOrJoinGameContext);
   if (!context) {
     throw new Error(
-      "useJoinOrCreateGameContext must be used within a JoinOrCreateGameProvider"
+      "useCreateOrJoinGameContext must be used within a CreateorJoinGameProvider"
     );
   }
   return context;

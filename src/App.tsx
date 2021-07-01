@@ -5,6 +5,7 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+import CreateOrJoinGameProvider from "./Components/CreateOrJoinGameProvider/CreateOrJoinGameProvider";
 import CreateOrJoinGame from "./Containers/CreateOrJoinGame/CreateOrJoinGame";
 import WelcomePage from "./Containers/WelcomePage/WelcomePage";
 
@@ -18,7 +19,9 @@ function App({}: Props): JSX.Element {
           <WelcomePage />
         </Route>
         <Route path="/play" exact>
-          <CreateOrJoinGame />
+          <CreateOrJoinGameProvider>
+            <CreateOrJoinGame />
+          </CreateOrJoinGameProvider>
         </Route>
         <Redirect to="/" />
       </Switch>

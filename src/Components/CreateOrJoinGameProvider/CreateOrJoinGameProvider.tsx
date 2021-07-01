@@ -4,7 +4,7 @@ type JoinOrCreateGameContextType = {
   nickname: string;
 };
 
-export const JoinOrCreateGameContext =
+export const CreateOrJoinGameContext =
   createContext<JoinOrCreateGameContextType>(null!);
 
 interface Props {
@@ -15,9 +15,9 @@ const CreateOrJoinGameProvider = (props: Props) => {
   const nickname = "Gabinka";
 
   return (
-    <JoinOrCreateGameContext.Provider value={{ nickname }}>
+    <CreateOrJoinGameContext.Provider value={{ nickname }}>
       {props.children}
-    </JoinOrCreateGameContext.Provider>
+    </CreateOrJoinGameContext.Provider>
   );
 };
 
