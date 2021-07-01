@@ -1,16 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<WelcomePage /> render 1`] = `
-Array [
-  <h1
-    className="text-4xl text-white bg-mexicanGreen hover:bg-mexicanGreen-light"
+<div
+  className="bg-mexicanBone min-h-screen"
+>
+  <div
+    className="bg-mexicanBlue"
   >
-    MILPA
-  </h1>,
-  <a
-    href="/play"
+    <div
+      className="container mx-auto p-2"
+    >
+      <nav
+        className="flex justify-between text-mexicanPink"
+      >
+        <div
+          className="self-center"
+        >
+          <a
+            href="#"
+          >
+            Menu
+          </a>
+        </div>
+        <div>
+          <img
+            className="h-10"
+            src="logo.png"
+          />
+        </div>
+        <div
+          className="self-center"
+        >
+          <a
+            href="#"
+          >
+            Leaderboard
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div
+    className="max-w-6xl flex flex-col justify-center py-5 mx-auto"
   >
-    A play
-  </a>,
-]
+    <div
+      className="max-w-md w-1/4 mx-auto flex justify-around bg-mexicanGreen-light p-3"
+    >
+      <div
+        className="self-center"
+      >
+        <a
+          href="/play"
+        >
+          Ahoj
+        </a>
+      </div>
+      <div>
+        <input
+          className="placeholder-gray-500 placeholder-opacity-100 ..."
+          placeholder="Miroslava"
+        />
+      </div>
+    </div>
+  </div>
+</div>
 `;

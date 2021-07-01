@@ -1,7 +1,119 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CreateOrJoinGame /> render 1`] = `
-<div>
-  Create or Join a Game
+<div
+  className="bg-mexicanBone min-h-screen"
+>
+  <div
+    className="bg-mexicanBlue"
+  >
+    <div
+      className="container mx-auto p-2"
+    >
+      <nav
+        className="flex justify-between text-mexicanPink"
+      >
+        <div
+          className="self-center"
+        >
+          <a
+            href="#"
+          >
+            Menu
+          </a>
+        </div>
+        <div>
+          <img
+            className="h-10"
+            src="logo.png"
+          />
+        </div>
+        <div
+          className="self-center"
+        >
+          <a
+            href="#"
+          >
+            Leaderboard
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div
+    className="max-w-6xl flex flex-col justify-center py-5 mx-auto"
+  >
+    <div
+      className="max-w-md w-1/4 mx-auto flex justify-around bg-mexicanGreen-light p-3"
+    >
+      <div
+        className="self-center"
+      >
+        <a
+          href="/play"
+        >
+          Ahoj
+        </a>
+      </div>
+      <div>
+        <input
+          className="placeholder-gray-500 placeholder-opacity-100 ..."
+          placeholder="Miroslava"
+        />
+      </div>
+    </div>
+    <div
+      className="flex flex-row justify-evenly py-5"
+    >
+      <div
+        className="w-80 h-96 bg-contain bg-no-repeat"
+        style={
+          Object {
+            "backgroundImage": "url(join-game.png)",
+          }
+        }
+      >
+        <div
+          className="flex flex-col"
+        >
+          <div
+            className="mx-auto"
+          >
+            <button
+              className="bg-white border-4 border-mexicanPink rounded-full px-2 my-4"
+            >
+              JOIN
+            </button>
+          </div>
+          <div
+            className="mx-auto"
+          >
+            <input
+              className="placeholder-gray-500 placeholder-opacity-100 ..."
+              placeholder="dkfgSDF3466GF"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="w-80 h-96 bg-contain bg-no-repeat"
+        style={
+          Object {
+            "backgroundImage": "url(create-game.png)",
+          }
+        }
+      >
+        <div
+          className="flex justify-center"
+        >
+          <button
+            className="bg-white border-4 border-mexicanPink rounded-full px-2 my-4"
+          >
+            CREATE
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;
