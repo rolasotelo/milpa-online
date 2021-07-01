@@ -1,6 +1,8 @@
 import React from "react";
 
-interface Props {}
+interface Props {
+  nickname: string;
+}
 
 const Nickname = (props: Props) => {
   return (
@@ -11,7 +13,7 @@ const Nickname = (props: Props) => {
       <div>
         <input
           className="placeholder-gray-500 placeholder-opacity-100 ..."
-          placeholder="Miroslava"
+          placeholder={props.nickname}
         />
       </div>
     </div>

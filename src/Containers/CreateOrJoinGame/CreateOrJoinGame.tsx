@@ -12,7 +12,7 @@ const CreateOrJoinGame = (props: Props) => {
   const context = useJoinOrCreateGameContext();
   return (
     <Layout>
-      <Nickname />
+      <Nickname nickname={context.nickname} />
       <div className="flex flex-row justify-evenly py-5">
         <JoinGame />
         <CreateGame />
