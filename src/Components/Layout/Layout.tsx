@@ -23,7 +23,9 @@ const Layout = (props: Props) => {
           </nav>
         </div>
       </div>
-      <div className="h-full flex justify-center py-5">{props.children}</div>
+      <div className="max-w-6xl flex flex-col justify-center py-5 mx-auto">
+        {props.children}
+      </div>
     </div>
   );
 };
