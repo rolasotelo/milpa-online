@@ -11,9 +11,9 @@ export const CreateOrJoinGameContext =
 interface Props {
   children: JSX.Element;
 }
+const socket = io("http://localhost:3000");
 
 const CreateOrJoinGameProvider = (props: Props) => {
-  const socket = io("http://localhost:3000");
   const [nickname, setNickname] = useState("Gabinka");
 
   socket.on("chat message", (msg: string) => {

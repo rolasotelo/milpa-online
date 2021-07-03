@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import CreateOrJoinGameProvider from "./Components/CreateOrJoinGameProvider/CreateOrJoinGameProvider";
 import CreateOrJoinGame from "./Containers/CreateOrJoinGame/CreateOrJoinGame";
+import Game from "./Containers/Game/Game";
 import WelcomePage from "./Containers/WelcomePage/WelcomePage";
 
 interface Props {}
@@ -17,6 +18,9 @@ function App({}: Props): JSX.Element {
       <Switch>
         <Route path="/" exact>
           <WelcomePage />
+        </Route>
+        <Route path="/play/game" exact>
+          <Game />
         </Route>
         <Route path="/play" exact>
           <CreateOrJoinGameProvider>
