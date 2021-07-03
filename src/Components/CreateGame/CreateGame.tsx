@@ -1,7 +1,9 @@
 import React from "react";
 import CreateGameImage from "../../../static/create-game.png";
 
-interface Props {}
+interface Props {
+  onClickCreate: () => void;
+}
 
 const CreateGame = (props: Props) => {
   return (
@@ -10,7 +12,10 @@ const CreateGame = (props: Props) => {
       style={{ backgroundImage: `url(${CreateGameImage})` }}
     >
       <div className="flex justify-center">
-        <button className="bg-white border-4 border-mexicanPink rounded-full px-2 my-4">
+        <button
+          className="bg-white border-4 border-mexicanPink rounded-full px-2 my-4"
+          onClick={props.onClickCreate}
+        >
           CREATE
         </button>
       </div>

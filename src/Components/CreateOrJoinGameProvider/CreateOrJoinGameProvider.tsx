@@ -1,8 +1,13 @@
 import React, { createContext, useState } from "react";
+import { StaticContext } from "react-router";
+import { Redirect, RouteComponentProps } from "react-router-dom";
 import { io } from "socket.io-client";
+import { v4 as uuidv4 } from "uuid";
+import { RoutePropsType } from "../../common/types";
 
 type JoinOrCreateGameContextType = {
   nickname: string;
+  onClickCreate: () => void;
 };
 
 export const CreateOrJoinGameContext =
@@ -10,18 +15,19 @@ export const CreateOrJoinGameContext =
 
 interface Props {
   children: JSX.Element;
+  routerProps: RoutePropsType;
 }
-const socket = io("http://localhost:3000");
+const socket = io("http://localhost:3000", { autoConnect: false });
 
 const CreateOrJoinGameProvider = (props: Props) => {
   const [nickname, setNickname] = useState("Gabinka");
 
-  socket.on("chat message", (msg: string) => {
-    setNickname(msg);
-  });
+  const onClickCreate = () => {
+    props.routerProps.history.push(`/play/${uuidv4()}`);
+  };
 
   return (
-    <CreateOrJoinGameContext.Provider value={{ nickname }}>
+    <CreateOrJoinGameContext.Provider value={{ nickname, onClickCreate }}>
       {props.children}
     </CreateOrJoinGameContext.Provider>
   );
