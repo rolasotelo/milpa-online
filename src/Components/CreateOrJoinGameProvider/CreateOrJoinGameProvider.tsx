@@ -1,4 +1,5 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
+import { io } from "socket.io-client";
 
 type JoinOrCreateGameContextType = {
   nickname: string;
@@ -12,7 +13,12 @@ interface Props {
 }
 
 const CreateOrJoinGameProvider = (props: Props) => {
-  const nickname = "Gabinka";
+  const socket = io("http://localhost:3000");
+  const [nickname, setNickname] = useState("Gabinka");
+
+  socket.on("chat message", (msg: string) => {
+    setNickname(msg);
+  });
 
   return (
     <CreateOrJoinGameContext.Provider value={{ nickname }}>
