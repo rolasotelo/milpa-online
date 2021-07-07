@@ -1,6 +1,4 @@
 import React, { createContext, useState } from "react";
-import { StaticContext } from "react-router";
-import { Redirect, RouteComponentProps } from "react-router-dom";
 import { io } from "socket.io-client";
 import { v4 as uuidv4 } from "uuid";
 import { RoutePropsType } from "../../common/types";
