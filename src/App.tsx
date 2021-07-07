@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import { RoutePropsType } from "./common/types";
 import CreateOrJoinGameProvider from "./Components/CreateOrJoinGameProvider/CreateOrJoinGameProvider";
+import GameProvider from "./Components/GameProvider/GameProvider";
 import CreateOrJoinGame from "./Containers/CreateOrJoinGame/CreateOrJoinGame";
 import Game from "./Containers/Game/Game";
 import WelcomePage from "./Containers/WelcomePage/WelcomePage";
@@ -22,9 +23,13 @@ function App({}: Props): JSX.Element {
         <Route path="/" exact>
           <WelcomePage />
         </Route>
-        <Route path="/play/:gamecode" exact>
-          <Game />
-        </Route>
+        <Route
+          path="/play/:gamecode"
+          exact
+          render={(props) => {
+            return GamePage(props);
+          }}
+        />
         <Route
           path="/play"
           exact
@@ -43,6 +48,14 @@ const CreateOrJoinGamePage = (routerProps: RoutePropsType) => {
     <CreateOrJoinGameProvider routerProps={routerProps}>
       <CreateOrJoinGame />
     </CreateOrJoinGameProvider>
+  );
+};
+
+const GamePage = (routerProps: RoutePropsType) => {
+  return (
+    <GameProvider routerProps={routerProps}>
+      <Game />
+    </GameProvider>
   );
 };
 
