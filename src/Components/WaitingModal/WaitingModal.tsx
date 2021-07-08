@@ -1,6 +1,7 @@
 import React from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
+import clipboardCopy from "../../common/icons/clipboard-copy.svg";
 
 interface Props {
   title: string;
@@ -84,6 +85,13 @@ const WaitingModal = (props: Props) => {
                     onClick={closeModal}
                   >
                     {props.buttonText}
+                    <img
+                      className="ml-2"
+                      src={clipboardCopy}
+                      alt="Copy to clipboard"
+                      height="16px"
+                      width="16px"
+                    />
                   </button>
                 </div>
               </div>
