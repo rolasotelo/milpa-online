@@ -34,6 +34,7 @@ module.exports = {
         light: "#7c8c03",
       },
       mexicanBone: "#c7b299",
+      mexicanBoneLight: "#C7C3B8",
     },
     spacing: {
       px: "1px",
