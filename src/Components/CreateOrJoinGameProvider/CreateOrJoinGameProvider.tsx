@@ -21,7 +21,7 @@ const CreateOrJoinGameProvider = (props: Props) => {
   const [nickname, setNickname] = useState("Gabinka");
 
   const onClickCreate = () => {
-    props.routerProps.history.push(`/play/${uuidv4()}`);
+    props.routerProps.history.push(`/play/${uuidv4()}`, { nickname });
   };
 
   return (

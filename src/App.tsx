@@ -23,13 +23,7 @@ function App({}: Props): JSX.Element {
         <Route path="/" exact>
           <WelcomePage />
         </Route>
-        <Route
-          path="/play/:gamecode"
-          exact
-          render={(props) => {
-            return GamePage(props);
-          }}
-        />
+        <Route path="/play/:gamecode" exact component={GamePage} />
         <Route
           path="/play"
           exact

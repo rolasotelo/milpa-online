@@ -6,5 +6,5 @@ export type RoutePropsType = RouteComponentProps<{}, StaticContext, unknown>;
 export type GameRoutePropsType = RouteComponentProps<
   { gamecode: string },
   StaticContext,
-  unknown
+  { nickname: string }
 >;

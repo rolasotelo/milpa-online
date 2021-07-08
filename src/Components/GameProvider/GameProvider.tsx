@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import { GameRoutePropsType } from "../../common/types";
 
@@ -13,11 +13,15 @@ interface Props {
   children: JSX.Element;
   routerProps: GameRoutePropsType;
 }
-const socket = io("http://localhost:3000", { autoConnect: false });
 
 const GameProvider = (props: Props) => {
-  const [nickname, setNickname] = useState("Gabinka");
+  const nickname = props.routerProps.location.state.nickname;
   const gameCode = props.routerProps.match.params.gamecode;
+
+  useEffect(() => {
+    const socket = io("http://localhost:3000");
+    return () => {};
+  }, [props]);
 
   return (
     <GameContext.Provider value={{ nickname, gameCode }}>
