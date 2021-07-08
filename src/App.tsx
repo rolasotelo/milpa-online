@@ -7,7 +7,7 @@ import {
   RouteComponentProps,
   Switch,
 } from "react-router-dom";
-import { RoutePropsType } from "./common/types";
+import { GameRoutePropsType, RoutePropsType } from "./common/types";
 import CreateOrJoinGameProvider from "./Components/CreateOrJoinGameProvider/CreateOrJoinGameProvider";
 import GameProvider from "./Components/GameProvider/GameProvider";
 import CreateOrJoinGame from "./Containers/CreateOrJoinGame/CreateOrJoinGame";
@@ -51,7 +51,7 @@ const CreateOrJoinGamePage = (routerProps: RoutePropsType) => {
   );
 };
 
-const GamePage = (routerProps: RoutePropsType) => {
+const GamePage = (routerProps: GameRoutePropsType) => {
   return (
     <GameProvider routerProps={routerProps}>
       <Game />
