@@ -6,6 +6,7 @@ import { RoutePropsType } from "../../common/types";
 type JoinOrCreateGameContextType = {
   nickname: string;
   onClickCreate: () => void;
+  onClickJoin: (code: string) => void;
 };
 
 export const CreateOrJoinGameContext =
@@ -24,8 +25,14 @@ const CreateOrJoinGameProvider = (props: Props) => {
     props.routerProps.history.push(`/play/${uuidv4()}`, { nickname });
   };
 
+  const onClickJoin = (code: string) => {
+    props.routerProps.history.push(`/play/${code}`, { nickname });
+  };
+
   return (
-    <CreateOrJoinGameContext.Provider value={{ nickname, onClickCreate }}>
+    <CreateOrJoinGameContext.Provider
+      value={{ nickname, onClickCreate, onClickJoin }}
+    >
       {props.children}
     </CreateOrJoinGameContext.Provider>
   );

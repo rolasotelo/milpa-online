@@ -19,7 +19,11 @@ const GameProvider = (props: Props) => {
   const gameCode = props.routerProps.match.params.gamecode;
 
   useEffect(() => {
-    const socket = io("http://localhost:3000");
+    const socket = io("http://localhost:3000", {
+      query: {
+        gameCode,
+      },
+    });
     return () => {};
   }, [props]);
 

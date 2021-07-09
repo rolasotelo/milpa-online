@@ -14,7 +14,7 @@ const CreateOrJoinGame = (props: Props) => {
     <Layout>
       <Nickname nickname={context.nickname} />
       <div className="flex flex-row justify-evenly py-5">
-        <JoinGame />
+        <JoinGame onClickJoin={context.onClickJoin} />
         <CreateGame onClickCreate={context.onClickCreate} />
       </div>
     </Layout>
