@@ -20,6 +20,10 @@ const WaitingModal = (props: Props) => {
     setIsOpen(true);
   };
 
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(props.buttonText);
+  };
+
   return (
     <>
       <div className="fixed inset-0 flex items-center justify-center">
@@ -36,7 +40,7 @@ const WaitingModal = (props: Props) => {
         <Dialog
           as="div"
           className="fixed inset-0 z-10 overflow-y-auto"
-          onClose={closeModal}
+          onClose={() => {}}
         >
           <div className="min-h-screen px-4 text-center">
             <Transition.Child
@@ -82,7 +86,7 @@ const WaitingModal = (props: Props) => {
                   <button
                     type="button"
                     className="inline-flex justify-center px-4 py-2 text-sm font-medium text-mexicanGreen-dark bg-mexicanGreen-light border border-transparent rounded-md hover:bg-mexicanBone focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                    onClick={closeModal}
+                    onClick={copyToClipboard}
                   >
                     {props.buttonText}
                     <img
