@@ -21,7 +21,7 @@ const GameProvider = (props: Props) => {
   const gameCode = props.routerProps.match.params.gamecode;
 
   useEffect(() => {
-    const socket = newSocket(gameCode);
+    const socket = newSocket(gameCode, nickname);
     socket.connect();
     socket.on("connect", () => {
       console.log("Connected to server");
