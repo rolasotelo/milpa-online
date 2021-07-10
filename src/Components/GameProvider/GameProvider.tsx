@@ -1,6 +1,8 @@
 import React, { createContext, useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import { GameRoutePropsType } from "../../common/types";
+import socket from "../../common/socket/socket";
+import newSocket from "../../common/socket/socket";
 
 type GameContextType = {
   nickname: string;
@@ -19,11 +21,8 @@ const GameProvider = (props: Props) => {
   const gameCode = props.routerProps.match.params.gamecode;
 
   useEffect(() => {
-    const socket = io("http://localhost:3000", {
-      query: {
-        gameCode,
-      },
-    });
+    const socket = newSocket(gameCode);
+    socket.connect();
     socket.on("connect", () => {
       console.log("Connected to server");
     });
