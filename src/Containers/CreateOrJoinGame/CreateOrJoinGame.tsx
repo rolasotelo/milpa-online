@@ -12,7 +12,10 @@ const CreateOrJoinGame = (props: Props) => {
   const context = useJoinOrCreateGameContext();
   return (
     <Layout>
-      <Nickname nickname={context.nickname} />
+      <Nickname
+        nickname={context.nickname}
+        onChange={context.onChangeNickname}
+      />
       <div className="flex flex-row justify-evenly py-5">
         <JoinGame onClickJoin={context.onClickJoin} />
         <CreateGame onClickCreate={context.onClickCreate} />

@@ -7,6 +7,7 @@ type JoinOrCreateGameContextType = {
   nickname: string;
   onClickCreate: () => void;
   onClickJoin: (code: string) => void;
+  onChangeNickname: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const CreateOrJoinGameContext =
@@ -16,10 +17,13 @@ interface Props {
   children: JSX.Element;
   routerProps: RoutePropsType;
 }
-const socket = io("http://localhost:3000", { autoConnect: false });
 
 const CreateOrJoinGameProvider = (props: Props) => {
-  const [nickname, setNickname] = useState("Gabinka");
+  const [nickname, setNickname] = useState("");
+
+  const onChangeNickname = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNickname(event.target.value);
+  };
 
   const onClickCreate = () => {
     props.routerProps.history.push(`/play/${uuidv4()}`, { nickname });
@@ -31,7 +35,7 @@ const CreateOrJoinGameProvider = (props: Props) => {
 
   return (
     <CreateOrJoinGameContext.Provider
-      value={{ nickname, onClickCreate, onClickJoin }}
+      value={{ nickname, onClickCreate, onClickJoin, onChangeNickname }}
     >
       {props.children}
     </CreateOrJoinGameContext.Provider>

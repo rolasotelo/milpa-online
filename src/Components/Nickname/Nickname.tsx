@@ -2,6 +2,7 @@ import React from "react";
 
 interface Props {
   nickname: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Nickname = (props: Props) => {
@@ -13,7 +14,11 @@ const Nickname = (props: Props) => {
       <div>
         <input
           className="placeholder-gray-500 placeholder-opacity-100 ..."
-          placeholder={props.nickname}
+          placeholder="Gabinka?"
+          value={props.nickname}
+          onChange={(event) => {
+            props.onChange(event);
+          }}
         />
       </div>
     </div>
