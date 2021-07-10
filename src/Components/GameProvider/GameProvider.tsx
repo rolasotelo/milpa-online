@@ -5,7 +5,7 @@ import socket from "../../common/socket/socket";
 import newSocket from "../../common/socket/socket";
 
 type GameContextType = {
-  nickname: string;
+  nickname: string | undefined;
   gameCode: string;
 };
 
@@ -17,7 +17,11 @@ interface Props {
 }
 
 const GameProvider = (props: Props) => {
-  const nickname = props.routerProps.location.state.nickname;
+  let nickname: string | undefined = undefined;
+  if (props.routerProps.location.state?.nickname) {
+    nickname = props.routerProps.location.state.nickname;
+  }
+
   const gameCode = props.routerProps.match.params.gamecode;
 
   useEffect(() => {

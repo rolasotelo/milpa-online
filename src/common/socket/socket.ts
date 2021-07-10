@@ -2,7 +2,7 @@ import { io, Socket } from "socket.io-client";
 
 const URL = "http://localhost:3000";
 
-const newSocket = (gameCode: string, nickname: string) => {
+const newSocket = (gameCode: string, nickname: string | undefined) => {
   const socket: Socket = io(URL, {
     autoConnect: false,
     query: { gameCode },
