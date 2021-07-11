@@ -33,7 +33,14 @@ const GameProvider = (props: Props) => {
     socket.on("room join", (message) => {
       console.log(message);
     });
-    return () => {};
+    socket.on("connect_error", (err) => {
+      if (err.message === "invalid nickname") {
+        console.log("nickname invalido");
+      }
+    });
+    return () => {
+      socket.off("connect_error");
+    };
   }, [props]);
 
   return (
