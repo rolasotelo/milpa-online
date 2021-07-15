@@ -1,8 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
-import { io } from "socket.io-client";
-import { GameRoutePropsType } from "../../common/types";
-import socket from "../../common/socket/socket";
 import newSocket from "../../common/socket/socket";
+import { GameRoutePropsType, User, Users } from "../../common/types";
 
 type GameContextType = {
   nickname: string | undefined;
@@ -16,6 +14,12 @@ interface Props {
   routerProps: GameRoutePropsType;
 }
 
+const initReactiveProperties = (user: User) => {
+  user.connected = true;
+  user.messages = [];
+  user.hasNewMessages = false;
+};
+
 const GameProvider = (props: Props) => {
   let nickname: string | undefined = undefined;
   if (props.routerProps.location.state?.nickname) {
@@ -23,6 +27,7 @@ const GameProvider = (props: Props) => {
   }
 
   const gameCode = props.routerProps.match.params.gamecode;
+  const [players, setPlayers] = useState<Users>([]);
 
   useEffect(() => {
     const socket = newSocket(gameCode, nickname);
@@ -37,6 +42,21 @@ const GameProvider = (props: Props) => {
       if (err.message === "invalid nickname") {
         console.log("nickname invalido");
       }
+    });
+    socket.on("users", (users: Users) => {
+      users.forEach((user) => {
+        user.self = user.userID === socket.id;
+        initReactiveProperties(user);
+      });
+      // put the current player first, and sort by nickname
+      const newPlayers = users.sort((a, b) => {
+        if (a.self) return -1;
+        if (b.self) return 1;
+        if (a.nickname < b.nickname) return -1;
+        return a.nickname > b.nickname ? 1 : 0;
+      });
+      setPlayers(newPlayers);
+      console.log("new users", newPlayers);
     });
     return () => {
       socket.off("connect_error");

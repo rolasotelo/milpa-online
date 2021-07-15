@@ -8,3 +8,14 @@ export type GameRoutePropsType = RouteComponentProps<
   StaticContext,
   { nickname: string }
 >;
+
+export type Users = Array<User>;
+
+export type User = {
+  self: boolean;
+  userID: string;
+  nickname: string;
+  connected: boolean;
+  messages: Array<string>;
+  hasNewMessages: boolean;
+};
