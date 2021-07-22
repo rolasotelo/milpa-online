@@ -32,12 +32,6 @@ const GameProvider = (props: Props) => {
   useEffect(() => {
     const socket = newSocket(gameCode, nickname);
     socket.connect();
-    socket.on("connect", () => {
-      console.log("Connected to server");
-    });
-    socket.on("room join", (message) => {
-      console.log(message);
-    });
     socket.on("connect_error", (err) => {
       if (err.message === "invalid nickname") {
         console.log("nickname invalido");
@@ -56,8 +50,16 @@ const GameProvider = (props: Props) => {
         return a.nickname > b.nickname ? 1 : 0;
       });
       setPlayers(newPlayers);
-      console.log("new users", newPlayers);
     });
+
+    // socket.on("user connected", (user: User) => {
+    //   initReactiveProperties(user);
+    //   const newPlayers = [...players];
+    //   newPlayers.push(user);
+    //   setPlayers(newPlayers);
+    //   console.log("Users now", newPlayers);
+    // });
+
     return () => {
       socket.off("connect_error");
     };
