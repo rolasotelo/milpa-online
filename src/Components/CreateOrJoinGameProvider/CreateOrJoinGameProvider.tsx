@@ -1,5 +1,4 @@
 import React, { createContext, useState } from "react";
-import { io } from "socket.io-client";
 import { v4 as uuidv4 } from "uuid";
 import { RoutePropsType } from "../../common/types";
 

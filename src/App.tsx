@@ -1,10 +1,8 @@
-import React, { ReactElement } from "react";
-import { StaticContext } from "react-router";
+import React from "react";
 import {
   BrowserRouter as Router,
   Redirect,
   Route,
-  RouteComponentProps,
   Switch,
 } from "react-router-dom";
 import { GameRoutePropsType, RoutePropsType } from "./common/types";

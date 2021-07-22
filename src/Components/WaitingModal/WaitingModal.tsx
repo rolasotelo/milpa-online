@@ -1,6 +1,5 @@
-import React from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
 import clipboardCopy from "../../common/icons/clipboard-copy.svg";
 
 interface Props {

@@ -15,7 +15,9 @@ const Layout = (props: Props) => {
               <a href="#">Menu</a>
             </div>
             <div>
-              <img src={logo} className="h-10" />
+              <a href="/">
+                <img src={logo} className="h-10" />
+              </a>
             </div>
             <div className="self-center">
               <a href="#">Leaderboard</a>

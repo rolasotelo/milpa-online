@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { hot } from "react-hot-loader/root";
 import CreateGame from "../../Components/CreateGame/CreateGame";
 import JoinGame from "../../Components/JoinGame/JoinGame";

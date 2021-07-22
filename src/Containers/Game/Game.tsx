@@ -1,7 +1,7 @@
 import React from "react";
 import LayoutGame from "../../Components/LayoutGame/LayoutGame";
-import useGameContext from "../../Hooks/useGameContext/useGameContext";
 import WaitingModal from "../../Components/WaitingModal/WaitingModal";
+import useGameContext from "../../Hooks/useGameContext/useGameContext";
 
 interface Props {}
 
