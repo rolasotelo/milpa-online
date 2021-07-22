@@ -1,7 +1,9 @@
 import React from "react";
 import HeroBoxImage from "../../../static/hero-box.png";
 
-interface Props {}
+interface Props {
+  onClick: () => void;
+}
 
 const HeroBox = (props: Props) => {
   return (
@@ -12,7 +14,7 @@ const HeroBox = (props: Props) => {
       <div className="flex justify-center">
         <button
           className="bg-white border-4 border-mexicanBlue rounded-full px-8 my-32"
-          onClick={() => {}}
+          onClick={props.onClick}
         >
           PLAY
         </button>
