@@ -5,6 +5,7 @@ import { GameRoutePropsType, User, Users } from "../../common/types";
 type GameContextType = {
   nickname: string | undefined;
   gameCode: string;
+  players: Users;
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -28,9 +29,9 @@ const GameProvider = (props: Props) => {
 
   const gameCode = props.routerProps.match.params.gamecode;
   const [players, setPlayers] = useState<Users>([]);
+  const [socket, _] = useState(newSocket(gameCode, nickname));
 
   useEffect(() => {
-    const socket = newSocket(gameCode, nickname);
     socket.connect();
     socket.on("connect_error", (err) => {
       if (err.message === "invalid nickname") {
@@ -52,21 +53,30 @@ const GameProvider = (props: Props) => {
       setPlayers(newPlayers);
     });
 
-    // socket.on("user connected", (user: User) => {
-    //   initReactiveProperties(user);
-    //   const newPlayers = [...players];
-    //   newPlayers.push(user);
-    //   setPlayers(newPlayers);
-    //   console.log("Users now", newPlayers);
-    // });
+    socket.on("user connected", (user: User) => {
+      initReactiveProperties(user);
+      const newPlayers = [...players];
+      newPlayers.push(user);
+      setPlayers(newPlayers);
+    });
 
     return () => {
       socket.off("connect_error");
     };
   }, [props]);
 
+  useEffect(() => {
+    socket.on("user connected", (user: User) => {
+      initReactiveProperties(user);
+      const newPlayers = [...players];
+      newPlayers.push(user);
+      setPlayers(newPlayers);
+    });
+    return () => {};
+  }, [players]);
+
   return (
-    <GameContext.Provider value={{ nickname, gameCode }}>
+    <GameContext.Provider value={{ nickname, gameCode, players }}>
       {props.children}
     </GameContext.Provider>
   );

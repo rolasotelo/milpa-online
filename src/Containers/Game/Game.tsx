@@ -9,6 +9,11 @@ const Game = (props: Props) => {
   const context = useGameContext();
   return (
     <LayoutGame>
+      <ul>
+        {context.players.map((user) => {
+          return <li key={user.userID}>{user.nickname}</li>;
+        })}
+      </ul>
       <WaitingModal
         title={`Ahoj ${context.nickname}`}
         body="Share this code with your friend"
