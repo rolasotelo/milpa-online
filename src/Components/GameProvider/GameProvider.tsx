@@ -26,24 +26,27 @@ const GameProvider = (props: Props) => {
   if (props.routerProps.location.state?.nickname) {
     nickname = props.routerProps.location.state.nickname;
   }
-
   const gameCode = props.routerProps.match.params.gamecode;
+
   const [players, setPlayers] = useState<Users>([]);
   const [socket, _] = useState(newSocket(gameCode, nickname));
 
+  // * only supposed to run once, at the beginning
   useEffect(() => {
     socket.connect();
     socket.on("connect_error", (err) => {
+      // TODO handle connection error
       if (err.message === "invalid nickname") {
         console.log("nickname invalido");
       }
     });
+
+    // + existing users in room
     socket.on("users", (users: Users) => {
       users.forEach((user) => {
         user.self = user.userID === socket.id;
         initReactiveProperties(user);
       });
-      // put the current player first, and sort by nickname
       const newPlayers = users.sort((a, b) => {
         if (a.self) return -1;
         if (b.self) return 1;
@@ -65,6 +68,7 @@ const GameProvider = (props: Props) => {
     };
   }, [props]);
 
+  // * every time players update a new "user connected" listener is needed
   useEffect(() => {
     socket.on("user connected", (user: User) => {
       initReactiveProperties(user);
