@@ -11,6 +11,10 @@ const Game = (props: Props) => {
     <LayoutGame>
       <ul>
         {context.players.map((user) => {
+          // TODO user shouldn't be undefined
+          if (!user) {
+            return;
+          }
           return <li key={user.userID}>{user.nickname}</li>;
         })}
       </ul>

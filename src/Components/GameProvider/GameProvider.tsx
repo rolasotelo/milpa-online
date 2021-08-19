@@ -19,16 +19,18 @@ const initReactiveProperties = (user: User) => {
   user.connected = true;
   user.messages = [];
   user.hasNewMessages = false;
+  user.self = false;
 };
 
 const GameProvider = (props: Props) => {
-  let nickname: string | undefined = undefined;
+  let nickname: string = "";
   if (props.routerProps.location.state?.nickname) {
     nickname = props.routerProps.location.state.nickname;
   }
   const gameCode = props.routerProps.match.params.gamecode;
 
   const [players, setPlayers] = useState<Users>([]);
+
   const [socket, _] = useState(newSocket(gameCode, nickname));
 
   // * only supposed to run once, at the beginning
@@ -41,11 +43,17 @@ const GameProvider = (props: Props) => {
       }
     });
 
+    socket.on("room filled", () => {
+      // TODO do proper workflow when room filled
+      props.routerProps.history.push("/play", { nickname });
+    });
+
     // + existing users in room
     socket.on("users", (users: Users) => {
       users.forEach((user) => {
-        user.self = user.userID === socket.id;
         initReactiveProperties(user);
+
+        user.self = user.userID === socket.id;
       });
       const newPlayers = users.sort((a, b) => {
         if (a.self) return -1;
@@ -56,7 +64,8 @@ const GameProvider = (props: Props) => {
       setPlayers(newPlayers);
     });
 
-    socket.on("user connected", (user: User) => {
+    socket.once("user connected", (user: User) => {
+      console.log("hola");
       initReactiveProperties(user);
       const newPlayers = [...players];
       newPlayers.push(user);
@@ -70,12 +79,16 @@ const GameProvider = (props: Props) => {
 
   // * every time players update a new "user connected" listener is needed
   useEffect(() => {
+    // TODO look at the mess that is players updating because setPlayers here
+
     socket.on("user connected", (user: User) => {
       initReactiveProperties(user);
-      const newPlayers = [...players];
+      console.log("players", players);
+      const newPlayers = [...[players[0]]];
       newPlayers.push(user);
       setPlayers(newPlayers);
     });
+
     return () => {};
   }, [players]);
 
