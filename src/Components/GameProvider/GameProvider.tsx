@@ -6,6 +6,7 @@ type GameContextType = {
   nickname: string | undefined;
   gameCode: string;
   players: Users;
+  isPlaying: boolean;
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -30,7 +31,7 @@ const GameProvider = (props: Props) => {
   const gameCode = props.routerProps.match.params.gamecode;
 
   const [players, setPlayers] = useState<Users>([]);
-
+  const [isPlaying, setIsPlaying] = useState(false);
   const [socket, _] = useState(newSocket(gameCode, nickname));
 
   // * only supposed to run once, at the beginning
@@ -46,6 +47,10 @@ const GameProvider = (props: Props) => {
     socket.on("room filled", () => {
       // TODO do proper workflow when room filled
       props.routerProps.history.push("/play", { nickname });
+    });
+
+    socket.on("start game", () => {
+      setIsPlaying(true);
     });
 
     // + existing users in room
@@ -93,7 +98,7 @@ const GameProvider = (props: Props) => {
   }, [players]);
 
   return (
-    <GameContext.Provider value={{ nickname, gameCode, players }}>
+    <GameContext.Provider value={{ nickname, gameCode, players, isPlaying }}>
       {props.children}
     </GameContext.Provider>
   );

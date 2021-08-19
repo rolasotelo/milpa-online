@@ -18,11 +18,13 @@ const Game = (props: Props) => {
           return <li key={user.userID}>{user.nickname}</li>;
         })}
       </ul>
-      <WaitingModal
-        title={`Ahoj ${context.nickname}`}
-        body="Share this code with your friend"
-        buttonText={context.gameCode}
-      />
+      {!context.isPlaying && (
+        <WaitingModal
+          title={`Ahoj ${context.nickname}`}
+          body="Share this code with your friend"
+          buttonText={context.gameCode}
+        />
+      )}
     </LayoutGame>
   );
 };
