@@ -17,7 +17,7 @@ const Layout = (props: Props) => {
                 style={{
                   width: "50px",
                   height: "50px",
-                  backgroundImage: `url(${buttons})`,
+                  backgroundImage: `url(${buttons}#menu-up-usage)`,
                 }}
               ></button>
             </div>
