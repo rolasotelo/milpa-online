@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import logo from "./../../../static/logo.png";
+import buttons from "../../../static/buttons.svg";
 
 interface Props {
   children: ReactNode;
@@ -12,7 +13,13 @@ const Layout = (props: Props) => {
         <div className="container mx-auto p-2">
           <nav className="flex justify-between text-mexicanPink">
             <div className="self-center">
-              <a href="#">Menu</a>
+              <button
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  backgroundImage: `url(${buttons})`,
+                }}
+              ></button>
             </div>
             <div>
               <a href="/">
