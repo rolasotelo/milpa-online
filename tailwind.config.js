@@ -876,7 +876,7 @@ module.exports = {
       "hover",
       "focus",
     ],
-    backgroundImage: ["responsive"],
+    backgroundImage: ["responsive", "hover", "focus"],
     backgroundOpacity: [
       "responsive",
       "dark",

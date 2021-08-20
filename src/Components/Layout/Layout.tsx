@@ -14,10 +14,10 @@ const Layout = (props: Props) => {
           <nav className="flex justify-between text-mexicanPink">
             <div className="self-center">
               <button
+                className="bg-button-menu-up focus:bg-button-menu-down focus:outline-none"
                 style={{
                   width: "50px",
                   height: "50px",
-                  backgroundImage: `url(${buttons}#menu-up-usage)`,
                 }}
               ></button>
             </div>
@@ -28,7 +28,7 @@ const Layout = (props: Props) => {
             </div>
             <div className="self-center">
               <button
-                className="bg-button-menu-up"
+                className="bg-button-menu-up hover:bg-button-menu-down focus:outline-none"
                 style={{
                   width: "50px",
                   height: "50px",
