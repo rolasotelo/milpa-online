@@ -27,7 +27,13 @@ const Layout = (props: Props) => {
               </a>
             </div>
             <div className="self-center">
-              <a href="#">Leaderboard</a>
+              <button
+                className="bg-button-menu-up"
+                style={{
+                  width: "50px",
+                  height: "50px",
+                }}
+              ></button>
             </div>
           </nav>
         </div>

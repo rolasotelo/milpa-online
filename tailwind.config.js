@@ -104,6 +104,8 @@ module.exports = {
       "gradient-to-l": "linear-gradient(to left, var(--tw-gradient-stops))",
       "gradient-to-tl":
         "linear-gradient(to top left, var(--tw-gradient-stops))",
+      "button-menu-up": "url('/static/buttons.svg#menu-up-usage')",
+      "button-menu-down": "url('/static/buttons.svg#menu-down-usage')",
     },
     backgroundOpacity: (theme) => theme("opacity"),
     backgroundPosition: {
