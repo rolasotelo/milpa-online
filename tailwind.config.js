@@ -112,6 +112,9 @@ module.exports = {
         "url('/static/buttons.svg#leaderboard-down-usage')",
       "logo-floating": "url('/static/buttons.svg#logo-floating-usage')",
       "hero-box": "url('/static/hero-box.svg#hero-box-usage')",
+      "milpa-name-web": "url('/static/hero-box.svg#milpa-name-web-usage')",
+      "milpa-name-mobile":
+        "url('/static/hero-box.svg#milpa-name-mobile-usage')",
     },
     backgroundOpacity: (theme) => theme("opacity"),
     backgroundPosition: {
