@@ -106,6 +106,11 @@ module.exports = {
         "linear-gradient(to top left, var(--tw-gradient-stops))",
       "button-menu-up": "url('/static/buttons.svg#menu-up-usage')",
       "button-menu-down": "url('/static/buttons.svg#menu-down-usage')",
+      "button-leaderboard-up":
+        "url('/static/buttons.svg#leaderboard-up-usage')",
+      "button-leaderboard-down":
+        "url('/static/buttons.svg#leaderboard-down-usage')",
+      "logo-floating": "url('/static/buttons.svg#logo-floating-usage')",
     },
     backgroundOpacity: (theme) => theme("opacity"),
     backgroundPosition: {

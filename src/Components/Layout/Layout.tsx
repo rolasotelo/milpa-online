@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { useHistory } from "react-router-dom";
 import logo from "./../../../static/logo.png";
 
 interface Props {
@@ -6,6 +7,7 @@ interface Props {
 }
 
 const Layout = (props: Props) => {
+  const h = useHistory();
   return (
     <div className="bg-mexicanBone min-h-screen">
       <div className="bg-mexicanBlue">
@@ -21,13 +23,20 @@ const Layout = (props: Props) => {
               ></button>
             </div>
             <div>
-              <a href="/">
-                <img src={logo} className="h-10" />
-              </a>
+              <button
+                onClick={() => {
+                  h.push("/");
+                }}
+                className="bg-logo-floating focus:outline-none"
+                style={{
+                  width: "50px",
+                  height: "50px",
+                }}
+              ></button>
             </div>
             <div className="self-center">
               <button
-                className="bg-button-menu-up hover:bg-button-menu-down focus:outline-none"
+                className="bg-button-leaderboard-up focus:bg-button-leaderboard-down focus:outline-none"
                 style={{
                   width: "50px",
                   height: "50px",
