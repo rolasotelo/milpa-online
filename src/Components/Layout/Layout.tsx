@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import logo from "./../../../static/logo.png";
-import buttons from "../../../static/buttons.svg";
 
 interface Props {
   children: ReactNode;
