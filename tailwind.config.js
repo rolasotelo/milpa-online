@@ -111,6 +111,7 @@ module.exports = {
       "button-leaderboard-down":
         "url('/static/buttons.svg#leaderboard-down-usage')",
       "logo-floating": "url('/static/buttons.svg#logo-floating-usage')",
+      "hero-box": "url('/static/hero-box.svg#hero-box-usage')",
     },
     backgroundOpacity: (theme) => theme("opacity"),
     backgroundPosition: {
