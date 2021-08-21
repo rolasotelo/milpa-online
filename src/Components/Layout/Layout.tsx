@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import { useHistory } from "react-router-dom";
-import logo from "./../../../static/logo.png";
 
 interface Props {
   children: ReactNode;

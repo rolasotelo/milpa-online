@@ -1,11 +1,12 @@
 import React, { ReactNode } from "react";
-import logo from "./../../../static/logo.png";
+import { useHistory } from "react-router-dom";
 
 interface Props {
   children: ReactNode;
 }
 
 const LayoutGame = (props: Props) => {
+  const h = useHistory();
   return (
     <div className="bg-mexicanBone min-h-screen">
       <div className="bg-mexicanBlue">
@@ -15,7 +16,16 @@ const LayoutGame = (props: Props) => {
               <a href="#">Menu</a>
             </div>
             <div>
-              <img src={logo} className="h-10" />
+              <button
+                onClick={() => {
+                  h.push("/");
+                }}
+                className="bg-logo-floating focus:outline-none"
+                style={{
+                  width: "50px",
+                  height: "50px",
+                }}
+              ></button>
             </div>
             <div className="self-center">
               <a href="#">Rules</a>
