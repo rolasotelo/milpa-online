@@ -5,7 +5,11 @@ interface Props {
   onClick: () => void;
 }
 
+const PlayTranslator = ["PLAY", "JUGAR", "HRÁT SI"];
+
 const HeroBox = (props: Props) => {
+  const PlayBabel = PlayTranslator[Math.floor(Math.random() * 3)];
+
   return (
     <div className="w-20rem md:w-60rem h-35rem bg-hero-box ring-8 ring-inset ring-black ">
       <div className="flex flex-col justify-center items-center">
@@ -17,10 +21,10 @@ const HeroBox = (props: Props) => {
               fontFamily: "goodlife-sans-condensed, sans-serif",
               fontWeight: 400,
               fontStyle: "normal",
-              fontSize: "3rem",
+              fontSize: "2.8rem",
             }}
           >
-            PLAY
+            {PlayBabel}
           </button>
         </div>
 
