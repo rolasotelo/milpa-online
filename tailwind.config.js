@@ -114,6 +114,7 @@ module.exports = {
       "button-leaderboard-down":
         "url('/static/buttons.svg#leaderboard-down-usage')",
       "logo-floating": "url('/static/buttons.svg#logo-floating-usage')",
+      "button-play": "url('/static/buttons.svg#button-play-usage')",
       "hero-box": "url('/static/hero-box.svg#hero-box-usage')",
       "milpa-name-web": "url('/static/hero-box.svg#milpa-name-web-usage')",
       "milpa-name-mobile":

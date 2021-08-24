@@ -11,7 +11,7 @@ const HeroBox = (props: Props) => {
       <div className="flex flex-col justify-center items-center">
         <div>
           <button
-            className="bg-white border-4 border-mexicanBlue rounded-full px-8 mt-48 md:mt-64"
+            className="bg-button-play w-52 h-24 px-8 mt-32 md:mt-56 focus:outline-none"
             onClick={props.onClick}
           >
             PLAY
