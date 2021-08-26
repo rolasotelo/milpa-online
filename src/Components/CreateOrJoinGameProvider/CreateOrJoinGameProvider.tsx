@@ -2,6 +2,15 @@ import React, { createContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { RoutePropsType } from "../../common/types";
 
+const RandomNicknames = [
+  "Tomate con pena",
+  "Quelite Feliz",
+  "Curious Pumpkin",
+  "Sad Potatoe",
+  "Rozzlobený pepř",
+  "Kouzelné fazole",
+];
+
 type JoinOrCreateGameContextType = {
   nickname: string;
   onClickCreate: () => void;
@@ -18,7 +27,9 @@ interface Props {
 }
 
 const CreateOrJoinGameProvider = (props: Props) => {
-  const [nickname, setNickname] = useState("");
+  const [nickname, setNickname] = useState(
+    RandomNicknames[Math.floor(Math.random() * 6)]
+  );
 
   const onChangeNickname = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNickname(event.target.value);

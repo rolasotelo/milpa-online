@@ -1,11 +1,10 @@
 import React from "react";
-import MilpaName from "../../../static/hero-box.svg";
 
 interface Props {
   onClick: () => void;
 }
 
-const PlayTranslator = ["PLAY", "JUGAR", "HRÁT SI"];
+const PlayTranslator = ["PLAY", "JUGAR", "HRÁT"];
 
 const HeroBox = (props: Props) => {
   const PlayBabel = PlayTranslator[Math.floor(Math.random() * 3)];
