@@ -1,5 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment, useState } from "react";
+import { useHistory } from "react-router-dom";
 import clipboardCopy from "../../common/icons/clipboard-copy.svg";
 
 interface Props {
@@ -22,6 +23,7 @@ const WaitingModal = (props: Props) => {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(props.buttonText);
   };
+  const h = useHistory();
 
   return (
     <>
@@ -39,7 +41,7 @@ const WaitingModal = (props: Props) => {
         <Dialog
           as="div"
           className="fixed inset-0 z-10 overflow-y-auto"
-          onClose={() => {}}
+          onClose={closeModal}
         >
           <div className="min-h-screen px-4 text-center">
             <Transition.Child
@@ -71,14 +73,28 @@ const WaitingModal = (props: Props) => {
               leaveTo="opacity-0 scale-95"
             >
               <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-mexicanBoneLight shadow-xl rounded-2xl">
+                <div className="flex justify-center">
+                  <button
+                    onClick={() => {
+                      h.push("/");
+                    }}
+                    className="bg-logo-floating focus:outline-none"
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                    }}
+                  ></button>
+                </div>
                 <Dialog.Title
                   as="h3"
-                  className="text-lg font-medium leading-6 text-mexicanPink"
+                  className="text-lg font-medium leading-6 text-mexicanPink text-center mt-1"
                 >
                   {props.title}
                 </Dialog.Title>
                 <div className="mt-2">
-                  <p className="text-sm text-mexicanBlue">{props.body}</p>
+                  <p className="text-sm text-mexicanBlue text-center">
+                    {props.body}
+                  </p>
                 </div>
 
                 <div className="flex justify-center mt-4">
