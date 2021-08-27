@@ -13,7 +13,7 @@
     "start": "webpack serve --hot --mode development",
     "test": "jest",
     "test:watch": "jest --watch",
-    "update-sprite:buttons": "svg-sprite -s --symbol-dest svg-sprite --symbol-sprite buttons-sprite.svg svg-sprite/individual-icons/buttons/*.svg"
+    "sprite:buttons": "svg-sprite -s --symbol-dest svg-sprite --symbol-sprite buttons-sprite.svg svg-sprite/individual-icons/buttons/*.svg"
   },
   "devDependencies": {
     "@babel/core": "7.14.6",
