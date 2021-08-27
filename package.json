@@ -13,7 +13,8 @@
     "start": "webpack serve --hot --mode development",
     "test": "jest",
     "test:watch": "jest --watch",
-    "sprite:buttons": "svg-sprite -s --symbol-dest svg-sprite --symbol-sprite buttons-sprite.svg svg-sprite/individual-icons/buttons/*.svg"
+    "sprite:buttons": "svg-sprite -s --symbol-dest svg-sprite --symbol-sprite buttons-sprite.svg svg-sprite/individual-icons/buttons/*.svg",
+    "sprite:heroboxes": "svg-sprite -s --symbol-dest svg-sprite --symbol-sprite heroboxes-sprite.svg svg-sprite/individual-icons/heroboxes/*.svg"
   },
   "devDependencies": {
     "@babel/core": "7.14.6",

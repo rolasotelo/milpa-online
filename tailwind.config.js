@@ -95,25 +95,16 @@ module.exports = {
     backgroundColor: (theme) => theme("colors"),
     backgroundImage: {
       none: "none",
-      "gradient-to-t": "linear-gradient(to top, var(--tw-gradient-stops))",
-      "gradient-to-tr":
-        "linear-gradient(to top right, var(--tw-gradient-stops))",
-      "gradient-to-r": "linear-gradient(to right, var(--tw-gradient-stops))",
-      "gradient-to-br":
-        "linear-gradient(to bottom right, var(--tw-gradient-stops))",
-      "gradient-to-b": "linear-gradient(to bottom, var(--tw-gradient-stops))",
-      "gradient-to-bl":
-        "linear-gradient(to bottom left, var(--tw-gradient-stops))",
-      "gradient-to-l": "linear-gradient(to left, var(--tw-gradient-stops))",
-      "gradient-to-tl":
-        "linear-gradient(to top left, var(--tw-gradient-stops))",
-      "button-menu-up": "url('/static/buttons.svg#menu-up-usage')",
-      "button-menu-down": "url('/static/buttons.svg#menu-down-usage')",
-      "button-leaderboard-up":
-        "url('/static/buttons.svg#leaderboard-up-usage')",
-      "button-leaderboard-down":
-        "url('/static/buttons.svg#leaderboard-down-usage')",
-      "logo-floating": "url('/static/buttons.svg#logo-floating-usage')",
+      "button-menu": "url('/static/buttons.svg#menu-button-usage')",
+      "button-menu-pressed":
+        "url('/static/buttons.svg#menu-button-pressed-usage')",
+      "button-leaderboard":
+        "url('/static/buttons.svg#leaderboard-button-usage')",
+      "button-leaderboard-pressed":
+        "url('/static/buttons.svg#leaderboard-button-pressed-usage')",
+      "button-logo": "url('/static/buttons.svg#logo-button-usage')",
+      "button-logo-pressed":
+        "url('/static/buttons.svg#logo-button-pressed-usage')",
       "button-play": "url('/static/buttons.svg#button-play-usage')",
       "hero-box": "url('/static/hero-box.svg#hero-box-usage')",
       "milpa-name-web": "url('/static/hero-box.svg#milpa-name-web-usage')",
