@@ -78,7 +78,7 @@ const WaitingModal = (props: Props) => {
                     onClick={() => {
                       h.push("/");
                     }}
-                    className="bg-logo-floating focus:outline-none"
+                    className="bg-button-logo focus:bg-button-logo-pressed focus:outline-none"
                     style={{
                       width: "50px",
                       height: "50px",

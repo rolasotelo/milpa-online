@@ -14,7 +14,7 @@ const Layout = (props: Props) => {
           <nav className="flex justify-between text-mexicanPink">
             <div className="self-center">
               <button
-                className="bg-button-menu-up focus:bg-button-menu-down focus:outline-none"
+                className="bg-button-menu focus:bg-button-menu-pressed focus:outline-none"
                 style={{
                   width: "50px",
                   height: "50px",
@@ -26,7 +26,7 @@ const Layout = (props: Props) => {
                 onClick={() => {
                   h.push("/");
                 }}
-                className="bg-logo-floating focus:outline-none"
+                className="bg-button-logo focus:bg-button-logo-pressed focus:outline-none"
                 style={{
                   width: "50px",
                   height: "50px",
@@ -35,7 +35,7 @@ const Layout = (props: Props) => {
             </div>
             <div className="self-center">
               <button
-                className="bg-button-leaderboard-up focus:bg-button-leaderboard-down focus:outline-none"
+                className="bg-button-leaderboard focus:bg-button-leaderboard-pressed focus:outline-none"
                 style={{
                   width: "50px",
                   height: "50px",
