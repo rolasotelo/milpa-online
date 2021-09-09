@@ -1,5 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import clipboardCopy from "../../common/icons/clipboard-copy.svg";
 
@@ -25,6 +25,8 @@ const WaitingModal = (props: Props) => {
   };
   const h = useHistory();
 
+  let completeButtonRef = useRef(null);
+
   return (
     <>
       <div className="fixed inset-0 flex items-center justify-center">
@@ -41,19 +43,20 @@ const WaitingModal = (props: Props) => {
         <Dialog
           as="div"
           className="fixed inset-0 z-10 overflow-y-auto"
-          onClose={closeModal}
+          onClose={() => {}}
+          initialFocus={completeButtonRef}
         >
           <div className="min-h-screen px-4 text-center">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
+              enterFrom="opacity-80"
+              enterTo="opacity-0"
               leave="ease-in duration-200"
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="fixed inset-0" />
+              <Dialog.Overlay className="fixed inset-0 backdrop-blur-md bg-mexicanBlue opacity-40 filter blur-3xl" />
             </Transition.Child>
 
             {/* This element is to trick the browser into centering the modal contents. */}
@@ -73,6 +76,7 @@ const WaitingModal = (props: Props) => {
               leaveTo="opacity-0 scale-95"
             >
               <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-mexicanBoneLight shadow-xl rounded-2xl">
+                <button ref={completeButtonRef}></button>
                 <div className="flex justify-center">
                   <button
                     onClick={() => {
