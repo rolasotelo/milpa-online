@@ -10,8 +10,10 @@ jobs:
       # replace with your preferred image
       - image: cimg/node:16.2.0
     steps:
-      - node/install-packages:
-          pkg-manager: yarn 
+      - node/install:
+          install-yarn: true 
+          install-npm: false 
+          node-version: '16.2.0' 
 
 workflows:
   example-workflow:
