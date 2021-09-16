@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CreateGame /> render 1`] = `
+<div
+  className="w-20.38rem md:w-27.5rem h-32.5rem bg-create-background ring-8 ring-inset ring-black m-5"
+>
+  <div
+    className="flex justify-center"
+  >
+    <button
+      className="bg-button-pink w-52 h-24 mt-4 focus:outline-none focus:bg-button-pink-pressed pl-3 pb-2 focus:pl-2 focus:pb-1"
+      onClick={[Function]}
+      style={
+        Object {
+          "fontFamily": "goodlife-sans-condensed, sans-serif",
+          "fontSize": "2rem",
+          "fontStyle": "normal",
+          "fontWeight": 400,
+        }
+      }
+    >
+      CREATE
+    </button>
+  </div>
+</div>
+`;

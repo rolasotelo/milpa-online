@@ -6,6 +6,7 @@ interface Props {
 
 const JoinGame = (props: Props) => {
   const [gameCode, setGameCode] = useState("");
+
   return (
     <div className="w-20.38rem md:w-27.5rem h-32.5rem bg-join-background ring-8 ring-inset ring-black m-5">
       <div className="flex flex-col">

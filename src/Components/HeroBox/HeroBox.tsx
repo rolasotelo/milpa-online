@@ -2,13 +2,10 @@ import React from "react";
 
 interface Props {
   onClick: () => void;
+  text: string;
 }
 
-const PlayTranslator = ["PLAY", "JUGAR", "HRÁT"];
-
 const HeroBox = (props: Props) => {
-  const PlayBabel = PlayTranslator[Math.floor(Math.random() * 3)];
-
   return (
     <div className="w-20.38rem md:mx-8 md:w-60rem h-35rem bg-play-background ring-8 ring-inset ring-black mt-6">
       <div className="flex flex-col justify-center items-center">
@@ -23,7 +20,7 @@ const HeroBox = (props: Props) => {
               fontSize: "2.8rem",
             }}
           >
-            {PlayBabel}
+            {props.text}
           </button>
         </div>
 
