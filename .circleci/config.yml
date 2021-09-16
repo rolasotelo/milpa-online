@@ -5,7 +5,7 @@ orbs:
   node: circleci/node@4.7.0
 
 jobs:
-  example-job:
+  install-job:
     docker:
       # replace with your preferred image
       - image: cimg/node:16.2.0
@@ -16,10 +16,14 @@ jobs:
           node-version: '16.2.0' 
 
 workflows:
-  example-workflow:
+  main-workflow:
     jobs:
-      - example-job
+      - install-job
       - node/test:
             pkg-manager: yarn 
             run-command: test
             version: '16.2.0'
+      - node/run:
+            pkg-manager: yarn 
+            version: '16.2.0' 
+            yarn-run: build-prod 
