@@ -10,7 +10,7 @@ const HeroBox = (props: Props) => {
   const PlayBabel = PlayTranslator[Math.floor(Math.random() * 3)];
 
   return (
-    <div className="w-20rem md:w-60rem h-35rem bg-hero-box ring-8 ring-inset ring-black ">
+    <div className="w-20rem md:w-60rem h-35rem bg-herobox ring-8 ring-inset ring-black ">
       <div className="flex flex-col justify-center items-center">
         <div>
           <button

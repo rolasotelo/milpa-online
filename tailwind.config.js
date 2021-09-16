@@ -106,10 +106,9 @@ module.exports = {
       "button-logo-pressed":
         "url('/static/buttons.svg#logo-button-pressed-usage')",
       "button-play": "url('/static/buttons.svg#button-play-usage')",
-      "hero-box": "url('/static/hero-box.svg#hero-box-usage')",
-      "milpa-name-web": "url('/static/hero-box.svg#milpa-name-web-usage')",
-      "milpa-name-mobile":
-        "url('/static/hero-box.svg#milpa-name-mobile-usage')",
+      herobox: "url('/static/herobox.svg#herobox-usage')",
+      "milpa-name-web": "url('/static/herobox.svg#milpa-name-web-usage')",
+      "milpa-name-mobile": "url('/static/herobox.svg#milpa-name-mobile-usage')",
     },
     backgroundOpacity: (theme) => theme("opacity"),
     backgroundPosition: {
