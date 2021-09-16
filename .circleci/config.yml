@@ -21,5 +21,5 @@ workflows:
       - example-job
       - node/test:
             pkg-manager: yarn 
-            run-command: yarn test
+            run-command: test
             version: '16.2.0'
