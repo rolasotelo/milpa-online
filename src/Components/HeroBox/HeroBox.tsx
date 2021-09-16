@@ -14,7 +14,7 @@ const HeroBox = (props: Props) => {
       <div className="flex flex-col justify-center items-center">
         <div>
           <button
-            className="bg-button-blue w-52 h-24 px-8 mt-32 md:mt-56 focus:outline-none focus:bg-button-blue-pressed"
+            className="bg-button-blue w-52 h-24 mt-32 md:mt-56 focus:outline-none focus:bg-button-blue-pressed pl-3 pb-2 focus:pl-2 focus:pb-1"
             onClick={props.onClick}
             style={{
               fontFamily: "goodlife-sans-condensed, sans-serif",

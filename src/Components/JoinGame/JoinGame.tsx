@@ -13,7 +13,7 @@ const JoinGame = (props: Props) => {
             onClick={() => {
               props.onClickJoin(gameCode);
             }}
-            className="bg-button-pink w-52 h-24 px-8 mt-4 focus:outline-none focus:bg-button-pink-pressed"
+            className="bg-button-pink w-52 h-24 mt-4 focus:outline-none focus:bg-button-pink-pressed pl-3 pb-2 focus:pl-2 focus:pb-1"
             style={{
               fontFamily: "goodlife-sans-condensed, sans-serif",
               fontWeight: 400,

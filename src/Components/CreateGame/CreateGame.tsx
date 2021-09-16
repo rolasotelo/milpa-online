@@ -9,7 +9,7 @@ const CreateGame = (props: Props) => {
     <div className="w-20.38rem md:w-27.5rem h-32.5rem bg-create-background ring-8 ring-inset ring-black m-5">
       <div className="flex justify-center">
         <button
-          className="bg-button-pink w-52 h-24 px-8 mt-4 focus:outline-none focus:bg-button-pink-pressed"
+          className="bg-button-pink w-52 h-24 mt-4 focus:outline-none focus:bg-button-pink-pressed pl-3 pb-2 focus:pl-2 focus:pb-1"
           onClick={props.onClickCreate}
           style={{
             fontFamily: "goodlife-sans-condensed, sans-serif",
