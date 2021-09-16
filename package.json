@@ -14,7 +14,10 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "sprite:buttons": "svg-sprite -s --symbol-dest svg-sprite --symbol-sprite buttons-sprite.svg svg-sprite/individual-icons/buttons/*.svg",
-    "sprite:heroboxes": "svg-sprite -s --symbol-dest svg-sprite --symbol-sprite heroboxes-sprite.svg svg-sprite/individual-icons/heroboxes/*.svg"
+    "sprite:banners": "svg-sprite -s --symbol-dest svg-sprite --symbol-sprite banners-sprite.svg svg-sprite/individual-icons/banners/*.svg",
+    "sprite:create": "svg-sprite -s --symbol-dest svg-sprite --symbol-sprite create-sprite.svg svg-sprite/individual-icons/create/*.svg",
+    "sprite:welcome": "svg-sprite -s --symbol-dest svg-sprite --symbol-sprite welcome-sprite.svg svg-sprite/individual-icons/welcome/*.svg",
+    "sprite": "yarn sprite:buttons && yarn sprite:banners && yarn sprite:create && yarn sprite:welcome"
   },
   "devDependencies": {
     "@babel/core": "7.14.6",
