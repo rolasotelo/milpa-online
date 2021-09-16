@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 interface Props {
   onClickJoin: (code: string) => void;
+  text: string;
 }
 
 const JoinGame = (props: Props) => {
@@ -18,10 +19,10 @@ const JoinGame = (props: Props) => {
               fontFamily: "goodlife-sans-condensed, sans-serif",
               fontWeight: 400,
               fontStyle: "normal",
-              fontSize: "2.8rem",
+              fontSize: "2rem",
             }}
           >
-            JOIN
+            {props.text.toUpperCase()}
           </button>
         </div>
         <div className="mx-auto">

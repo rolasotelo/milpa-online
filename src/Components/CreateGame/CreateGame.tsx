@@ -2,6 +2,7 @@ import React from "react";
 
 interface Props {
   onClickCreate: () => void;
+  text: string;
 }
 
 const CreateGame = (props: Props) => {
@@ -15,10 +16,10 @@ const CreateGame = (props: Props) => {
             fontFamily: "goodlife-sans-condensed, sans-serif",
             fontWeight: 400,
             fontStyle: "normal",
-            fontSize: "2.8rem",
+            fontSize: "2rem",
           }}
         >
-          CREATE
+          {props.text.toUpperCase()}
         </button>
       </div>
     </div>

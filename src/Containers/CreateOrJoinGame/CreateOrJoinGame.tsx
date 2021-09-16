@@ -8,17 +8,28 @@ import useJoinOrCreateGameContext from "../../Hooks/useCreateOrJoinGameContext/u
 
 interface Props {}
 
+const HelloTranslator = [
+  { greeting: "HELLO", create: "CREATE", join: "JOIN" },
+  { greeting: "HOLA", create: "CREAR", join: "UNIRSE" },
+  { greeting: "AHOJ", create: "VYTVOřIT", join: "připojit" },
+];
+
 const CreateOrJoinGame = (props: Props) => {
   const context = useJoinOrCreateGameContext();
+  const HelloBabel = HelloTranslator[Math.floor(Math.random() * 3)];
   return (
     <Layout>
       <Nickname
         nickname={context.nickname}
         onChange={context.onChangeNickname}
+        greeting={HelloBabel.greeting}
       />
       <div className="flex flex-col md:flex-row justify-evenly items-center">
-        <CreateGame onClickCreate={context.onClickCreate} />
-        <JoinGame onClickJoin={context.onClickJoin} />
+        <CreateGame
+          onClickCreate={context.onClickCreate}
+          text={HelloBabel.create}
+        />
+        <JoinGame onClickJoin={context.onClickJoin} text={HelloBabel.join} />
       </div>
     </Layout>
   );

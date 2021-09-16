@@ -3,6 +3,7 @@ import React from "react";
 interface Props {
   nickname: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  greeting: string;
 }
 
 const Nickname = (props: Props) => {
@@ -17,14 +18,14 @@ const Nickname = (props: Props) => {
       }}
     >
       <div
-        className="self-center mb-2 mx-2"
+        className="self-center mb-2 ml-6"
         style={{
           color: "white",
         }}
       >
-        <a href="/play">Ahoj</a>
+        <a href="/play">{props.greeting.toUpperCase()}</a>
       </div>
-      <div>
+      <div className="ml-2">
         <input
           className=" placeholder-gray-500 placeholder-opacity-100 focus:outline-none bg-transparent"
           placeholder="Gabinka?"
