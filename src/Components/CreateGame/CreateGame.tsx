@@ -1,5 +1,4 @@
 import React from "react";
-import CreateGameImage from "../../../static/create-game.png";
 
 interface Props {
   onClickCreate: () => void;
@@ -7,14 +6,17 @@ interface Props {
 
 const CreateGame = (props: Props) => {
   return (
-    <div
-      className="w-80 h-96 bg-contain bg-no-repeat"
-      style={{ backgroundImage: `url(${CreateGameImage})` }}
-    >
+    <div className="w-27.5rem h-32.5rem bg-create-background ring-8 ring-inset ring-black">
       <div className="flex justify-center">
         <button
-          className="bg-white border-4 border-mexicanPink rounded-full px-2 my-4"
+          className="bg-button-pink w-52 h-24 px-8 mt-4 focus:outline-none focus:bg-button-pink-pressed"
           onClick={props.onClickCreate}
+          style={{
+            fontFamily: "goodlife-sans-condensed, sans-serif",
+            fontWeight: 400,
+            fontStyle: "normal",
+            fontSize: "2.8rem",
+          }}
         >
           CREATE
         </button>

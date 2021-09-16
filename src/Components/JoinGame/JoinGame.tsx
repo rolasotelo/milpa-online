@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import JoinGameImage from "../../../static/join-game.png";
-
 interface Props {
   onClickJoin: (code: string) => void;
 }
@@ -8,17 +6,20 @@ interface Props {
 const JoinGame = (props: Props) => {
   const [gameCode, setGameCode] = useState("");
   return (
-    <div
-      className="w-80 h-96 bg-contain bg-no-repeat"
-      style={{ backgroundImage: `url(${JoinGameImage})` }}
-    >
+    <div className="w-27.5rem h-32.5rem bg-join-background ring-8 ring-inset ring-black">
       <div className="flex flex-col">
         <div className="mx-auto">
           <button
             onClick={() => {
               props.onClickJoin(gameCode);
             }}
-            className="bg-white border-4 border-mexicanPink rounded-full px-2 my-4"
+            className="bg-button-pink w-52 h-24 px-8 mt-4 focus:outline-none focus:bg-button-pink-pressed"
+            style={{
+              fontFamily: "goodlife-sans-condensed, sans-serif",
+              fontWeight: 400,
+              fontStyle: "normal",
+              fontSize: "2.8rem",
+            }}
           >
             JOIN
           </button>

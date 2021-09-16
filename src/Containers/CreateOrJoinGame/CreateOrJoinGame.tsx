@@ -17,8 +17,8 @@ const CreateOrJoinGame = (props: Props) => {
         onChange={context.onChangeNickname}
       />
       <div className="flex flex-row justify-evenly py-5">
-        <JoinGame onClickJoin={context.onClickJoin} />
         <CreateGame onClickCreate={context.onClickCreate} />
+        <JoinGame onClickJoin={context.onClickJoin} />
       </div>
     </Layout>
   );
