@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <style xmlns="http://www.w3.org/2000/svg">
+            .sprite-symbol-usage {
+                display: none;
+            }
+            
+            .sprite-symbol-usage:target {
+                display: inline;
+            }
+        </style>
+        <symbol viewBox="0 0 797 70" id="green-banner" xmlns="http://www.w3.org/2000/svg"><path opacity=".41" d="M42 22h745v43H42z"/><path fill="#324001" d="M27.38 13.95h737v43h-737z"/><path fill="#7c8c03" d="M34.38 7.95h745v43h-745z"/><path fill="#324001" d="M764.38 56.95l15-6h-15"/><path fill="#98a305" d="M34.38 7.95l-7 6v43l7-6v-43z"/></symbol>
+        <symbol viewBox="0 0 450 70" id="green-banner-mobile" xmlns="http://www.w3.org/2000/svg"><path opacity=".41" d="M25.64 22.12H445v43H25.64z"/><path fill="#324001" d="M17.41 14.07h414.86v43H17.41z"/><path fill="#7c8c03" d="M21.35 8.07h419.36v43H21.35z"/><path fill="#324001" d="M432.27 57.07l8.44-6h-8.44"/><path fill="#98a305" d="M21.35 8.07l-3.94 6v43l3.94-6v-43z"/></symbol>
+    </defs>
+    <use id="green-banner-usage" xlink:href="#green-banner" class="sprite-symbol-usage"></use>
+    <use id="green-banner-mobile-usage" xlink:href="#green-banner-mobile" class="sprite-symbol-usage"></use>
+</svg>
