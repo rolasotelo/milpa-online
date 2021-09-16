@@ -7,7 +7,7 @@ interface Props {
 
 const Nickname = (props: Props) => {
   return (
-    <div className="max-w-md w-1/4 mx-auto flex justify-around bg-mexicanGreen-light p-3">
+    <div className="w-20.38rem md:w-49.81rem h-4.38rem mx-auto flex justify-around bg-green-banner-mobile md:bg-green-banner p-3">
       <div className="self-center">
         <a href="/play">Ahoj</a>
       </div>
