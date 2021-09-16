@@ -19,3 +19,6 @@ workflows:
   example-workflow:
     jobs:
       - example-job
+      - node/test:
+            pkg-manager: yarn 
+            run-command: yarn test 
