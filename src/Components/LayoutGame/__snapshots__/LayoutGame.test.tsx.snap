@@ -14,12 +14,20 @@ exports[`<LayoutGame /> render 1`] = `
         className="flex justify-between text-mexicanPink"
       >
         <div
-          className="self-center"
+          className="self-center w-52"
+          style={
+            Object {
+              "fontFamily": "goodlife-sans-condensed, sans-serif",
+              "fontSize": "2rem",
+              "fontStyle": "normal",
+              "fontWeight": 400,
+            }
+          }
         >
           <a
             href="#"
           >
-            Menu
+            GABI
           </a>
         </div>
         <div>
@@ -35,19 +43,28 @@ exports[`<LayoutGame /> render 1`] = `
           />
         </div>
         <div
-          className="self-center"
+          className="self-center w-52"
+          style={
+            Object {
+              "fontFamily": "goodlife-sans-condensed, sans-serif",
+              "fontSize": "2rem",
+              "fontStyle": "normal",
+              "fontWeight": 400,
+              "textAlign": "right",
+            }
+          }
         >
           <a
             href="#"
           >
-            Rules
+            ROLA
           </a>
         </div>
       </nav>
     </div>
   </div>
   <div
-    className="max-w-6xl flex flex-col justify-center py-5 mx-auto"
+    className="max-w-7xl flex flex-col justify-center py-5 mx-auto"
   >
     <div>
       Hola

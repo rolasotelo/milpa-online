@@ -6,6 +6,7 @@ import LayoutGame from "./LayoutGame";
 describe("<LayoutGame />", () => {
   const defaultProps = {
     children: <div>Hola</div>,
+    players: { local: "Gabi", remote: "Rola" },
   };
   const wrapper = renderer.create(<LayoutGame {...defaultProps} />);
 
