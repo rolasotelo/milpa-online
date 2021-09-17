@@ -1,4 +1,5 @@
 import React from "react";
+import Board from "../../Components/Board/Board";
 import LayoutGame from "../../Components/LayoutGame/LayoutGame";
 import WaitingModal from "../../Components/WaitingModal/WaitingModal";
 import useGameContext from "../../Hooks/useGameContext/useGameContext";
@@ -21,6 +22,7 @@ const Game = (props: Props) => {
           buttonText={context.gameCode}
         />
       )}
+      <Board />
     </LayoutGame>
   );
 };
