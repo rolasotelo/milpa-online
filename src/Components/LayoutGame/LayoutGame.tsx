@@ -14,7 +14,7 @@ const LayoutGame = (props: Props) => {
         <div className="container mx-auto p-2">
           <nav className="flex justify-between text-mexicanPink">
             <div
-              className="self-center"
+              className="self-center w-52"
               style={{
                 fontFamily: "goodlife-sans-condensed, sans-serif",
                 fontWeight: 400,
@@ -37,12 +37,13 @@ const LayoutGame = (props: Props) => {
               ></button>
             </div>
             <div
-              className="self-center"
+              className="self-center w-52"
               style={{
                 fontFamily: "goodlife-sans-condensed, sans-serif",
                 fontWeight: 400,
                 fontStyle: "normal",
                 fontSize: "2rem",
+                textAlign: "right",
               }}
             >
               <a href="#">{props.players.remote?.toUpperCase()}</a>
