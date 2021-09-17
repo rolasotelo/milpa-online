@@ -1,4 +1,3 @@
-# This config is equivalent to both the '.circleci/extended/orb-free.yml' and the base '.circleci/config.yml'
 version: 2.1
 
 orbs:
@@ -7,25 +6,22 @@ orbs:
 jobs:
   install-job:
     docker:
-      # replace with your preferred image
       - image: cimg/node:16.2.0
     steps:
       - node/install:
-          install-yarn: true 
-          install-npm: false 
-          node-version: '16.2.0'
-      - store_test_results:
-          path: test-results
+          install-yarn: true
+          install-npm: false
+          node-version: "16.2.0"
 
 workflows:
   main-workflow:
     jobs:
       - install-job
       - node/test:
-            pkg-manager: yarn 
-            run-command: test
-            version: '16.2.0'
+          pkg-manager: yarn
+          run-command: test
+          version: "16.2.0"
       - node/run:
-            pkg-manager: yarn 
-            version: '16.2.0' 
-            yarn-run: build-prod 
+          pkg-manager: yarn
+          version: "16.2.0"
+          yarn-run: build-prod
