@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 
 interface Props {
   children: ReactNode;
+  players: { local: string; remote: string };
 }
 
 const LayoutGame = (props: Props) => {
@@ -12,8 +13,16 @@ const LayoutGame = (props: Props) => {
       <div className="bg-mexicanBlue">
         <div className="container mx-auto p-2">
           <nav className="flex justify-between text-mexicanPink">
-            <div className="self-center">
-              <a href="#">Menu</a>
+            <div
+              className="self-center"
+              style={{
+                fontFamily: "goodlife-sans-condensed, sans-serif",
+                fontWeight: 400,
+                fontStyle: "normal",
+                fontSize: "2rem",
+              }}
+            >
+              <a href="#">{props.players.local?.toUpperCase()}</a>
             </div>
             <div>
               <button
@@ -27,8 +36,16 @@ const LayoutGame = (props: Props) => {
                 }}
               ></button>
             </div>
-            <div className="self-center">
-              <a href="#">Rules</a>
+            <div
+              className="self-center"
+              style={{
+                fontFamily: "goodlife-sans-condensed, sans-serif",
+                fontWeight: 400,
+                fontStyle: "normal",
+                fontSize: "2rem",
+              }}
+            >
+              <a href="#">{props.players.remote?.toUpperCase()}</a>
             </div>
           </nav>
         </div>

@@ -7,17 +7,13 @@ interface Props {}
 
 const Game = (props: Props) => {
   const context = useGameContext();
+  const players = {
+    local: context.players[0]?.nickname,
+    remote: context.players[1]?.nickname,
+  };
+
   return (
-    <LayoutGame>
-      <ul>
-        {context.players.map((user) => {
-          // TODO user shouldn't be undefined
-          if (!user) {
-            return;
-          }
-          return <li key={user.userID}>{user.nickname}</li>;
-        })}
-      </ul>
+    <LayoutGame players={players}>
       {!context.isPlaying && (
         <WaitingModal
           title={`Ahoj ${context.nickname}`}
