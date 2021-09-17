@@ -2,25 +2,30 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@4.1
+  node: circleci/node@4.7.0
+
+jobs:
+  install-job:
+    docker:
+      # replace with your preferred image
+      - image: cimg/node:16.2.0
+    steps:
+      - node/install:
+          install-yarn: true 
+          install-npm: false 
+          node-version: '16.2.0'
+      - store_test_results:
+          path: test-results
 
 workflows:
-  sample:
+  main-workflow:
     jobs:
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install Dependencies
-          command: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
-      - save_cache:
-          name: Save Yarn Package Cache
-          key: yarn-packages-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
+      - install-job
       - node/test:
-          version: "16.2"
-          # This is the node version to use for the `cimg/node` tag
-          # Relevant tags can be found on the CircleCI Developer Hub
-          # https://circleci.com/developer/images/image/cimg/node
+            pkg-manager: yarn 
+            run-command: test
+            version: '16.2.0'
+      - node/run:
+            pkg-manager: yarn 
+            version: '16.2.0' 
+            yarn-run: build-prod 
