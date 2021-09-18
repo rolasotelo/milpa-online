@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Crop /> render 1`] = `
+<div
+  className="w-16 h-16 bg-yellow-900"
+>
+  🌽
+</div>
+`;

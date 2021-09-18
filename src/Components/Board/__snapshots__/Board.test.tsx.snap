@@ -1,0 +1,307 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Board /> render 1`] = `
+<div
+  className="flex flex-col"
+>
+  <div
+    className="flex w-full h-16 bg-mexicanGreen-dark"
+  >
+    <div
+      className="bg-mexicanGreen-light w-48 h-8"
+    >
+      ENERO
+    </div>
+    <div
+      className="bg-mexicanBoneLight w-48 h-8"
+    >
+      FEBRERO
+    </div>
+    <div
+      className="bg-mexicanBoneLight w-48 h-8"
+    >
+      MARZO
+    </div>
+    <div
+      className="bg-mexicanBoneLight w-48 h-8"
+    >
+      ABRIL
+    </div>
+    <div
+      className="bg-mexicanBoneLight w-48 h-8"
+    >
+      MAYO
+    </div>
+    <div
+      className="bg-mexicanBoneLight w-48 h-8"
+    >
+      JUNIO
+    </div>
+    <div
+      className="bg-mexicanBoneLight w-48 h-8"
+    >
+      JULIO
+    </div>
+    <div
+      className="bg-mexicanBoneLight w-48 h-8"
+    >
+      AGOSTO
+    </div>
+    <div
+      className="bg-mexicanBoneLight w-48 h-8"
+    >
+      SEPTIEMBRE
+    </div>
+    <div
+      className="bg-mexicanBoneLight w-48 h-8"
+    >
+      OCTUBRE
+    </div>
+    <div
+      className="bg-mexicanBoneLight w-48 h-8"
+    >
+      NOVIEMBRE
+    </div>
+    <div
+      className="bg-mexicanBoneLight w-48 h-8"
+    >
+      DICIEMBRE
+    </div>
+  </div>
+  <div
+    className="flex flex-row h-35rem"
+  >
+    <div
+      className="flex flex-col bg-mexicanGreen-light w-1/3"
+    >
+      <div
+        className="py-4"
+      >
+        <div
+          className="h-16 bg-mexicanBoneLight"
+        >
+          Your Turn
+        </div>
+      </div>
+      <div
+        className="m-4 p-6 bg-yellow-800 grid grid-cols-4 text-center gap-4"
+      >
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🥕
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🌽
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🥕
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🍅
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🍅
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🫑
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🥕
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🌽
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🥔
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🥕
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🪰
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🌽
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🌶
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🥔
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🍅
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🌽
+        </div>
+      </div>
+      <div
+        className="py-4"
+      >
+        <div
+          className="h-16 bg-mexicanBoneLight"
+        >
+          100 cacao
+        </div>
+      </div>
+    </div>
+    <div
+      className="flex flex-col bg-mexicanBlue w-1/3 p-10 justify-evenly"
+    >
+      <div
+        className="bg-mexicanBone  h-28"
+      >
+        Corn
+      </div>
+      <div
+        className="bg-mexicanBone  h-28"
+      >
+        Tomate
+      </div>
+      <div
+        className="bg-mexicanBone  h-28"
+      >
+        Chile
+      </div>
+    </div>
+    <div
+      className="flex flex-col bg-mexicanGreen-light w-1/3"
+    >
+      <div
+        className="py-4"
+      >
+        <div
+          className="h-16 bg-mexicanBoneLight"
+        >
+          Your Turn
+        </div>
+      </div>
+      <div
+        className="m-4 p-6 bg-yellow-800 grid grid-cols-4 text-center gap-4"
+      >
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🥕
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🌽
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🥕
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🍅
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🍅
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🫑
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🥕
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🌽
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🥔
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🥕
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🪰
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🌽
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🌶
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🥔
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🍅
+        </div>
+        <div
+          className="w-16 h-16 bg-yellow-900"
+        >
+          🌽
+        </div>
+      </div>
+      <div
+        className="py-4"
+      >
+        <div
+          className="h-16 bg-mexicanBoneLight"
+        >
+          100 cacao
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

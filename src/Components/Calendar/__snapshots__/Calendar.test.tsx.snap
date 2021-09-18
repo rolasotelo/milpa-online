@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Calendar /> render 1`] = `
+<div
+  className="flex w-full h-16 bg-mexicanGreen-dark"
+>
+  <div
+    className="bg-mexicanGreen-light w-48 h-8"
+  >
+    ENERO
+  </div>
+  <div
+    className="bg-mexicanBoneLight w-48 h-8"
+  >
+    FEBRERO
+  </div>
+  <div
+    className="bg-mexicanBoneLight w-48 h-8"
+  >
+    MARZO
+  </div>
+  <div
+    className="bg-mexicanBoneLight w-48 h-8"
+  >
+    ABRIL
+  </div>
+  <div
+    className="bg-mexicanBoneLight w-48 h-8"
+  >
+    MAYO
+  </div>
+  <div
+    className="bg-mexicanBoneLight w-48 h-8"
+  >
+    JUNIO
+  </div>
+  <div
+    className="bg-mexicanBoneLight w-48 h-8"
+  >
+    JULIO
+  </div>
+  <div
+    className="bg-mexicanBoneLight w-48 h-8"
+  >
+    AGOSTO
+  </div>
+  <div
+    className="bg-mexicanBoneLight w-48 h-8"
+  >
+    SEPTIEMBRE
+  </div>
+  <div
+    className="bg-mexicanBoneLight w-48 h-8"
+  >
+    OCTUBRE
+  </div>
+  <div
+    className="bg-mexicanBoneLight w-48 h-8"
+  >
+    NOVIEMBRE
+  </div>
+  <div
+    className="bg-mexicanBoneLight w-48 h-8"
+  >
+    DICIEMBRE
+  </div>
+</div>
+`;
