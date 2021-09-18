@@ -36,7 +36,15 @@ const GameProvider = (props: Props) => {
 
   // * only supposed to run once, at the beginning
   useEffect(() => {
-    socket.connect();
+    const sessionID = localStorage.getItem("sessionID");
+
+    if (sessionID) {
+      socket.auth = { sessionID, nickname };
+      socket.connect();
+    } else {
+      socket.connect();
+    }
+
     socket.on("connect_error", (err) => {
       // TODO handle connection error
       if (err.message === "invalid nickname") {
@@ -75,6 +83,15 @@ const GameProvider = (props: Props) => {
       const newPlayers = [...players];
       newPlayers.push(user);
       setPlayers(newPlayers);
+    });
+
+    socket.on("session", ({ sessionID, userID, roomCode }) => {
+      // attach the session ID to the next reconnection attempts
+      socket.auth = { sessionID, nickname };
+      // store it in the localStorage
+      localStorage.setItem("sessionID", sessionID);
+      // save the ID of the user
+      socket.userID = userID;
     });
 
     return () => {
