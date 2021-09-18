@@ -36,7 +36,7 @@ const GameProvider = (props: Props) => {
 
   // * only supposed to run once, at the beginning
   useEffect(() => {
-    const sessionID = localStorage.getItem("sessionID");
+    const sessionID = sessionStorage.getItem("sessionID");
 
     if (sessionID) {
       socket.auth = { sessionID, nickname };
@@ -89,7 +89,7 @@ const GameProvider = (props: Props) => {
       // attach the session ID to the next reconnection attempts
       socket.auth = { sessionID, nickname };
       // store it in the localStorage
-      localStorage.setItem("sessionID", sessionID);
+      sessionStorage.setItem("sessionID", sessionID);
       // save the ID of the user
       socket.userID = userID;
     });
