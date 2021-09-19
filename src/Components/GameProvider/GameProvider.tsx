@@ -42,6 +42,7 @@ const GameProvider = (props: Props) => {
       const id = setTimeout(() => {
         props.routerProps.history.push("/play", { nickname });
         sessionStorage.removeItem("sessionID");
+        socket.disconnect();
       }, 30 * 1000);
       setIdTimeout(id);
     } else {
