@@ -66,7 +66,7 @@ const GameProvider = (props: Props) => {
       users.forEach((user) => {
         initReactiveProperties(user);
 
-        user.self = user.userID === socket.id;
+        user.self = user.userID === socket.userID;
       });
       const newPlayers = users.sort((a, b) => {
         if (a.self) return -1;
