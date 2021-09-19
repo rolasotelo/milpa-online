@@ -33,6 +33,24 @@ const GameProvider = (props: Props) => {
   const [players, setPlayers] = useState<Users>([]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [socket, _] = useState(newSocket(gameCode, nickname));
+  const [idTimeout, setIdTimeout] = useState<undefined | NodeJS.Timeout>(
+    undefined
+  );
+
+  useEffect(() => {
+    if (!isPlaying) {
+      const id = setTimeout(() => {
+        props.routerProps.history.push("/play", { nickname });
+        sessionStorage.removeItem("sessionID");
+      }, 30 * 1000);
+      setIdTimeout(id);
+    } else {
+      if (idTimeout) {
+        clearTimeout(idTimeout);
+      }
+    }
+    return () => {};
+  }, [isPlaying]);
 
   // * only supposed to run once, at the beginning
   useEffect(() => {
@@ -59,6 +77,10 @@ const GameProvider = (props: Props) => {
 
     socket.on("start game", () => {
       setIsPlaying(true);
+    });
+
+    socket.on("player disconnected", ({ userID, nickname }) => {
+      setIsPlaying(false);
     });
 
     // + existing users in room
