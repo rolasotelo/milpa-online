@@ -1,5 +1,7 @@
 import { RouteComponentProps } from "react-router-dom";
 import { StaticContext } from "react-router";
+import { Socket } from "socket.io-client";
+import { DefaultEventsMap } from "socket.io-client/build/typed-events";
 
 export type RoutePropsType = RouteComponentProps<{}, StaticContext, unknown>;
 
@@ -19,3 +21,7 @@ export type User = {
   messages: Array<string>;
   hasNewMessages: boolean;
 };
+
+export interface MiSocket extends Socket<DefaultEventsMap, DefaultEventsMap> {
+  userID?: string;
+}

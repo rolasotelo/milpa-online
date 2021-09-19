@@ -33,10 +33,37 @@ const GameProvider = (props: Props) => {
   const [players, setPlayers] = useState<Users>([]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [socket, _] = useState(newSocket(gameCode, nickname));
+  const [idTimeout, setIdTimeout] = useState<undefined | NodeJS.Timeout>(
+    undefined
+  );
+
+  useEffect(() => {
+    if (!isPlaying) {
+      const id = setTimeout(() => {
+        props.routerProps.history.push("/play", { nickname });
+        sessionStorage.removeItem("sessionID");
+        socket.disconnect();
+      }, 30 * 1000);
+      setIdTimeout(id);
+    } else {
+      if (idTimeout) {
+        clearTimeout(idTimeout);
+      }
+    }
+    return () => {};
+  }, [isPlaying]);
 
   // * only supposed to run once, at the beginning
   useEffect(() => {
-    socket.connect();
+    const sessionID = sessionStorage.getItem("sessionID");
+
+    if (sessionID) {
+      socket.auth = { sessionID, nickname };
+      socket.connect();
+    } else {
+      socket.connect();
+    }
+
     socket.on("connect_error", (err) => {
       // TODO handle connection error
       if (err.message === "invalid nickname") {
@@ -53,12 +80,16 @@ const GameProvider = (props: Props) => {
       setIsPlaying(true);
     });
 
+    socket.on("player disconnected", ({ userID, nickname }) => {
+      setIsPlaying(false);
+    });
+
     // + existing users in room
     socket.on("users", (users: Users) => {
       users.forEach((user) => {
         initReactiveProperties(user);
 
-        user.self = user.userID === socket.id;
+        user.self = user.userID === socket.userID;
       });
       const newPlayers = users.sort((a, b) => {
         if (a.self) return -1;
@@ -75,6 +106,15 @@ const GameProvider = (props: Props) => {
       const newPlayers = [...players];
       newPlayers.push(user);
       setPlayers(newPlayers);
+    });
+
+    socket.on("session", ({ sessionID, userID, roomCode }) => {
+      // attach the session ID to the next reconnection attempts
+      socket.auth = { sessionID, nickname };
+      // store it in the localStorage
+      sessionStorage.setItem("sessionID", sessionID);
+      // save the ID of the user
+      socket.userID = userID;
     });
 
     return () => {
