@@ -44,9 +44,19 @@ const GameProvider = (props: Props) => {
   );
 
   const updateGameStatus = () => {
-    // socket.emit('player action',[])
+    const sessionID = sessionStorage.getItem("sessionID");
+    const newGameStatus: GameStatus = {
+      ...players[0].gameStatus,
+      score: 1,
+      milpas: [
+        ["1", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      ],
+    };
+
+    socket.emit("player action", sessionID, newGameStatus);
     console.log("players", players);
-    console.log("new game status", players[0].gameStatus);
+    console.log("new game status", newGameStatus);
   };
 
   const onClickCrop = () => {
