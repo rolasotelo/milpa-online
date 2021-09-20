@@ -1,12 +1,18 @@
 import React, { createContext, useEffect, useState } from "react";
 import newSocket from "../../common/socket/socket";
-import { GameRoutePropsType, User, Users } from "../../common/types";
+import {
+  GameRoutePropsType,
+  GameStatus,
+  User,
+  Users,
+} from "../../common/types";
 
 type GameContextType = {
   nickname: string | undefined;
   gameCode: string;
   players: Users;
   isPlaying: boolean;
+  onClickCrop: () => void;
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -36,6 +42,16 @@ const GameProvider = (props: Props) => {
   const [idTimeout, setIdTimeout] = useState<undefined | NodeJS.Timeout>(
     undefined
   );
+
+  const updateGameStatus = () => {
+    // socket.emit('player action',[])
+    console.log("players", players);
+    console.log("new game status", players[0].gameStatus);
+  };
+
+  const onClickCrop = () => {
+    updateGameStatus();
+  };
 
   useEffect(() => {
     if (!isPlaying) {
@@ -108,7 +124,7 @@ const GameProvider = (props: Props) => {
       setPlayers(newPlayers);
     });
 
-    socket.on("session", ({ sessionID, userID, roomCode }) => {
+    socket.on("session", ({ sessionID, userID, roomCode, gameStatus }) => {
       // attach the session ID to the next reconnection attempts
       socket.auth = { sessionID, nickname };
       // store it in the localStorage
@@ -138,7 +154,9 @@ const GameProvider = (props: Props) => {
   }, [players]);
 
   return (
-    <GameContext.Provider value={{ nickname, gameCode, players, isPlaying }}>
+    <GameContext.Provider
+      value={{ nickname, gameCode, players, isPlaying, onClickCrop }}
+    >
       {props.children}
     </GameContext.Provider>
   );

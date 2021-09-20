@@ -20,8 +20,15 @@ export type User = {
   connected: boolean;
   messages: Array<string>;
   hasNewMessages: boolean;
+  gameStatus: GameStatus;
 };
 
 export interface MiSocket extends Socket<DefaultEventsMap, DefaultEventsMap> {
   userID?: string;
+}
+
+export interface GameStatus {
+  yourTurn: boolean;
+  score: number;
+  milpas: string[][];
 }
