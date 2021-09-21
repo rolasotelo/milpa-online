@@ -32,3 +32,22 @@ export interface GameStatus {
   score: number;
   milpas: string[][];
 }
+
+export interface Crop {
+  id: string;
+  name: string;
+  icon: string;
+  description?: string;
+}
+
+export interface Good {
+  id: string;
+  name: string;
+  icon: string;
+  description?: string;
+}
+
+export interface Milpa {
+  goods: string[][];
+  crops: string[][];
+}
