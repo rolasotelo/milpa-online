@@ -1,7 +1,7 @@
-export const CROPS_DECK_SIZE = 36;
-export const MARKET_DECK_SIZE = 36;
+export const CROPS_DECK_SIZE = 50;
+export const MARKET_DECK_SIZE = 50;
 export const TOTAL_TURNS = 16;
-export const MILPA_SIZE = 16;
+export const CROPS_SIZE = 16;
 export const GOODS_SIZE = 16;
 export const CARDS_BY_TURN = 2;
 export const GOODS_HAND_SIZE = 3;

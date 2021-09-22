@@ -4,5 +4,5 @@ export const Beans: Crop = {
   id: "beans",
   name: "Beans",
   icon: "🫐",
-  description: "Los mejores",
+  description: "Entre más negros mejor",
 };
