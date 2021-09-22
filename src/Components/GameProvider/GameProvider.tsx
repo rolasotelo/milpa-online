@@ -1,11 +1,20 @@
 import React, { createContext, useEffect, useState } from "react";
+import { WAITING_TIME } from "../../common/constants";
+import { emptyCrops } from "../../common/game/decks/cropsDeck";
+import { emptyGoods } from "../../common/game/decks/goodsDeck";
 import newSocket from "../../common/socket/socket";
+import { GameRoutePropsType, Milpa, User, Users } from "../../common/types";
 import {
-  GameRoutePropsType,
-  GameStatus,
-  User,
-  Users,
-} from "../../common/types";
+  handleConnectionError,
+  handleConnectionOrReconnection,
+  handleFirstUserConnection,
+  handlePlayerDisconnection,
+  handleRoomFilled,
+  handleSession,
+  handleStartGame,
+  handleUserConnection,
+  handleUsers,
+} from "./handlers/gameHandlers";
 
 type GameContextType = {
   nickname: string | undefined;
@@ -22,13 +31,6 @@ interface Props {
   routerProps: GameRoutePropsType;
 }
 
-const initReactiveProperties = (user: User) => {
-  user.connected = true;
-  user.messages = [];
-  user.hasNewMessages = false;
-  user.self = false;
-};
-
 const GameProvider = (props: Props) => {
   let nickname: string = "";
   if (props.routerProps.location.state?.nickname) {
@@ -42,25 +44,29 @@ const GameProvider = (props: Props) => {
   const [idTimeout, setIdTimeout] = useState<undefined | NodeJS.Timeout>(
     undefined
   );
+  const [milpas, setMilpas] = useState<Milpa[]>([
+    { crops: emptyCrops(), goods: emptyGoods() },
+    { crops: emptyCrops(), goods: emptyGoods() },
+  ]);
 
-  const updateGameStatus = () => {
-    const sessionID = sessionStorage.getItem("sessionID");
-    const newGameStatus: GameStatus = {
-      ...players[0].gameStatus,
-      score: 1,
-      milpas: [
-        ["1", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
-        ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
-      ],
-    };
+  // const updateGameStatus = () => {
+  //   const sessionID = sessionStorage.getItem("sessionID");
+  //   const newGameStatus: GameStatus = {
+  //     ...players[0].gameStatus,
+  //     score: 1,
+  //     milpas: [
+  //       ["1", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+  //       ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+  //     ],
+  //   };
 
-    socket.emit("player action", sessionID, newGameStatus);
-    console.log("players", players);
-    console.log("new game status", newGameStatus);
-  };
+  //   socket.emit("player action", sessionID, newGameStatus);
+  //   console.log("players", players);
+  //   console.log("new game status", newGameStatus);
+  // };
 
   const onClickCrop = () => {
-    updateGameStatus();
+    // updateGameStatus();
   };
 
   useEffect(() => {
@@ -69,7 +75,7 @@ const GameProvider = (props: Props) => {
         props.routerProps.history.push("/play", { nickname });
         sessionStorage.removeItem("sessionID");
         socket.disconnect();
-      }, 30 * 1000);
+      }, WAITING_TIME * 1000);
       setIdTimeout(id);
     } else {
       if (idTimeout) {
@@ -81,66 +87,34 @@ const GameProvider = (props: Props) => {
 
   // * only supposed to run once, at the beginning
   useEffect(() => {
-    const sessionID = sessionStorage.getItem("sessionID");
-
-    if (sessionID) {
-      socket.auth = { sessionID, nickname };
-      socket.connect();
-    } else {
-      socket.connect();
-    }
+    handleConnectionOrReconnection(socket, sessionStorage, nickname);
 
     socket.on("connect_error", (err) => {
-      // TODO handle connection error
-      if (err.message === "invalid nickname") {
-        console.log("nickname invalido");
-      }
+      handleConnectionError(err);
     });
 
     socket.on("room filled", () => {
-      // TODO do proper workflow when room filled
-      props.routerProps.history.push("/play", { nickname });
+      handleRoomFilled(props.routerProps, nickname);
     });
 
     socket.on("start game", () => {
-      setIsPlaying(true);
+      handleStartGame(setIsPlaying);
     });
 
     socket.on("player disconnected", ({ userID, nickname }) => {
-      setIsPlaying(false);
+      handlePlayerDisconnection(setIsPlaying);
     });
 
-    // + existing users in room
     socket.on("users", (users: Users) => {
-      users.forEach((user) => {
-        initReactiveProperties(user);
-
-        user.self = user.userID === socket.userID;
-      });
-      const newPlayers = users.sort((a, b) => {
-        if (a.self) return -1;
-        if (b.self) return 1;
-        if (a.nickname < b.nickname) return -1;
-        return a.nickname > b.nickname ? 1 : 0;
-      });
-      setPlayers(newPlayers);
+      handleUsers(users, setPlayers, socket);
     });
 
     socket.once("user connected", (user: User) => {
-      console.log("hola");
-      initReactiveProperties(user);
-      const newPlayers = [...players];
-      newPlayers.push(user);
-      setPlayers(newPlayers);
+      handleFirstUserConnection(user, players, setPlayers);
     });
 
     socket.on("session", ({ sessionID, userID, roomCode, gameStatus }) => {
-      // attach the session ID to the next reconnection attempts
-      socket.auth = { sessionID, nickname };
-      // store it in the localStorage
-      sessionStorage.setItem("sessionID", sessionID);
-      // save the ID of the user
-      socket.userID = userID;
+      handleSession(sessionID, userID, nickname, socket);
     });
 
     return () => {
@@ -150,14 +124,8 @@ const GameProvider = (props: Props) => {
 
   // * every time players update a new "user connected" listener is needed
   useEffect(() => {
-    // TODO look at the mess that is players updating because setPlayers here
-
     socket.on("user connected", (user: User) => {
-      initReactiveProperties(user);
-      console.log("players", players);
-      const newPlayers = [...[players[0]]];
-      newPlayers.push(user);
-      setPlayers(newPlayers);
+      handleUserConnection(user, players, setPlayers);
     });
 
     return () => {};
