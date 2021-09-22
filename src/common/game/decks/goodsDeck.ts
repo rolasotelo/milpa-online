@@ -5,7 +5,7 @@ import { Maguey } from "../goods/Maguey/Maguey";
 const MAGUEY_TOTAL_CARDS = 50;
 
 export const magueyCards = (): Good[] => {
-  const cards = Array(MAGUEY_TOTAL_CARDS).map(() => {
+  const cards = Array.from(Array(MAGUEY_TOTAL_CARDS), () => {
     return Maguey;
   });
   return cards;

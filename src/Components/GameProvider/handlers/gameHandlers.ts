@@ -48,6 +48,12 @@ export const handleStartGame = (
   setIsPlaying(true);
 };
 
+export const handleRestartGame = (
+  setIsPlaying: (value: React.SetStateAction<boolean>) => void
+) => {
+  setIsPlaying(true);
+};
+
 export const handlePlayerDisconnection = (
   setIsPlaying: (value: React.SetStateAction<boolean>) => void
 ) => {

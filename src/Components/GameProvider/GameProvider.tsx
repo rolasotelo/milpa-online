@@ -1,9 +1,15 @@
 import React, { createContext, useEffect, useState } from "react";
 import { WAITING_TIME } from "../../common/constants";
-import { emptyCrops } from "../../common/game/decks/cropsDeck";
-import { emptyGoods } from "../../common/game/decks/goodsDeck";
+import { dealCropsHand, dealGoodsHand, newGame } from "../../common/game/game";
 import newSocket from "../../common/socket/socket";
-import { GameRoutePropsType, Milpa, User, Users } from "../../common/types";
+import {
+  Crop,
+  GameRoutePropsType,
+  Good,
+  Milpa,
+  User,
+  Users,
+} from "../../common/types";
 import {
   handleConnectionError,
   handleConnectionOrReconnection,
@@ -22,6 +28,7 @@ type GameContextType = {
   players: Users;
   isPlaying: boolean;
   onClickCrop: () => void;
+  cropsHand: Crop[];
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -44,10 +51,28 @@ const GameProvider = (props: Props) => {
   const [idTimeout, setIdTimeout] = useState<undefined | NodeJS.Timeout>(
     undefined
   );
-  const [milpas, setMilpas] = useState<Milpa[]>([
-    { crops: emptyCrops(), goods: emptyGoods() },
-    { crops: emptyCrops(), goods: emptyGoods() },
-  ]);
+
+  // + Game
+  const [milpas, setMilpas] = useState<Milpa[]>([]);
+  const [cropsDeck, setCropsDeck] = useState<Crop[]>([]);
+  const [goodsDeck, setGoodsDeck] = useState<Good[]>([]);
+  const [currentTurn, setCurrentTurn] = useState(0);
+  const [cropsHand, setCropsHand] = useState<Crop[]>([]);
+  const [goodsHand, setGoodsHand] = useState<Good[]>([]);
+  const isYourTurn = players[0]?.gameStatus.yourTurn;
+
+  useEffect(() => {
+    const { cropsDeck, goodsDeck, emptyMilpa } = newGame();
+    const { cropsHand: newCropsHand, newCropsDeck } = dealCropsHand(cropsDeck);
+    const { goodsHand: newGoodsHand, newGoodsDeck } = dealGoodsHand(goodsDeck);
+    setMilpas([emptyMilpa, emptyMilpa]);
+    setCropsDeck(newCropsDeck);
+    setGoodsDeck(newGoodsDeck);
+    setCropsHand(newCropsHand);
+    setGoodsHand(newGoodsHand);
+    setCurrentTurn(1);
+    return () => {};
+  }, []);
 
   // const updateGameStatus = () => {
   //   const sessionID = sessionStorage.getItem("sessionID");
@@ -133,7 +158,7 @@ const GameProvider = (props: Props) => {
 
   return (
     <GameContext.Provider
-      value={{ nickname, gameCode, players, isPlaying, onClickCrop }}
+      value={{ nickname, gameCode, players, isPlaying, onClickCrop, cropsHand }}
     >
       {props.children}
     </GameContext.Provider>
