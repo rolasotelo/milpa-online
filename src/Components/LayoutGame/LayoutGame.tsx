@@ -51,7 +51,7 @@ const LayoutGame = (props: Props) => {
           </nav>
         </div>
       </div>
-      <div className="max-w-7xl flex flex-col justify-center py-5 mx-auto">
+      <div className="max-w-7xl flex flex-col justify-center py-4 mx-auto">
         {props.children}
       </div>
     </div>

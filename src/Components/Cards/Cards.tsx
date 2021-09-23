@@ -14,13 +14,16 @@ const exampleCards = [
 const Cards = (props: Props) => {
   const context = useGameContext();
   return (
-    <div className="flex flex-col w-1/3 h-full">
-      <div className="flex flex-col bg-mexicanBlue  p-8 justify-evenly">
+    <div className="flex flex-col w-2/8 h-full">
+      <div className="flex flex-col bg-mexicanBlue  p-6 justify-evenly">
         {context.cropsHand.map((crop, index) => {
           return <CropCard key={index} title={crop?.name} />;
         })}
       </div>
-      <div className="flex flex-row bg-mexicanGreen-dark h-full py-6 justify-evenly">
+      <div
+        className="flex flex-row bg-mexicanBlue
+       h-full py-6 justify-evenly"
+      >
         {context.goodsHand.map((crop, index) => {
           return <GoodCard key={index} title={crop?.name} />;
         })}

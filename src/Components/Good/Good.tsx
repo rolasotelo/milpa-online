@@ -5,7 +5,7 @@ interface Props {
   text: string;
 }
 
-const Crop = (props: Props) => {
+const Good = (props: Props) => {
   const context = useGameContext();
   return (
     <div className="w-16 h-16 mx-auto bg-yellow-900 flex justify-center">
@@ -14,4 +14,4 @@ const Crop = (props: Props) => {
   );
 };
 
-export default Crop;
+export default Good;
