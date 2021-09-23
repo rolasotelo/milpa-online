@@ -5,4 +5,9 @@ export const Maguey: Good = {
   name: "Maguey",
   icon: "🎍",
   description: "La única planta que necesitarás",
+  rules: "WIP",
+  inYourCrops: false,
+  inYourEdges: true,
+  inOponentsCrops: false,
+  inOponentsEdges: false,
 };

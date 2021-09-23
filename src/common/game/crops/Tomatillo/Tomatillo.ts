@@ -5,4 +5,9 @@ export const Tomatillo: Crop = {
   name: "Tomatillo",
   icon: "🍈",
   description: "Chilaquiles verdes yummmi, said nobody",
+  rules: "WIP",
+  inYourCrops: true,
+  inYourEdges: false,
+  inOponentsCrops: false,
+  inOponentsEdges: false,
 };

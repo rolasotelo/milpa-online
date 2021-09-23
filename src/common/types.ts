@@ -37,14 +37,24 @@ export interface Crop {
   id: string;
   name: string;
   icon: string;
-  description?: string;
+  description: string;
+  rules: string;
+  inYourCrops: boolean;
+  inYourEdges: boolean;
+  inOponentsCrops: boolean;
+  inOponentsEdges: boolean;
 }
 
 export interface Good {
   id: string;
   name: string;
   icon: string;
-  description?: string;
+  description: string;
+  rules: string;
+  inYourCrops: boolean;
+  inYourEdges: boolean;
+  inOponentsCrops: boolean;
+  inOponentsEdges: boolean;
 }
 
 export interface Milpa {

@@ -5,4 +5,9 @@ export const Coatlicue: Good = {
   name: "Coatlicue Idol",
   icon: "🐍",
   description: "Aztec goddess who gave birth to the moon.",
+  rules: "WIP",
+  inYourCrops: false,
+  inYourEdges: true,
+  inOponentsCrops: false,
+  inOponentsEdges: true,
 };

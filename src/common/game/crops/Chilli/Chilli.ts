@@ -5,4 +5,9 @@ export const Chilli: Crop = {
   name: "Chilli",
   icon: "🌶",
   description: "Éntrale cuñado!",
+  rules: "WIP",
+  inYourCrops: true,
+  inYourEdges: false,
+  inOponentsCrops: false,
+  inOponentsEdges: false,
 };

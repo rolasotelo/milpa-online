@@ -5,4 +5,9 @@ export const Tomatoe: Crop = {
   name: "Tomatoe",
   icon: "🍅",
   description: "De nada Italianos",
+  rules: "WIP",
+  inYourCrops: true,
+  inYourEdges: false,
+  inOponentsCrops: false,
+  inOponentsEdges: false,
 };

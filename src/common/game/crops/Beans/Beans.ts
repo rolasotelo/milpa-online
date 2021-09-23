@@ -5,4 +5,9 @@ export const Beans: Crop = {
   name: "Beans",
   icon: "🫐",
   description: "Entre más negros mejor",
+  rules: "WIP",
+  inYourCrops: true,
+  inYourEdges: false,
+  inOponentsCrops: false,
+  inOponentsEdges: false,
 };

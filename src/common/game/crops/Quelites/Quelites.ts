@@ -5,4 +5,9 @@ export const Quelites: Crop = {
   name: "Quelites",
   icon: "🌱",
   description: "Green is good for your body",
+  rules: "WIP",
+  inYourCrops: true,
+  inYourEdges: false,
+  inOponentsCrops: false,
+  inOponentsEdges: false,
 };
