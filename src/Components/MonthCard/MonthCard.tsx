@@ -9,8 +9,8 @@ const MonthCard = (props: Props) => {
   return (
     <div
       className={`${
-        props.isCurrentMonth ? "bg-mexicanGreen-light" : "bg-mexicanBoneLight"
-      } w-48 h-8`}
+        props.isCurrentMonth ? "bg-mexicanPink" : "bg-mexicanBone"
+      }  h-8 px-2 text-xs flex items-center rounded-full`}
     >
       {props.text.toUpperCase()}
     </div>

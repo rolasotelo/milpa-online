@@ -5,7 +5,7 @@ interface Props {
 }
 
 const CropCard = (props: Props) => {
-  return <div className="bg-mexicanBone m-1 h-24">{props.title}</div>;
+  return <div className="bg-mexicanBone m-2 h-20">{props.title}</div>;
 };
 
 export default CropCard;
