@@ -8,7 +8,7 @@ interface Props {
 const Crop = (props: Props) => {
   const context = useGameContext();
   return (
-    <div className="w-16 h-16 mx-auto bg-yellow-900 flex justify-center">
+    <div className="w-16 h-16 mx-auto bg-yellow-900 flex justify-center rounded-md">
       <button onClick={context.onClickCrop}>{props.text}</button>
     </div>
   );

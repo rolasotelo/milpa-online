@@ -28,17 +28,17 @@ const miMilpa = [
 
 const Milpa = (props: Props) => {
   return (
-    <div className="flex flex-col bg-mexicanGreen-light w-3/8">
-      <div className="pb-1">
+    <div className="flex flex-col bg-mexicanGreen-light w-3/8 rounded-2xl">
+      <div className="p-1">
         <StatusBoard />
       </div>
       <div className="flex flex-col items-center h-full">
         <MilpaEdgeHorizontal />
-        <div className="flex flex-row items-center justify-evenly w-full">
+        <div className="flex flex-row items-center justify-evenly w-full px-1">
           <MilpaEdgeVertical />
           <div
             className="w-80 h-80  bg-yellow-800 grid grid-cols-4 py-2
-           items-center"
+           items-center rounded-lg"
           >
             {miMilpa.map((crop, index) => {
               return <Crop key={index} text={crop.name} />;

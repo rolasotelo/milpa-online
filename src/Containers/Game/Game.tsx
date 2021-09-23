@@ -14,7 +14,7 @@ const Game = (props: Props) => {
   };
 
   return (
-    <LayoutGame players={players}>
+    <LayoutGame players={players} yourTurn={context.isYourTurn}>
       {!context.isPlaying && (
         <WaitingModal
           title={`Ahoj ${context.nickname}`}

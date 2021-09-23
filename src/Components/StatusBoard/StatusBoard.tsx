@@ -4,9 +4,7 @@ interface Props {}
 
 const StatusBoard = (props: Props) => {
   return (
-    <div className="h-16 bg-mexicanBoneLight">
-      <p>Your Turn: </p> <p>0 Cacao </p>{" "}
-    </div>
+    <div className="h-16 bg-mexicanBoneLight rounded-lg mt-1 mx-1">Welcome</div>
   );
 };
 

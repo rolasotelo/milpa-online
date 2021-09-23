@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 interface Props {
   children: ReactNode;
   players: { local: string; remote: string };
+  yourTurn: boolean;
 }
 
 const LayoutGame = (props: Props) => {
@@ -12,9 +13,9 @@ const LayoutGame = (props: Props) => {
     <div className="bg-mexicanBone min-h-screen">
       <div className="bg-mexicanBlue">
         <div className="container mx-auto p-2">
-          <nav className="flex justify-between text-mexicanPink">
+          <nav className="flex justify-between text-mexicanBone">
             <div
-              className="self-center w-52"
+              className="self-center w-5/12"
               style={{
                 fontFamily: "goodlife-sans-condensed, sans-serif",
                 fontWeight: 400,
@@ -22,22 +23,30 @@ const LayoutGame = (props: Props) => {
                 fontSize: "2rem",
               }}
             >
-              <a href="#">{props.players.local?.toUpperCase()}</a>
+              <a href="#">{`${props.players.local?.toUpperCase()} : 0 🍫`}</a>
+              {props.yourTurn && (
+                <a
+                  href="#"
+                  className="text-mexicanPink ml-6"
+                >{`<== YOUR TURN`}</a>
+              )}
             </div>
             <div>
-              <button
-                onClick={() => {
-                  h.push("/");
-                }}
-                className="bg-button-logo focus:bg-button-logo-pressed focus:outline-none"
+              <div
+                className="self-center w-2/12 text-mexicanPink"
                 style={{
-                  width: "50px",
-                  height: "50px",
+                  fontFamily: "goodlife-sans-condensed, sans-serif",
+                  fontWeight: 400,
+                  fontStyle: "normal",
+                  fontSize: "2rem",
+                  textAlign: "center",
                 }}
-              ></button>
+              >
+                <a href="#">VS</a>
+              </div>
             </div>
             <div
-              className="self-center w-52"
+              className="self-center w-5/12"
               style={{
                 fontFamily: "goodlife-sans-condensed, sans-serif",
                 fontWeight: 400,
@@ -46,7 +55,13 @@ const LayoutGame = (props: Props) => {
                 textAlign: "right",
               }}
             >
-              <a href="#">{props.players.remote?.toUpperCase()}</a>
+              {!props.yourTurn && (
+                <a
+                  href="#"
+                  className="text-mexicanPink mr-6"
+                >{`YOUR TURN ==>`}</a>
+              )}
+              <a href="#">{`0 🍫 : ${props.players.remote?.toUpperCase()}`}</a>
             </div>
           </nav>
         </div>

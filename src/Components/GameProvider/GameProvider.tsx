@@ -30,6 +30,7 @@ type GameContextType = {
   onClickCrop: () => void;
   cropsHand: Crop[];
   goodsHand: Good[];
+  isYourTurn: boolean;
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -167,6 +168,7 @@ const GameProvider = (props: Props) => {
         onClickCrop,
         cropsHand,
         goodsHand,
+        isYourTurn,
       }}
     >
       {props.children}
