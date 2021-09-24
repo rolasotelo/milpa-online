@@ -1,7 +1,10 @@
 import { Crop } from "../../../types";
 
+export const CHILLI_ID = "chilli";
+
 export const Chilli: Crop = {
-  id: "chilli",
+  id: CHILLI_ID,
+  type: "crop",
   name: "Chilli",
   icon: "🌶",
   description: "Éntrale cuñado!",

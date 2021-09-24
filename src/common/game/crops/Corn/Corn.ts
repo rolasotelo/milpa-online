@@ -1,7 +1,10 @@
 import { Crop } from "../../../types";
 
+export const CORN_ID = "corn";
+
 export const Corn: Crop = {
-  id: "corn",
+  id: CORN_ID,
+  type: "crop",
   name: "Corn",
   icon: "🌽",
   description: "El cultivo más importante de mesoamérica",

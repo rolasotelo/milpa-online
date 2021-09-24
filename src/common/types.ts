@@ -1,7 +1,9 @@
-import { RouteComponentProps } from "react-router-dom";
 import { StaticContext } from "react-router";
+import { RouteComponentProps } from "react-router-dom";
 import { Socket } from "socket.io-client";
 import { DefaultEventsMap } from "socket.io-client/build/typed-events";
+import { cropIds } from "./game/crops/crops";
+import { goodIds } from "./game/goods/goods";
 
 export type RoutePropsType = RouteComponentProps<{}, StaticContext, unknown>;
 
@@ -33,8 +35,9 @@ export interface GameStatus {
   milpas: string[][];
 }
 
-export interface Crop {
+interface Card {
   id: string;
+  type: "crop" | "good";
   name: string;
   icon: string;
   description: string;
@@ -52,23 +55,12 @@ export interface Crop {
   };
 }
 
-export interface Good {
-  id: string;
-  name: string;
-  icon: string;
-  description: string;
-  resume: string;
-  rules: string;
-  canInteractWith: {
-    ownEmptyCropSlots: boolean;
-    ownFilledCropSlots: boolean | string;
-    ownEmptyGoodSlots: boolean;
-    ownFilledGoodSlots: boolean | string;
-    othersEmptyCropSlots: boolean;
-    othersFilledCropSlots: boolean | string;
-    othersEmptyGoodSlots: boolean;
-    othersFilledGoodSlots: boolean | string;
-  };
+export interface Crop extends Card {
+  id: cropIds;
+}
+
+export interface Good extends Card {
+  id: goodIds;
 }
 
 export interface Milpa {

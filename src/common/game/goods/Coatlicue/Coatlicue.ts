@@ -1,7 +1,10 @@
 import { Good } from "../../../types";
 
+export const COATLICUE_ID = "coatlicue";
+
 export const Coatlicue: Good = {
-  id: "coatlicue",
+  id: COATLICUE_ID,
+  type: "good",
   name: "Coatlicue Idol",
   icon: "🐍",
   description: "Aztec goddess who gave birth to the moon.",

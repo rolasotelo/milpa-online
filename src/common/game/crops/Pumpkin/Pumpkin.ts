@@ -1,7 +1,10 @@
 import { Crop } from "../../../types";
 
+export const PUMPKIN_ID = "pumpkin";
+
 export const Pumpkin: Crop = {
-  id: "pumpkin",
+  id: PUMPKIN_ID,
+  type: "crop",
   name: "Pumpkin",
   icon: "🍍",
   description: "Por qué no hay iconos de calabazas",

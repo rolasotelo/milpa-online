@@ -1,7 +1,10 @@
 import { Crop } from "../../../types";
 
+export const QUELITES_ID = "quelites";
+
 export const Quelites: Crop = {
-  id: "quelites",
+  id: QUELITES_ID,
+  type: "crop",
   name: "Quelites",
   icon: "🌱",
   description: "Green is good for your body",

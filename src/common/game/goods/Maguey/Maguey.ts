@@ -1,7 +1,10 @@
 import { Good } from "../../../types";
 
+export const MAGUEY_ID = "maguey";
+
 export const Maguey: Good = {
-  id: "maguey",
+  id: MAGUEY_ID,
+  type: "good",
   name: "Maguey",
   icon: "🎍",
   description: "La única planta que necesitarás",

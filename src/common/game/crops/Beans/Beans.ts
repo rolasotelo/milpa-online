@@ -1,7 +1,10 @@
 import { Crop } from "../../../types";
 
+export const BEANS_ID = "beans";
+
 export const Beans: Crop = {
-  id: "beans",
+  id: BEANS_ID,
+  type: "crop",
   name: "Beans",
   icon: "🫐",
   description: "Entre más negros mejor",
