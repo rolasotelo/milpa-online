@@ -1,15 +1,15 @@
 import { Good } from "../../../types";
 
-export const COATLICUE_ID = "coatlicue";
+export const TLALOC_ID = "tlaloc";
 
-export const Coatlicue: Good = {
-  id: COATLICUE_ID,
+export const Tlaloc: Good = {
+  id: TLALOC_ID,
   type: "good",
-  name: "Coatlicue Idol",
-  icon: "🏺",
-  description: "Aztec goddess who gave birth to the moon.",
+  name: "Tlaloc Idol",
+  icon: "⛈",
+  description: "Baile a tlaloc",
   rules: "WIP",
-  resume: "+8 🍫",
+  resume: "+5 🍫",
   canInteractWith: {
     ownEmptyCropSlots: false,
     ownFilledCropSlots: false,
@@ -17,7 +17,7 @@ export const Coatlicue: Good = {
     ownFilledGoodSlots: false,
     othersEmptyCropSlots: false,
     othersFilledCropSlots: false,
-    othersEmptyGoodSlots: true,
+    othersEmptyGoodSlots: false,
     othersFilledGoodSlots: false,
   },
 };

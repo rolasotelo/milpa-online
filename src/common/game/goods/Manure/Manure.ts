@@ -1,19 +1,19 @@
 import { Good } from "../../../types";
 
-export const MAGUEY_ID = "maguey";
+export const MANURE_ID = "manure";
 
-export const Maguey: Good = {
-  id: MAGUEY_ID,
+export const Manure: Good = {
+  id: MANURE_ID,
   type: "good",
-  name: "Maguey",
-  icon: "🦚",
-  description: "La única planta que necesitarás",
+  name: "Manure",
+  icon: "💩",
+  description: "🪰",
   rules: "WIP",
-  resume: "+3 🍫",
+  resume: "-3 🍫",
   canInteractWith: {
-    ownEmptyCropSlots: false,
+    ownEmptyCropSlots: true,
     ownFilledCropSlots: false,
-    ownEmptyGoodSlots: true,
+    ownEmptyGoodSlots: false,
     ownFilledGoodSlots: false,
     othersEmptyCropSlots: false,
     othersFilledCropSlots: false,

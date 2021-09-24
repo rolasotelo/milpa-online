@@ -15,8 +15,11 @@ import {
   cactusCards,
   coatlicueCards,
   emptyGoods,
+  huitlacocheCards,
   magueyCards,
+  manureCards,
   shovelCards,
+  tlalocCards,
 } from "./decks/goodsDeck";
 
 export const newGame = (): {
@@ -39,6 +42,9 @@ export const newGame = (): {
     ...coatlicueCards(),
     ...magueyCards(),
     ...shovelCards(),
+    ...huitlacocheCards(),
+    ...tlalocCards(),
+    ...manureCards(),
   ];
   shuffleDeck(cropsDeck);
   shuffleDeck(goodsDeck);
