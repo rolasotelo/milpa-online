@@ -38,11 +38,18 @@ export interface Crop {
   name: string;
   icon: string;
   description: string;
+  resume: string;
   rules: string;
-  inYourCrops: boolean;
-  inYourEdges: boolean;
-  inOponentsCrops: boolean;
-  inOponentsEdges: boolean;
+  canInteractWith: {
+    ownEmptyCropSlots: boolean;
+    ownFilledCropSlots: boolean | string;
+    ownEmptyGoodSlots: boolean;
+    ownFilledGoodSlots: boolean | string;
+    othersEmptyCropSlots: boolean;
+    othersFilledCropSlots: boolean | string;
+    othersEmptyGoodSlots: boolean;
+    othersFilledGoodSlots: boolean | string;
+  };
 }
 
 export interface Good {
@@ -50,11 +57,18 @@ export interface Good {
   name: string;
   icon: string;
   description: string;
+  resume: string;
   rules: string;
-  inYourCrops: boolean;
-  inYourEdges: boolean;
-  inOponentsCrops: boolean;
-  inOponentsEdges: boolean;
+  canInteractWith: {
+    ownEmptyCropSlots: boolean;
+    ownFilledCropSlots: boolean | string;
+    ownEmptyGoodSlots: boolean;
+    ownFilledGoodSlots: boolean | string;
+    othersEmptyCropSlots: boolean;
+    othersFilledCropSlots: boolean | string;
+    othersEmptyGoodSlots: boolean;
+    othersFilledGoodSlots: boolean | string;
+  };
 }
 
 export interface Milpa {
