@@ -6,6 +6,7 @@ import Crop from "./Crop";
 describe("<Crop />", () => {
   const defaultProps = {
     text: "🌽",
+    canInteract: true,
   };
   const wrapper = renderer.create(<Crop {...defaultProps} />);
 

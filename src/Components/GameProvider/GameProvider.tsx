@@ -31,6 +31,8 @@ type GameContextType = {
   cropsHand: Crop[];
   goodsHand: Good[];
   isYourTurn: boolean;
+  cardSelected: Crop | Good | undefined;
+  onClickCard: (card: Crop | Good) => void;
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -59,9 +61,14 @@ const GameProvider = (props: Props) => {
   const [cropsDeck, setCropsDeck] = useState<Crop[]>([]);
   const [goodsDeck, setGoodsDeck] = useState<Good[]>([]);
   const [currentTurn, setCurrentTurn] = useState(0);
+  const [cardSelected, setCardSelected] = useState<Crop | Good | undefined>(
+    undefined
+  );
   const [cropsHand, setCropsHand] = useState<Crop[]>([]);
   const [goodsHand, setGoodsHand] = useState<Good[]>([]);
   const isYourTurn = players[0]?.gameStatus.yourTurn;
+
+  console.log("current card", cardSelected);
 
   useEffect(() => {
     const { cropsDeck, goodsDeck, emptyMilpa } = newGame();
@@ -75,6 +82,10 @@ const GameProvider = (props: Props) => {
     setCurrentTurn(1);
     return () => {};
   }, []);
+
+  const onClickCard = (card: Crop | Good) => {
+    setCardSelected(card);
+  };
 
   // const updateGameStatus = () => {
   //   const sessionID = sessionStorage.getItem("sessionID");
@@ -169,6 +180,8 @@ const GameProvider = (props: Props) => {
         cropsHand,
         goodsHand,
         isYourTurn,
+        cardSelected,
+        onClickCard,
       }}
     >
       {props.children}

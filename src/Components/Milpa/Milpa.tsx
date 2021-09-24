@@ -1,4 +1,5 @@
 import React from "react";
+import useGameContext from "../../Hooks/useGameContext/useGameContext";
 import CacaoBoard from "../CacaoBoard/CacaoBoard";
 import Crop from "../Crop/Crop";
 import MilpaEdgeHorizontal from "../MilpaEdgeHorizontal/MilpaEdgeHorizontal";
@@ -27,6 +28,7 @@ const miMilpa = [
 ];
 
 const Milpa = (props: Props) => {
+  const context = useGameContext();
   return (
     <div className="flex flex-col bg-mexicanGreen-light w-3/8 rounded-2xl">
       <div className="p-1">
@@ -41,7 +43,15 @@ const Milpa = (props: Props) => {
            items-center rounded-lg"
           >
             {miMilpa.map((crop, index) => {
-              return <Crop key={index} text={crop.name} />;
+              return (
+                <Crop
+                  key={index}
+                  text={crop.name}
+                  canInteract={
+                    !!context.cardSelected?.canInteractWith.ownEmptyCropSlots
+                  }
+                />
+              );
             })}
           </div>
           <MilpaEdgeVertical />
