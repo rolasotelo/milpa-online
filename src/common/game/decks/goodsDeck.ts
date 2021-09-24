@@ -1,5 +1,5 @@
 import { GOODS_SIZE } from "../../constants";
-import { Good } from "../../types";
+import { CropAndGoodSlots, Good } from "../../types";
 import { Cactus } from "../goods/Cactus/Cactus";
 import { Coatlicue } from "../goods/Coatlicue/Coatlicue";
 import { Maguey } from "../goods/Maguey/Maguey";
@@ -29,9 +29,9 @@ export const coatlicueCards = (): Good[] => {
   return cards;
 };
 
-export const emptyGoods = (): string[][] => {
-  const cards = Array(GOODS_SIZE / 4).map(() => {
-    return ["", "", "", ""];
+export const emptyGoods = (): CropAndGoodSlots => {
+  const cards = Array.from(Array(4), () => {
+    return [undefined, undefined, undefined, undefined];
   });
   return cards;
 };

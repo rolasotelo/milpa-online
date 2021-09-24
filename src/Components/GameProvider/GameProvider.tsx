@@ -22,6 +22,11 @@ import {
   handleUsers,
 } from "./handlers/gameHandlers";
 
+type YourMilpa = {
+  isYourMilpa: boolean;
+  milpa: Milpa | undefined;
+};
+
 type GameContextType = {
   nickname: string | undefined;
   gameCode: string;
@@ -33,6 +38,8 @@ type GameContextType = {
   isYourTurn: boolean;
   cardSelected: Crop | Good | undefined;
   onClickCard: (card: Crop | Good) => void;
+  yourMilpa: YourMilpa;
+  otherMilpa: YourMilpa;
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -57,7 +64,10 @@ const GameProvider = (props: Props) => {
   );
 
   // + Game
-  const [milpas, setMilpas] = useState<Milpa[]>([]);
+  const [milpas, setMilpas] = useState<Milpa[] | Array<undefined>>([
+    undefined,
+    undefined,
+  ]);
   const [cropsDeck, setCropsDeck] = useState<Crop[]>([]);
   const [goodsDeck, setGoodsDeck] = useState<Good[]>([]);
   const [currentTurn, setCurrentTurn] = useState(0);
@@ -68,7 +78,14 @@ const GameProvider = (props: Props) => {
   const [goodsHand, setGoodsHand] = useState<Good[]>([]);
   const isYourTurn = players[0]?.gameStatus.yourTurn;
 
-  console.log("current card", cardSelected);
+  const yourMilpa = {
+    isYourMilpa: true,
+    milpa: milpas[0],
+  };
+  const otherMilpa = {
+    isYourMilpa: false,
+    milpa: milpas[1],
+  };
 
   useEffect(() => {
     const { cropsDeck, goodsDeck, emptyMilpa } = newGame();
@@ -182,6 +199,8 @@ const GameProvider = (props: Props) => {
         isYourTurn,
         cardSelected,
         onClickCard,
+        yourMilpa,
+        otherMilpa,
       }}
     >
       {props.children}

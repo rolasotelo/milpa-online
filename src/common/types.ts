@@ -63,7 +63,11 @@ export interface Good extends Card {
   id: goodIds;
 }
 
+export type AnyCard = Good | Crop;
+
+export type CropAndGoodSlots = AnyCard[][] | undefined[][];
+
 export interface Milpa {
-  goods: string[][];
-  crops: string[][];
+  goods: CropAndGoodSlots;
+  crops: CropAndGoodSlots;
 }

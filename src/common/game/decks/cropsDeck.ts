@@ -1,5 +1,5 @@
-import { CROPS_SIZE } from "../../constants";
-import { Crop } from "../../types";
+import { CROPS_SIZE, TOTAL_CROPS } from "../../constants";
+import { AnyCard, Crop, CropAndGoodSlots } from "../../types";
 import { Beans } from "../crops/Beans/Beans";
 import { Chilli } from "../crops/Chilli/Chilli";
 import { Corn } from "../crops/Corn/Corn";
@@ -65,9 +65,9 @@ export const tomatoeCards = (): Crop[] => {
   return cards;
 };
 
-export const emptyCrops = (): string[][] => {
-  const cards = Array(CROPS_SIZE / 4).map(() => {
-    return ["", "", "", ""];
+export const emptyCrops = (): CropAndGoodSlots => {
+  const cards = Array.from(Array(4), () => {
+    return [undefined, undefined, undefined, undefined];
   });
   return cards;
 };

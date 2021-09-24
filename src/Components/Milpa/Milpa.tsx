@@ -1,4 +1,5 @@
 import React from "react";
+import { AnyCard } from "../../common/types";
 import useGameContext from "../../Hooks/useGameContext/useGameContext";
 import CacaoBoard from "../CacaoBoard/CacaoBoard";
 import Crop from "../Crop/Crop";
@@ -6,29 +7,13 @@ import MilpaEdgeHorizontal from "../MilpaEdgeHorizontal/MilpaEdgeHorizontal";
 import MilpaEdgeVertical from "../MilpaEdgeVertical/MilpaEdgeVertical";
 import StatusBoard from "../StatusBoard/StatusBoard";
 
-interface Props {}
-
-const miMilpa = [
-  { name: "🥕" },
-  { name: "🌽" },
-  { name: "🥕" },
-  { name: "🍅" },
-  { name: "🍅" },
-  { name: "🫑" },
-  { name: "🥕" },
-  { name: "🌽" },
-  { name: "🥔" },
-  { name: "🥕" },
-  { name: "🪰" },
-  { name: "🌽" },
-  { name: "🌶" },
-  { name: "🥔" },
-  { name: "🍅" },
-  { name: "🌽" },
-];
+interface Props {
+  milpa: (AnyCard | undefined)[];
+}
 
 const Milpa = (props: Props) => {
   const context = useGameContext();
+
   return (
     <div className="flex flex-col bg-mexicanGreen-light w-3/8 rounded-2xl">
       <div className="p-1">
@@ -42,11 +27,11 @@ const Milpa = (props: Props) => {
             className="w-80 h-80  bg-yellow-800 grid grid-cols-4 py-2
            items-center rounded-lg"
           >
-            {miMilpa.map((crop, index) => {
+            {props.milpa.map((anyCard, index) => {
               return (
                 <Crop
                   key={index}
-                  text={crop.name}
+                  text={anyCard ? anyCard.icon : ""}
                   canInteract={
                     !!context.cardSelected?.canInteractWith.ownEmptyCropSlots
                   }
