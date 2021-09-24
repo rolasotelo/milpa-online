@@ -1,6 +1,7 @@
 import React from "react";
 import { AnyCard } from "../../common/types";
 import useGameContext from "../../Hooks/useGameContext/useGameContext";
+import { GoodsSlots } from "../Board/Board";
 import CacaoBoard from "../CacaoBoard/CacaoBoard";
 import Crop from "../Crop/Crop";
 import MilpaEdgeHorizontal from "../MilpaEdgeHorizontal/MilpaEdgeHorizontal";
@@ -9,10 +10,24 @@ import StatusBoard from "../StatusBoard/StatusBoard";
 
 interface Props {
   milpa: (AnyCard | undefined)[];
+  edges: GoodsSlots;
+  isYourMilpa: boolean;
 }
 
 const Milpa = (props: Props) => {
   const context = useGameContext();
+  const canInteractEmptyCrop =
+    context.isYourTurn &&
+    ((props.isYourMilpa &&
+      !!context.cardSelected?.canInteractWith.ownEmptyCropSlots) ||
+      (!props.isYourMilpa &&
+        !!context.cardSelected?.canInteractWith.othersEmptyCropSlots));
+  const canInteractFilledCrop =
+    context.isYourTurn &&
+    ((props.isYourMilpa &&
+      !!context.cardSelected?.canInteractWith.ownFilledCropSlots) ||
+      (!props.isYourMilpa &&
+        !!context.cardSelected?.canInteractWith.othersFilledCropSlots));
 
   return (
     <div className="flex flex-col bg-mexicanGreen-light w-3/8 rounded-2xl">
@@ -20,9 +35,15 @@ const Milpa = (props: Props) => {
         <StatusBoard />
       </div>
       <div className="flex flex-col items-center h-full">
-        <MilpaEdgeHorizontal />
+        <MilpaEdgeHorizontal
+          isYourMilpa={props.isYourMilpa}
+          anyCards={props.edges.top}
+        />
         <div className="flex flex-row items-center justify-evenly w-full px-1">
-          <MilpaEdgeVertical />
+          <MilpaEdgeVertical
+            isYourMilpa={props.isYourMilpa}
+            anyCards={props.edges.left}
+          />
           <div
             className="w-80 h-80  bg-yellow-800 grid grid-cols-4 py-2
            items-center rounded-lg"
@@ -33,16 +54,22 @@ const Milpa = (props: Props) => {
                   key={index}
                   text={anyCard ? anyCard.icon : ""}
                   canInteract={
-                    !!context.cardSelected?.canInteractWith.ownEmptyCropSlots
+                    anyCard ? canInteractFilledCrop : canInteractEmptyCrop
                   }
                 />
               );
             })}
           </div>
-          <MilpaEdgeVertical />
+          <MilpaEdgeVertical
+            isYourMilpa={props.isYourMilpa}
+            anyCards={props.edges.right}
+          />
         </div>
 
-        <MilpaEdgeHorizontal />
+        <MilpaEdgeHorizontal
+          isYourMilpa={props.isYourMilpa}
+          anyCards={props.edges.bottom}
+        />
       </div>
     </div>
   );

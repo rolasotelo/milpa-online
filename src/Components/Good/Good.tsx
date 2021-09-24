@@ -9,15 +9,15 @@ interface Props {
 const Good = (props: Props) => {
   const context = useGameContext();
   return (
-    <div
+    <button
+      disabled={!props.canInteract}
       className={`${
-        props.canInteract && "border-2"
-      } w-16 h-16 mx-auto bg-yellow-900 flex justify-center rounded-md`}
+        props.canInteract && "border-2 border-mexicanBone"
+      } w-16 h-16 mx-auto bg-yellow-900 hover:bg-yellow-700 flex justify-center items-center rounded-md disabled:cursor-not-allowed`}
+      onClick={context.onClickCrop}
     >
-      <button disabled={!props.canInteract} onClick={context.onClickCrop}>
-        {props.text}
-      </button>
-    </div>
+      {props.text}
+    </button>
   );
 };
 

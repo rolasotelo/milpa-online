@@ -8,6 +8,6 @@ export const GOODS_HAND_SIZE = 3;
 export const CROPS_HAND_SIZE = 3;
 export const MAX_PLAYERS = 2;
 export const TOTAL_CROPS = 7;
-export const TOTAL_GOODS = 5;
+export const TOTAL_GOODS = 7;
 export const WAITING_TIME = 60 * 2;
 export const TURN_TIME = 60 * 3;

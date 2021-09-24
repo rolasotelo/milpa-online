@@ -45,13 +45,13 @@ interface Card {
   rules: string;
   canInteractWith: {
     ownEmptyCropSlots: boolean;
-    ownFilledCropSlots: boolean | string;
+    ownFilledCropSlots: boolean | (cropIds | goodIds)[];
     ownEmptyGoodSlots: boolean;
-    ownFilledGoodSlots: boolean | string;
+    ownFilledGoodSlots: boolean | (cropIds | goodIds)[];
     othersEmptyCropSlots: boolean;
-    othersFilledCropSlots: boolean | string;
+    othersFilledCropSlots: boolean | (cropIds | goodIds)[];
     othersEmptyGoodSlots: boolean;
-    othersFilledGoodSlots: boolean | string;
+    othersFilledGoodSlots: boolean | (cropIds | goodIds)[];
   };
 }
 

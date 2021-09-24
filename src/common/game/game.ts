@@ -16,6 +16,7 @@ import {
   coatlicueCards,
   emptyGoods,
   magueyCards,
+  shovelCards,
 } from "./decks/goodsDeck";
 
 export const newGame = (): {
@@ -33,7 +34,12 @@ export const newGame = (): {
     ...tomatoeCards(),
   ];
 
-  const goodsDeck = [...cactusCards(), ...coatlicueCards(), ...magueyCards()];
+  const goodsDeck = [
+    ...cactusCards(),
+    ...coatlicueCards(),
+    ...magueyCards(),
+    ...shovelCards(),
+  ];
   shuffleDeck(cropsDeck);
   shuffleDeck(goodsDeck);
   const emptyMilpa: Milpa = { crops: emptyCrops(), goods: emptyGoods() };

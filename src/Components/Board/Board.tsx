@@ -1,4 +1,5 @@
 import React from "react";
+import { CROPS_SIZE, TOTAL_CROPS } from "../../common/constants";
 import { AnyCard } from "../../common/types";
 import useGameContext from "../../Hooks/useGameContext/useGameContext";
 import Calendar from "../Calendar/Calendar";
@@ -7,10 +8,30 @@ import Milpa from "../Milpa/Milpa";
 
 interface Props {}
 
+export type GoodsSlots = {
+  top: (AnyCard | undefined)[];
+  bottom: (AnyCard | undefined)[];
+  left: (AnyCard | undefined)[];
+  right: (AnyCard | undefined)[];
+};
+
 const Board = (props: Props) => {
   const context = useGameContext();
-  let leftMilpa: (AnyCard | undefined)[] = [];
-  let rightMilpa: (AnyCard | undefined)[] = [];
+  let leftMilpa: (AnyCard | undefined)[] = Array(CROPS_SIZE).fill(undefined);
+  let rightMilpa: (AnyCard | undefined)[] = Array(CROPS_SIZE).fill(undefined);
+  let leftEdges: GoodsSlots = {
+    top: Array(4).fill(undefined),
+    bottom: Array(4).fill(undefined),
+    left: Array(4).fill(undefined),
+    right: Array(4).fill(undefined),
+  };
+  let rightEdges: GoodsSlots = {
+    top: Array(4).fill(undefined),
+    bottom: Array(4).fill(undefined),
+    left: Array(4).fill(undefined),
+    right: Array(4).fill(undefined),
+  };
+
   if (context.yourMilpa.milpa && context.otherMilpa.milpa) {
     if (context.yourMilpa.milpa.crops && context.otherMilpa.milpa.crops) {
       leftMilpa = [
@@ -31,9 +52,9 @@ const Board = (props: Props) => {
     <div className="flex flex-col">
       <Calendar />
       <div className="flex flex-row h-35rem ">
-        <Milpa milpa={leftMilpa} />
+        <Milpa milpa={leftMilpa} edges={leftEdges} isYourMilpa />
         <Cards />
-        <Milpa milpa={rightMilpa} />
+        <Milpa milpa={rightMilpa} edges={rightEdges} isYourMilpa={false} />
       </div>
     </div>
   );

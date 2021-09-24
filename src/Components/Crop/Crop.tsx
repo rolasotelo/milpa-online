@@ -9,15 +9,19 @@ interface Props {
 const Crop = (props: Props) => {
   const context = useGameContext();
   return (
-    <div
-      className={`${
-        props.canInteract && "border-2"
-      } w-16 h-16 mx-auto bg-yellow-900 flex justify-center rounded-md`}
+    <button
+      disabled={!props.canInteract}
+      className="disabled:cursor-not-allowed"
+      onClick={context.onClickCrop}
     >
-      <button disabled={!props.canInteract} onClick={context.onClickCrop}>
+      <div
+        className={`${
+          props.canInteract && "border-2 border-mexicanBone"
+        } w-16 h-16 mx-auto bg-yellow-900 hover:bg-yellow-700 flex justify-center rounded-md`}
+      >
         {props.text}
-      </button>
-    </div>
+      </div>
+    </button>
   );
 };
 

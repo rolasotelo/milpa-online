@@ -9,7 +9,7 @@ interface Props {
 const GoodCard = (props: Props) => {
   const context = useGameContext();
   return (
-    <div className="bg-mexicanBone w-20 h-32 rounded-lg">
+    <div className="bg-mexicanBone w-20 h-32 rounded-lg hover:bg-mexicanBoneLight hover:ring-4 hover:ring-mexicanPink">
       <button
         onClick={() => {
           context.onClickCard(props.good);
