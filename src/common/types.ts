@@ -4,6 +4,7 @@ import { Socket } from "socket.io-client";
 import { DefaultEventsMap } from "socket.io-client/build/typed-events";
 import { cropIds } from "./game/crops/crops";
 import { goodIds } from "./game/goods/goods";
+import { modifierIds } from "./game/modifiers/modifiers";
 
 export type RoutePropsType = RouteComponentProps<{}, StaticContext, unknown>;
 
@@ -43,6 +44,7 @@ interface Card {
   description: string;
   resume: string;
   rules: string;
+  modifier?: (cropIds | goodIds | modifierIds)[];
   canInteractWith: {
     ownEmptyMilpaSlots: boolean;
     ownFilledMilpaSlots: boolean | (cropIds | goodIds)[];
@@ -53,6 +55,12 @@ interface Card {
     othersEmptyEdgeSlots: boolean;
     othersFilledEdgeSlots: boolean | (cropIds | goodIds)[];
   };
+}
+
+export interface Modifier {
+  id: modifierIds;
+  name: string;
+  description: string;
 }
 
 export interface Crop extends Card {

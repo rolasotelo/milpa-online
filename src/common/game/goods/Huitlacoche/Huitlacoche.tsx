@@ -12,7 +12,7 @@ export const Huitlacoche: Good = {
   resume: "+2 🍫",
   canInteractWith: {
     ownEmptyMilpaSlots: false,
-    ownFilledMilpaSlots: ["corn"],
+    ownFilledMilpaSlots: ["corn", "bluecorn", "redcorn"],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,
     othersEmptyMilpaSlots: false,

@@ -12,7 +12,7 @@ export const Beans: Crop = {
   resume: "+5 🍫",
   canInteractWith: {
     ownEmptyMilpaSlots: true,
-    ownFilledMilpaSlots: ["manure"],
+    ownFilledMilpaSlots: ["manure", "bluecorn", "redcorn", "corn"],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,
     othersEmptyMilpaSlots: false,

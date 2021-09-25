@@ -1,18 +1,18 @@
 import { Crop } from "../../../types";
 
-export const TOMATILLO_ID = "tomatillo";
+export const RED_CORN_ID = "redcorn";
 
-export const Tomatillo: Crop = {
-  id: TOMATILLO_ID,
+export const RedCorn: Crop = {
+  id: RED_CORN_ID,
   type: "crop",
-  name: "Tomatillo",
-  icon: "🍈",
-  description: "Chilaquiles verdes yummmi, said nobody",
+  name: "Red Corn",
+  icon: "🥕",
+  description: "El cultivo rojo más importante del mundo",
   rules: "WIP",
-  resume: "+3 🍫",
+  resume: "+1 🍫",
   canInteractWith: {
     ownEmptyMilpaSlots: true,
-    ownFilledMilpaSlots: ["manure", "chilli"],
+    ownFilledMilpaSlots: ["manure"],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,
     othersEmptyMilpaSlots: false,

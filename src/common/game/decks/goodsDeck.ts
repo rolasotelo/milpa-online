@@ -1,13 +1,14 @@
 import { CropAndGoodSlots, Good } from "../../types";
-import { Cactus } from "../goods/Cactus/Cactus";
+import { Cricket } from "../goods/Cricket/Cricket";
 import { Coatlicue } from "../goods/Coatlicue/Coatlicue";
 import { Huitlacoche } from "../goods/Huitlacoche/Huitlacoche";
 import { Maguey } from "../goods/Maguey/Maguey";
 import { Manure } from "../goods/Manure/Manure";
 import { Shovel } from "../goods/Shovel/Shovel";
 import { Tlaloc } from "../goods/Tlaloc/Tlaloc";
+import { ROW_SIZE } from "../../constants";
 
-const CACTUS_TOTAL_CARDS = 10;
+const CRICKET_TOTAL_CARDS = 10;
 const COATLICUE_TOTAL_CARDS = 10;
 const MAGUEY_TOTAL_CARDS = 10;
 const MANURE_TOTAL_CARDS = 5;
@@ -22,9 +23,9 @@ export const magueyCards = (): Good[] => {
   return cards;
 };
 
-export const cactusCards = (): Good[] => {
-  const cards = Array.from(Array(CACTUS_TOTAL_CARDS), () => {
-    return Cactus;
+export const cricketCards = (): Good[] => {
+  const cards = Array.from(Array(CRICKET_TOTAL_CARDS), () => {
+    return Cricket;
   });
   return cards;
 };
@@ -65,8 +66,8 @@ export const manureCards = (): Good[] => {
 };
 
 export const emptyGoods = (): CropAndGoodSlots => {
-  const cards = Array.from(Array(4), () => {
-    return [Cactus, undefined, undefined, undefined];
+  const cards = Array.from(Array(ROW_SIZE), () => {
+    return [Cricket, undefined, Coatlicue, undefined];
   });
   return cards;
 };

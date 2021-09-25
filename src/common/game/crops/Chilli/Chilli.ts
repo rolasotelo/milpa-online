@@ -12,7 +12,14 @@ export const Chilli: Crop = {
   resume: "+3 🍫",
   canInteractWith: {
     ownEmptyMilpaSlots: true,
-    ownFilledMilpaSlots: ["manure"],
+    ownFilledMilpaSlots: [
+      "manure",
+      "corn",
+      "bluecorn",
+      "redcorn",
+      "tomatillo",
+      "tomatoe",
+    ],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,
     othersEmptyMilpaSlots: false,

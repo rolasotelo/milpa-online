@@ -11,8 +11,8 @@ export const Quelites: Crop = {
   rules: "WIP",
   resume: "+8 🍫",
   canInteractWith: {
-    ownEmptyMilpaSlots: true,
-    ownFilledMilpaSlots: ["manure"],
+    ownEmptyMilpaSlots: false,
+    ownFilledMilpaSlots: ["redcorn", "bluecorn", "corn"],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,
     othersEmptyMilpaSlots: false,

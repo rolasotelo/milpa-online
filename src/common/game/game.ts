@@ -2,17 +2,19 @@ import { CROPS_HAND_SIZE, GOODS_HAND_SIZE } from "../constants";
 import { Crop, Good, Milpa } from "../types";
 import {
   beansCards,
+  blueCornCards,
   chilliCards,
   cornCards,
   emptyCrops,
   pupmkinCards,
   quelitesCards,
+  redCornCards,
   tomatilloCards,
   tomatoeCards,
 } from "./decks/cropsDeck";
 import { shuffleDeck } from "./decks/decks";
 import {
-  cactusCards,
+  cricketCards,
   coatlicueCards,
   emptyGoods,
   huitlacocheCards,
@@ -35,10 +37,12 @@ export const newGame = (): {
     ...quelitesCards(),
     ...tomatilloCards(),
     ...tomatoeCards(),
+    ...blueCornCards(),
+    ...redCornCards(),
   ];
 
   const goodsDeck = [
-    ...cactusCards(),
+    ...cricketCards(),
     ...coatlicueCards(),
     ...magueyCards(),
     ...shovelCards(),

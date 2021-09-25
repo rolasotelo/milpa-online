@@ -12,7 +12,7 @@ export const Tomatoe: Crop = {
   resume: "+2 🍫",
   canInteractWith: {
     ownEmptyMilpaSlots: true,
-    ownFilledMilpaSlots: ["manure"],
+    ownFilledMilpaSlots: ["manure", "corn", "redcorn", "bluecorn", "chilli"],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,
     othersEmptyMilpaSlots: false,

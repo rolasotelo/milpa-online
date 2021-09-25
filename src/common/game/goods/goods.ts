@@ -1,5 +1,5 @@
 import { Good } from "../../types";
-import { Cactus, CACTUS_ID } from "./Cactus/Cactus";
+import { Cricket, CRICKET_ID } from "./Cricket/Cricket";
 import { Coatlicue, COATLICUE_ID } from "./Coatlicue/Coatlicue";
 import { Huitlacoche, HUITLACOCHE_ID } from "./Huitlacoche/Huitlacoche";
 import { Maguey, MAGUEY_ID } from "./Maguey/Maguey";
@@ -8,7 +8,7 @@ import { Shovel, SHOVEL_ID } from "./Shovel/Shovel";
 import { Tlaloc, TLALOC_ID } from "./Tlaloc/Tlaloc";
 
 export type goodIds =
-  | typeof CACTUS_ID
+  | typeof CRICKET_ID
   | typeof COATLICUE_ID
   | typeof MAGUEY_ID
   | typeof SHOVEL_ID
@@ -17,7 +17,7 @@ export type goodIds =
   | typeof MANURE_ID;
 
 export const goods: Good[] = [
-  Cactus,
+  Cricket,
   Coatlicue,
   Maguey,
   Shovel,

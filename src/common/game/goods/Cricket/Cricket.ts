@@ -1,23 +1,23 @@
 import { Good } from "../../../types";
 
-export const CACTUS_ID = "cactus";
+export const CRICKET_ID = "cricket";
 
-export const Cactus: Good = {
-  id: CACTUS_ID,
+export const Cricket: Good = {
+  id: CRICKET_ID,
   type: "good",
-  name: "Cactus",
-  icon: "🌵",
-  description: "Pitaya y tunas mmmm",
+  name: "Cricket",
+  icon: "🦗",
+  description: "Patitas sonoras",
   rules: "WIP",
   resume: "+5 🍫",
   canInteractWith: {
     ownEmptyMilpaSlots: false,
     ownFilledMilpaSlots: false,
-    ownEmptyEdgeSlots: true,
+    ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,
     othersEmptyMilpaSlots: false,
     othersFilledMilpaSlots: false,
-    othersEmptyEdgeSlots: false,
+    othersEmptyEdgeSlots: true,
     othersFilledEdgeSlots: false,
   },
 };

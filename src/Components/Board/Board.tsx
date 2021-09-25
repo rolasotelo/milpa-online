@@ -1,5 +1,5 @@
 import React from "react";
-import { CROPS_SIZE, TOTAL_CROPS } from "../../common/constants";
+import { CROPS_SIZE, ROW_SIZE } from "../../common/constants";
 import { AnyCard } from "../../common/types";
 import useGameContext from "../../Hooks/useGameContext/useGameContext";
 import Calendar from "../Calendar/Calendar";
@@ -20,16 +20,16 @@ const Board = (props: Props) => {
   let leftMilpa: (AnyCard | undefined)[] = Array(CROPS_SIZE).fill(undefined);
   let rightMilpa: (AnyCard | undefined)[] = Array(CROPS_SIZE).fill(undefined);
   let leftEdges: GoodsSlots = {
-    top: Array(4).fill(undefined),
-    bottom: Array(4).fill(undefined),
-    left: Array(4).fill(undefined),
-    right: Array(4).fill(undefined),
+    top: Array(ROW_SIZE).fill(undefined),
+    bottom: Array(ROW_SIZE).fill(undefined),
+    left: Array(ROW_SIZE).fill(undefined),
+    right: Array(ROW_SIZE).fill(undefined),
   };
   let rightEdges: GoodsSlots = {
-    top: Array(4).fill(undefined),
-    bottom: Array(4).fill(undefined),
-    left: Array(4).fill(undefined),
-    right: Array(4).fill(undefined),
+    top: Array(ROW_SIZE).fill(undefined),
+    bottom: Array(ROW_SIZE).fill(undefined),
+    left: Array(ROW_SIZE).fill(undefined),
+    right: Array(ROW_SIZE).fill(undefined),
   };
 
   if (context.yourMilpa.milpa && context.otherMilpa.milpa) {

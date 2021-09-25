@@ -1,21 +1,25 @@
-import { CROPS_SIZE, TOTAL_CROPS } from "../../constants";
-import { AnyCard, Crop, CropAndGoodSlots } from "../../types";
+import { ROW_SIZE } from "../../constants";
+import { Crop, CropAndGoodSlots } from "../../types";
 import { Beans } from "../crops/Beans/Beans";
+import { BlueCorn } from "../crops/BlueCorn/BlueCorn";
 import { Chilli } from "../crops/Chilli/Chilli";
 import { Corn } from "../crops/Corn/Corn";
 import { Pumpkin } from "../crops/Pumpkin/Pumpkin";
 import { Quelites } from "../crops/Quelites/Quelites";
+import { RedCorn } from "../crops/RedCorn/RedCorn";
 import { Tomatillo } from "../crops/Tomatillo/Tomatillo";
 import { Tomatoe } from "../crops/Tomatoe/Tomatoe";
 import { Manure } from "../goods/Manure/Manure";
 
 const BEANS_TOTAL_CARDS = 6;
 const CHILLI_TOTAL_CARDS = 6;
-const CORN_TOTAL_CARDS = 16;
+const CORN_TOTAL_CARDS = 14;
 const PUMPKIN_TOTAL_CARDS = 5;
 const QUELITES_TOTAL_CARDS = 5;
 const TOMATILLO_TOTAL_CARDS = 6;
 const TOMATOE_TOTAL_CARDS = 6;
+const RED_CORN_TOTAL_CARDS = 8;
+const BLUE_CORN_TOTAL_CARDS = 8;
 
 export const beansCards = (): Crop[] => {
   const cards = Array.from(Array(BEANS_TOTAL_CARDS), () => {
@@ -66,9 +70,23 @@ export const tomatoeCards = (): Crop[] => {
   return cards;
 };
 
+export const blueCornCards = (): Crop[] => {
+  const cards = Array.from(Array(BLUE_CORN_TOTAL_CARDS), () => {
+    return BlueCorn;
+  });
+  return cards;
+};
+
+export const redCornCards = (): Crop[] => {
+  const cards = Array.from(Array(RED_CORN_TOTAL_CARDS), () => {
+    return RedCorn;
+  });
+  return cards;
+};
+
 export const emptyCrops = (): CropAndGoodSlots => {
-  const cards = Array.from(Array(4), () => {
-    return [Corn, Manure, undefined, undefined];
+  const cards = Array.from(Array(ROW_SIZE), () => {
+    return [Corn, Manure, undefined, BlueCorn];
   });
   return cards;
 };
