@@ -86,7 +86,7 @@ export const handleFirstUserConnection = (
   setPlayers: React.Dispatch<React.SetStateAction<Users>>
 ) => {
   initReactiveProperties(user);
-  const newPlayers = [...players];
+  const newPlayers = players;
   newPlayers.push(user);
   setPlayers(newPlayers);
 };

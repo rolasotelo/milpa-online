@@ -18,12 +18,12 @@ export type Users = Array<User>;
 
 export type User = {
   self: boolean;
-  userID: string;
+  userID?: string;
   nickname: string;
   connected: boolean;
-  messages: Array<string>;
-  hasNewMessages: boolean;
-  gameStatus: GameStatus;
+  messages?: Array<string>;
+  hasNewMessages?: boolean;
+  gameStatus?: GameStatus;
 };
 
 export interface MiSocket extends Socket<DefaultEventsMap, DefaultEventsMap> {
@@ -31,9 +31,11 @@ export interface MiSocket extends Socket<DefaultEventsMap, DefaultEventsMap> {
 }
 
 export interface GameStatus {
-  yourTurn: boolean;
-  score: number;
-  milpas: string[][];
+  playerTurn: string;
+  score: Map<string, number>;
+  milpas: Map<string, Milpa>;
+  cropsDeck: Crop[];
+  goodsDeck: Good[];
 }
 
 interface Card {

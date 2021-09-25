@@ -67,6 +67,13 @@ export const manureCards = (): Good[] => {
 
 export const emptyGoods = (): CropAndGoodSlots => {
   const cards = Array.from(Array(ROW_SIZE), () => {
+    return [undefined, undefined, undefined, undefined];
+  });
+  return cards;
+};
+
+export const sampleGoods = (): CropAndGoodSlots => {
+  const cards = Array.from(Array(ROW_SIZE), () => {
     return [Cricket, undefined, Coatlicue, undefined];
   });
   return cards;

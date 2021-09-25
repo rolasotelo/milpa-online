@@ -80,7 +80,9 @@ const GameProvider = (props: Props) => {
   }
   const gameCode = props.routerProps.match.params.gamecode;
 
-  const [players, setPlayers] = useState<Users>([]);
+  const [players, setPlayers] = useState<Users>([
+    { self: true, connected: true, nickname: nickname },
+  ]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [socket, _] = useState(newSocket(gameCode, nickname));
   const [idTimeout, setIdTimeout] = useState<undefined | NodeJS.Timeout>(
@@ -100,7 +102,10 @@ const GameProvider = (props: Props) => {
   );
   const [cropsHand, setCropsHand] = useState<Crop[]>([]);
   const [goodsHand, setGoodsHand] = useState<Good[]>([]);
-  const isYourTurn = players[0]?.gameStatus.yourTurn;
+  const isYourTurn = !!(
+    players &&
+    players[0]?.gameStatus?.playerTurn === sessionStorage.getItem("sessionID")
+  );
 
   const yourMilpa = {
     isYourMilpa: true,
@@ -196,10 +201,10 @@ const GameProvider = (props: Props) => {
   };
 
   useEffect(() => {
-    const { cropsDeck, goodsDeck, emptyMilpa } = newGame();
+    const { cropsDeck, goodsDeck, emptyMilpa, sampleMilpa } = newGame();
     const { cropsHand: newCropsHand, newCropsDeck } = dealCropsHand(cropsDeck);
     const { goodsHand: newGoodsHand, newGoodsDeck } = dealGoodsHand(goodsDeck);
-    setMilpas([emptyMilpa, emptyMilpa]);
+    setMilpas([emptyMilpa, sampleMilpa]);
     setCropsDeck(newCropsDeck);
     setGoodsDeck(newGoodsDeck);
     setCropsHand(newCropsHand);

@@ -6,5 +6,5 @@ export const CARDS_BY_TURN = 2;
 export const GOODS_HAND_SIZE = 3;
 export const CROPS_HAND_SIZE = 3;
 export const MAX_PLAYERS = 2;
-export const WAITING_TIME = 60 * 2;
+export const WAITING_TIME = 60 * 5;
 export const TURN_TIME = 60 * 3;

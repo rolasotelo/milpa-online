@@ -86,6 +86,13 @@ export const redCornCards = (): Crop[] => {
 
 export const emptyCrops = (): CropAndGoodSlots => {
   const cards = Array.from(Array(ROW_SIZE), () => {
+    return [undefined, undefined, undefined, undefined];
+  });
+  return cards;
+};
+
+export const sampleCrops = (): CropAndGoodSlots => {
+  const cards = Array.from(Array(ROW_SIZE), () => {
     return [Corn, Manure, undefined, BlueCorn];
   });
   return cards;
