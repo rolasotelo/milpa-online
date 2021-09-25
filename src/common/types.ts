@@ -65,7 +65,7 @@ export interface Good extends Card {
 
 export type AnyCard = Good | Crop;
 
-export type CropAndGoodSlots = AnyCard[][] | undefined[][];
+export type CropAndGoodSlots = (Crop | Good | undefined)[][];
 
 export interface Milpa {
   goods: CropAndGoodSlots;

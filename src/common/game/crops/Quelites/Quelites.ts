@@ -12,7 +12,7 @@ export const Quelites: Crop = {
   resume: "+8 🍫",
   canInteractWith: {
     ownEmptyCropSlots: true,
-    ownFilledCropSlots: false,
+    ownFilledCropSlots: ["manure"],
     ownEmptyGoodSlots: false,
     ownFilledGoodSlots: false,
     othersEmptyCropSlots: false,

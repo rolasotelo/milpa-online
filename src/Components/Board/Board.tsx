@@ -48,6 +48,24 @@ const Board = (props: Props) => {
       ];
     }
   }
+
+  if (context.yourMilpa.milpa && context.otherMilpa.milpa) {
+    if (context.yourMilpa.milpa.goods && context.otherMilpa.milpa.goods) {
+      leftEdges = {
+        top: context.yourMilpa.milpa?.goods[0],
+        bottom: context.yourMilpa.milpa?.goods[1],
+        left: context.yourMilpa.milpa?.goods[2],
+        right: context.yourMilpa.milpa?.goods[3],
+      };
+      rightEdges = {
+        top: context.otherMilpa.milpa?.goods[0],
+        bottom: context.otherMilpa.milpa?.goods[1],
+        left: context.otherMilpa.milpa?.goods[2],
+        right: context.otherMilpa.milpa?.goods[3],
+      };
+    }
+  }
+
   return (
     <div className="flex flex-col">
       <Calendar />

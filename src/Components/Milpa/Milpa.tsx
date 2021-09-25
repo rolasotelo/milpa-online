@@ -7,6 +7,8 @@ import Crop from "../Crop/Crop";
 import MilpaEdgeHorizontal from "../MilpaEdgeHorizontal/MilpaEdgeHorizontal";
 import MilpaEdgeVertical from "../MilpaEdgeVertical/MilpaEdgeVertical";
 import StatusBoard from "../StatusBoard/StatusBoard";
+import { cropIds } from "../../common/game/crops/crops";
+import { goodIds } from "../../common/game/goods/goods";
 
 interface Props {
   milpa: (AnyCard | undefined)[];
@@ -22,12 +24,77 @@ const Milpa = (props: Props) => {
       !!context.cardSelected?.canInteractWith.ownEmptyCropSlots) ||
       (!props.isYourMilpa &&
         !!context.cardSelected?.canInteractWith.othersEmptyCropSlots));
+
+  const canInteractWithOtherCardsInOwnFilledCropSlots =
+    typeof context.cardSelected?.canInteractWith.ownFilledCropSlots !==
+      "undefined" &&
+    typeof context.cardSelected?.canInteractWith.ownFilledCropSlots !==
+      "boolean";
+  const canInteractWithOtherCardsInOthersFilledCropSlots =
+    typeof context.cardSelected?.canInteractWith.othersFilledCropSlots !==
+      "undefined" &&
+    typeof context.cardSelected?.canInteractWith.othersFilledCropSlots !==
+      "boolean";
+
   const canInteractFilledCrop =
     context.isYourTurn &&
     ((props.isYourMilpa &&
       !!context.cardSelected?.canInteractWith.ownFilledCropSlots) ||
       (!props.isYourMilpa &&
         !!context.cardSelected?.canInteractWith.othersFilledCropSlots));
+
+  const canInteractWithFilledMilpaSlot = (
+    anyCard: AnyCard,
+    isYourMilpa: boolean
+  ) => {
+    console.log("isYourMilpa", isYourMilpa);
+    console.log(
+      "carSelected",
+      context.cardSelected?.id,
+      "can interact",
+      context.cardSelected?.canInteractWith.ownFilledCropSlots
+    );
+    console.log(
+      "canInteractWithOtherCardsInFilledCropsSlots",
+      canInteractWithOtherCardsInOwnFilledCropSlots
+    );
+    console.log("anyCard", anyCard.id);
+    if (canInteractWithOtherCardsInOwnFilledCropSlots) {
+      let canInteract = false;
+      if (isYourMilpa) {
+        (
+          context.cardSelected?.canInteractWith.ownFilledCropSlots as (
+            | cropIds
+            | goodIds
+          )[]
+        ).forEach((cropId) => {
+          if (cropId === anyCard.id) {
+            canInteract = true;
+          }
+        });
+      }
+
+      return canInteract && context.isYourTurn;
+    } else if (canInteractWithOtherCardsInOthersFilledCropSlots) {
+      let canInteract = false;
+      if (!isYourMilpa) {
+        (
+          context.cardSelected?.canInteractWith.othersFilledCropSlots as (
+            | cropIds
+            | goodIds
+          )[]
+        ).forEach((cropId) => {
+          if (cropId === anyCard.id) {
+            canInteract = true;
+          }
+        });
+      }
+
+      return canInteract && context.isYourTurn;
+    } else {
+      return canInteractFilledCrop;
+    }
+  };
 
   return (
     <div className="flex flex-col bg-mexicanGreen-light w-3/8 rounded-2xl">
@@ -54,7 +121,12 @@ const Milpa = (props: Props) => {
                   key={index}
                   text={anyCard ? anyCard.icon : ""}
                   canInteract={
-                    anyCard ? canInteractFilledCrop : canInteractEmptyCrop
+                    anyCard
+                      ? canInteractWithFilledMilpaSlot(
+                          anyCard,
+                          props.isYourMilpa
+                        )
+                      : canInteractEmptyCrop
                   }
                 />
               );

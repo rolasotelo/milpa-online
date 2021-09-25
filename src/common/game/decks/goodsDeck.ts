@@ -66,7 +66,7 @@ export const manureCards = (): Good[] => {
 
 export const emptyGoods = (): CropAndGoodSlots => {
   const cards = Array.from(Array(4), () => {
-    return [undefined, undefined, undefined, undefined];
+    return [Cactus, undefined, undefined, undefined];
   });
   return cards;
 };

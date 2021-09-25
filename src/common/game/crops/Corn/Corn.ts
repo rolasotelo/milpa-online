@@ -12,7 +12,7 @@ export const Corn: Crop = {
   resume: "+1 🍫",
   canInteractWith: {
     ownEmptyCropSlots: true,
-    ownFilledCropSlots: false,
+    ownFilledCropSlots: ["manure"],
     ownEmptyGoodSlots: false,
     ownFilledGoodSlots: false,
     othersEmptyCropSlots: false,

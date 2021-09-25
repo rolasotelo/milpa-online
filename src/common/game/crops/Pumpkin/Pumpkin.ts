@@ -12,7 +12,7 @@ export const Pumpkin: Crop = {
   resume: "+6 🍫",
   canInteractWith: {
     ownEmptyCropSlots: true,
-    ownFilledCropSlots: false,
+    ownFilledCropSlots: ["manure"],
     ownEmptyGoodSlots: false,
     ownFilledGoodSlots: false,
     othersEmptyCropSlots: false,

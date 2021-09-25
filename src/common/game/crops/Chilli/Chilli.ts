@@ -12,7 +12,7 @@ export const Chilli: Crop = {
   resume: "+3 🍫",
   canInteractWith: {
     ownEmptyCropSlots: true,
-    ownFilledCropSlots: false,
+    ownFilledCropSlots: ["manure"],
     ownEmptyGoodSlots: false,
     ownFilledGoodSlots: false,
     othersEmptyCropSlots: false,

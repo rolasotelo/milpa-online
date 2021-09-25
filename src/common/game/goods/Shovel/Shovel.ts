@@ -14,10 +14,10 @@ export const Shovel: Good = {
     ownEmptyCropSlots: false,
     ownFilledCropSlots: true,
     ownEmptyGoodSlots: false,
-    ownFilledGoodSlots: false,
+    ownFilledGoodSlots: true,
     othersEmptyCropSlots: false,
     othersFilledCropSlots: true,
     othersEmptyGoodSlots: false,
-    othersFilledGoodSlots: false,
+    othersFilledGoodSlots: true,
   },
 };

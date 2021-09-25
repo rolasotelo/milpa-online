@@ -7,6 +7,7 @@ import { Pumpkin } from "../crops/Pumpkin/Pumpkin";
 import { Quelites } from "../crops/Quelites/Quelites";
 import { Tomatillo } from "../crops/Tomatillo/Tomatillo";
 import { Tomatoe } from "../crops/Tomatoe/Tomatoe";
+import { Manure } from "../goods/Manure/Manure";
 
 const BEANS_TOTAL_CARDS = 6;
 const CHILLI_TOTAL_CARDS = 6;
@@ -67,7 +68,7 @@ export const tomatoeCards = (): Crop[] => {
 
 export const emptyCrops = (): CropAndGoodSlots => {
   const cards = Array.from(Array(4), () => {
-    return [undefined, undefined, undefined, undefined];
+    return [Corn, Manure, undefined, undefined];
   });
   return cards;
 };
