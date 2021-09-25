@@ -18,82 +18,30 @@ interface Props {
 
 const Milpa = (props: Props) => {
   const context = useGameContext();
-  const canInteractEmptyCrop =
-    context.isYourTurn &&
-    ((props.isYourMilpa &&
-      !!context.cardSelected?.canInteractWith.ownEmptyCropSlots) ||
-      (!props.isYourMilpa &&
-        !!context.cardSelected?.canInteractWith.othersEmptyCropSlots));
-
-  const canInteractWithOtherCardsInOwnFilledCropSlots =
-    typeof context.cardSelected?.canInteractWith.ownFilledCropSlots !==
-      "undefined" &&
-    typeof context.cardSelected?.canInteractWith.ownFilledCropSlots !==
-      "boolean";
-  const canInteractWithOtherCardsInOthersFilledCropSlots =
-    typeof context.cardSelected?.canInteractWith.othersFilledCropSlots !==
-      "undefined" &&
-    typeof context.cardSelected?.canInteractWith.othersFilledCropSlots !==
-      "boolean";
-
-  const canInteractFilledCrop =
-    context.isYourTurn &&
-    ((props.isYourMilpa &&
-      !!context.cardSelected?.canInteractWith.ownFilledCropSlots) ||
-      (!props.isYourMilpa &&
-        !!context.cardSelected?.canInteractWith.othersFilledCropSlots));
-
-  const canInteractWithFilledMilpaSlot = (
-    anyCard: AnyCard,
-    isYourMilpa: boolean
-  ) => {
-    console.log("isYourMilpa", isYourMilpa);
-    console.log(
-      "carSelected",
-      context.cardSelected?.id,
-      "can interact",
-      context.cardSelected?.canInteractWith.ownFilledCropSlots
-    );
-    console.log(
-      "canInteractWithOtherCardsInFilledCropsSlots",
-      canInteractWithOtherCardsInOwnFilledCropSlots
-    );
-    console.log("anyCard", anyCard.id);
-    if (canInteractWithOtherCardsInOwnFilledCropSlots) {
-      let canInteract = false;
-      if (isYourMilpa) {
-        (
-          context.cardSelected?.canInteractWith.ownFilledCropSlots as (
+  const {
+    interactWithEmptySlot,
+    interactWithFilledSlot,
+    interactWithOtherCardsInOthersFilledSlots,
+    interactWithOtherCardsInOwnFilledSlot,
+  } = context.canCardInMilpaSlot(props.isYourMilpa);
+  const canCardInteractWith = (anyCard: AnyCard | undefined) => {
+    return anyCard
+      ? context.canCardInteractWithFilledSlot(
+          anyCard,
+          props.isYourMilpa,
+          interactWithOtherCardsInOwnFilledSlot,
+          interactWithOtherCardsInOthersFilledSlots,
+          interactWithFilledSlot,
+          context.cardSelected?.canInteractWith.ownFilledMilpaSlots as (
+            | cropIds
+            | goodIds
+          )[],
+          context.cardSelected?.canInteractWith.othersFilledMilpaSlots as (
             | cropIds
             | goodIds
           )[]
-        ).forEach((cropId) => {
-          if (cropId === anyCard.id) {
-            canInteract = true;
-          }
-        });
-      }
-
-      return canInteract && context.isYourTurn;
-    } else if (canInteractWithOtherCardsInOthersFilledCropSlots) {
-      let canInteract = false;
-      if (!isYourMilpa) {
-        (
-          context.cardSelected?.canInteractWith.othersFilledCropSlots as (
-            | cropIds
-            | goodIds
-          )[]
-        ).forEach((cropId) => {
-          if (cropId === anyCard.id) {
-            canInteract = true;
-          }
-        });
-      }
-
-      return canInteract && context.isYourTurn;
-    } else {
-      return canInteractFilledCrop;
-    }
+        )
+      : interactWithEmptySlot;
   };
 
   return (
@@ -120,14 +68,7 @@ const Milpa = (props: Props) => {
                 <Crop
                   key={index}
                   text={anyCard ? anyCard.icon : ""}
-                  canInteract={
-                    anyCard
-                      ? canInteractWithFilledMilpaSlot(
-                          anyCard,
-                          props.isYourMilpa
-                        )
-                      : canInteractEmptyCrop
-                  }
+                  canInteract={canCardInteractWith(anyCard)}
                 />
               );
             })}

@@ -17,7 +17,7 @@ const Crop = (props: Props) => {
       <div
         className={`${
           props.canInteract && "border-2 border-mexicanBone"
-        } w-16 h-16 mx-auto bg-yellow-900 hover:bg-yellow-700 flex justify-center rounded-md`}
+        } w-16 h-16 mx-auto bg-yellow-900 hover:bg-yellow-700 flex justify-center items-center rounded-md`}
       >
         {props.text}
       </div>

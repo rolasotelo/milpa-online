@@ -44,14 +44,14 @@ interface Card {
   resume: string;
   rules: string;
   canInteractWith: {
-    ownEmptyCropSlots: boolean;
-    ownFilledCropSlots: boolean | (cropIds | goodIds)[];
-    ownEmptyGoodSlots: boolean;
-    ownFilledGoodSlots: boolean | (cropIds | goodIds)[];
-    othersEmptyCropSlots: boolean;
-    othersFilledCropSlots: boolean | (cropIds | goodIds)[];
-    othersEmptyGoodSlots: boolean;
-    othersFilledGoodSlots: boolean | (cropIds | goodIds)[];
+    ownEmptyMilpaSlots: boolean;
+    ownFilledMilpaSlots: boolean | (cropIds | goodIds)[];
+    ownEmptyEdgeSlots: boolean;
+    ownFilledEdgeSlots: boolean | (cropIds | goodIds)[];
+    othersEmptyMilpaSlots: boolean;
+    othersFilledMilpaSlots: boolean | (cropIds | goodIds)[];
+    othersEmptyEdgeSlots: boolean;
+    othersFilledEdgeSlots: boolean | (cropIds | goodIds)[];
   };
 }
 
