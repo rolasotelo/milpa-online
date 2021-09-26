@@ -14,7 +14,7 @@ const Good = (props: Props) => {
       className={`${
         props.canInteract && "border-2 border-mexicanBone"
       } w-16 h-16 mx-auto bg-yellow-900 hover:bg-yellow-700 flex justify-center items-center rounded-md disabled:cursor-not-allowed`}
-      onClick={context.onClickCrop}
+      onClick={(params) => {}}
     >
       {props.text}
     </button>

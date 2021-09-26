@@ -5,6 +5,7 @@ import {
   newGame,
 } from "../../../common/game/game";
 import {
+  AnyCard,
   GameRoutePropsType,
   GameStatus,
   Milpa,
@@ -185,4 +186,32 @@ export const handleSessionSaved = (
   socket.userID = user.userID;
   setNickname(user.nickname);
   setRoomCode(user.roomCode);
+};
+
+export const handleStartUpdateMilpa = (
+  socket: MiSocket,
+  card: AnyCard,
+  position: { column: number; row: number },
+  players: User[]
+) => {
+  const oldGameStatus = players[0].gameStatus!;
+  const newPlayerTurn = players[1].userID!;
+  const newCrops = new Map(Object.entries(players[0]?.gameStatus?.milpas!)).get(
+    players[0].userID!
+  )!.crops;
+  const oldGoods = new Map(Object.entries(players[0]?.gameStatus?.milpas!)).get(
+    players[0].userID!
+  )!.goods;
+  newCrops[position.row][position.column] = card;
+  const newMilpa: Milpa = { crops: newCrops, goods: oldGoods };
+  const newMilpas: Map<string, Milpa> = new Map();
+  newMilpas.set(players[0].userID!, newMilpa);
+  newMilpas.set(players[1].userID!, newMilpa);
+  const newGameStatus: GameStatus = {
+    ...oldGameStatus,
+    playerTurn: newPlayerTurn,
+    milpas: Object.fromEntries(newMilpas),
+  };
+  console.log("emit", newGameStatus);
+  socket.emit("start update milpa", newGameStatus);
 };

@@ -9,6 +9,7 @@ import MilpaEdgeVertical from "../MilpaEdgeVertical/MilpaEdgeVertical";
 import StatusBoard from "../StatusBoard/StatusBoard";
 import { cropIds } from "../../common/game/crops/crops";
 import { goodIds } from "../../common/game/goods/goods";
+import { ROW_SIZE } from "../../common/constants";
 
 interface Props {
   milpa: (AnyCard | undefined)[];
@@ -67,8 +68,11 @@ const Milpa = (props: Props) => {
               return (
                 <Crop
                   key={index}
-                  text={anyCard ? anyCard.icon : ""}
+                  card={anyCard}
                   canInteract={canCardInteractWith(anyCard)}
+                  onClickCropSlot={context.onClickCropSlot}
+                  column={index % ROW_SIZE}
+                  row={Math.floor(index / ROW_SIZE)}
                 />
               );
             })}

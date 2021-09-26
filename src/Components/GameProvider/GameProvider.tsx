@@ -7,6 +7,7 @@ import newSocket from "../../common/socket/socket";
 import {
   AnyCard,
   Crop,
+  CropAndGoodSlots,
   GameRoutePropsType,
   GameStatus,
   Good,
@@ -18,6 +19,7 @@ import {
   handleConnectionOrReconnection,
   handleFirstUserConnection,
   handleOkStartGame,
+  handleStartUpdateMilpa,
   handlePlayerDisconnection,
   handleRoomFilled,
   handleSessionSaved,
@@ -38,7 +40,6 @@ type GameContextType = {
   roomCode: string;
   players: User[];
   isPlaying: boolean;
-  onClickCrop: () => void;
   cropsHand: Crop[];
   goodsHand: Good[];
   isYourTurn: boolean;
@@ -67,6 +68,13 @@ type GameContextType = {
     interactWithOtherCardsInOthersFilledSlots: boolean;
     interactWithFilledSlot: boolean;
   };
+  onClickCropSlot: (
+    card: AnyCard,
+    position: {
+      column: number;
+      row: number;
+    }
+  ) => void;
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -108,14 +116,15 @@ const GameProvider = (props: Props) => {
   const [cardSelected, setCardSelected] = useState<Crop | Good | undefined>(
     undefined
   );
-  const [cropsHand, setCropsHand] = useState<Crop[]>([]);
-  const [goodsHand, setGoodsHand] = useState<Good[]>([]);
+
   const isYourTurn = !!(
     players && players[0]?.gameStatus?.playerTurn === players[0]?.userID
   );
 
   let yourMilpa = undefined;
   let otherMilpa = undefined;
+  let cropsHand: Crop[] = [];
+  let goodsHand: Good[] = [];
   if (
     players &&
     players[0]?.userID &&
@@ -131,6 +140,14 @@ const GameProvider = (props: Props) => {
       isYourMilpa: false,
       milpa: milpaMap.get(players[1]?.userID),
     };
+  }
+  if (
+    players &&
+    typeof players[0].gameStatus?.cropsHand !== "undefined" &&
+    typeof players[0].gameStatus?.goodsHand !== "undefined"
+  ) {
+    cropsHand = players[0].gameStatus.cropsHand;
+    goodsHand = players[0].gameStatus.goodsHand;
   }
 
   const canCardInMilpaSlot = (isYourMilpa: boolean) => {
@@ -217,24 +234,16 @@ const GameProvider = (props: Props) => {
     }
   };
 
-  useEffect(() => {
-    const { cropsDeck, goodsDeck, emptyMilpa, sampleMilpa } = newGame();
-    const { cropsHand: newCropsHand, newCropsDeck } = dealCropsHand(cropsDeck);
-    const { goodsHand: newGoodsHand, newGoodsDeck } = dealGoodsHand(goodsDeck);
-    setMilpas([emptyMilpa, sampleMilpa]);
-    setCropsDeck(newCropsDeck);
-    setGoodsDeck(newGoodsDeck);
-    setCropsHand(newCropsHand);
-    setGoodsHand(newGoodsHand);
-    setCurrentTurn(1);
-    return () => {};
-  }, []);
-
   const onClickCard = (card: Crop | Good) => {
     setCardSelected(card);
   };
 
-  const onClickCrop = () => {};
+  const onClickCropSlot = (
+    card: AnyCard,
+    position: { column: number; row: number }
+  ) => {
+    handleStartUpdateMilpa(socket, card, position, players);
+  };
 
   useEffect(() => {
     if (!isPlaying) {
@@ -308,7 +317,6 @@ const GameProvider = (props: Props) => {
         roomCode,
         players,
         isPlaying,
-        onClickCrop,
         cropsHand,
         goodsHand,
         isYourTurn,
@@ -319,6 +327,7 @@ const GameProvider = (props: Props) => {
         canCardInMilpaSlot,
         canCardInEdgeSlot,
         canCardInteractWithFilledSlot,
+        onClickCropSlot,
       }}
     >
       {props.children}
