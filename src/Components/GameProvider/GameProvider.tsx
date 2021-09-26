@@ -8,10 +8,10 @@ import {
   AnyCard,
   Crop,
   GameRoutePropsType,
+  GameStatus,
   Good,
   Milpa,
   User,
-  Users,
 } from "../../common/types";
 import {
   handleConnectionError,
@@ -19,10 +19,11 @@ import {
   handleFirstUserConnection,
   handlePlayerDisconnection,
   handleRoomFilled,
-  handleSession,
+  handleSessionSaved,
   handleStartGame,
   handleUserConnection,
-  handleUsers,
+  handleUsersInRoom,
+  UserPlusSessionID,
 } from "./handlers/gameHandlers";
 
 type YourMilpa = {
@@ -32,8 +33,8 @@ type YourMilpa = {
 
 type GameContextType = {
   nickname: string | undefined;
-  gameCode: string;
-  players: Users;
+  roomCode: string;
+  players: User[];
   isPlaying: boolean;
   onClickCrop: () => void;
   cropsHand: Crop[];
@@ -78,13 +79,14 @@ const GameProvider = (props: Props) => {
   if (props.routerProps.location.state?.nickname) {
     nickname = props.routerProps.location.state.nickname;
   }
-  const gameCode = props.routerProps.match.params.gamecode;
+  const roomCode = props.routerProps.match.params.gamecode;
 
-  const [players, setPlayers] = useState<Users>([
+  const [players, setPlayers] = useState<User[]>([
     { self: true, connected: true, nickname: nickname },
+    { self: false, connected: true, nickname: "Waiting..." },
   ]);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [socket, _] = useState(newSocket(gameCode, nickname));
+  const [socket, _] = useState(newSocket(roomCode, nickname));
   const [idTimeout, setIdTimeout] = useState<undefined | NodeJS.Timeout>(
     undefined
   );
@@ -236,13 +238,13 @@ const GameProvider = (props: Props) => {
   const onClickCrop = () => {
     // updateGameStatus();
   };
-
+  console.log("players in provider", players);
   useEffect(() => {
     if (!isPlaying) {
       const id = setTimeout(() => {
-        props.routerProps.history.push("/play", { nickname });
-        sessionStorage.removeItem("sessionID");
-        socket.disconnect();
+        // props.routerProps.history.push("/play", { nickname });
+        // sessionStorage.removeItem("sessionID");
+        // socket.disconnect();
       }, WAITING_TIME * 1000);
       setIdTimeout(id);
     } else {
@@ -261,29 +263,29 @@ const GameProvider = (props: Props) => {
       handleConnectionError(err);
     });
 
-    socket.on("room filled", () => {
-      handleRoomFilled(props.routerProps, nickname);
+    socket.on("session saved", (user: UserPlusSessionID) => {
+      handleSessionSaved(user, socket);
     });
 
-    socket.on("start game", () => {
-      handleStartGame(setIsPlaying);
+    // socket.once("user connected", (user: User) => {
+    //   handleFirstUserConnection(user);
+    // });
+
+    socket.on("users in room", (users: User[]) => {
+      handleUsersInRoom(users, setPlayers, socket);
     });
 
-    socket.on("player disconnected", ({ userID, nickname }) => {
-      handlePlayerDisconnection(setIsPlaying);
-    });
+    // socket.on("room filled", () => {
+    //   handleRoomFilled(props.routerProps, nickname);
+    // });
 
-    socket.on("users", (users: Users) => {
-      handleUsers(users, setPlayers, socket);
-    });
+    // socket.on("start game", () => {
+    //   handleStartGame(setIsPlaying);
+    // });
 
-    socket.once("user connected", (user: User) => {
-      handleFirstUserConnection(user, players, setPlayers);
-    });
-
-    socket.on("session", ({ sessionID, userID, roomCode, gameStatus }) => {
-      handleSession(sessionID, userID, nickname, socket);
-    });
+    // socket.on("player disconnected", ({ userID, nickname }) => {
+    //   handlePlayerDisconnection(setIsPlaying);
+    // });
 
     return () => {
       socket.off("connect_error");
@@ -292,9 +294,9 @@ const GameProvider = (props: Props) => {
 
   // * every time players update a new "user connected" listener is needed
   useEffect(() => {
-    socket.on("user connected", (user: User) => {
-      handleUserConnection(user, players, setPlayers);
-    });
+    // socket.on("user connected", (user: User) => {
+    //   handleUserConnection(user, players, setPlayers);
+    // });
 
     return () => {};
   }, [players]);
@@ -303,7 +305,7 @@ const GameProvider = (props: Props) => {
     <GameContext.Provider
       value={{
         nickname,
-        gameCode,
+        roomCode,
         players,
         isPlaying,
         onClickCrop,

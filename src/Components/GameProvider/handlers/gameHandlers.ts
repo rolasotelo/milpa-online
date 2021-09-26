@@ -1,8 +1,8 @@
 import {
   GameRoutePropsType,
+  GameStatus,
   MiSocket,
   User,
-  Users,
 } from "../../../common/types";
 
 const initReactiveProperties = (user: User) => {
@@ -20,9 +20,11 @@ export const handleConnectionOrReconnection = (
   const sessionID = sessionStorage.getItem("sessionID");
 
   if (sessionID) {
+    console.log("reconnection");
     socket.auth = { sessionID, nickname };
     socket.connect();
   } else {
+    console.log("first connection");
     socket.connect();
   }
 };
@@ -61,9 +63,9 @@ export const handlePlayerDisconnection = (
 };
 
 // + existing users in room
-export const handleUsers = (
-  users: Users,
-  setPlayers: React.Dispatch<React.SetStateAction<Users>>,
+export const handleUsersInRoom = (
+  users: User[],
+  setPlayers: React.Dispatch<React.SetStateAction<User[]>>,
   socket: MiSocket
 ) => {
   users.forEach((user) => {
@@ -80,22 +82,15 @@ export const handleUsers = (
   setPlayers(newPlayers);
 };
 
-export const handleFirstUserConnection = (
-  user: User,
-  players: Users,
-  setPlayers: React.Dispatch<React.SetStateAction<Users>>
-) => {
+export const handleFirstUserConnection = (user: User) => {
   initReactiveProperties(user);
-  const newPlayers = players;
-  newPlayers.push(user);
-  setPlayers(newPlayers);
 };
 
 // TODO look at the mess that is players updating because setPlayers here
 export const handleUserConnection = (
   user: User,
-  players: Users,
-  setPlayers: React.Dispatch<React.SetStateAction<Users>>
+  players: User[],
+  setPlayers: React.Dispatch<React.SetStateAction<User[]>>
 ) => {
   initReactiveProperties(user);
   console.log("players", players);
@@ -104,16 +99,18 @@ export const handleUserConnection = (
   setPlayers(newPlayers);
 };
 
-export const handleSession = (
-  sessionID: string,
-  userID: string,
-  nickname: string,
+export interface UserPlusSessionID extends User {
+  sessionID: string;
+}
+
+export const handleSessionSaved = (
+  user: UserPlusSessionID,
   socket: MiSocket
 ) => {
   // attach the session ID to the next reconnection attempts
-  socket.auth = { sessionID, nickname };
+  socket.auth = { sessionID: user.sessionID, nickname: user.nickname };
   // store it in the localStorage
-  sessionStorage.setItem("sessionID", sessionID);
+  sessionStorage.setItem("sessionID", user.sessionID);
   // save the ID of the user
-  socket.userID = userID;
+  socket.userID = user.userID;
 };

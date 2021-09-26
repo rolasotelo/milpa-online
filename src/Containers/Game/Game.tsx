@@ -19,7 +19,7 @@ const Game = (props: Props) => {
         <WaitingModal
           title={`Ahoj ${context.nickname}`}
           body="Share this code with your friend"
-          buttonText={context.gameCode}
+          buttonText={context.roomCode}
         />
       )}
       <Board />

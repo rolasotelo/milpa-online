@@ -14,8 +14,6 @@ export type GameRoutePropsType = RouteComponentProps<
   { nickname: string }
 >;
 
-export type Users = Array<User>;
-
 export type User = {
   self: boolean;
   userID?: string;
