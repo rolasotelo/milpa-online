@@ -19,7 +19,7 @@ import {
   handleConnectionOrReconnection,
   handleFirstUserConnection,
   handleOkStartGame,
-  handleUpdateMilpa,
+  handleUpdateCropInMilpa,
   handlePlayerDisconnection,
   handleRoomFilled,
   handleSessionSaved,
@@ -29,6 +29,7 @@ import {
   handleUsersInRoom,
   UserPlusSessionIDAndRoomCode,
   handleStartUpdateMilpa,
+  handleUpdateGoodInMilpa,
 } from "./handlers/gameHandlers";
 
 type YourMilpa = {
@@ -75,6 +76,14 @@ type GameContextType = {
       column: number;
       row: number;
     }
+  ) => void;
+  onClickGoodSlot: (
+    card: AnyCard,
+    position: {
+      column: number;
+      row: number;
+    },
+    isYourMilpa: boolean
   ) => void;
 };
 
@@ -243,13 +252,29 @@ const GameProvider = (props: Props) => {
     card: AnyCard,
     position: { column: number; row: number }
   ) => {
-    handleUpdateMilpa(
+    handleUpdateCropInMilpa(
       socket,
       card,
       position,
       players,
       setPlayers,
       setCardSelected
+    );
+  };
+
+  const onClickGoodSlot = (
+    card: AnyCard,
+    position: { column: number; row: number },
+    isYourMilpa: boolean
+  ) => {
+    handleUpdateGoodInMilpa(
+      socket,
+      card,
+      position,
+      players,
+      setPlayers,
+      setCardSelected,
+      isYourMilpa
     );
   };
 
@@ -342,6 +367,7 @@ const GameProvider = (props: Props) => {
         canCardInEdgeSlot,
         canCardInteractWithFilledSlot,
         onClickCropSlot,
+        onClickGoodSlot,
       }}
     >
       {props.children}

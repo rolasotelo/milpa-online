@@ -1,4 +1,5 @@
 import React from "react";
+import { ROW_SIZE } from "../../common/constants";
 import { cropIds } from "../../common/game/crops/crops";
 import { goodIds } from "../../common/game/goods/goods";
 import { AnyCard } from "../../common/types";
@@ -8,6 +9,7 @@ import Good from "../Good/Good";
 interface Props {
   anyCards: (AnyCard | undefined)[];
   isYourMilpa: boolean;
+  row: number;
 }
 
 const MilpaEdgeHorizontal = (props: Props) => {
@@ -46,6 +48,9 @@ const MilpaEdgeHorizontal = (props: Props) => {
             key={index}
             text={anyCard ? anyCard.icon : ""}
             canInteract={canCardInteractWith(anyCard)}
+            isYourMilpa={props.isYourMilpa}
+            column={index % ROW_SIZE}
+            row={props.row}
           />
         );
       })}

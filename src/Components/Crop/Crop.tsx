@@ -5,13 +5,6 @@ import useGameContext from "../../Hooks/useGameContext/useGameContext";
 interface Props {
   card: AnyCard | undefined;
   canInteract: boolean;
-  onClickCropSlot: (
-    card: AnyCard,
-    position: {
-      column: number;
-      row: number;
-    }
-  ) => void;
   column: number;
   row: number;
 }

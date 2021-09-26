@@ -82,7 +82,7 @@ export const dealGoodsHand = (
   cardsRemainimg: number;
 } => {
   const goodsHand = goodsDeck.slice(0, GOODS_HAND_SIZE);
-  const newGoodsDeck = goodsDeck.slice(-GOODS_HAND_SIZE);
+  const newGoodsDeck = goodsDeck.slice(-goodsDeck.length + GOODS_HAND_SIZE);
   const cardsRemainimg = newGoodsDeck.length;
   return { goodsHand, newGoodsDeck, cardsRemainimg };
 };

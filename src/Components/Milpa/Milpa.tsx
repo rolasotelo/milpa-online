@@ -54,11 +54,13 @@ const Milpa = (props: Props) => {
         <MilpaEdgeHorizontal
           isYourMilpa={props.isYourMilpa}
           anyCards={props.edges.top}
+          row={0}
         />
         <div className="flex flex-row items-center justify-evenly w-full px-1">
           <MilpaEdgeVertical
             isYourMilpa={props.isYourMilpa}
             anyCards={props.edges.left}
+            row={2}
           />
           <div
             className="w-80 h-80  bg-yellow-800 grid grid-cols-4 py-2
@@ -70,7 +72,6 @@ const Milpa = (props: Props) => {
                   key={index}
                   card={anyCard}
                   canInteract={canCardInteractWith(anyCard)}
-                  onClickCropSlot={context.onClickCropSlot}
                   column={index % ROW_SIZE}
                   row={Math.floor(index / ROW_SIZE)}
                 />
@@ -80,12 +81,14 @@ const Milpa = (props: Props) => {
           <MilpaEdgeVertical
             isYourMilpa={props.isYourMilpa}
             anyCards={props.edges.right}
+            row={3}
           />
         </div>
 
         <MilpaEdgeHorizontal
           isYourMilpa={props.isYourMilpa}
           anyCards={props.edges.bottom}
+          row={1}
         />
       </div>
     </div>
