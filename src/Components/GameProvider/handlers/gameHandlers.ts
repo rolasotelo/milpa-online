@@ -69,13 +69,14 @@ export const handleStartGame = (
 
     const startGameStatus: GameStatus = {
       playerTurn: users[0].userID!,
-      score,
+      score: Object.fromEntries(score),
       cropsDeck: newCropsDeck,
       goodsDeck: newGoodsDeck,
       cropsHand: newCropsHand,
       goodsHand: newGoodsHand,
-      milpas,
+      milpas: Object.fromEntries(milpas),
     };
+
     socket.emit("start game handshake", sessionID2, startGameStatus);
     const newPlayers: User[] = [
       { ...users[0], gameStatus: startGameStatus },
@@ -106,6 +107,7 @@ export const handleStartGameHandshake = (
     { ...players[0], gameStatus: gameStatus },
     { ...players[1], gameStatus: gameStatus },
   ];
+
   setPlayers(newPlayers);
 };
 

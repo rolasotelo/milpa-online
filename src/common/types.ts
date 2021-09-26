@@ -30,8 +30,12 @@ export interface MiSocket extends Socket<DefaultEventsMap, DefaultEventsMap> {
 
 export interface GameStatus {
   playerTurn: string;
-  score: Map<string, number>;
-  milpas: Map<string, Milpa>;
+  score: {
+    [k: string]: number;
+  };
+  milpas: {
+    [k: string]: Milpa;
+  };
   cropsDeck: Crop[];
   goodsDeck: Good[];
   cropsHand: Crop[];

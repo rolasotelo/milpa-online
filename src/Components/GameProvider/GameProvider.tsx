@@ -110,24 +110,22 @@ const GameProvider = (props: Props) => {
     players && players[0]?.gameStatus?.playerTurn === players[0]?.userID
   );
 
-  console.log("players in provider", players);
   let yourMilpa = undefined;
   let otherMilpa = undefined;
   if (
     players &&
     players[0]?.userID &&
     players[1]?.userID &&
-    typeof players[0]?.gameStatus?.milpas !== "undefined" &&
-    typeof players[0]?.gameStatus?.milpas?.get === "function"
+    typeof players[0]?.gameStatus?.milpas !== "undefined"
   ) {
-    console.log("milpas antes del error", players[0]?.gameStatus?.milpas);
+    const milpaMap = new Map(Object.entries(players[0]?.gameStatus?.milpas));
     yourMilpa = {
       isYourMilpa: true,
-      milpa: players[0]?.gameStatus?.milpas?.get(players[0]?.userID),
+      milpa: milpaMap.get(players[0]?.userID),
     };
     otherMilpa = {
       isYourMilpa: false,
-      milpa: players[0]?.gameStatus?.milpas?.get(players[1]?.userID),
+      milpa: milpaMap.get(players[1]?.userID),
     };
   }
 
@@ -289,15 +287,14 @@ const GameProvider = (props: Props) => {
 
   // * every time players update a new "user connected" listener is needed
   useEffect(() => {
-    // socket.on("user connected", (user: User) => {
-    //   handleUserConnection(user, players, setPlayers);
-    // });
-    //console.log("new players in use effect", players);
-    socket.on("start game handshake", (gameStatus: GameStatus) => {
+    const listenerStartGameHandshake = (gameStatus: GameStatus) => {
       handleStartGameHandshake(players, setPlayers, gameStatus, socket);
-    });
+    };
+    socket.on("start game handshake", listenerStartGameHandshake);
 
-    return () => {};
+    return () => {
+      socket.off("start game handshake", listenerStartGameHandshake);
+    };
   }, [players]);
 
   return (
