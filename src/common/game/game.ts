@@ -69,7 +69,7 @@ export const dealCropsHand = (
   cardsRemainimg: number;
 } => {
   const cropHand = cropsDeck.slice(0, CROPS_HAND_SIZE);
-  const newCropsDeck = cropsDeck.slice(-CROPS_HAND_SIZE);
+  const newCropsDeck = cropsDeck.slice(-cropsDeck.length + CROPS_HAND_SIZE);
   const cardsRemainimg = newCropsDeck.length;
   return { cropsHand: cropHand, newCropsDeck, cardsRemainimg };
 };

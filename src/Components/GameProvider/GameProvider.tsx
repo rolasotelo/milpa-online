@@ -290,7 +290,7 @@ const GameProvider = (props: Props) => {
     });
 
     socket.on("start game", (sessionID: string, users: User[]) => {
-      handleStartGame(players, setPlayers, sessionID, users, socket);
+      handleStartGame(setPlayers, users, socket);
     });
 
     socket.on("player disconnected", ({ userID, nickname }) => {

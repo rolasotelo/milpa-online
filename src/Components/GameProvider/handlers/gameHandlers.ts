@@ -1,4 +1,3 @@
-import { Socket } from "socket.io-client";
 import {
   dealCropsHand,
   dealGoodsHand,
@@ -53,9 +52,7 @@ export const handleRoomFilled = (
 };
 
 export const handleStartGame = (
-  players: User[],
   setPlayers: React.Dispatch<React.SetStateAction<User[]>>,
-  sessionID: string,
   users: User[],
   socket: MiSocket
 ) => {
@@ -206,6 +203,8 @@ export const handleUpdateMilpa = (
   const oldGoods = new Map(Object.entries(players[0]?.gameStatus?.milpas!)).get(
     players[0].userID!
   )!.goods;
+  const oldCropsDeck = players[0]?.gameStatus?.cropsDeck!;
+  const oldGoodsDeck = players[0]?.gameStatus?.goodsDeck!;
   newCrops[position.row][position.column] = card;
   const newOwnMilpa: Milpa = { crops: newCrops, goods: oldGoods };
   const newOtherMilpa: Milpa = new Map(
@@ -214,12 +213,20 @@ export const handleUpdateMilpa = (
   const newMilpas: Map<string, Milpa> = new Map();
   newMilpas.set(players[0].userID!, newOwnMilpa);
   newMilpas.set(players[1].userID!, newOtherMilpa);
+
+  const { cropsHand: newCropsHand, newCropsDeck } = dealCropsHand(oldCropsDeck);
+  const { goodsHand: newGoodsHand, newGoodsDeck } = dealGoodsHand(oldGoodsDeck);
+
   const newGameStatus: GameStatus = {
     ...oldGameStatus,
     playerTurn: newPlayerTurn,
     milpas: Object.fromEntries(newMilpas),
+    cropsHand: newCropsHand,
+    cropsDeck: newCropsDeck,
+    goodsDeck: newGoodsDeck,
+    goodsHand: newGoodsHand,
   };
-  console.log("emit", newGameStatus);
+
   socket.emit(
     "start update milpa",
     sessionStorage.getItem("sessionID"),
