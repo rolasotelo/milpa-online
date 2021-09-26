@@ -9,7 +9,7 @@ interface Props {}
 const Game = (props: Props) => {
   const context = useGameContext();
   const players = {
-    local: context.players[0]?.nickname,
+    local: context.nickname,
     remote: context.players[1] ? context.players[1]?.nickname : "",
   };
 

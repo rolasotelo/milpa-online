@@ -28,6 +28,7 @@ export const handleConnectionOrReconnection = (
 
   if (sessionID) {
     socket.auth = { sessionID, nickname };
+
     socket.connect();
   } else {
     socket.connect();
@@ -165,13 +166,16 @@ export const handleUserConnection = (
   setPlayers(newPlayers);
 };
 
-export interface UserPlusSessionID extends User {
+export interface UserPlusSessionIDAndRoomCode extends User {
   sessionID: string;
+  roomCode: string;
 }
 
 export const handleSessionSaved = (
-  user: UserPlusSessionID,
-  socket: MiSocket
+  user: UserPlusSessionIDAndRoomCode,
+  socket: MiSocket,
+  setNickname: React.Dispatch<React.SetStateAction<string>>,
+  setRoomCode: React.Dispatch<React.SetStateAction<string>>
 ) => {
   // attach the session ID to the next reconnection attempts
   socket.auth = { sessionID: user.sessionID, nickname: user.nickname };
@@ -179,4 +183,6 @@ export const handleSessionSaved = (
   sessionStorage.setItem("sessionID", user.sessionID);
   // save the ID of the user
   socket.userID = user.userID;
+  setNickname(user.nickname);
+  setRoomCode(user.roomCode);
 };

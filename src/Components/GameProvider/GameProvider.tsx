@@ -25,7 +25,7 @@ import {
   handleStartGameHandshake,
   handleUserConnection,
   handleUsersInRoom,
-  UserPlusSessionID,
+  UserPlusSessionIDAndRoomCode,
 } from "./handlers/gameHandlers";
 
 type YourMilpa = {
@@ -77,18 +77,22 @@ interface Props {
 }
 
 const GameProvider = (props: Props) => {
-  let nickname: string = "";
+  let nicknameFromLocation: string = "";
   if (props.routerProps.location.state?.nickname) {
-    nickname = props.routerProps.location.state.nickname;
+    nicknameFromLocation = props.routerProps.location.state.nickname;
   }
-  const roomCode = props.routerProps.match.params.gamecode;
+  const roomCodeFromLocation = props.routerProps.match.params.gamecode;
 
   const [players, setPlayers] = useState<User[]>([
-    { self: true, connected: true, nickname: nickname },
+    { self: true, connected: true, nickname: nicknameFromLocation },
     { self: false, connected: true, nickname: "Waiting..." },
   ]);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [socket, _] = useState(newSocket(roomCode, nickname));
+  const [nickname, setNickname] = useState(nicknameFromLocation);
+  const [roomCode, setRoomCode] = useState(roomCodeFromLocation);
+  const [socket, _] = useState(
+    newSocket(roomCodeFromLocation, nicknameFromLocation)
+  );
   const [idTimeout, setIdTimeout] = useState<undefined | NodeJS.Timeout>(
     undefined
   );
@@ -256,8 +260,8 @@ const GameProvider = (props: Props) => {
       handleConnectionError(err);
     });
 
-    socket.on("session saved", (user: UserPlusSessionID) => {
-      handleSessionSaved(user, socket);
+    socket.on("session saved", (user: UserPlusSessionIDAndRoomCode) => {
+      handleSessionSaved(user, socket, setNickname, setRoomCode);
     });
 
     socket.on("users in room", (users: User[]) => {
@@ -281,7 +285,7 @@ const GameProvider = (props: Props) => {
     });
 
     return () => {
-      socket.off("connect_error");
+      socket.disconnect();
     };
   }, [props]);
 

@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 interface Props {
   children: ReactNode;
-  players: { local: string; remote: string };
+  players: { local: string | undefined; remote: string };
   yourTurn: boolean;
 }
 
@@ -55,13 +55,17 @@ const LayoutGame = (props: Props) => {
                 textAlign: "right",
               }}
             >
-              {!props.yourTurn && (
+              {!props.yourTurn && props.players.remote && (
                 <a
                   href="#"
                   className="text-mexicanPink mr-6"
                 >{`YOUR TURN ==>`}</a>
               )}
-              <a href="#">{`0 🍫 : ${props.players.remote?.toUpperCase()}`}</a>
+              <a href="#">
+                {props.players.remote
+                  ? `0 🍫 : ${props.players.remote?.toUpperCase()}`
+                  : "Waiting..."}
+              </a>
             </div>
           </nav>
         </div>
