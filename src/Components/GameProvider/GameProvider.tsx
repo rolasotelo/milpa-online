@@ -17,10 +17,12 @@ import {
   handleConnectionError,
   handleConnectionOrReconnection,
   handleFirstUserConnection,
+  handleOkStartGame,
   handlePlayerDisconnection,
   handleRoomFilled,
   handleSessionSaved,
   handleStartGame,
+  handleStartGameHandshake,
   handleUserConnection,
   handleUsersInRoom,
   UserPlusSessionID,
@@ -42,8 +44,8 @@ type GameContextType = {
   isYourTurn: boolean;
   cardSelected: Crop | Good | undefined;
   onClickCard: (card: Crop | Good) => void;
-  yourMilpa: YourMilpa;
-  otherMilpa: YourMilpa;
+  yourMilpa: YourMilpa | undefined;
+  otherMilpa: YourMilpa | undefined;
   canCardInMilpaSlot: (isYourMilpa: boolean) => {
     interactWithEmptySlot: boolean;
     interactWithOtherCardsInOwnFilledSlot: boolean;
@@ -105,18 +107,29 @@ const GameProvider = (props: Props) => {
   const [cropsHand, setCropsHand] = useState<Crop[]>([]);
   const [goodsHand, setGoodsHand] = useState<Good[]>([]);
   const isYourTurn = !!(
-    players &&
-    players[0]?.gameStatus?.playerTurn === sessionStorage.getItem("sessionID")
+    players && players[0]?.gameStatus?.playerTurn === players[0]?.userID
   );
 
-  const yourMilpa = {
-    isYourMilpa: true,
-    milpa: milpas[0],
-  };
-  const otherMilpa = {
-    isYourMilpa: false,
-    milpa: milpas[1],
-  };
+  console.log("players in provider", players);
+  let yourMilpa = undefined;
+  let otherMilpa = undefined;
+  if (
+    players &&
+    players[0]?.userID &&
+    players[1]?.userID &&
+    typeof players[0]?.gameStatus?.milpas !== "undefined" &&
+    typeof players[0]?.gameStatus?.milpas?.get === "function"
+  ) {
+    console.log("milpas antes del error", players[0]?.gameStatus?.milpas);
+    yourMilpa = {
+      isYourMilpa: true,
+      milpa: players[0]?.gameStatus?.milpas?.get(players[0]?.userID),
+    };
+    otherMilpa = {
+      isYourMilpa: false,
+      milpa: players[0]?.gameStatus?.milpas?.get(players[1]?.userID),
+    };
+  }
 
   const canCardInMilpaSlot = (isYourMilpa: boolean) => {
     return {
@@ -219,26 +232,8 @@ const GameProvider = (props: Props) => {
     setCardSelected(card);
   };
 
-  // const updateGameStatus = () => {
-  //   const sessionID = sessionStorage.getItem("sessionID");
-  //   const newGameStatus: GameStatus = {
-  //     ...players[0].gameStatus,
-  //     score: 1,
-  //     milpas: [
-  //       ["1", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
-  //       ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
-  //     ],
-  //   };
+  const onClickCrop = () => {};
 
-  //   socket.emit("player action", sessionID, newGameStatus);
-  //   console.log("players", players);
-  //   console.log("new game status", newGameStatus);
-  // };
-
-  const onClickCrop = () => {
-    // updateGameStatus();
-  };
-  console.log("players in provider", players);
   useEffect(() => {
     if (!isPlaying) {
       const id = setTimeout(() => {
@@ -267,25 +262,25 @@ const GameProvider = (props: Props) => {
       handleSessionSaved(user, socket);
     });
 
-    // socket.once("user connected", (user: User) => {
-    //   handleFirstUserConnection(user);
-    // });
-
     socket.on("users in room", (users: User[]) => {
       handleUsersInRoom(users, setPlayers, socket);
     });
 
-    // socket.on("room filled", () => {
-    //   handleRoomFilled(props.routerProps, nickname);
-    // });
+    socket.on("room filled", () => {
+      handleRoomFilled(props.routerProps, nickname);
+    });
 
-    // socket.on("start game", () => {
-    //   handleStartGame(setIsPlaying);
-    // });
+    socket.on("start game", (sessionID: string, users: User[]) => {
+      handleStartGame(players, setPlayers, sessionID, users, socket);
+    });
 
-    // socket.on("player disconnected", ({ userID, nickname }) => {
-    //   handlePlayerDisconnection(setIsPlaying);
-    // });
+    socket.on("player disconnected", ({ userID, nickname }) => {
+      handlePlayerDisconnection(setIsPlaying);
+    });
+
+    socket.on("ok start game", () => {
+      handleOkStartGame(setIsPlaying);
+    });
 
     return () => {
       socket.off("connect_error");
@@ -297,6 +292,10 @@ const GameProvider = (props: Props) => {
     // socket.on("user connected", (user: User) => {
     //   handleUserConnection(user, players, setPlayers);
     // });
+    //console.log("new players in use effect", players);
+    socket.on("start game handshake", (gameStatus: GameStatus) => {
+      handleStartGameHandshake(players, setPlayers, gameStatus, socket);
+    });
 
     return () => {};
   }, [players]);

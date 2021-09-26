@@ -32,7 +32,12 @@ const Board = (props: Props) => {
     right: Array(ROW_SIZE).fill(undefined),
   };
 
-  if (context.yourMilpa.milpa && context.otherMilpa.milpa) {
+  if (
+    context.yourMilpa &&
+    context.otherMilpa &&
+    context.yourMilpa.milpa &&
+    context.otherMilpa.milpa
+  ) {
     if (context.yourMilpa.milpa.crops && context.otherMilpa.milpa.crops) {
       leftMilpa = [
         ...context.yourMilpa.milpa.crops[0],
@@ -49,7 +54,12 @@ const Board = (props: Props) => {
     }
   }
 
-  if (context.yourMilpa.milpa && context.otherMilpa.milpa) {
+  if (
+    context.yourMilpa &&
+    context.otherMilpa &&
+    context.yourMilpa.milpa &&
+    context.otherMilpa.milpa
+  ) {
     if (context.yourMilpa.milpa.goods && context.otherMilpa.milpa.goods) {
       leftEdges = {
         top: context.yourMilpa.milpa?.goods[0],

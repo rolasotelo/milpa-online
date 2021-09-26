@@ -34,6 +34,8 @@ export interface GameStatus {
   milpas: Map<string, Milpa>;
   cropsDeck: Crop[];
   goodsDeck: Good[];
+  cropsHand: Crop[];
+  goodsHand: Good[];
 }
 
 interface Card {

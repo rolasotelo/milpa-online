@@ -1,6 +1,13 @@
+import { Socket } from "socket.io-client";
+import {
+  dealCropsHand,
+  dealGoodsHand,
+  newGame,
+} from "../../../common/game/game";
 import {
   GameRoutePropsType,
   GameStatus,
+  Milpa,
   MiSocket,
   User,
 } from "../../../common/types";
@@ -20,11 +27,9 @@ export const handleConnectionOrReconnection = (
   const sessionID = sessionStorage.getItem("sessionID");
 
   if (sessionID) {
-    console.log("reconnection");
     socket.auth = { sessionID, nickname };
     socket.connect();
   } else {
-    console.log("first connection");
     socket.connect();
   }
 };
@@ -32,7 +37,6 @@ export const handleConnectionOrReconnection = (
 export const handleConnectionError = (err: Error) => {
   // TODO handle connection error
   if (err.message === "invalid nickname") {
-    console.log("nickname invalido");
   }
 };
 
@@ -45,6 +49,67 @@ export const handleRoomFilled = (
 };
 
 export const handleStartGame = (
+  players: User[],
+  setPlayers: React.Dispatch<React.SetStateAction<User[]>>,
+  sessionID: string,
+  users: User[],
+  socket: MiSocket
+) => {
+  const sessionID2 = sessionStorage.getItem("sessionID");
+  if (!users[0].gameStatus) {
+    const score: Map<string, number> = new Map();
+    score.set(users[0].userID!, 0);
+    score.set(users[1].userID!, 0);
+    const { cropsDeck, goodsDeck, emptyMilpa, sampleMilpa } = newGame();
+    const { cropsHand: newCropsHand, newCropsDeck } = dealCropsHand(cropsDeck);
+    const { goodsHand: newGoodsHand, newGoodsDeck } = dealGoodsHand(goodsDeck);
+    const milpas: Map<string, Milpa> = new Map();
+    milpas.set(users[0].userID!, emptyMilpa);
+    milpas.set(users[1].userID!, sampleMilpa);
+
+    const startGameStatus: GameStatus = {
+      playerTurn: users[0].userID!,
+      score,
+      cropsDeck: newCropsDeck,
+      goodsDeck: newGoodsDeck,
+      cropsHand: newCropsHand,
+      goodsHand: newGoodsHand,
+      milpas,
+    };
+    socket.emit("start game handshake", sessionID2, startGameStatus);
+    const newPlayers: User[] = [
+      { ...users[0], gameStatus: startGameStatus },
+      { ...users[1], gameStatus: startGameStatus },
+    ];
+    setPlayers(newPlayers);
+  } else {
+    const gameStatus = users[0].gameStatus;
+    const newPlayers: User[] = [
+      { ...users[0], gameStatus: gameStatus },
+      { ...users[1], gameStatus: gameStatus },
+    ];
+    setPlayers(newPlayers);
+    socket.emit("start game handshake", sessionID2, gameStatus);
+  }
+};
+
+export const handleStartGameHandshake = (
+  players: User[],
+  setPlayers: React.Dispatch<React.SetStateAction<User[]>>,
+  gameStatus: GameStatus,
+  socket: MiSocket
+) => {
+  const sessionID2 = sessionStorage.getItem("sessionID");
+
+  socket.emit("end of handshake", sessionID2, gameStatus);
+  const newPlayers: User[] = [
+    { ...players[0], gameStatus: gameStatus },
+    { ...players[1], gameStatus: gameStatus },
+  ];
+  setPlayers(newPlayers);
+};
+
+export const handleOkStartGame = (
   setIsPlaying: (value: React.SetStateAction<boolean>) => void
 ) => {
   setIsPlaying(true);
@@ -93,7 +158,6 @@ export const handleUserConnection = (
   setPlayers: React.Dispatch<React.SetStateAction<User[]>>
 ) => {
   initReactiveProperties(user);
-  console.log("players", players);
   const newPlayers = [...[players[0]]];
   newPlayers.push(user);
   setPlayers(newPlayers);
