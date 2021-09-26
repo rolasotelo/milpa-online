@@ -19,7 +19,7 @@ import {
   handleConnectionOrReconnection,
   handleFirstUserConnection,
   handleOkStartGame,
-  handleStartUpdateMilpa,
+  handleUpdateMilpa,
   handlePlayerDisconnection,
   handleRoomFilled,
   handleSessionSaved,
@@ -28,6 +28,7 @@ import {
   handleUserConnection,
   handleUsersInRoom,
   UserPlusSessionIDAndRoomCode,
+  handleStartUpdateMilpa,
 } from "./handlers/gameHandlers";
 
 type YourMilpa = {
@@ -242,15 +243,22 @@ const GameProvider = (props: Props) => {
     card: AnyCard,
     position: { column: number; row: number }
   ) => {
-    handleStartUpdateMilpa(socket, card, position, players);
+    handleUpdateMilpa(
+      socket,
+      card,
+      position,
+      players,
+      setPlayers,
+      setCardSelected
+    );
   };
 
   useEffect(() => {
     if (!isPlaying) {
       const id = setTimeout(() => {
-        // props.routerProps.history.push("/play", { nickname });
-        // sessionStorage.removeItem("sessionID");
-        // socket.disconnect();
+        props.routerProps.history.push("/play", { nickname });
+        sessionStorage.removeItem("sessionID");
+        socket.disconnect();
       }, WAITING_TIME * 1000);
       setIdTimeout(id);
     } else {
@@ -305,8 +313,14 @@ const GameProvider = (props: Props) => {
     };
     socket.on("start game handshake", listenerStartGameHandshake);
 
+    const listenerStartUpdateMilpa = (gameStatus: GameStatus) => {
+      handleStartUpdateMilpa(players, setPlayers, gameStatus, socket);
+    };
+    socket.on("start update milpa", listenerStartUpdateMilpa);
+
     return () => {
       socket.off("start game handshake", listenerStartGameHandshake);
+      socket.off("start update milpa", listenerStartUpdateMilpa);
     };
   }, [players]);
 

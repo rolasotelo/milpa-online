@@ -6,8 +6,10 @@ import {
 } from "../../../common/game/game";
 import {
   AnyCard,
+  Crop,
   GameRoutePropsType,
   GameStatus,
+  Good,
   Milpa,
   MiSocket,
   User,
@@ -188,11 +190,13 @@ export const handleSessionSaved = (
   setRoomCode(user.roomCode);
 };
 
-export const handleStartUpdateMilpa = (
+export const handleUpdateMilpa = (
   socket: MiSocket,
   card: AnyCard,
   position: { column: number; row: number },
-  players: User[]
+  players: User[],
+  setPlayers: React.Dispatch<React.SetStateAction<User[]>>,
+  setSelectedCard: React.Dispatch<React.SetStateAction<Crop | Good | undefined>>
 ) => {
   const oldGameStatus = players[0].gameStatus!;
   const newPlayerTurn = players[1].userID!;
@@ -203,15 +207,46 @@ export const handleStartUpdateMilpa = (
     players[0].userID!
   )!.goods;
   newCrops[position.row][position.column] = card;
-  const newMilpa: Milpa = { crops: newCrops, goods: oldGoods };
+  const newOwnMilpa: Milpa = { crops: newCrops, goods: oldGoods };
+  const newOtherMilpa: Milpa = new Map(
+    Object.entries(players[1]?.gameStatus?.milpas!)
+  ).get(players[1].userID!)!;
   const newMilpas: Map<string, Milpa> = new Map();
-  newMilpas.set(players[0].userID!, newMilpa);
-  newMilpas.set(players[1].userID!, newMilpa);
+  newMilpas.set(players[0].userID!, newOwnMilpa);
+  newMilpas.set(players[1].userID!, newOtherMilpa);
   const newGameStatus: GameStatus = {
     ...oldGameStatus,
     playerTurn: newPlayerTurn,
     milpas: Object.fromEntries(newMilpas),
   };
   console.log("emit", newGameStatus);
-  socket.emit("start update milpa", newGameStatus);
+  socket.emit(
+    "start update milpa",
+    sessionStorage.getItem("sessionID"),
+    newGameStatus
+  );
+  const newPlayers: User[] = [
+    { ...players[0], gameStatus: newGameStatus },
+    { ...players[1], gameStatus: newGameStatus },
+  ];
+
+  setPlayers(newPlayers);
+  setSelectedCard(undefined);
+};
+
+export const handleStartUpdateMilpa = (
+  players: User[],
+  setPlayers: React.Dispatch<React.SetStateAction<User[]>>,
+  gameStatus: GameStatus,
+  socket: MiSocket
+) => {
+  const sessionID = sessionStorage.getItem("sessionID");
+
+  socket.emit("end update milpa", sessionID, gameStatus);
+  const newPlayers: User[] = [
+    { ...players[0], gameStatus: gameStatus },
+    { ...players[1], gameStatus: gameStatus },
+  ];
+
+  setPlayers(newPlayers);
 };
