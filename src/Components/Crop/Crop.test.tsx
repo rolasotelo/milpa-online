@@ -5,7 +5,11 @@ import Crop from "./Crop";
 
 describe("<Crop />", () => {
   const defaultProps = {
-    text: "🌽",
+    card: undefined,
+    onClickCropSlot: () => {},
+    column: 1,
+    row: 1,
+    canInteract: true,
   };
   const wrapper = renderer.create(<Crop {...defaultProps} />);
 

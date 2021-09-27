@@ -1,12 +1,86 @@
 import React, { createContext, useEffect, useState } from "react";
+import { WAITING_TIME } from "../../common/constants";
+import { cropIds } from "../../common/game/crops/crops";
+import { goodIds } from "../../common/game/goods/goods";
 import newSocket from "../../common/socket/socket";
-import { GameRoutePropsType, User, Users } from "../../common/types";
+import {
+  AnyCard,
+  Crop,
+  GameRoutePropsType,
+  GameStatus,
+  Good,
+  Milpa,
+  User,
+} from "../../common/types";
+import {
+  handleConnectionError,
+  handleConnectionOrReconnection,
+  handleOkStartGame,
+  handlePlayerDisconnection,
+  handleRoomFilled,
+  handleSessionSaved,
+  handleStartGame,
+  handleStartGameHandshake,
+  handleStartUpdateMilpa,
+  handleUpdateCropInMilpa,
+  handleUpdateGoodInMilpa,
+  handleUsersInRoom,
+  UserPlusSessionIDAndRoomCode,
+} from "./handlers/gameHandlers";
+
+type YourMilpa = {
+  isYourMilpa: boolean;
+  milpa: Milpa | undefined;
+};
 
 type GameContextType = {
   nickname: string | undefined;
-  gameCode: string;
-  players: Users;
+  roomCode: string;
+  players: User[];
   isPlaying: boolean;
+  cropsHand: Crop[];
+  goodsHand: Good[];
+  isYourTurn: boolean;
+  cardSelected: Crop | Good | undefined;
+  onClickCard: (card: Crop | Good) => void;
+  yourMilpa: YourMilpa | undefined;
+  otherMilpa: YourMilpa | undefined;
+  canCardInMilpaSlot: (isYourMilpa: boolean) => {
+    interactWithEmptySlot: boolean;
+    interactWithOtherCardsInOwnFilledSlot: boolean;
+    interactWithOtherCardsInOthersFilledSlots: boolean;
+    interactWithFilledSlot: boolean;
+  };
+  canCardInteractWithFilledSlot: (
+    anyCard: AnyCard,
+    isYourMilpa: boolean,
+    interactWithOtherCardsInOwnFilledSlot: boolean,
+    interactWithOtherCardsInOthersFilledSlots: boolean,
+    interactWithFilledSlot: boolean,
+    ownCardsCardSelectedCanInteractWith: (cropIds | goodIds)[],
+    othersCardsCardSelectedCanInteractWith: (cropIds | goodIds)[]
+  ) => boolean;
+  canCardInEdgeSlot: (isYourMilpa: boolean) => {
+    interactWithEmptySlot: boolean;
+    interactWithOtherCardsInOwnFilledSlot: boolean;
+    interactWithOtherCardsInOthersFilledSlots: boolean;
+    interactWithFilledSlot: boolean;
+  };
+  onClickCropSlot: (
+    card: AnyCard,
+    position: {
+      column: number;
+      row: number;
+    }
+  ) => void;
+  onClickGoodSlot: (
+    card: AnyCard,
+    position: {
+      column: number;
+      row: number;
+    },
+    isYourMilpa: boolean
+  ) => void;
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -16,26 +90,181 @@ interface Props {
   routerProps: GameRoutePropsType;
 }
 
-const initReactiveProperties = (user: User) => {
-  user.connected = true;
-  user.messages = [];
-  user.hasNewMessages = false;
-  user.self = false;
-};
-
 const GameProvider = (props: Props) => {
-  let nickname: string = "";
+  let nicknameFromLocation: string = "";
   if (props.routerProps.location.state?.nickname) {
-    nickname = props.routerProps.location.state.nickname;
+    nicknameFromLocation = props.routerProps.location.state.nickname;
   }
-  const gameCode = props.routerProps.match.params.gamecode;
+  const roomCodeFromLocation = props.routerProps.match.params.gamecode;
 
-  const [players, setPlayers] = useState<Users>([]);
+  const [players, setPlayers] = useState<User[]>([
+    { self: true, connected: true, nickname: nicknameFromLocation },
+    { self: false, connected: true, nickname: "Waiting..." },
+  ]);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [socket, _] = useState(newSocket(gameCode, nickname));
+  const [nickname, setNickname] = useState(nicknameFromLocation);
+  const [roomCode, setRoomCode] = useState(roomCodeFromLocation);
+  const [socket, _] = useState(
+    newSocket(roomCodeFromLocation, nicknameFromLocation)
+  );
   const [idTimeout, setIdTimeout] = useState<undefined | NodeJS.Timeout>(
     undefined
   );
+
+  const [cardSelected, setCardSelected] = useState<Crop | Good | undefined>(
+    undefined
+  );
+
+  const isYourTurn = !!(
+    players && players[0]?.gameStatus?.playerTurn === players[0]?.userID
+  );
+
+  let yourMilpa = undefined;
+  let otherMilpa = undefined;
+  let cropsHand: Crop[] = [];
+  let goodsHand: Good[] = [];
+  if (
+    players &&
+    players[0]?.userID &&
+    players[1]?.userID &&
+    typeof players[0]?.gameStatus?.milpas !== "undefined"
+  ) {
+    const milpaMap = new Map(Object.entries(players[0]?.gameStatus?.milpas));
+    yourMilpa = {
+      isYourMilpa: true,
+      milpa: milpaMap.get(players[0]?.userID),
+    };
+    otherMilpa = {
+      isYourMilpa: false,
+      milpa: milpaMap.get(players[1]?.userID),
+    };
+  }
+  if (
+    players &&
+    typeof players[0].gameStatus?.cropsHand !== "undefined" &&
+    typeof players[0].gameStatus?.goodsHand !== "undefined"
+  ) {
+    cropsHand = players[0].gameStatus.cropsHand;
+    goodsHand = players[0].gameStatus.goodsHand;
+  }
+
+  const canCardInMilpaSlot = (isYourMilpa: boolean) => {
+    return {
+      interactWithEmptySlot:
+        isYourTurn &&
+        ((isYourMilpa && !!cardSelected?.canInteractWith.ownEmptyMilpaSlots) ||
+          (!isYourMilpa &&
+            !!cardSelected?.canInteractWith.othersEmptyMilpaSlots)),
+      interactWithOtherCardsInOwnFilledSlot:
+        typeof cardSelected?.canInteractWith.ownFilledMilpaSlots !==
+          "undefined" &&
+        typeof cardSelected?.canInteractWith.ownFilledMilpaSlots !== "boolean",
+      interactWithOtherCardsInOthersFilledSlots:
+        typeof cardSelected?.canInteractWith.othersFilledMilpaSlots !==
+          "undefined" &&
+        typeof cardSelected?.canInteractWith.othersFilledMilpaSlots !==
+          "boolean",
+      interactWithFilledSlot:
+        isYourTurn &&
+        ((isYourMilpa && !!cardSelected?.canInteractWith.ownFilledMilpaSlots) ||
+          (!isYourMilpa &&
+            !!cardSelected?.canInteractWith.othersFilledMilpaSlots)),
+    };
+  };
+
+  const canCardInEdgeSlot = (isYourMilpa: boolean) => {
+    return {
+      interactWithEmptySlot:
+        isYourTurn &&
+        ((isYourMilpa && !!cardSelected?.canInteractWith.ownEmptyEdgeSlots) ||
+          (!isYourMilpa &&
+            !!cardSelected?.canInteractWith.othersEmptyEdgeSlots)),
+      interactWithOtherCardsInOwnFilledSlot:
+        typeof cardSelected?.canInteractWith.ownFilledEdgeSlots !==
+          "undefined" &&
+        typeof cardSelected?.canInteractWith.ownFilledEdgeSlots !== "boolean",
+      interactWithOtherCardsInOthersFilledSlots:
+        typeof cardSelected?.canInteractWith.othersFilledEdgeSlots !==
+          "undefined" &&
+        typeof cardSelected?.canInteractWith.othersFilledEdgeSlots !==
+          "boolean",
+      interactWithFilledSlot:
+        isYourTurn &&
+        ((isYourMilpa && !!cardSelected?.canInteractWith.ownFilledEdgeSlots) ||
+          (!isYourMilpa &&
+            !!cardSelected?.canInteractWith.othersFilledEdgeSlots)),
+    };
+  };
+
+  const canCardInteractWithFilledSlot = (
+    anyCard: AnyCard,
+    isYourMilpa: boolean,
+    interactWithOtherCardsInOwnFilledSlot: boolean,
+    interactWithOtherCardsInOthersFilledSlots: boolean,
+    interactWithFilledSlot: boolean,
+    ownCardsCardSelectedCanInteractWith: (cropIds | goodIds)[],
+    othersCardsCardSelectedCanInteractWith: (cropIds | goodIds)[]
+  ) => {
+    if (interactWithOtherCardsInOwnFilledSlot) {
+      let canInteract = false;
+      if (isYourMilpa) {
+        ownCardsCardSelectedCanInteractWith.forEach((cropId) => {
+          if (cropId === anyCard.id) {
+            canInteract = true;
+          }
+        });
+      }
+
+      return canInteract && isYourTurn;
+    } else if (interactWithOtherCardsInOthersFilledSlots) {
+      let canInteract = false;
+      if (!isYourMilpa) {
+        othersCardsCardSelectedCanInteractWith.forEach((cropId) => {
+          if (cropId === anyCard.id) {
+            canInteract = true;
+          }
+        });
+      }
+
+      return canInteract && isYourTurn;
+    } else {
+      return interactWithFilledSlot;
+    }
+  };
+
+  const onClickCard = (card: Crop | Good) => {
+    setCardSelected(card);
+  };
+
+  const onClickCropSlot = (
+    card: AnyCard,
+    position: { column: number; row: number }
+  ) => {
+    handleUpdateCropInMilpa(
+      socket,
+      card,
+      position,
+      players,
+      setPlayers,
+      setCardSelected
+    );
+  };
+
+  const onClickGoodSlot = (
+    card: AnyCard,
+    position: { column: number; row: number },
+    isYourMilpa: boolean
+  ) => {
+    handleUpdateGoodInMilpa(
+      socket,
+      card,
+      position,
+      players,
+      setPlayers,
+      setCardSelected,
+      isYourMilpa
+    );
+  };
 
   useEffect(() => {
     if (!isPlaying) {
@@ -43,7 +272,7 @@ const GameProvider = (props: Props) => {
         props.routerProps.history.push("/play", { nickname });
         sessionStorage.removeItem("sessionID");
         socket.disconnect();
-      }, 30 * 1000);
+      }, WAITING_TIME * 1000);
       setIdTimeout(id);
     } else {
       if (idTimeout) {
@@ -53,92 +282,80 @@ const GameProvider = (props: Props) => {
     return () => {};
   }, [isPlaying]);
 
-  // * only supposed to run once, at the beginning
   useEffect(() => {
-    const sessionID = sessionStorage.getItem("sessionID");
-
-    if (sessionID) {
-      socket.auth = { sessionID, nickname };
-      socket.connect();
-    } else {
-      socket.connect();
-    }
+    handleConnectionOrReconnection(socket, sessionStorage, nickname);
 
     socket.on("connect_error", (err) => {
-      // TODO handle connection error
-      if (err.message === "invalid nickname") {
-        console.log("nickname invalido");
-      }
+      handleConnectionError(err);
+    });
+
+    socket.on("session saved", (user: UserPlusSessionIDAndRoomCode) => {
+      handleSessionSaved(user, socket, setNickname, setRoomCode);
+    });
+
+    socket.on("users in room", (users: User[]) => {
+      handleUsersInRoom(users, setPlayers, socket);
     });
 
     socket.on("room filled", () => {
-      // TODO do proper workflow when room filled
-      props.routerProps.history.push("/play", { nickname });
+      handleRoomFilled(props.routerProps, nickname);
     });
 
-    socket.on("start game", () => {
-      setIsPlaying(true);
+    socket.on("start game", (sessionID: string, users: User[]) => {
+      handleStartGame(setPlayers, users, socket);
     });
 
     socket.on("player disconnected", ({ userID, nickname }) => {
-      setIsPlaying(false);
+      handlePlayerDisconnection(setIsPlaying);
     });
 
-    // + existing users in room
-    socket.on("users", (users: Users) => {
-      users.forEach((user) => {
-        initReactiveProperties(user);
-
-        user.self = user.userID === socket.userID;
-      });
-      const newPlayers = users.sort((a, b) => {
-        if (a.self) return -1;
-        if (b.self) return 1;
-        if (a.nickname < b.nickname) return -1;
-        return a.nickname > b.nickname ? 1 : 0;
-      });
-      setPlayers(newPlayers);
-    });
-
-    socket.once("user connected", (user: User) => {
-      console.log("hola");
-      initReactiveProperties(user);
-      const newPlayers = [...players];
-      newPlayers.push(user);
-      setPlayers(newPlayers);
-    });
-
-    socket.on("session", ({ sessionID, userID, roomCode }) => {
-      // attach the session ID to the next reconnection attempts
-      socket.auth = { sessionID, nickname };
-      // store it in the localStorage
-      sessionStorage.setItem("sessionID", sessionID);
-      // save the ID of the user
-      socket.userID = userID;
+    socket.on("ok start game", () => {
+      handleOkStartGame(setIsPlaying);
     });
 
     return () => {
-      socket.off("connect_error");
+      socket.disconnect();
     };
   }, [props]);
 
-  // * every time players update a new "user connected" listener is needed
   useEffect(() => {
-    // TODO look at the mess that is players updating because setPlayers here
+    const listenerStartGameHandshake = (gameStatus: GameStatus) => {
+      handleStartGameHandshake(players, setPlayers, gameStatus, socket);
+    };
+    socket.on("start game handshake", listenerStartGameHandshake);
 
-    socket.on("user connected", (user: User) => {
-      initReactiveProperties(user);
-      console.log("players", players);
-      const newPlayers = [...[players[0]]];
-      newPlayers.push(user);
-      setPlayers(newPlayers);
-    });
+    const listenerStartUpdateMilpa = (gameStatus: GameStatus) => {
+      handleStartUpdateMilpa(players, setPlayers, gameStatus, socket);
+    };
+    socket.on("start update milpa", listenerStartUpdateMilpa);
 
-    return () => {};
+    return () => {
+      socket.off("start game handshake", listenerStartGameHandshake);
+      socket.off("start update milpa", listenerStartUpdateMilpa);
+    };
   }, [players]);
 
   return (
-    <GameContext.Provider value={{ nickname, gameCode, players, isPlaying }}>
+    <GameContext.Provider
+      value={{
+        nickname,
+        roomCode,
+        players,
+        isPlaying,
+        cropsHand,
+        goodsHand,
+        isYourTurn,
+        cardSelected,
+        onClickCard,
+        yourMilpa,
+        otherMilpa,
+        canCardInMilpaSlot,
+        canCardInEdgeSlot,
+        canCardInteractWithFilledSlot,
+        onClickCropSlot,
+        onClickGoodSlot,
+      }}
+    >
       {props.children}
     </GameContext.Provider>
   );

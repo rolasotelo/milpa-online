@@ -1,11 +1,12 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import { Corn } from "../../common/game/crops/Corn/Corn";
 
 import CropCard from "./CropCard";
 
 describe("<CropCard />", () => {
   const defaultProps = {
-    title: "Corn",
+    crop: Corn,
   };
   const wrapper = renderer.create(<CropCard {...defaultProps} />);
 

@@ -3,10 +3,10 @@ import { MiSocket } from "../types";
 
 const URL = "http://localhost:3000";
 
-const newSocket = (gameCode: string, nickname: string | undefined) => {
+const newSocket = (roomCode: string, nickname: string | undefined) => {
   const socket: MiSocket = io(URL, {
     autoConnect: false,
-    query: { gameCode },
+    query: { gameCode: roomCode },
     auth: { nickname },
   });
 
