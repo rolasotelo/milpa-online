@@ -9,21 +9,19 @@ import {
   pupmkinCards,
   quelitesCards,
   redCornCards,
-  sampleCrops,
   tomatilloCards,
   tomatoeCards,
 } from "./decks/cropsDeck";
 import { shuffleDeck } from "./decks/decks";
 import {
-  cricketCards,
   coatlicueCards,
+  cricketCards,
   emptyGoods,
   huitlacocheCards,
   magueyCards,
   manureCards,
   shovelCards,
   tlalocCards,
-  sampleGoods,
 } from "./decks/goodsDeck";
 
 export const newGame = (): {
@@ -56,7 +54,7 @@ export const newGame = (): {
   shuffleDeck(cropsDeck);
   shuffleDeck(goodsDeck);
   const emptyMilpa: Milpa = { crops: emptyCrops(), goods: emptyGoods() };
-  const sampleMilpa: Milpa = { crops: sampleCrops(), goods: sampleGoods() };
+  const sampleMilpa: Milpa = { crops: emptyCrops(), goods: emptyGoods() };
 
   return { cropsDeck, goodsDeck, emptyMilpa, sampleMilpa };
 };

@@ -66,7 +66,7 @@ export const handleStartGame = (
     const { goodsHand: newGoodsHand, newGoodsDeck } = dealGoodsHand(goodsDeck);
     const milpas: Map<string, Milpa> = new Map();
     milpas.set(users[0].userID!, emptyMilpa);
-    milpas.set(users[1].userID!, emptyMilpa);
+    milpas.set(users[1].userID!, sampleMilpa);
 
     const startGameStatus: GameStatus = {
       playerTurn: users[0].userID!,
@@ -102,11 +102,11 @@ export const handleStartGameHandshake = (
   socket: MiSocket
 ) => {
   const sessionID2 = sessionStorage.getItem("sessionID");
-
+  const playersCopy = players.slice();
   socket.emit("end of handshake", sessionID2, gameStatus);
   const newPlayers: User[] = [
-    { ...players[0], gameStatus: gameStatus },
-    { ...players[1], gameStatus: gameStatus },
+    { ...playersCopy[0], gameStatus: gameStatus },
+    { ...playersCopy[1], gameStatus: gameStatus },
   ];
 
   setPlayers(newPlayers);
@@ -161,7 +161,8 @@ export const handleUserConnection = (
   setPlayers: React.Dispatch<React.SetStateAction<User[]>>
 ) => {
   initReactiveProperties(user);
-  const newPlayers = [...[players[0]]];
+  const playersCopy = players.slice();
+  const newPlayers = [...[playersCopy[0]]];
   newPlayers.push(user);
   setPlayers(newPlayers);
 };
@@ -195,27 +196,25 @@ export const handleUpdateCropInMilpa = (
   setPlayers: React.Dispatch<React.SetStateAction<User[]>>,
   setSelectedCard: React.Dispatch<React.SetStateAction<Crop | Good | undefined>>
 ) => {
-  const oldGameStatus = players[0].gameStatus!;
-  const newPlayerTurn = players[1].userID!;
-  const newCrops = new Map(Object.entries(players[0]?.gameStatus?.milpas!)).get(
-    players[0].userID!
-  )!.crops;
-  const oldGoods = new Map(Object.entries(players[0]?.gameStatus?.milpas!)).get(
-    players[0].userID!
-  )!.goods;
-  const oldCropsDeck = players[0]?.gameStatus?.cropsDeck!;
-  const oldGoodsDeck = players[0]?.gameStatus?.goodsDeck!;
-  console.log("card", card);
-  console.log("newgoods", newCrops);
-  console.log("position", position);
+  const playersCopy = players.slice();
+  const oldGameStatus = playersCopy[0].gameStatus!;
+  const newPlayerTurn = playersCopy[1].userID!;
+  const newCrops = new Map(
+    Object.entries(playersCopy[0]?.gameStatus?.milpas!)
+  ).get(playersCopy[0].userID!)!.crops;
+  const oldGoods = new Map(
+    Object.entries(playersCopy[0]?.gameStatus?.milpas!)
+  ).get(playersCopy[0].userID!)!.goods;
+  const oldCropsDeck = playersCopy[0]?.gameStatus?.cropsDeck!;
+  const oldGoodsDeck = playersCopy[0]?.gameStatus?.goodsDeck!;
   newCrops[position.row][position.column] = card;
   const newOwnMilpa: Milpa = { crops: newCrops, goods: oldGoods };
   const newOtherMilpa: Milpa = new Map(
-    Object.entries(players[1]?.gameStatus?.milpas!)
-  ).get(players[1].userID!)!;
+    Object.entries(playersCopy[0]?.gameStatus?.milpas!)
+  ).get(playersCopy[1].userID!)!;
   const newMilpas: Map<string, Milpa> = new Map();
-  newMilpas.set(players[0].userID!, newOwnMilpa);
-  newMilpas.set(players[1].userID!, newOtherMilpa);
+  newMilpas.set(playersCopy[0].userID!, newOwnMilpa);
+  newMilpas.set(playersCopy[1].userID!, newOtherMilpa);
 
   const { cropsHand: newCropsHand, newCropsDeck } = dealCropsHand(oldCropsDeck);
   const { goodsHand: newGoodsHand, newGoodsDeck } = dealGoodsHand(oldGoodsDeck);
@@ -236,8 +235,8 @@ export const handleUpdateCropInMilpa = (
     newGameStatus
   );
   const newPlayers: User[] = [
-    { ...players[0], gameStatus: newGameStatus },
-    { ...players[1], gameStatus: newGameStatus },
+    { ...playersCopy[0], gameStatus: newGameStatus },
+    { ...playersCopy[1], gameStatus: newGameStatus },
   ];
 
   setPlayers(newPlayers);
@@ -251,11 +250,11 @@ export const handleStartUpdateMilpa = (
   socket: MiSocket
 ) => {
   const sessionID = sessionStorage.getItem("sessionID");
-
+  const playersCopy = players.slice();
   socket.emit("end update milpa", sessionID, gameStatus);
   const newPlayers: User[] = [
-    { ...players[0], gameStatus: gameStatus },
-    { ...players[1], gameStatus: gameStatus },
+    { ...playersCopy[0], gameStatus: gameStatus },
+    { ...playersCopy[1], gameStatus: gameStatus },
   ];
 
   setPlayers(newPlayers);
@@ -272,29 +271,29 @@ export const handleUpdateGoodInMilpa = (
   >,
   isYourMilpa: boolean
 ) => {
-  const oldGameStatus = players[0].gameStatus!;
-  const newPlayerTurn = players[1].userID!;
+  const playersCopy = players.slice();
+  const oldGameStatus = playersCopy[0].gameStatus!;
+  const newPlayerTurn = playersCopy[1].userID!;
   const playerIndex = isYourMilpa ? 0 : 1;
   const otherIndex = isYourMilpa ? 1 : 0;
-  const newGoods = new Map(Object.entries(players[0]?.gameStatus?.milpas!)).get(
-    players[playerIndex].userID!
-  )!.goods;
-  const oldCrops = new Map(Object.entries(players[0]?.gameStatus?.milpas!)).get(
-    players[playerIndex].userID!
-  )!.crops;
-  const oldCropsDeck = players[0]?.gameStatus?.cropsDeck!;
-  const oldGoodsDeck = players[0]?.gameStatus?.goodsDeck!;
-  console.log("card", card);
-  console.log("newgoods", newGoods);
-  console.log("position", position);
+  const newGoods = new Map(
+    Object.entries(playersCopy[0]?.gameStatus?.milpas!)
+  ).get(playersCopy[playerIndex].userID!)!.goods;
+  const oldCrops = new Map(
+    Object.entries(playersCopy[0]?.gameStatus?.milpas!)
+  ).get(playersCopy[playerIndex].userID!)!.crops;
+  const oldCropsDeck = playersCopy[0]?.gameStatus?.cropsDeck!;
+  const oldGoodsDeck = playersCopy[0]?.gameStatus?.goodsDeck!;
+
   newGoods[position.row][position.column] = card;
   const changedMilpa: Milpa = { goods: newGoods, crops: oldCrops };
   const unchangedMilpa: Milpa = new Map(
-    Object.entries(players[otherIndex]?.gameStatus?.milpas!)
-  ).get(players[otherIndex].userID!)!;
+    Object.entries(playersCopy[0]?.gameStatus?.milpas!)
+  ).get(playersCopy[otherIndex].userID!)!;
+
   const newMilpas: Map<string, Milpa> = new Map();
-  newMilpas.set(players[playerIndex].userID!, changedMilpa);
-  newMilpas.set(players[otherIndex].userID!, unchangedMilpa);
+  newMilpas.set(playersCopy[playerIndex].userID!, changedMilpa);
+  newMilpas.set(playersCopy[otherIndex].userID!, unchangedMilpa);
 
   const { cropsHand: newCropsHand, newCropsDeck } = dealCropsHand(oldCropsDeck);
   const { goodsHand: newGoodsHand, newGoodsDeck } = dealGoodsHand(oldGoodsDeck);
@@ -314,9 +313,10 @@ export const handleUpdateGoodInMilpa = (
     sessionStorage.getItem("sessionID"),
     newGameStatus
   );
+
   const newPlayers: User[] = [
-    { ...players[0], gameStatus: newGameStatus },
-    { ...players[1], gameStatus: newGameStatus },
+    { ...playersCopy[0], gameStatus: newGameStatus },
+    { ...playersCopy[1], gameStatus: newGameStatus },
   ];
 
   setPlayers(newPlayers);

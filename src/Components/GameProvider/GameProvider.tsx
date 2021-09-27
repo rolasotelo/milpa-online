@@ -1,13 +1,11 @@
 import React, { createContext, useEffect, useState } from "react";
 import { WAITING_TIME } from "../../common/constants";
 import { cropIds } from "../../common/game/crops/crops";
-import { dealCropsHand, dealGoodsHand, newGame } from "../../common/game/game";
 import { goodIds } from "../../common/game/goods/goods";
 import newSocket from "../../common/socket/socket";
 import {
   AnyCard,
   Crop,
-  CropAndGoodSlots,
   GameRoutePropsType,
   GameStatus,
   Good,
@@ -17,19 +15,17 @@ import {
 import {
   handleConnectionError,
   handleConnectionOrReconnection,
-  handleFirstUserConnection,
   handleOkStartGame,
-  handleUpdateCropInMilpa,
   handlePlayerDisconnection,
   handleRoomFilled,
   handleSessionSaved,
   handleStartGame,
   handleStartGameHandshake,
-  handleUserConnection,
+  handleStartUpdateMilpa,
+  handleUpdateCropInMilpa,
+  handleUpdateGoodInMilpa,
   handleUsersInRoom,
   UserPlusSessionIDAndRoomCode,
-  handleStartUpdateMilpa,
-  handleUpdateGoodInMilpa,
 } from "./handlers/gameHandlers";
 
 type YourMilpa = {
@@ -115,14 +111,6 @@ const GameProvider = (props: Props) => {
     undefined
   );
 
-  // + Game
-  const [milpas, setMilpas] = useState<Milpa[] | Array<undefined>>([
-    undefined,
-    undefined,
-  ]);
-  const [cropsDeck, setCropsDeck] = useState<Crop[]>([]);
-  const [goodsDeck, setGoodsDeck] = useState<Good[]>([]);
-  const [currentTurn, setCurrentTurn] = useState(0);
   const [cardSelected, setCardSelected] = useState<Crop | Good | undefined>(
     undefined
   );
@@ -294,7 +282,6 @@ const GameProvider = (props: Props) => {
     return () => {};
   }, [isPlaying]);
 
-  // * only supposed to run once, at the beginning
   useEffect(() => {
     handleConnectionOrReconnection(socket, sessionStorage, nickname);
 
@@ -331,7 +318,6 @@ const GameProvider = (props: Props) => {
     };
   }, [props]);
 
-  // * every time players update a new "user connected" listener is needed
   useEffect(() => {
     const listenerStartGameHandshake = (gameStatus: GameStatus) => {
       handleStartGameHandshake(players, setPlayers, gameStatus, socket);
