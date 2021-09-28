@@ -23,3 +23,11 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 - I wanted to step the difficulty of the game a bit up, so I came with the idea of adding another set of cards with a variety of effects that will allow more interaction between both players. I was thinking in being able to mess with your adversary Milpa and adding a bit of randomness to the game. This new deck of cards will be called 'the market' and the goods being sold there could be things like idols, tools to destroy plants, or other plants like Magueys that could be planted to around your Milpa. (rola@hey.com)
 - With this commit I pretty much finished the logic for the interaction between cards and filled or empty slots. I'm actually very happy of how everything turned out at the end. This idea regarding attribute canInteractWith ocurred to me about learning about Attribute Based Access Control Authorization. Next step is to complete the workflow with turn passing between players and finishing the match. (rola@hey)
 - Well you can place cards infinetly in any players milpa, I guess that's something jeje. Now in all seriousness I'm quite proud of the system that manages wheter you can play a card or not in a slot. It makes really easy to add new cards. The next step is to have a fully fleshed match with rules and scoring at the end of it. (rola@hey.com)
+
+## Issue [#19](https://github.com/rolasotelo/la-milpa-online/issues/19)
+
+### First match with basic rules and scoring (client side)
+
+    handle events and workflow to be able to complete a match with final scoring and the option to play again.
+
+- I haven't yet think about how the scoring system will work, but I'm planing to have three different moments in which a crop can give points, first will be inmediatly after you play it, it will grant you some points (the easiest to handle), then at the end of each round every crop in your milpa can give you points depending on certain conditions (I will try to design these rules such as they don't depend on others crops in milpa, but things like which turn it is or after certain probability), and finally at the end of the game there will be a final score that will take all sort of things in account, especially the sorrounding crops and all the crops in a single space (the must difficult one). (rola@hey.com)
