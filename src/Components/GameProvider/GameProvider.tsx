@@ -81,6 +81,7 @@ type GameContextType = {
     },
     isYourMilpa: boolean
   ) => void;
+  currenTurn: number | undefined;
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -118,6 +119,8 @@ const GameProvider = (props: Props) => {
   const isYourTurn = !!(
     players && players[0]?.gameStatus?.playerTurn === players[0]?.userID
   );
+
+  const currenTurn = players[0]?.gameStatus?.currentTurn;
 
   let yourMilpa = undefined;
   let otherMilpa = undefined;
@@ -354,6 +357,7 @@ const GameProvider = (props: Props) => {
         canCardInteractWithFilledSlot,
         onClickCropSlot,
         onClickGoodSlot,
+        currenTurn,
       }}
     >
       {props.children}

@@ -1,8 +1,8 @@
 export const TOTAL_TURNS = 16;
+export const TOTAL_STAGES = 6;
 export const CROPS_SIZE = 16;
 export const GOODS_SIZE = 16;
 export const ROW_SIZE = 4;
-export const CARDS_BY_TURN = 2;
 export const GOODS_HAND_SIZE = 3;
 export const CROPS_HAND_SIZE = 4;
 export const MAX_PLAYERS = 2;

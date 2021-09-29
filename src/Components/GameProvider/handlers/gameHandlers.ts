@@ -1,3 +1,4 @@
+import { TOTAL_STAGES } from "../../../common/constants";
 import {
   dealCropsHand,
   dealGoodsHand,
@@ -70,6 +71,8 @@ export const handleStartGame = (
 
     const startGameStatus: GameStatus = {
       playerTurn: users[0].userID!,
+      currentTurn: 1,
+      currentStage: 1,
       score: Object.fromEntries(score),
       cropsDeck: newCropsDeck,
       goodsDeck: newGoodsDeck,
@@ -154,7 +157,6 @@ export const handleFirstUserConnection = (user: User) => {
   initReactiveProperties(user);
 };
 
-// TODO look at the mess that is players updating because setPlayers here
 export const handleUserConnection = (
   user: User,
   players: User[],
@@ -188,6 +190,22 @@ export const handleSessionSaved = (
   setRoomCode(user.roomCode);
 };
 
+const computeNextStage = (currentStage: number) => {
+  if (currentStage === TOTAL_STAGES) {
+    return 1;
+  } else {
+    return currentStage + 1;
+  }
+};
+
+const computeNextTurn = (currenturn: number, nextStage: number) => {
+  if (nextStage === 1) {
+    return currenturn++;
+  } else {
+    return currenturn;
+  }
+};
+
 export const handleUpdateCropInMilpa = (
   socket: MiSocket,
   card: AnyCard,
@@ -216,18 +234,38 @@ export const handleUpdateCropInMilpa = (
   newMilpas.set(playersCopy[0].userID!, newOwnMilpa);
   newMilpas.set(playersCopy[1].userID!, newOtherMilpa);
 
-  const { cropsHand: newCropsHand, newCropsDeck } = dealCropsHand(oldCropsDeck);
-  const { goodsHand: newGoodsHand, newGoodsDeck } = dealGoodsHand(oldGoodsDeck);
+  const newStage = computeNextStage(oldGameStatus.currentStage);
+  const newTurn = computeNextTurn(oldGameStatus.currentTurn, newStage);
 
-  const newGameStatus: GameStatus = {
-    ...oldGameStatus,
-    playerTurn: newPlayerTurn,
-    milpas: Object.fromEntries(newMilpas),
-    cropsHand: newCropsHand,
-    cropsDeck: newCropsDeck,
-    goodsDeck: newGoodsDeck,
-    goodsHand: newGoodsHand,
-  };
+  let newGameStatus: GameStatus;
+  if (newStage === 1) {
+    console.log(newStage);
+    const { cropsHand: newCropsHand, newCropsDeck } =
+      dealCropsHand(oldCropsDeck);
+    const { goodsHand: newGoodsHand, newGoodsDeck } =
+      dealGoodsHand(oldGoodsDeck);
+
+    newGameStatus = {
+      ...oldGameStatus,
+      playerTurn: newPlayerTurn,
+      currentStage: newStage,
+      currentTurn: newTurn,
+      milpas: Object.fromEntries(newMilpas),
+      cropsHand: newCropsHand,
+      cropsDeck: newCropsDeck,
+      goodsDeck: newGoodsDeck,
+      goodsHand: newGoodsHand,
+    };
+  } else {
+    console.log(newStage);
+    newGameStatus = {
+      ...oldGameStatus,
+      playerTurn: newPlayerTurn,
+      currentStage: newStage,
+      currentTurn: newTurn,
+      milpas: Object.fromEntries(newMilpas),
+    };
+  }
 
   socket.emit(
     "start update milpa",
@@ -295,18 +333,37 @@ export const handleUpdateGoodInMilpa = (
   newMilpas.set(playersCopy[playerIndex].userID!, changedMilpa);
   newMilpas.set(playersCopy[otherIndex].userID!, unchangedMilpa);
 
-  const { cropsHand: newCropsHand, newCropsDeck } = dealCropsHand(oldCropsDeck);
-  const { goodsHand: newGoodsHand, newGoodsDeck } = dealGoodsHand(oldGoodsDeck);
+  const newStage = computeNextStage(oldGameStatus.currentStage);
+  const newTurn = computeNextTurn(oldGameStatus.currentTurn, newStage);
 
-  const newGameStatus: GameStatus = {
-    ...oldGameStatus,
-    playerTurn: newPlayerTurn,
-    milpas: Object.fromEntries(newMilpas),
-    cropsHand: newCropsHand,
-    cropsDeck: newCropsDeck,
-    goodsDeck: newGoodsDeck,
-    goodsHand: newGoodsHand,
-  };
+  let newGameStatus: GameStatus;
+  if (newStage === 1) {
+    const { cropsHand: newCropsHand, newCropsDeck } =
+      dealCropsHand(oldCropsDeck);
+    const { goodsHand: newGoodsHand, newGoodsDeck } =
+      dealGoodsHand(oldGoodsDeck);
+    console.log(newStage);
+    newGameStatus = {
+      ...oldGameStatus,
+      playerTurn: newPlayerTurn,
+      currentStage: newStage,
+      currentTurn: newTurn,
+      milpas: Object.fromEntries(newMilpas),
+      cropsHand: newCropsHand,
+      cropsDeck: newCropsDeck,
+      goodsDeck: newGoodsDeck,
+      goodsHand: newGoodsHand,
+    };
+  } else {
+    console.log(newStage);
+    newGameStatus = {
+      ...oldGameStatus,
+      playerTurn: newPlayerTurn,
+      currentStage: newStage,
+      currentTurn: newTurn,
+      milpas: Object.fromEntries(newMilpas),
+    };
+  }
 
   socket.emit(
     "start update milpa",

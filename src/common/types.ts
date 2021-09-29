@@ -30,6 +30,8 @@ export interface MiSocket extends Socket<DefaultEventsMap, DefaultEventsMap> {
 
 export interface GameStatus {
   playerTurn: string;
+  currentTurn: number;
+  currentStage: number;
   score: {
     [k: string]: number;
   };
