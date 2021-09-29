@@ -200,7 +200,7 @@ const computeNextStage = (currentStage: number) => {
 
 const computeNextTurn = (currenturn: number, nextStage: number) => {
   if (nextStage === 1) {
-    return currenturn++;
+    return currenturn + 1;
   } else {
     return currenturn;
   }

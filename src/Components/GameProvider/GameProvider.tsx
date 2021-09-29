@@ -121,6 +121,7 @@ const GameProvider = (props: Props) => {
   );
 
   const currenTurn = players[0]?.gameStatus?.currentTurn;
+  console.log("currentTurn", currenTurn);
 
   let yourMilpa = undefined;
   let otherMilpa = undefined;
