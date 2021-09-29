@@ -27,6 +27,13 @@ import {
   handleUsersInRoom,
   UserPlusSessionIDAndRoomCode,
 } from "./handlers/gameHandlers";
+import {
+  computeCurrentTurn,
+  computeHands,
+  computeInteractions,
+  computeIsYourTurn,
+  computeMilpasForDisplay,
+} from "./utils/helpers";
 
 type YourMilpa = {
   isYourMilpa: boolean;
@@ -111,130 +118,19 @@ const GameProvider = (props: Props) => {
   const [idTimeout, setIdTimeout] = useState<undefined | NodeJS.Timeout>(
     undefined
   );
-
   const [cardSelected, setCardSelected] = useState<Crop | Good | undefined>(
     undefined
   );
 
-  const isYourTurn = !!(
-    players && players[0]?.gameStatus?.playerTurn === players[0]?.userID
-  );
-
-  const currenTurn = players[0]?.gameStatus?.currentTurn;
-  console.log("currentTurn", currenTurn);
-
-  let yourMilpa = undefined;
-  let otherMilpa = undefined;
-  let cropsHand: Crop[] = [];
-  let goodsHand: Good[] = [];
-  if (
-    players &&
-    players[0]?.userID &&
-    players[1]?.userID &&
-    typeof players[0]?.gameStatus?.milpas !== "undefined"
-  ) {
-    const milpaMap = new Map(Object.entries(players[0]?.gameStatus?.milpas));
-    yourMilpa = {
-      isYourMilpa: true,
-      milpa: milpaMap.get(players[0]?.userID),
-    };
-    otherMilpa = {
-      isYourMilpa: false,
-      milpa: milpaMap.get(players[1]?.userID),
-    };
-  }
-  if (
-    players &&
-    typeof players[0].gameStatus?.cropsHand !== "undefined" &&
-    typeof players[0].gameStatus?.goodsHand !== "undefined"
-  ) {
-    cropsHand = players[0].gameStatus.cropsHand;
-    goodsHand = players[0].gameStatus.goodsHand;
-  }
-
-  const canCardInMilpaSlot = (isYourMilpa: boolean) => {
-    return {
-      interactWithEmptySlot:
-        isYourTurn &&
-        ((isYourMilpa && !!cardSelected?.canInteractWith.ownEmptyMilpaSlots) ||
-          (!isYourMilpa &&
-            !!cardSelected?.canInteractWith.othersEmptyMilpaSlots)),
-      interactWithOtherCardsInOwnFilledSlot:
-        typeof cardSelected?.canInteractWith.ownFilledMilpaSlots !==
-          "undefined" &&
-        typeof cardSelected?.canInteractWith.ownFilledMilpaSlots !== "boolean",
-      interactWithOtherCardsInOthersFilledSlots:
-        typeof cardSelected?.canInteractWith.othersFilledMilpaSlots !==
-          "undefined" &&
-        typeof cardSelected?.canInteractWith.othersFilledMilpaSlots !==
-          "boolean",
-      interactWithFilledSlot:
-        isYourTurn &&
-        ((isYourMilpa && !!cardSelected?.canInteractWith.ownFilledMilpaSlots) ||
-          (!isYourMilpa &&
-            !!cardSelected?.canInteractWith.othersFilledMilpaSlots)),
-    };
-  };
-
-  const canCardInEdgeSlot = (isYourMilpa: boolean) => {
-    return {
-      interactWithEmptySlot:
-        isYourTurn &&
-        ((isYourMilpa && !!cardSelected?.canInteractWith.ownEmptyEdgeSlots) ||
-          (!isYourMilpa &&
-            !!cardSelected?.canInteractWith.othersEmptyEdgeSlots)),
-      interactWithOtherCardsInOwnFilledSlot:
-        typeof cardSelected?.canInteractWith.ownFilledEdgeSlots !==
-          "undefined" &&
-        typeof cardSelected?.canInteractWith.ownFilledEdgeSlots !== "boolean",
-      interactWithOtherCardsInOthersFilledSlots:
-        typeof cardSelected?.canInteractWith.othersFilledEdgeSlots !==
-          "undefined" &&
-        typeof cardSelected?.canInteractWith.othersFilledEdgeSlots !==
-          "boolean",
-      interactWithFilledSlot:
-        isYourTurn &&
-        ((isYourMilpa && !!cardSelected?.canInteractWith.ownFilledEdgeSlots) ||
-          (!isYourMilpa &&
-            !!cardSelected?.canInteractWith.othersFilledEdgeSlots)),
-    };
-  };
-
-  const canCardInteractWithFilledSlot = (
-    anyCard: AnyCard,
-    isYourMilpa: boolean,
-    interactWithOtherCardsInOwnFilledSlot: boolean,
-    interactWithOtherCardsInOthersFilledSlots: boolean,
-    interactWithFilledSlot: boolean,
-    ownCardsCardSelectedCanInteractWith: (cropIds | goodIds)[],
-    othersCardsCardSelectedCanInteractWith: (cropIds | goodIds)[]
-  ) => {
-    if (interactWithOtherCardsInOwnFilledSlot) {
-      let canInteract = false;
-      if (isYourMilpa) {
-        ownCardsCardSelectedCanInteractWith.forEach((cropId) => {
-          if (cropId === anyCard.id) {
-            canInteract = true;
-          }
-        });
-      }
-
-      return canInteract && isYourTurn;
-    } else if (interactWithOtherCardsInOthersFilledSlots) {
-      let canInteract = false;
-      if (!isYourMilpa) {
-        othersCardsCardSelectedCanInteractWith.forEach((cropId) => {
-          if (cropId === anyCard.id) {
-            canInteract = true;
-          }
-        });
-      }
-
-      return canInteract && isYourTurn;
-    } else {
-      return interactWithFilledSlot;
-    }
-  };
+  const isYourTurn = computeIsYourTurn(players);
+  const currentTurn = computeCurrentTurn(players);
+  const { yourMilpa, otherMilpa } = computeMilpasForDisplay(players);
+  const { cropsHand, goodsHand } = computeHands(players);
+  const {
+    canCardInMilpaSlot,
+    canCardInEdgeSlot,
+    canCardInteractWithFilledSlot,
+  } = computeInteractions(isYourTurn, cardSelected);
 
   const onClickCard = (card: Crop | Good) => {
     setCardSelected(card);
@@ -358,7 +254,7 @@ const GameProvider = (props: Props) => {
         canCardInteractWithFilledSlot,
         onClickCropSlot,
         onClickGoodSlot,
-        currenTurn,
+        currenTurn: currentTurn,
       }}
     >
       {props.children}
