@@ -241,7 +241,6 @@ export const handleUpdateCropInMilpa = (
 
   let newGameStatus: GameStatus;
   if (newStage === 1) {
-    console.log(newStage);
     const { cropsHand: newCropsHand, newCropsDeck } =
       dealCropsHand(oldCropsDeck);
     const { goodsHand: newGoodsHand, newGoodsDeck } =
@@ -249,7 +248,6 @@ export const handleUpdateCropInMilpa = (
 
     newGameStatus = {
       ...oldGameStatus,
-      playerTurn: newPlayerTurn,
       currentStage: newStage,
       currentTurn: newTurn,
       milpas: Object.fromEntries(newMilpas),
@@ -259,7 +257,6 @@ export const handleUpdateCropInMilpa = (
       goodsHand: newGoodsHand,
     };
   } else {
-    console.log(newStage);
     newGameStatus = {
       ...oldGameStatus,
       playerTurn: newPlayerTurn,
@@ -344,10 +341,8 @@ export const handleUpdateGoodInMilpa = (
       dealCropsHand(oldCropsDeck);
     const { goodsHand: newGoodsHand, newGoodsDeck } =
       dealGoodsHand(oldGoodsDeck);
-    console.log(newStage);
     newGameStatus = {
       ...oldGameStatus,
-      playerTurn: newPlayerTurn,
       currentStage: newStage,
       currentTurn: newTurn,
       milpas: Object.fromEntries(newMilpas),
@@ -357,7 +352,6 @@ export const handleUpdateGoodInMilpa = (
       goodsHand: newGoodsHand,
     };
   } else {
-    console.log(newStage);
     newGameStatus = {
       ...oldGameStatus,
       playerTurn: newPlayerTurn,
