@@ -10,6 +10,7 @@ import StatusBoard from "../StatusBoard/StatusBoard";
 import { cropIds } from "../../common/game/crops/crops";
 import { goodIds } from "../../common/game/goods/goods";
 import { ROW_SIZE } from "../../common/constants";
+import { computeCanCardInteractWithMilpaSlot } from "../GameProvider/utils/helpers";
 
 interface Props {
   milpa: (AnyCard | undefined)[];
@@ -19,31 +20,10 @@ interface Props {
 
 const Milpa = (props: Props) => {
   const context = useGameContext();
-  const {
-    interactWithEmptySlot,
-    interactWithFilledSlot,
-    interactWithOtherCardsInOthersFilledSlots,
-    interactWithOtherCardsInOwnFilledSlot,
-  } = context.canCardInMilpaSlot(props.isYourMilpa);
-  const canCardInteractWith = (anyCard: AnyCard | undefined) => {
-    return anyCard
-      ? context.canCardInteractWithFilledSlot(
-          anyCard,
-          props.isYourMilpa,
-          interactWithOtherCardsInOwnFilledSlot,
-          interactWithOtherCardsInOthersFilledSlots,
-          interactWithFilledSlot,
-          context.cardSelected.card?.canInteractWith.ownFilledMilpaSlots as (
-            | cropIds
-            | goodIds
-          )[],
-          context.cardSelected.card?.canInteractWith.othersFilledMilpaSlots as (
-            | cropIds
-            | goodIds
-          )[]
-        )
-      : interactWithEmptySlot;
-  };
+  const canCardInteractWithMilpaSlot = computeCanCardInteractWithMilpaSlot(
+    context,
+    props.isYourMilpa
+  );
 
   return (
     <div className="flex flex-col bg-mexicanGreen-light w-3/8 rounded-2xl">
@@ -71,7 +51,7 @@ const Milpa = (props: Props) => {
                 <Crop
                   key={index}
                   card={anyCard}
-                  canInteract={canCardInteractWith(anyCard)}
+                  canInteract={canCardInteractWithMilpaSlot(anyCard)}
                   column={index % ROW_SIZE}
                   row={Math.floor(index / ROW_SIZE)}
                 />

@@ -40,7 +40,7 @@ type YourMilpa = {
   milpa: Milpa | undefined;
 };
 
-type GameContextType = {
+export type GameContextType = {
   nickname: string | undefined;
   roomCode: string;
   players: User[];
