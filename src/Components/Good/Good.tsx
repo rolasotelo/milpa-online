@@ -21,7 +21,7 @@ const Good = (props: Props) => {
       onClick={() => {
         if (context.cardSelected) {
           context.onClickGoodSlot(
-            context.cardSelected,
+            context.cardSelected.card!,
             {
               column: props.column,
               row: props.row,

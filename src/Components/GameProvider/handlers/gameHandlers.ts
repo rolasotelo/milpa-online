@@ -212,7 +212,9 @@ export const handleUpdateCropInMilpa = (
   position: { column: number; row: number },
   players: User[],
   setPlayers: React.Dispatch<React.SetStateAction<User[]>>,
-  setSelectedCard: React.Dispatch<React.SetStateAction<Crop | Good | undefined>>
+  setSelectedCard: React.Dispatch<
+    React.SetStateAction<{ card: Crop | Good | undefined; index: number }>
+  >
 ) => {
   const playersCopy = players.slice();
   const oldGameStatus = playersCopy[0].gameStatus!;
@@ -278,7 +280,7 @@ export const handleUpdateCropInMilpa = (
   ];
 
   setPlayers(newPlayers);
-  setSelectedCard(undefined);
+  setSelectedCard({ card: undefined, index: 0 });
 };
 
 export const handleStartUpdateMilpa = (
@@ -305,7 +307,7 @@ export const handleUpdateGoodInMilpa = (
   players: User[],
   setPlayers: React.Dispatch<React.SetStateAction<User[]>>,
   setSelectedCard: React.Dispatch<
-    React.SetStateAction<Crop | Good | undefined>
+    React.SetStateAction<{ card: Crop | Good | undefined; index: number }>
   >,
   isYourMilpa: boolean
 ) => {
@@ -377,5 +379,5 @@ export const handleUpdateGoodInMilpa = (
   ];
 
   setPlayers(newPlayers);
-  setSelectedCard(undefined);
+  setSelectedCard({ card: undefined, index: 0 });
 };

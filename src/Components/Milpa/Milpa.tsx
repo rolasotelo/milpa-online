@@ -33,11 +33,11 @@ const Milpa = (props: Props) => {
           interactWithOtherCardsInOwnFilledSlot,
           interactWithOtherCardsInOthersFilledSlots,
           interactWithFilledSlot,
-          context.cardSelected?.canInteractWith.ownFilledMilpaSlots as (
+          context.cardSelected.card?.canInteractWith.ownFilledMilpaSlots as (
             | cropIds
             | goodIds
           )[],
-          context.cardSelected?.canInteractWith.othersFilledMilpaSlots as (
+          context.cardSelected.card?.canInteractWith.othersFilledMilpaSlots as (
             | cropIds
             | goodIds
           )[]

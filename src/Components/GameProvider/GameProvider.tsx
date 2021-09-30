@@ -48,8 +48,11 @@ type GameContextType = {
   cropsHand: Crop[];
   goodsHand: Good[];
   isYourTurn: boolean;
-  cardSelected: Crop | Good | undefined;
-  onClickCard: (card: Crop | Good) => void;
+  cardSelected: {
+    card: Crop | Good | undefined;
+    index: number;
+  };
+  onClickCard: (card: Crop | Good, index: number) => void;
   yourMilpa: YourMilpa | undefined;
   otherMilpa: YourMilpa | undefined;
   canCardInMilpaSlot: (isYourMilpa: boolean) => {
@@ -118,9 +121,10 @@ const GameProvider = (props: Props) => {
   const [idTimeout, setIdTimeout] = useState<undefined | NodeJS.Timeout>(
     undefined
   );
-  const [cardSelected, setCardSelected] = useState<Crop | Good | undefined>(
-    undefined
-  );
+  const [cardSelected, setCardSelected] = useState<{
+    card: Crop | Good | undefined;
+    index: number;
+  }>({ card: undefined, index: 0 });
 
   const isYourTurn = computeIsYourTurn(players);
   const currentTurn = computeCurrentTurn(players);
@@ -132,8 +136,8 @@ const GameProvider = (props: Props) => {
     canCardInteractWithFilledSlot,
   } = computeInteractions(isYourTurn, cardSelected);
 
-  const onClickCard = (card: Crop | Good) => {
-    setCardSelected(card);
+  const onClickCard = (card: Crop | Good, index: number) => {
+    setCardSelected({ card, index });
   };
 
   const onClickCropSlot = (

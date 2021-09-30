@@ -14,7 +14,7 @@ const Cards = (props: Props) => {
       </div>
       <div className="flex flex-col bg-mexicanBlue  p-2  justify-evenly">
         {context.cropsHand.map((crop, index) => {
-          return <CropCard key={index} crop={crop} />;
+          return <CropCard key={index} crop={crop} index={index} />;
         })}
       </div>
       <div className="w-36 bg-mexicanGreen-light text-center text-mexicanGreen-dark mx-auto p-1 rounded-full">
@@ -25,7 +25,7 @@ const Cards = (props: Props) => {
        h-full py-6 justify-evenly rounded-3xl"
       >
         {context.goodsHand.map((good, index) => {
-          return <GoodCard key={index} good={good} />;
+          return <GoodCard key={index} good={good} index={index} />;
         })}
       </div>
     </div>

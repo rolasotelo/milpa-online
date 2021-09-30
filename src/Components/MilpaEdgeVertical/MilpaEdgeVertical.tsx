@@ -28,11 +28,11 @@ const MilpaEdgeVertical = (props: Props) => {
           interactWithOtherCardsInOwnFilledSlot,
           interactWithOtherCardsInOthersFilledSlots,
           interactWithFilledSlot,
-          context.cardSelected?.canInteractWith.ownFilledEdgeSlots as (
+          context.cardSelected.card?.canInteractWith.ownFilledEdgeSlots as (
             | cropIds
             | goodIds
           )[],
-          context.cardSelected?.canInteractWith.othersFilledEdgeSlots as (
+          context.cardSelected.card?.canInteractWith.othersFilledEdgeSlots as (
             | cropIds
             | goodIds
           )[]

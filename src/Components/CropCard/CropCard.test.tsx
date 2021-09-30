@@ -7,6 +7,7 @@ import CropCard from "./CropCard";
 describe("<CropCard />", () => {
   const defaultProps = {
     crop: Corn,
+    index: 1,
   };
   const wrapper = renderer.create(<CropCard {...defaultProps} />);
 

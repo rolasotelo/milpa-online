@@ -51,29 +51,32 @@ export const computeHands = (players: User[]) => {
 
 export const computeInteractions = (
   isYourTurn: boolean,
-  cardSelected: Good | Crop | undefined
+  cardSelected: { card: Crop | Good | undefined; index: number }
 ) => {
   const canCardInMilpaSlot = (isYourMilpa: boolean) => {
     return {
       interactWithEmptySlot:
         isYourTurn &&
-        ((isYourMilpa && !!cardSelected?.canInteractWith.ownEmptyMilpaSlots) ||
+        ((isYourMilpa &&
+          !!cardSelected.card?.canInteractWith.ownEmptyMilpaSlots) ||
           (!isYourMilpa &&
-            !!cardSelected?.canInteractWith.othersEmptyMilpaSlots)),
+            !!cardSelected.card?.canInteractWith.othersEmptyMilpaSlots)),
       interactWithOtherCardsInOwnFilledSlot:
-        typeof cardSelected?.canInteractWith.ownFilledMilpaSlots !==
+        typeof cardSelected.card?.canInteractWith.ownFilledMilpaSlots !==
           "undefined" &&
-        typeof cardSelected?.canInteractWith.ownFilledMilpaSlots !== "boolean",
+        typeof cardSelected.card?.canInteractWith.ownFilledMilpaSlots !==
+          "boolean",
       interactWithOtherCardsInOthersFilledSlots:
-        typeof cardSelected?.canInteractWith.othersFilledMilpaSlots !==
+        typeof cardSelected.card?.canInteractWith.othersFilledMilpaSlots !==
           "undefined" &&
-        typeof cardSelected?.canInteractWith.othersFilledMilpaSlots !==
+        typeof cardSelected.card?.canInteractWith.othersFilledMilpaSlots !==
           "boolean",
       interactWithFilledSlot:
         isYourTurn &&
-        ((isYourMilpa && !!cardSelected?.canInteractWith.ownFilledMilpaSlots) ||
+        ((isYourMilpa &&
+          !!cardSelected.card?.canInteractWith.ownFilledMilpaSlots) ||
           (!isYourMilpa &&
-            !!cardSelected?.canInteractWith.othersFilledMilpaSlots)),
+            !!cardSelected.card?.canInteractWith.othersFilledMilpaSlots)),
     };
   };
 
@@ -81,23 +84,26 @@ export const computeInteractions = (
     return {
       interactWithEmptySlot:
         isYourTurn &&
-        ((isYourMilpa && !!cardSelected?.canInteractWith.ownEmptyEdgeSlots) ||
+        ((isYourMilpa &&
+          !!cardSelected.card?.canInteractWith.ownEmptyEdgeSlots) ||
           (!isYourMilpa &&
-            !!cardSelected?.canInteractWith.othersEmptyEdgeSlots)),
+            !!cardSelected.card?.canInteractWith.othersEmptyEdgeSlots)),
       interactWithOtherCardsInOwnFilledSlot:
-        typeof cardSelected?.canInteractWith.ownFilledEdgeSlots !==
+        typeof cardSelected.card?.canInteractWith.ownFilledEdgeSlots !==
           "undefined" &&
-        typeof cardSelected?.canInteractWith.ownFilledEdgeSlots !== "boolean",
+        typeof cardSelected.card?.canInteractWith.ownFilledEdgeSlots !==
+          "boolean",
       interactWithOtherCardsInOthersFilledSlots:
-        typeof cardSelected?.canInteractWith.othersFilledEdgeSlots !==
+        typeof cardSelected.card?.canInteractWith.othersFilledEdgeSlots !==
           "undefined" &&
-        typeof cardSelected?.canInteractWith.othersFilledEdgeSlots !==
+        typeof cardSelected.card?.canInteractWith.othersFilledEdgeSlots !==
           "boolean",
       interactWithFilledSlot:
         isYourTurn &&
-        ((isYourMilpa && !!cardSelected?.canInteractWith.ownFilledEdgeSlots) ||
+        ((isYourMilpa &&
+          !!cardSelected.card?.canInteractWith.ownFilledEdgeSlots) ||
           (!isYourMilpa &&
-            !!cardSelected?.canInteractWith.othersFilledEdgeSlots)),
+            !!cardSelected.card?.canInteractWith.othersFilledEdgeSlots)),
     };
   };
 

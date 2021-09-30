@@ -17,7 +17,7 @@ const Crop = (props: Props) => {
       className="disabled:cursor-not-allowed"
       onClick={() => {
         if (context.cardSelected) {
-          context.onClickCropSlot(context.cardSelected, {
+          context.onClickCropSlot(context.cardSelected.card!, {
             column: props.column,
             row: props.row,
           });

@@ -4,6 +4,7 @@ import useGameContext from "../../Hooks/useGameContext/useGameContext";
 
 interface Props {
   good: Good;
+  index: number;
 }
 
 const GoodCard = (props: Props) => {
@@ -11,7 +12,7 @@ const GoodCard = (props: Props) => {
   return (
     <button
       onClick={() => {
-        context.onClickCard(props.good);
+        context.onClickCard(props.good, props.index);
       }}
     >
       <div className="bg-mexicanBone w-20 h-32 rounded-lg hover:bg-mexicanBoneLight hover:ring-4 hover:ring-mexicanPink">
