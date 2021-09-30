@@ -5,7 +5,6 @@ import {
   newGame,
 } from "../../../common/game/game";
 import {
-  AnyCard,
   Crop,
   GameRoutePropsType,
   GameStatus,
@@ -208,7 +207,7 @@ const computeNextTurn = (currenturn: number, nextStage: number) => {
 
 export const handleUpdateCropInMilpa = (
   socket: MiSocket,
-  card: AnyCard,
+  cardSelected: { card: Crop | Good | undefined; index: number },
   position: { column: number; row: number },
   players: User[],
   setPlayers: React.Dispatch<React.SetStateAction<User[]>>,
@@ -227,7 +226,8 @@ export const handleUpdateCropInMilpa = (
   ).get(playersCopy[0].userID!)!.goods;
   const oldCropsDeck = playersCopy[0]?.gameStatus?.cropsDeck!;
   const oldGoodsDeck = playersCopy[0]?.gameStatus?.goodsDeck!;
-  newCrops[position.row][position.column] = card;
+  const oldCropsHand = playersCopy[0]?.gameStatus?.cropsHand!;
+  newCrops[position.row][position.column] = cardSelected.card;
   const newOwnMilpa: Milpa = { crops: newCrops, goods: oldGoods };
   const newOtherMilpa: Milpa = new Map(
     Object.entries(playersCopy[0]?.gameStatus?.milpas!)
@@ -257,6 +257,7 @@ export const handleUpdateCropInMilpa = (
       goodsHand: newGoodsHand,
     };
   } else {
+    oldCropsHand.splice(cardSelected.index, 1);
     newGameStatus = {
       ...oldGameStatus,
       playerTurn: newPlayerTurn,
@@ -299,7 +300,7 @@ export const handleStartUpdateMilpa = (
 
 export const handleUpdateGoodInMilpa = (
   socket: MiSocket,
-  card: AnyCard,
+  cardSelected: { card: Crop | Good | undefined; index: number },
   position: { column: number; row: number },
   players: User[],
   setPlayers: React.Dispatch<React.SetStateAction<User[]>>,
@@ -321,8 +322,8 @@ export const handleUpdateGoodInMilpa = (
   ).get(playersCopy[playerIndex].userID!)!.crops;
   const oldCropsDeck = playersCopy[0]?.gameStatus?.cropsDeck!;
   const oldGoodsDeck = playersCopy[0]?.gameStatus?.goodsDeck!;
-
-  newGoods[position.row][position.column] = card;
+  const oldGoodsHand = playersCopy[0]?.gameStatus?.goodsHand!;
+  newGoods[position.row][position.column] = cardSelected.card;
   const changedMilpa: Milpa = { goods: newGoods, crops: oldCrops };
   const unchangedMilpa: Milpa = new Map(
     Object.entries(playersCopy[0]?.gameStatus?.milpas!)
@@ -352,6 +353,7 @@ export const handleUpdateGoodInMilpa = (
       goodsHand: newGoodsHand,
     };
   } else {
+    oldGoodsHand.splice(cardSelected.index, 1);
     newGameStatus = {
       ...oldGameStatus,
       playerTurn: newPlayerTurn,

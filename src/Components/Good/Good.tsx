@@ -1,5 +1,4 @@
 import React from "react";
-import { AnyCard } from "../../common/types";
 import useGameContext from "../../Hooks/useGameContext/useGameContext";
 
 interface Props {
@@ -21,7 +20,6 @@ const Good = (props: Props) => {
       onClick={() => {
         if (context.cardSelected) {
           context.onClickGoodSlot(
-            context.cardSelected.card!,
             {
               column: props.column,
               row: props.row,

@@ -76,15 +76,8 @@ type GameContextType = {
     interactWithOtherCardsInOthersFilledSlots: boolean;
     interactWithFilledSlot: boolean;
   };
-  onClickCropSlot: (
-    card: AnyCard,
-    position: {
-      column: number;
-      row: number;
-    }
-  ) => void;
+  onClickCropSlot: (position: { column: number; row: number }) => void;
   onClickGoodSlot: (
-    card: AnyCard,
     position: {
       column: number;
       row: number;
@@ -140,13 +133,10 @@ const GameProvider = (props: Props) => {
     setCardSelected({ card, index });
   };
 
-  const onClickCropSlot = (
-    card: AnyCard,
-    position: { column: number; row: number }
-  ) => {
+  const onClickCropSlot = (position: { column: number; row: number }) => {
     handleUpdateCropInMilpa(
       socket,
-      card,
+      cardSelected,
       position,
       players,
       setPlayers,
@@ -155,13 +145,12 @@ const GameProvider = (props: Props) => {
   };
 
   const onClickGoodSlot = (
-    card: AnyCard,
     position: { column: number; row: number },
     isYourMilpa: boolean
   ) => {
     handleUpdateGoodInMilpa(
       socket,
-      card,
+      cardSelected,
       position,
       players,
       setPlayers,
