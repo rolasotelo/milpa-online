@@ -1,4 +1,4 @@
-import { Crop } from "../../../types";
+import { AnyCard, Crop } from "../../../types";
 
 export const TOMATOE_ID = "tomatoe";
 
@@ -20,4 +20,13 @@ export const Tomatoe: Crop = {
     othersEmptyEdgeSlots: false,
     othersFilledEdgeSlots: false,
   },
+};
+
+const CACAO_WHEN_PLAYED = 5;
+
+export const scoreWhenTomatoeIsPlayed = (
+  yourScore: number,
+  slot: AnyCard[]
+) => {
+  return yourScore + CACAO_WHEN_PLAYED;
 };

@@ -1,4 +1,4 @@
-import { Crop } from "../../../types";
+import { AnyCard, Crop } from "../../../types";
 
 export const QUELITES_ID = "quelites";
 
@@ -20,4 +20,13 @@ export const Quelites: Crop = {
     othersEmptyEdgeSlots: false,
     othersFilledEdgeSlots: false,
   },
+};
+
+const CACAO_WHEN_PLAYED = 8;
+
+export const scoreWhenQuelitesIsPlayed = (
+  yourScore: number,
+  slot: AnyCard[]
+) => {
+  return yourScore + CACAO_WHEN_PLAYED;
 };

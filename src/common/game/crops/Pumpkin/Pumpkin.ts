@@ -1,4 +1,4 @@
-import { Crop } from "../../../types";
+import { AnyCard, Crop } from "../../../types";
 
 export const PUMPKIN_ID = "pumpkin";
 
@@ -20,4 +20,13 @@ export const Pumpkin: Crop = {
     othersEmptyEdgeSlots: false,
     othersFilledEdgeSlots: false,
   },
+};
+
+const CACAO_WHEN_PLAYED = 6;
+
+export const scoreWhenPumpkinIsPlayed = (
+  yourScore: number,
+  slot: AnyCard[]
+) => {
+  return yourScore + CACAO_WHEN_PLAYED;
 };
