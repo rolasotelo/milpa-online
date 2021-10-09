@@ -1,5 +1,5 @@
 import { AnyCard } from "../../../types";
 
-export const create_milpa = (filler: AnyCard) => {
+export const create_milpa = (filler?: AnyCard) => {
   return [];
 };
