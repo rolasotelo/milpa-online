@@ -31,3 +31,7 @@ export interface Good extends Card {
 export interface Empty extends Card {
   id: "empty";
 }
+
+export type AnyCard = Crop | Good | Empty;
+
+export type AnyCardButEmpty = Crop | Good;

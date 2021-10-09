@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`<MonthCard /> render 1`] = `
-<div
-  className="bg-mexicanGreen-light w-48 h-8"
->
-  ENERO
-</div>
-`;
