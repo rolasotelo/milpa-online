@@ -1,7 +1,7 @@
 import { create_edges } from "..";
-import { Column, Row } from "../../../enums";
-import { Edges, Milpa } from "../../../types";
-import { Corn, EmptySlot } from "../../cards";
+import { Edge, Position } from "../../../enums";
+import { Edges } from "../../../types";
+import { EmptySlot } from "../../cards";
 import { Tlaloc } from "../../cards/goods/tlaloc";
 
 test("should return empty array when no parameter is provided", () => {
@@ -14,18 +14,18 @@ test("should return an array filled with crop provided as parameter", () => {
   const filler = EmptySlot;
   const edges = create_edges(filler);
   expect(Array.isArray(edges)).toBeTruthy();
-  expect(edges[Row.Top][Column.First]).toEqual(filler);
-  expect(edges[Row.Down][Column.Fourth]).toEqual(filler);
+  expect(edges[Edge.Top][Position.First]).toEqual(filler);
+  expect(edges[Edge.Down][Position.Fourth]).toEqual(filler);
 });
 
 test("should return an array filled with unique copies of filler", () => {
   const filler = EmptySlot;
   const edges = create_edges(filler) as Edges;
-  edges[Row.Top][Column.First] = Tlaloc;
-  edges[Row.Top][Column.Second].icon = "🥦";
+  edges[Edge.Top][Position.First] = Tlaloc;
+  edges[Edge.Top][Position.Second].icon = "🥦";
   expect(Array.isArray(edges)).toBeTruthy();
-  expect(edges[Row.Top][Column.First]).toEqual(Tlaloc);
-  expect(edges[Row.Top][Column.Second].icon).toEqual("🥦");
-  expect(edges[Column.Right][Row.Fourth]).toEqual(filler);
-  expect(edges[Column.Right][Row.Fourth].icon).toEqual(EmptySlot.icon);
+  expect(edges[Edge.Top][Position.First]).toEqual(Tlaloc);
+  expect(edges[Edge.Top][Position.Second].icon).toEqual("🥦");
+  expect(edges[Edge.Right][Position.Fourth]).toEqual(filler);
+  expect(edges[Edge.Right][Position.Fourth].icon).toEqual(EmptySlot.icon);
 });
