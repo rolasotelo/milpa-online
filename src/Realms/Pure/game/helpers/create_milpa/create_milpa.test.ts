@@ -1,6 +1,6 @@
 import { create_milpa } from "..";
 import { Column, Row } from "../../../enums";
-import { Empty, Milpa } from "../../../types";
+import { Milpa } from "../../../types";
 import { Corn, EmptySlot } from "../../cards";
 
 test("should return empty array when no parameter is provided", () => {
@@ -18,7 +18,7 @@ test("should return an array filled with crop provided as parameter", () => {
 });
 
 test("should return an array filled with unique copies of filler", () => {
-  const filler: Readonly<Empty> = EmptySlot;
+  const filler = EmptySlot;
   const milpa = create_milpa(filler) as Milpa;
   milpa[Row.First][Column.First] = Corn;
   milpa[Row.First][Column.Second].icon = "🥦";
@@ -26,5 +26,5 @@ test("should return an array filled with unique copies of filler", () => {
   expect(milpa[Row.First][Column.First]).toEqual(Corn);
   expect(milpa[Row.First][Column.Second].icon).toEqual("🥦");
   expect(milpa[Row.Fourth][Column.Fourth]).toEqual(filler);
-  expect(milpa[Row.Fourth][Column.Fourth].icon).toEqual("🍂");
+  expect(milpa[Row.Fourth][Column.Fourth].icon).toEqual(EmptySlot.icon);
 });

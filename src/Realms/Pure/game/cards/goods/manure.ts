@@ -1,7 +1,7 @@
 import { Good } from "../../../../../common/types";
 import { CardType, GoodId } from "../../../enums";
 
-export const Manure: Good = {
+export const Manure: Readonly<Good> = {
   id: GoodId.Manure,
   type: CardType.Good,
   name: "Corn",
