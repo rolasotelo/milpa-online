@@ -35,3 +35,5 @@ export interface Empty extends Card {
 export type AnyCard = Crop | Good | Empty;
 
 export type AnyCardButEmpty = Crop | Good;
+
+export type Milpa = AnyCard[][];
