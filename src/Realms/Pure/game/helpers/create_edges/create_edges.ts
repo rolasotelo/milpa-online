@@ -1,5 +1,5 @@
 import { EDGE_SIZE } from "../../../constants";
-import { AnyCard, AnyCardButCrop, Edges } from "../../../types";
+import { AnyCardButCrop, Edges } from "../../../types";
 
 export const create_edges = (
   filler?: Readonly<AnyCardButCrop>

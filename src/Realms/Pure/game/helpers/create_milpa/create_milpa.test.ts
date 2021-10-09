@@ -20,6 +20,7 @@ test("should return an array filled with crop provided as parameter", () => {
 test("should return an array filled with unique copies of filler", () => {
   const filler = EmptySlot;
   const milpa = create_milpa(filler) as Milpa;
+  const a = milpa[Row.First][Column.First];
   milpa[Row.First][Column.First] = Corn;
   milpa[Row.First][Column.Second].icon = "🥦";
   expect(Array.isArray(milpa)).toBeTruthy();

@@ -19,7 +19,9 @@ export enum CardType {
 }
 
 export enum Row {
-  First,
+  Top,
+  Down,
+  First = 0,
   Second,
   Third,
   Fourth,
@@ -30,11 +32,6 @@ export enum Column {
   Second,
   Third,
   Fourth,
-}
-
-export enum Direction {
-  Top,
-  Down,
-  Left,
+  Left = 2,
   Right,
 }

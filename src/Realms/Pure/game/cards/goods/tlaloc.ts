@@ -1,14 +1,15 @@
-import { Good } from "../../../../../common/types";
 import { CardType, GoodId } from "../../../enums";
+import { Good } from "../../../types";
 
-export const Manure: Readonly<Good> = {
-  id: GoodId.Manure,
+export const Tlaloc: Readonly<Good> = {
+  id: GoodId.Tlaloc,
   type: CardType.Good,
   name: "Tlaloc Idol",
   icon: "⛈",
   description: "Baile a tlaloc",
   rules: "WIP",
   resume: "+5 🍫",
+  modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: false,
     ownFilledMilpaSlots: false,

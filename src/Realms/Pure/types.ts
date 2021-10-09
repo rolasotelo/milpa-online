@@ -36,7 +36,7 @@ export type AnyCard = Crop | Good | Empty;
 
 export type AnyCardButEmpty = Crop | Good;
 
-export type AnyCardButCrop = Empty | Good;
+export type AnyCardButCrop = Good | Empty;
 
 export type Milpa = AnyCard[][];
 

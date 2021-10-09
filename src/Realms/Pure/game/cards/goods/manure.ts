@@ -1,5 +1,5 @@
-import { Good } from "../../../../../common/types";
 import { CardType, GoodId } from "../../../enums";
+import { Good } from "../../../types";
 
 export const Manure: Readonly<Good> = {
   id: GoodId.Manure,
@@ -9,6 +9,7 @@ export const Manure: Readonly<Good> = {
   description: "🪰",
   rules: "WIP",
   resume: "-3 🍫",
+  modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: true,
     ownFilledMilpaSlots: false,
