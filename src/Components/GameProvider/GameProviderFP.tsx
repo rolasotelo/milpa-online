@@ -1,6 +1,8 @@
 import React, { createContext, useMemo, useState } from "react";
 import newSocket from "../../common/socket/socket";
 import { GameRoutePropsType } from "../../common/types";
+import { compute_current_stage } from "../../Realms/Pure/game/helpers/compute_current_stage/compute_current_stage";
+import { compute_current_turn } from "../../Realms/Pure/game/helpers/compute_current_turn/compute_current_turn";
 import { compute_is_your_turn } from "../../Realms/Pure/game/helpers/compute_is_your_turn/compute_is_your_turn";
 import { create_players } from "../../Realms/Pure/game/helpers/create_players/create_players";
 import { Player, SelectedCard } from "../../Realms/Pure/types";
@@ -8,6 +10,11 @@ import { Player, SelectedCard } from "../../Realms/Pure/types";
 export type GameContextType = {
   nickname: string;
   roomCode: string;
+  isGameOngoing: boolean;
+  isYourTurn: boolean | undefined;
+  selectedCard: Readonly<SelectedCard>;
+  currentTurn: number | undefined;
+  currentStage: number | undefined;
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -47,12 +54,19 @@ const GameProvider = (props: Props) => {
     useState<Readonly<SelectedCard>>(noSelectedCard);
 
   const isYourTurn = useMemo(() => compute_is_your_turn(players), [players]);
+  const currentTurn = useMemo(() => compute_current_turn(players), [players]);
+  const currentStage = useMemo(() => compute_current_stage(players), [players]);
 
   return (
     <GameContext.Provider
       value={{
         nickname,
         roomCode,
+        isGameOngoing,
+        isYourTurn,
+        selectedCard,
+        currentStage,
+        currentTurn,
       }}
     >
       {props.children}
