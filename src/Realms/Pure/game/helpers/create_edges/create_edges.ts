@@ -1,9 +1,7 @@
 import { EDGE_SIZE } from "../../../constants";
-import { AnyCardButCrop, Edges } from "../../../types";
+import { AnyCard, Edges } from "../../../types";
 
-export const create_edges = (
-  filler?: Readonly<AnyCardButCrop>
-): Readonly<Edges> => {
+export const create_edges = (filler?: Readonly<AnyCard>): Readonly<Edges> => {
   let edges: Edges = [];
   if (filler) {
     edges = Array.from(Array(EDGE_SIZE), () => {

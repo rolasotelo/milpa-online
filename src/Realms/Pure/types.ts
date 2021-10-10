@@ -34,10 +34,11 @@ export interface Empty extends Card {
 
 export type AnyCard = Crop | Good | Empty;
 
-export type AnyCardButEmpty = Crop | Good;
-
-export type AnyCardButCrop = Good | Empty;
-
 export type Milpa = AnyCard[][];
 
-export type Edges = AnyCardButCrop[][];
+export type Edges = AnyCard[][];
+
+export type Board = {
+  milpa: Readonly<Milpa>;
+  edges: Readonly<Edges>;
+};
