@@ -42,3 +42,28 @@ export type Board = {
   milpa: Readonly<Milpa>;
   edges: Readonly<Edges>;
 };
+
+export type Player = {
+  self: boolean;
+  userID?: string;
+  sessionID?: string;
+  nickname: string;
+  connected: boolean;
+  gameStatus?: GameStatus;
+};
+
+export interface GameStatus {
+  playerInTurnID: string;
+  currentTurn: number;
+  currentStage: number;
+  score: {
+    [k: string]: number;
+  };
+  boards: {
+    [k: string]: Readonly<Board>;
+  };
+  cropsDeck: ReadonlyArray<Crop>;
+  goodsDeck: ReadonlyArray<Good>;
+  cropsHand: ReadonlyArray<Crop>;
+  goodsHand: ReadonlyArray<Good>;
+}

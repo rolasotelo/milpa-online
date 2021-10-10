@@ -45,3 +45,8 @@ export enum Position {
   Third,
   Fourth,
 }
+
+export enum Players {
+  You,
+  Opponent,
+}
