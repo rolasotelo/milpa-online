@@ -38,6 +38,11 @@ export type Milpa = AnyCard[][];
 
 export type Edges = AnyCard[][];
 
+export interface SelectedCard {
+  indexFromHand: number | undefined;
+  card: Readonly<AnyCard> | undefined;
+}
+
 export type Board = {
   milpa: Readonly<Milpa>;
   edges: Readonly<Edges>;
