@@ -55,7 +55,6 @@ test("should return false if your userID is not the same as the playerInTurnID i
 });
 
 test("should return undefined if your userID is undefined or if game status is undefined", () => {
-  const userID = "123456789";
   const you: Readonly<Player> = {
     nickname: "Gabinka",
     self: true,
