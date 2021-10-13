@@ -1,18 +1,6 @@
-import { WAITING_PLAYER } from "../../../constants";
+import { EMPTYGAMESTATUS, WAITING_PLAYER } from "../../../constants";
 import { GameStatus, Player } from "../../../types";
 import { compute_current_turn } from "./compute_current_turn";
-
-const emptyGameStatus: Readonly<GameStatus> = {
-  playerInTurnID: "",
-  boards: {},
-  cropsDeck: [],
-  cropsHand: [],
-  currentStage: 0,
-  currentTurn: 0,
-  goodsDeck: [],
-  goodsHand: [],
-  score: {},
-};
 
 test("should return turn number from your game status", () => {
   const TURN_NUMBER = 10;
@@ -21,7 +9,7 @@ test("should return turn number from your game status", () => {
     self: true,
     connected: true,
     gameStatus: {
-      ...emptyGameStatus,
+      ...EMPTYGAMESTATUS,
       currentTurn: TURN_NUMBER,
     },
   };

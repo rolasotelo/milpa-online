@@ -1,18 +1,6 @@
-import { WAITING_PLAYER } from "../../../constants";
+import { EMPTYGAMESTATUS, WAITING_PLAYER } from "../../../constants";
 import { GameStatus, Player } from "../../../types";
 import { compute_is_your_turn } from "./compute_is_your_turn";
-
-const emptyGameStatus: Readonly<GameStatus> = {
-  playerInTurnID: "",
-  boards: {},
-  cropsDeck: [],
-  cropsHand: [],
-  currentStage: 0,
-  currentTurn: 0,
-  goodsDeck: [],
-  goodsHand: [],
-  score: {},
-};
 
 test("should return true if your userID is the same as the playerInTurnID in the game status", () => {
   const userID = "123456789";
@@ -22,7 +10,7 @@ test("should return true if your userID is the same as the playerInTurnID in the
     connected: true,
     userID,
     gameStatus: {
-      ...emptyGameStatus,
+      ...EMPTYGAMESTATUS,
       playerInTurnID: userID,
     },
   };
@@ -42,7 +30,7 @@ test("should return false if your userID is not the same as the playerInTurnID i
     connected: true,
     userID,
     gameStatus: {
-      ...emptyGameStatus,
+      ...EMPTYGAMESTATUS,
       playerInTurnID: "987654321",
     },
   };

@@ -1,19 +1,7 @@
 import { compute_boards_for_display } from "..";
-import { WAITING_PLAYER } from "../../../constants";
+import { EMPTYGAMESTATUS, WAITING_PLAYER } from "../../../constants";
 import { GameStatus, Player } from "../../../types";
 import { Corn, EmptySlot, Tlaloc } from "../../cards";
-
-const emptyGameStatus: Readonly<GameStatus> = {
-  playerInTurnID: "",
-  boards: {},
-  cropsDeck: [],
-  cropsHand: [],
-  currentStage: 0,
-  currentTurn: 0,
-  goodsDeck: [],
-  goodsHand: [],
-  score: {},
-};
 
 test("should return milpas from game status with isYourMilpa attribute", () => {
   const USERID = "123456789";
@@ -32,7 +20,7 @@ test("should return milpas from game status with isYourMilpa attribute", () => {
     connected: true,
     userID: USERID,
     gameStatus: {
-      ...emptyGameStatus,
+      ...EMPTYGAMESTATUS,
       playerInTurnID: USERID,
       boards: {
         [USERID]: { ...yourMilpa },
