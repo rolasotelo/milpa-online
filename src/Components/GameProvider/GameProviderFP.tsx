@@ -5,6 +5,7 @@ import {
   compute_boards_for_display,
   compute_current_stage,
   compute_current_turn,
+  compute_hands,
   compute_is_your_turn,
   create_players,
 } from "../../Realms/Pure/game/helpers";
@@ -64,6 +65,10 @@ const GameProvider = (props: Props) => {
   const currentTurn = useMemo(() => compute_current_turn(players), [players]);
   const currentStage = useMemo(() => compute_current_stage(players), [players]);
   const boards = useMemo(() => compute_boards_for_display(players), [players]);
+  const { cropsHand, goodsHand } = useMemo(
+    () => compute_hands(players),
+    [players]
+  );
 
   return (
     <GameContext.Provider

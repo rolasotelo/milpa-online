@@ -34,9 +34,9 @@ export interface Empty extends Card {
 
 export type AnyCard = Crop | Good | Empty;
 
-export type Milpa = AnyCard[][];
+export type Milpa = AnyCard[][][];
 
-export type Edges = AnyCard[][];
+export type Edges = AnyCard[][][];
 
 export interface SelectedCard {
   indexFromHand: number | undefined;

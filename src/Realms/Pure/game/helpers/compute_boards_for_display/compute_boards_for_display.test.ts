@@ -1,18 +1,18 @@
 import { compute_boards_for_display } from "..";
 import { EMPTYGAMESTATUS, WAITING_PLAYER } from "../../../constants";
-import { GameStatus, Player } from "../../../types";
+import { Player } from "../../../types";
 import { Corn, EmptySlot, Tlaloc } from "../../cards";
 
 test("should return milpas from game status with isYourMilpa attribute", () => {
   const USERID = "123456789";
   const USERIDFOROPPONENT = "987654321";
   const yourMilpa = {
-    milpa: [[EmptySlot]],
-    edges: [[EmptySlot]],
+    milpa: [[[EmptySlot]]],
+    edges: [[[EmptySlot]]],
   };
   const opponentsMilpa = {
-    milpa: [[Corn]],
-    edges: [[Tlaloc]],
+    milpa: [[[Corn]]],
+    edges: [[[Tlaloc]]],
   };
   const you: Readonly<Player> = {
     nickname: "Gabinka",

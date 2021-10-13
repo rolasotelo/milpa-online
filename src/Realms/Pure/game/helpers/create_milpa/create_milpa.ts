@@ -6,7 +6,7 @@ export const create_milpa = (filler?: Readonly<AnyCard>): Readonly<Milpa> => {
   if (filler) {
     milpa = Array.from(Array(ROW_SIZE), () => {
       return Array.from(Array(COLUMN_SIZE), () => {
-        return { ...filler };
+        return [{ ...filler }];
       });
     });
   }

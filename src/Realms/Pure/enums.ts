@@ -50,3 +50,10 @@ export enum Players {
   You,
   Opponent,
 }
+
+export enum Card {
+  First,
+  Second,
+  Third,
+  Fourth,
+}
