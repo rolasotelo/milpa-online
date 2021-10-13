@@ -1,6 +1,7 @@
+import { WAITING_PLAYER } from "../../../constants";
 import { Players } from "../../../enums";
 import { Player } from "../../../types";
-import { create_players, WAITING_PLAYER } from "./create_players";
+import { create_players } from "./create_players";
 
 test("should contain connected player on first position and waiting player on second one", () => {
   const connectedPlayer: Readonly<Player> = {

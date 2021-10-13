@@ -1,5 +1,5 @@
+import { WAITING_PLAYER } from "../../../constants";
 import { GameStatus, Player } from "../../../types";
-import { WAITING_PLAYER } from "../create_players/create_players";
 import { compute_is_your_turn } from "./compute_is_your_turn";
 
 const emptyGameStatus: Readonly<GameStatus> = {

@@ -1,11 +1,14 @@
 import React, { createContext, useMemo, useState } from "react";
 import newSocket from "../../common/socket/socket";
 import { GameRoutePropsType } from "../../common/types";
-import { compute_current_stage } from "../../Realms/Pure/game/helpers/compute_current_stage/compute_current_stage";
-import { compute_current_turn } from "../../Realms/Pure/game/helpers/compute_current_turn/compute_current_turn";
-import { compute_is_your_turn } from "../../Realms/Pure/game/helpers/compute_is_your_turn/compute_is_your_turn";
-import { create_players } from "../../Realms/Pure/game/helpers/create_players/create_players";
-import { Player, SelectedCard } from "../../Realms/Pure/types";
+import {
+  compute_boards_for_display,
+  compute_current_stage,
+  compute_current_turn,
+  compute_is_your_turn,
+  create_players,
+} from "../../Realms/Pure/game/helpers";
+import { BoardForDisplay, Player, SelectedCard } from "../../Realms/Pure/types";
 
 export type GameContextType = {
   nickname: string;
@@ -15,6 +18,10 @@ export type GameContextType = {
   selectedCard: Readonly<SelectedCard>;
   currentTurn: number | undefined;
   currentStage: number | undefined;
+  boards: readonly [
+    Readonly<BoardForDisplay> | undefined,
+    Readonly<BoardForDisplay> | undefined
+  ];
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -56,6 +63,7 @@ const GameProvider = (props: Props) => {
   const isYourTurn = useMemo(() => compute_is_your_turn(players), [players]);
   const currentTurn = useMemo(() => compute_current_turn(players), [players]);
   const currentStage = useMemo(() => compute_current_stage(players), [players]);
+  const boards = useMemo(() => compute_boards_for_display(players), [players]);
 
   return (
     <GameContext.Provider
@@ -67,6 +75,7 @@ const GameProvider = (props: Props) => {
         selectedCard,
         currentStage,
         currentTurn,
+        boards,
       }}
     >
       {props.children}

@@ -1,5 +1,5 @@
+import { WAITING_PLAYER } from "../../../constants";
 import { GameStatus, Player } from "../../../types";
-import { WAITING_PLAYER } from "../create_players/create_players";
 import { compute_current_stage } from "./compute_current_stage";
 
 const emptyGameStatus: Readonly<GameStatus> = {

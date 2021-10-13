@@ -72,3 +72,8 @@ export interface GameStatus {
   cropsHand: ReadonlyArray<Crop>;
   goodsHand: ReadonlyArray<Good>;
 }
+
+export interface BoardForDisplay {
+  isYourMilpa: boolean;
+  board: Board;
+}
