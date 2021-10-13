@@ -40,6 +40,7 @@ export type Edges = AnyCard[][][];
 
 export interface SelectedCard {
   indexFromHand: number | undefined;
+  type: CardType | undefined;
   card: Readonly<AnyCard> | undefined;
 }
 

@@ -3,13 +3,19 @@ import newSocket from "../../common/socket/socket";
 import { GameRoutePropsType } from "../../common/types";
 import {
   compute_boards_for_display,
+  compute_can_interact_with_card,
   compute_current_stage,
   compute_current_turn,
   compute_hands,
   compute_is_your_turn,
   create_players,
 } from "../../Realms/Pure/game/helpers";
-import { BoardForDisplay, Player, SelectedCard } from "../../Realms/Pure/types";
+import {
+  AnyCard,
+  BoardForDisplay,
+  Player,
+  SelectedCard,
+} from "../../Realms/Pure/types";
 
 export type GameContextType = {
   nickname: string;
@@ -43,6 +49,7 @@ const GameProvider = (props: Props) => {
   };
   const noSelectedCard = {
     card: undefined,
+    type: undefined,
     indexFromHand: undefined,
   };
 
@@ -68,6 +75,10 @@ const GameProvider = (props: Props) => {
   const { cropsHand, goodsHand } = useMemo(
     () => compute_hands(players),
     [players]
+  );
+  const canInteractWithCard = useMemo(
+    () => compute_can_interact_with_card(selectedCard, isYourTurn),
+    [isYourTurn, selectedCard]
   );
 
   return (
