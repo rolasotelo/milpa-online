@@ -1,4 +1,5 @@
 import { EDGE_SIZE } from "../../../constants";
+import { SlotType } from "../../../enums";
 import { AnyCard, Edges } from "../../../types";
 
 export const create_edges = (filler?: Readonly<AnyCard>): Readonly<Edges> => {
@@ -6,7 +7,7 @@ export const create_edges = (filler?: Readonly<AnyCard>): Readonly<Edges> => {
   if (filler) {
     edges = Array.from(Array(EDGE_SIZE), () => {
       return Array.from(Array(EDGE_SIZE), () => {
-        return [{ ...filler }];
+        return { type: SlotType.Edge, cards: [{ ...filler }] };
       });
     });
   }

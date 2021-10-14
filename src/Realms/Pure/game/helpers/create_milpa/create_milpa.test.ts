@@ -1,5 +1,5 @@
 import { create_milpa } from "..";
-import { Card, Column, Row } from "../../../enums";
+import { Card, Column, Row, SlotType } from "../../../enums";
 import { Milpa } from "../../../types";
 import { Corn, EmptySlot } from "../../cards";
 
@@ -13,21 +13,24 @@ test("should return an array filled with crop provided as parameter", () => {
   const filler = Corn;
   const milpa = create_milpa(filler);
   expect(Array.isArray(milpa)).toBeTruthy();
-  expect(milpa[Row.First][Column.First][Card.First]).toEqual(filler);
-  expect(milpa[Row.Fourth][Column.Fourth][Card.First]).toEqual(filler);
+  expect(milpa[Row.First][Column.First].cards[Card.First]).toEqual(filler);
+  expect(milpa[Row.Fourth][Column.Fourth].cards[Card.First]).toEqual(filler);
 });
 
 test("should return an array filled with unique copies of filler", () => {
   const filler = EmptySlot;
   const milpa = create_milpa(filler) as Milpa;
   const a = milpa[Row.First][Column.First];
-  milpa[Row.First][Column.First][Card.First] = Corn;
-  milpa[Row.First][Column.Second][Card.First].icon = "🥦";
+  milpa[Row.First][Column.First] = {
+    type: SlotType.Milpa,
+    cards: [{ ...Corn }],
+  };
+  milpa[Row.First][Column.Second].cards[Card.First].icon = "🥦";
   expect(Array.isArray(milpa)).toBeTruthy();
-  expect(milpa[Row.First][Column.First][Card.First]).toEqual(Corn);
-  expect(milpa[Row.First][Column.Second][Card.First].icon).toEqual("🥦");
-  expect(milpa[Row.Fourth][Column.Fourth][Card.First]).toEqual(filler);
-  expect(milpa[Row.Fourth][Column.Fourth][Card.First].icon).toEqual(
+  expect(milpa[Row.First][Column.First].cards[Card.First]).toEqual(Corn);
+  expect(milpa[Row.First][Column.Second].cards[Card.First].icon).toEqual("🥦");
+  expect(milpa[Row.Fourth][Column.Fourth].cards[Card.First]).toEqual(filler);
+  expect(milpa[Row.Fourth][Column.Fourth].cards[Card.First].icon).toEqual(
     EmptySlot.icon
   );
 });
