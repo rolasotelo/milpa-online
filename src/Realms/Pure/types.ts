@@ -1,4 +1,4 @@
-import { CardType, CropId, GoodId, ModifierId } from "./enums";
+import { CardType, CropId, GoodId, ModifierId, SlotType } from "./enums";
 
 interface Card {
   type: CardType;
@@ -42,6 +42,11 @@ export interface SelectedCard {
   indexFromHand: number | undefined;
   type: CardType | undefined;
   card: Readonly<AnyCard> | undefined;
+}
+
+export interface BoardSlot {
+  type: SlotType | undefined;
+  cards: ReadonlyArray<AnyCard>;
 }
 
 export type Board = {

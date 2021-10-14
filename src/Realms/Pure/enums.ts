@@ -18,6 +18,11 @@ export enum CardType {
   Empty = "empty",
 }
 
+export enum SlotType {
+  Milpa = "milpa",
+  Edge = "edge",
+}
+
 export enum Row {
   First,
   Second,
