@@ -4,7 +4,9 @@ import { AnyCard, GameRoutePropsType } from "../../common/types";
 import {
   handleConnection,
   handleConnectionError,
+  handleRoomFilled,
   handleSessionSaved,
+  handleUsersInRoom,
 } from "../../Realms/Lesser/handlers";
 import { WAITING_TIME } from "../../Realms/Pure/constants";
 import { Event } from "../../Realms/Pure/enums";
@@ -143,13 +145,16 @@ const GameProvider = (props: Props) => {
       handleUsersInRoom(playersPayload, setPlayers, socket);
     });
 
-    socket.on("room filled", () => {
+    socket.on(Event.Room_Filled, () => {
       handleRoomFilled(props.routerProps, nickname);
     });
 
-    socket.on("start game", (sessionID: string, users: User[]) => {
-      handleStartGame(setPlayers, users, socket);
-    });
+    socket.on(
+      Event.Start_Game,
+      (sessionID: string, playersPayload: ReadonlyArray<Player>) => {
+        handleStartGame(playersPayload, setPlayers, socket);
+      }
+    );
 
     socket.on("player disconnected", ({ userID, nickname }) => {
       handlePlayerDisconnection(setIsPlaying);

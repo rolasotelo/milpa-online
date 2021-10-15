@@ -1,3 +1,5 @@
+import { StaticContext } from "react-router";
+import { RouteComponentProps } from "react-router-dom";
 import { Socket } from "socket.io-client";
 import { DefaultEventsMap } from "socket.io-client/build/typed-events";
 import { CardType, CropId, GoodId, ModifierId, SlotType } from "./enums";
@@ -91,3 +93,9 @@ export interface BoardForDisplay {
   isYourMilpa: boolean;
   board: Board;
 }
+
+export type GameRoutePropsType = RouteComponentProps<
+  { gamecode: string },
+  StaticContext,
+  { nickname: string }
+>;

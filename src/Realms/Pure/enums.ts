@@ -67,4 +67,6 @@ export enum Event {
   Connection_Error = "connect_error",
   Session_Saved = "session saved",
   Users_In_Room = "users in room",
+  Room_Filled = "room filled",
+  Start_Game = "start game",
 }
