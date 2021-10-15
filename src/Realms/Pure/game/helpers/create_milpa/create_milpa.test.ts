@@ -23,6 +23,8 @@ test("should return an array filled with unique copies of filler", () => {
   const a = milpa[Row.First][Column.First];
   milpa[Row.First][Column.First] = {
     type: SlotType.Milpa,
+    row: Row.First,
+    column: Column.First,
     cards: [{ ...Corn }],
   };
   milpa[Row.First][Column.Second].cards[Card.First].icon = "🥦";

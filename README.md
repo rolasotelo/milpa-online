@@ -16,4 +16,4 @@
 
 Made with love by Rolando Sotelo. Contact me at rola@hey.com
 
-Be kind to the animals 🐄 !
+Be kind to animals 🐄 !

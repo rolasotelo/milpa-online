@@ -1,6 +1,6 @@
 import { compute_can_interact_with_card } from "..";
-import { CardType, SlotType } from "../../../enums";
-import { AnyCard, BoardSlot, SelectedCard } from "../../../types";
+import { CardType, Column, Row, SlotType } from "../../../enums";
+import { BoardSlot, SelectedCard } from "../../../types";
 import { Corn, EmptySlot, Manure } from "../../cards";
 
 test("should return undefined if it's not your turn or any parameter in selected card is undefined", () => {
@@ -16,6 +16,8 @@ test("should return undefined if it's not your turn or any parameter in selected
   );
   const cardsInSlot: Readonly<BoardSlot> = {
     type: SlotType.Milpa,
+    row: Row.First,
+    column: Column.First,
     cards: [EmptySlot],
   };
   expect(canInteractWithCard(true, cardsInSlot)).toBeFalsy();
@@ -46,6 +48,8 @@ test("should return function that computes if a card can interact with an empty 
   const isYourMilpa = true;
   const cardsInSlot: Readonly<BoardSlot> = {
     type: SlotType.Milpa,
+    row: Row.First,
+    column: Column.First,
     cards: [EmptySlot],
   };
   const interaction1 = canInteractWithCard(isYourMilpa, cardsInSlot);
@@ -68,6 +72,8 @@ test("should return function that computes if a card can interact with an non em
   const isYourMilpa = true;
   const cardsInSlot: Readonly<BoardSlot> = {
     type: SlotType.Milpa,
+    row: Row.First,
+    column: Column.First,
     cards: [Manure],
   };
   const interaction1 = canInteractWithCard(isYourMilpa, cardsInSlot);

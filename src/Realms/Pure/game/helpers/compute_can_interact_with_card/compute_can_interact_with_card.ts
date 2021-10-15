@@ -1,15 +1,18 @@
-import { SlotType } from "../../../enums";
-import { AnyCard, BoardSlot, SelectedCard } from "../../../types";
-import { EmptySlot } from "../../cards";
 import { find } from "underscore";
+import { SlotType } from "../../../enums";
+import { BoardSlot, SelectedCard } from "../../../types";
+import { EmptySlot } from "../../cards";
 
-type ReturnType = (isYourMilpa: boolean, slot: BoardSlot) => boolean;
+export type ReturnTypeCanInteractWithCard = (
+  isYourMilpa: boolean,
+  slot: BoardSlot
+) => boolean;
 
 export const compute_can_interact_with_card = (
   selectedCard: Readonly<SelectedCard>,
   isYourTurn: boolean | undefined
-): ReturnType => {
-  let canInteractWithCard: ReturnType = (
+): ReturnTypeCanInteractWithCard => {
+  let canInteractWithCard: ReturnTypeCanInteractWithCard = (
     isYourMilpa: boolean,
     slot: Readonly<BoardSlot>
   ) => {

@@ -1,6 +1,6 @@
 import React, { createContext, useMemo, useState } from "react";
 import newSocket from "../../common/socket/socket";
-import { GameRoutePropsType } from "../../common/types";
+import { AnyCard, GameRoutePropsType } from "../../common/types";
 import {
   compute_boards_for_display,
   compute_can_interact_with_card,
@@ -9,10 +9,13 @@ import {
   compute_hands,
   compute_is_your_turn,
   create_players,
+  ReturnTypeCanInteractWithCard,
 } from "../../Realms/Pure/game/helpers";
 import {
-  AnyCard,
   BoardForDisplay,
+  BoardSlot,
+  Crop,
+  Good,
   Player,
   SelectedCard,
 } from "../../Realms/Pure/types";
@@ -29,6 +32,11 @@ export type GameContextType = {
     Readonly<BoardForDisplay> | undefined,
     Readonly<BoardForDisplay> | undefined
   ];
+  canInteractWithCard: ReturnTypeCanInteractWithCard;
+  onSelectCard: (
+    card: Readonly<Crop> | Readonly<Good>,
+    indexFromHand: number
+  ) => void;
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -76,10 +84,25 @@ const GameProvider = (props: Props) => {
     () => compute_hands(players),
     [players]
   );
-  const canInteractWithCard = useMemo(
-    () => compute_can_interact_with_card(selectedCard, isYourTurn),
-    [isYourTurn, selectedCard]
+  // TODO how do I use callback ?
+  const canInteractWithCard = compute_can_interact_with_card(
+    selectedCard,
+    isYourTurn
   );
+
+  const onSelectCard = (
+    card: Readonly<Crop> | Readonly<Good>,
+    indexFromHand: number
+  ) => {
+    const newSelectedCard: Readonly<SelectedCard> = {
+      indexFromHand,
+      type: card.type,
+      card,
+    };
+    setSelectedCard(newSelectedCard);
+  };
+
+  const onSelectSlot = (card: AnyCard, slot: BoardSlot) => {};
 
   return (
     <GameContext.Provider
@@ -92,6 +115,8 @@ const GameProvider = (props: Props) => {
         currentStage,
         currentTurn,
         boards,
+        canInteractWithCard,
+        onSelectCard,
       }}
     >
       {props.children}

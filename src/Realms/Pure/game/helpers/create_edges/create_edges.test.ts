@@ -1,5 +1,5 @@
 import { create_edges } from "..";
-import { Card, Edge, Position, SlotType } from "../../../enums";
+import { Card, Column, Edge, Position, Row, SlotType } from "../../../enums";
 import { Edges } from "../../../types";
 import { EmptySlot } from "../../cards";
 import { Tlaloc } from "../../cards/goods/tlaloc";
@@ -23,6 +23,8 @@ test("should return an array filled with unique copies of filler", () => {
   const edges = create_edges(filler) as Edges;
   edges[Edge.Top][Position.First] = {
     type: SlotType.Edge,
+    row: Row.First,
+    column: Column.First,
     cards: [{ ...Tlaloc }],
   };
   edges[Edge.Top][Position.Second].cards[Card.First].icon = "🥦";

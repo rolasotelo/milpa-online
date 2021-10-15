@@ -46,6 +46,8 @@ export interface SelectedCard {
 
 export interface BoardSlot {
   type: SlotType | undefined;
+  row: number | undefined;
+  column: number | undefined;
   cards: ReadonlyArray<AnyCard>;
 }
 

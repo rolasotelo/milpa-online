@@ -1,6 +1,6 @@
 import { compute_boards_for_display } from "..";
 import { EMPTYGAMESTATUS, WAITING_PLAYER } from "../../../constants";
-import { SlotType } from "../../../enums";
+import { Column, Row, SlotType } from "../../../enums";
 import { Player } from "../../../types";
 import { Corn, EmptySlot, Tlaloc } from "../../cards";
 
@@ -12,6 +12,8 @@ test("should return milpas from game status with isYourMilpa attribute", () => {
       [
         {
           type: SlotType.Milpa,
+          row: Row.First,
+          column: Column.First,
           cards: [{ ...EmptySlot }],
         },
       ],
@@ -20,6 +22,8 @@ test("should return milpas from game status with isYourMilpa attribute", () => {
       [
         {
           type: SlotType.Edge,
+          row: Row.First,
+          column: Column.First,
           cards: [{ ...EmptySlot }],
         },
       ],
@@ -30,6 +34,8 @@ test("should return milpas from game status with isYourMilpa attribute", () => {
       [
         {
           type: SlotType.Milpa,
+          row: Row.First,
+          column: Column.First,
           cards: [{ ...Corn }],
         },
       ],
@@ -38,6 +44,8 @@ test("should return milpas from game status with isYourMilpa attribute", () => {
       [
         {
           type: SlotType.Edge,
+          row: Row.First,
+          column: Column.First,
           cards: [{ ...Tlaloc }],
         },
       ],
