@@ -1,5 +1,10 @@
+import { Socket } from "socket.io-client";
+import { DefaultEventsMap } from "socket.io-client/build/typed-events";
 import { CardType, CropId, GoodId, ModifierId, SlotType } from "./enums";
 
+export interface MiSocket extends Socket<DefaultEventsMap, DefaultEventsMap> {
+  userID?: string;
+}
 interface Card {
   type: CardType;
   name: string;
@@ -60,6 +65,7 @@ export type Player = {
   self: boolean;
   userID?: string;
   sessionID?: string;
+  roomCode?: string;
   nickname: string;
   connected: boolean;
   gameStatus?: GameStatus;

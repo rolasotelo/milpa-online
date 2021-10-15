@@ -1,6 +1,13 @@
-import React, { createContext, useMemo, useState } from "react";
+import React, { createContext, useEffect, useMemo, useState } from "react";
 import newSocket from "../../common/socket/socket";
 import { AnyCard, GameRoutePropsType } from "../../common/types";
+import {
+  handleConnection,
+  handleConnectionError,
+  handleSessionSaved,
+} from "../../Realms/Lesser/handlers";
+import { WAITING_TIME } from "../../Realms/Pure/constants";
+import { Event } from "../../Realms/Pure/enums";
 import {
   compute_boards_for_display,
   compute_can_interact_with_card,
@@ -37,6 +44,7 @@ export type GameContextType = {
     card: Readonly<Crop> | Readonly<Good>,
     indexFromHand: number
   ) => void;
+  onSelectSlot: (card: AnyCard, slot: BoardSlot) => void;
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -104,6 +112,58 @@ const GameProvider = (props: Props) => {
 
   const onSelectSlot = (card: AnyCard, slot: BoardSlot) => {};
 
+  useEffect(() => {
+    if (!isGameOngoing) {
+      const id = setTimeout(() => {
+        props.routerProps.history.push("/play", { nickname });
+        sessionStorage.removeItem("sessionID");
+        socket.disconnect();
+      }, WAITING_TIME * 1000);
+      setIdTimeout(id);
+    } else {
+      if (idTimeout) {
+        clearTimeout(idTimeout);
+      }
+    }
+    return () => {};
+  }, [isGameOngoing]);
+
+  useEffect(() => {
+    handleConnection(socket, sessionStorage, nickname);
+
+    socket.on(Event.Connection_Error, (err) => {
+      handleConnectionError(err);
+    });
+
+    socket.on(Event.Session_Saved, (playerPayload: Readonly<Player>) => {
+      handleSessionSaved(playerPayload, socket, setNickname, setRoomCode);
+    });
+
+    socket.on(Event.Users_In_Room, (playersPayload: ReadonlyArray<Player>) => {
+      handleUsersInRoom(playersPayload, setPlayers, socket);
+    });
+
+    socket.on("room filled", () => {
+      handleRoomFilled(props.routerProps, nickname);
+    });
+
+    socket.on("start game", (sessionID: string, users: User[]) => {
+      handleStartGame(setPlayers, users, socket);
+    });
+
+    socket.on("player disconnected", ({ userID, nickname }) => {
+      handlePlayerDisconnection(setIsPlaying);
+    });
+
+    socket.on("ok start game", () => {
+      handleOkStartGame(setIsPlaying);
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, [props]);
+
   return (
     <GameContext.Provider
       value={{
@@ -117,6 +177,7 @@ const GameProvider = (props: Props) => {
         boards,
         canInteractWithCard,
         onSelectCard,
+        onSelectSlot,
       }}
     >
       {props.children}
