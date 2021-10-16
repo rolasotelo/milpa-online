@@ -1,4 +1,5 @@
 import { Players } from "../../../Pure/enums";
+import { initialize_game } from "../../../Pure/game/helpers";
 import { MiSocket, Player } from "../../../Pure/types";
 
 export const handleStartGame = (
@@ -11,7 +12,7 @@ export const handleStartGame = (
     const score: Map<string, number> = new Map();
     score.set(playersPlayload[0].userID!, 0);
     score.set(playersPlayload[1].userID!, 0);
-    const { cropsDeck, goodsDeck, emptyMilpa, sampleMilpa } = newGame();
+    const { cropsDeck, goodsDeck, milpas } = initialize_game();
     const { cropsHand: newCropsHand, newCropsDeck } = dealCropsHand(cropsDeck);
     const { goodsHand: newGoodsHand, newGoodsDeck } = dealGoodsHand(goodsDeck);
     const milpas: Map<string, Milpa> = new Map();

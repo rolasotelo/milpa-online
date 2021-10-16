@@ -99,3 +99,8 @@ export type GameRoutePropsType = RouteComponentProps<
   StaticContext,
   { nickname: string }
 >;
+
+export interface DeckDefinition<T> {
+  card: T;
+  total: number;
+}

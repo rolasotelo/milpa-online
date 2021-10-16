@@ -1,5 +1,6 @@
 export enum CropId {
   Corn = "corn",
+  Beans = "beans",
 }
 
 export enum GoodId {
@@ -69,4 +70,11 @@ export enum Event {
   Users_In_Room = "users in room",
   Room_Filled = "room filled",
   Start_Game = "start game",
+}
+
+export enum Total {
+  Corn = 32,
+  Beans = 32,
+  Manure = 32,
+  Tlaloc = 32,
 }
