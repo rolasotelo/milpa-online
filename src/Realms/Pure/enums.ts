@@ -70,6 +70,7 @@ export enum Event {
   Users_In_Room = "users in room",
   Room_Filled = "room filled",
   Start_Game = "start game",
+  Start_Game_Handshake = "start game handshake",
 }
 
 export enum Total {

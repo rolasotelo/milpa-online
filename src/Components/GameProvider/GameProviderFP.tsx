@@ -6,6 +6,7 @@ import {
   handleConnectionError,
   handleRoomFilled,
   handleSessionSaved,
+  handleStartGame,
   handleUsersInRoom,
 } from "../../Realms/Lesser/handlers";
 import { WAITING_TIME } from "../../Realms/Pure/constants";
