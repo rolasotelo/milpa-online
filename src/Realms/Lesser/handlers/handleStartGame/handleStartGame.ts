@@ -1,6 +1,8 @@
+import { CROPS_HAND_SIZE, GOODS_HAND_SIZE } from "../../../Pure/constants";
 import { Players } from "../../../Pure/enums";
+import { deal_hand } from "../../../Pure/game/decks";
 import { initialize_game } from "../../../Pure/game/helpers";
-import { MiSocket, Player } from "../../../Pure/types";
+import { Milpa, MiSocket, Player } from "../../../Pure/types";
 
 export const handleStartGame = (
   playersPlayload: ReadonlyArray<Player>,
@@ -10,14 +12,17 @@ export const handleStartGame = (
   const sessionID = sessionStorage.getItem("sessionID");
   if (!playersPlayload[Players.You].gameStatus) {
     const score: Map<string, number> = new Map();
-    score.set(playersPlayload[0].userID!, 0);
-    score.set(playersPlayload[1].userID!, 0);
-    const { cropsDeck, goodsDeck, milpas } = initialize_game();
-    const { cropsHand: newCropsHand, newCropsDeck } = dealCropsHand(cropsDeck);
-    const { goodsHand: newGoodsHand, newGoodsDeck } = dealGoodsHand(goodsDeck);
-    const milpas: Map<string, Milpa> = new Map();
-    milpas.set(playersPlayload[0].userID!, emptyMilpa);
-    milpas.set(playersPlayload[1].userID!, sampleMilpa);
+    score.set(playersPlayload[Players.You].userID!, 0);
+    score.set(playersPlayload[Players.Opponent].userID!, 0);
+    const { cropsDeck, goodsDeck, milpas: emptyMilpas } = initialize_game();
+    const { hand: newCropsHand, deck: newCropsDeck } = deal_hand(
+      cropsDeck,
+      CROPS_HAND_SIZE
+    );
+    const { hand: newGoodsHand, deck: newGoodsDeck } = deal_hand(goodsDeck,GOODS_HAND_SIZE);
+    const milpas: Map<string, Readonly<Milpa>> = new Map();
+    milpas.set(playersPlayload[Players.You].userID!, emptyMilpas[Players.You];
+    milpas.set(playersPlayload[Players.Opponent].userID!, sampleMilpa);
 
     const startGameStatus: GameStatus = {
       playerTurn: playersPlayload[0].userID!,

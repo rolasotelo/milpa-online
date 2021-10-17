@@ -7,6 +7,8 @@ export const COLUMN_SIZE = 4;
 export const EDGE_SIZE = 4;
 export const WAITING_TIME = 60 * 2;
 export const CROPS_DECK_SIZE = 64;
+export const CROPS_HAND_SIZE = 4;
+export const GOODS_HAND_SIZE = 3;
 
 export const WAITING_PLAYER: Readonly<Player> = {
   self: false,

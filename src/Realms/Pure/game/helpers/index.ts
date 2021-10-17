@@ -8,5 +8,5 @@ export * from "./create_board/create_board";
 export * from "./create_edges/create_edges";
 export * from "./create_milpa/create_milpa";
 export * from "./create_players/create_players";
-export * from "./initialize_players/initialize_players";
 export * from "./initialize_game/initialize_game";
+export * from "./initialize_players/initialize_players";
