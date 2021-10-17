@@ -71,6 +71,8 @@ export enum Event {
   Room_Filled = "room filled",
   Start_Game = "start game",
   Start_Game_Handshake = "start game handshake",
+  Player_Disconnection = "player disconnected",
+  Ok_Start_Game = "ok start game",
 }
 
 export enum Total {

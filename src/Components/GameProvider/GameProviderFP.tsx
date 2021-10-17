@@ -4,6 +4,8 @@ import { AnyCard, GameRoutePropsType } from "../../common/types";
 import {
   handleConnection,
   handleConnectionError,
+  handleOkStartGame,
+  handlePlayerDisconnection,
   handleRoomFilled,
   handleSessionSaved,
   handleStartGame,
@@ -157,12 +159,12 @@ const GameProvider = (props: Props) => {
       }
     );
 
-    socket.on("player disconnected", ({ userID, nickname }) => {
-      handlePlayerDisconnection(setIsPlaying);
+    socket.on(Event.Player_Disconnection, ({ userID, nickname }) => {
+      handlePlayerDisconnection(setIsGameOngoing);
     });
 
-    socket.on("ok start game", () => {
-      handleOkStartGame(setIsPlaying);
+    socket.on(Event.Ok_Start_Game, () => {
+      handleOkStartGame(setIsGameOngoing);
     });
 
     return () => {
