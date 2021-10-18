@@ -22,7 +22,7 @@ export const compute_can_interact_with_card = (
   if (
     isYourTurn &&
     selectedCard.card &&
-    selectedCard.indexFromHand &&
+    typeof selectedCard.indexFromHand === "number" &&
     selectedCard.type
   ) {
     canInteractWithCard = (isYourMilpa: boolean, slot: Readonly<BoardSlot>) => {

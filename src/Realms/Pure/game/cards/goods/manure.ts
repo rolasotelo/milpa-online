@@ -4,7 +4,7 @@ import { Good } from "../../../types";
 export const Manure: Readonly<Good> = {
   id: GoodId.Manure,
   type: CardType.Good,
-  name: "Corn",
+  name: "Manure",
   icon: "💩",
   description: "🪰",
   rules: "WIP",

@@ -4,7 +4,7 @@ import { Good } from "../../../types";
 export const Tlaloc: Readonly<Good> = {
   id: GoodId.Tlaloc,
   type: CardType.Good,
-  name: "Tlaloc Idol",
+  name: "Tlaloc",
   icon: "⛈",
   description: "Baile a tlaloc",
   rules: "WIP",
