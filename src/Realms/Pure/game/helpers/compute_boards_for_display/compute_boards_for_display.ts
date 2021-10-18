@@ -8,7 +8,6 @@ export const compute_boards_for_display = (
 > => {
   let yourMilpa: Readonly<BoardForDisplay> | undefined = undefined;
   let opponentsMilpa: Readonly<BoardForDisplay> | undefined = undefined;
-  console.log("players", players);
   if (
     players &&
     players[Players.Opponent] &&
