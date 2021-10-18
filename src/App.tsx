@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { GameRoutePropsType, RoutePropsType } from "./common/types";
 import CreateOrJoinGameProvider from "./Components/CreateOrJoinGameProvider/CreateOrJoinGameProvider";
-import GameProvider from "./Components/GameProvider/GameProvider";
+import GameProvider from "./Components/GameProvider/GameProviderFP";
 import CreateOrJoinGame from "./Containers/CreateOrJoinGame/CreateOrJoinGame";
 import Game from "./Containers/Game/Game";
 import WelcomePage from "./Containers/WelcomePage/WelcomePage";

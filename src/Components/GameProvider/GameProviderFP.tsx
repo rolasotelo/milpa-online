@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useMemo, useState } from "react";
 import newSocket from "../../common/socket/socket";
-import { AnyCard, GameRoutePropsType } from "../../common/types";
+import { GameRoutePropsType } from "../../common/types";
 import {
   handleConnection,
   handleConnectionError,
@@ -14,7 +14,7 @@ import {
   handleUsersInRoom,
 } from "../../Realms/Lesser/handlers";
 import { WAITING_TIME } from "../../Realms/Pure/constants";
-import { Event } from "../../Realms/Pure/enums";
+import { Event, Players } from "../../Realms/Pure/enums";
 import {
   compute_boards_for_display,
   compute_can_interact_with_card,
@@ -55,6 +55,7 @@ export type GameContextType = {
     indexFromHand: number
   ) => void;
   onSelectSlot: (card: SelectedCard, slot: BoardSlot) => void;
+  opponentsNickname: string;
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -102,6 +103,9 @@ const GameProvider = (props: Props) => {
     () => compute_hands(players),
     [players]
   );
+  const opponentsNickname = players[Players.Opponent]
+    ? players[Players.Opponent].nickname
+    : "";
   // TODO how do I use callback ?
   const canInteractWithCard = compute_can_interact_with_card(
     selectedCard,
@@ -157,14 +161,11 @@ const GameProvider = (props: Props) => {
       handleRoomFilled(props.routerProps, nickname);
     });
 
-    socket.on(
-      Event.Start_Game,
-      (sessionID: string, playersPayload: ReadonlyArray<Player>) => {
-        handleStartGame(playersPayload, setPlayers, socket);
-      }
-    );
+    socket.on(Event.Start_Game, (playersPayload: ReadonlyArray<Player>) => {
+      handleStartGame(playersPayload, setPlayers, socket);
+    });
 
-    socket.on(Event.Player_Disconnection, ({ userID, nickname }) => {
+    socket.on(Event.Player_Disconnection, () => {
       handlePlayerDisconnection(setIsGameOngoing);
     });
 
@@ -198,6 +199,7 @@ const GameProvider = (props: Props) => {
     <GameContext.Provider
       value={{
         nickname,
+        opponentsNickname,
         roomCode,
         isGameOngoing,
         isYourTurn,

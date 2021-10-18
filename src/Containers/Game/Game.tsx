@@ -10,12 +10,12 @@ const Game = (props: Props) => {
   const context = useGameContext();
   const players = {
     local: context.nickname,
-    remote: context.players[1] ? context.players[1]?.nickname : "",
+    remote: context.opponentsNickname,
   };
 
   return (
-    <LayoutGame players={players} yourTurn={context.isYourTurn}>
-      {!context.isPlaying && (
+    <LayoutGame players={players} yourTurn={!!context.isYourTurn}>
+      {!context.isGameOngoing && (
         <WaitingModal
           title={`Ahoj ${context.nickname}`}
           body="Share this code with your friend"
