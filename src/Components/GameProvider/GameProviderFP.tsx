@@ -9,6 +9,8 @@ import {
   handleRoomFilled,
   handleSessionSaved,
   handleStartGame,
+  handleStartGameHandshake,
+  handleStartUpdateBoard,
   handleUsersInRoom,
 } from "../../Realms/Lesser/handlers";
 import { WAITING_TIME } from "../../Realms/Pure/constants";
@@ -27,6 +29,7 @@ import {
   BoardForDisplay,
   BoardSlot,
   Crop,
+  GameStatus,
   Good,
   Player,
   SelectedCard,
@@ -171,6 +174,23 @@ const GameProvider = (props: Props) => {
       socket.disconnect();
     };
   }, [props]);
+
+  useEffect(() => {
+    const listenerStartGameHandshake = (gameStatus: GameStatus) => {
+      handleStartGameHandshake(players, setPlayers, gameStatus, socket);
+    };
+    socket.on(Event.Start_Game_Handshake, listenerStartGameHandshake);
+
+    const listenerStartUpdateMilpa = (gameStatus: GameStatus) => {
+      handleStartUpdateBoard(players, setPlayers, gameStatus, socket);
+    };
+    socket.on(Event.Start_Update_Board, listenerStartUpdateMilpa);
+
+    return () => {
+      socket.off(Event.Start_Game_Handshake, listenerStartGameHandshake);
+      socket.off(Event.Start_Update_Board, listenerStartUpdateMilpa);
+    };
+  }, [players]);
 
   return (
     <GameContext.Provider

@@ -73,6 +73,9 @@ export enum Event {
   Start_Game_Handshake = "start game handshake",
   Player_Disconnection = "player disconnected",
   Ok_Start_Game = "ok start game",
+  End_Of_Handshake = "end of handshake",
+  Start_Update_Board = "start update board",
+  End_Update_Board = "end update board",
 }
 
 export enum Total {

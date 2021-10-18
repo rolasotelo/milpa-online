@@ -5,4 +5,6 @@ export * from "./handlePlayerDisconnection/handlePlayerDisconnection";
 export * from "./handleRoomFilled/handleRoomFilled";
 export * from "./handleSessionSaved/handleSessionSaved";
 export * from "./handleStartGame/handleStartGame";
+export * from "./handleStartGameHandshake/handleStartGameHandshake";
+export * from "./handleStartUpdateBoard/handleStartUpdateBoard";
 export * from "./handleUsersInRoom/handleUsersInRoom";
