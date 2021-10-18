@@ -1,12 +1,11 @@
 import React from "react";
-import { AnyCard } from "../../common/types";
+import { pluck } from "underscore";
 import useGameContext from "../../Hooks/useGameContext/useGameContext";
+import { BoardSlot } from "../../Realms/Pure/types";
 
 interface Props {
-  card: AnyCard | undefined;
+  boardSlot: Readonly<BoardSlot>;
   canInteract: boolean;
-  column: number;
-  row: number;
 }
 
 const Crop = (props: Props) => {
@@ -16,11 +15,8 @@ const Crop = (props: Props) => {
       disabled={!props.canInteract}
       className="disabled:cursor-not-allowed"
       onClick={() => {
-        if (context.cardSelected) {
-          context.onClickCropSlot({
-            column: props.column,
-            row: props.row,
-          });
+        if (context.selectedCard) {
+          context.onSelectSlot(context.selectedCard, props.boardSlot);
         }
       }}
     >
@@ -29,7 +25,7 @@ const Crop = (props: Props) => {
           props.canInteract && "border-2 border-mexicanBone"
         } w-16 h-16 mx-auto bg-yellow-900 hover:bg-yellow-700 flex justify-center items-center rounded-md`}
       >
-        {props.card ? props.card.icon : ""}
+        {pluck(props.boardSlot.cards, "icon").toString()}
       </div>
     </button>
   );

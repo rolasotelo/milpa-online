@@ -1,6 +1,6 @@
 import React from "react";
-import { Good } from "../../common/types";
 import useGameContext from "../../Hooks/useGameContext/useGameContext";
+import { Good } from "../../Realms/Pure/types";
 
 interface Props {
   good: Good;
@@ -12,7 +12,7 @@ const GoodCard = (props: Props) => {
   return (
     <button
       onClick={() => {
-        context.onClickCard(props.good, props.index);
+        context.onSelectCard(props.good, props.index);
       }}
     >
       <div className="bg-mexicanBone w-20 h-32 rounded-lg hover:bg-mexicanBoneLight hover:ring-4 hover:ring-mexicanPink">

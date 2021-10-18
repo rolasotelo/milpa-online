@@ -31,7 +31,7 @@ const Calendar = (props: Props) => {
         return (
           <MonthCard
             key={index}
-            isCurrentMonth={index + 1 === context.currenTurn}
+            isCurrentMonth={index + 1 === context.currentTurn}
             text={month}
           />
         );

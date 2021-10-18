@@ -47,12 +47,14 @@ export type GameContextType = {
     Readonly<BoardForDisplay> | undefined,
     Readonly<BoardForDisplay> | undefined
   ];
+  cropsHand: readonly Crop[] | undefined;
+  goodsHand: readonly Good[] | undefined;
   canInteractWithCard: ReturnTypeCanInteractWithCard;
   onSelectCard: (
     card: Readonly<Crop> | Readonly<Good>,
     indexFromHand: number
   ) => void;
-  onSelectSlot: (card: AnyCard, slot: BoardSlot) => void;
+  onSelectSlot: (card: SelectedCard, slot: BoardSlot) => void;
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -118,7 +120,7 @@ const GameProvider = (props: Props) => {
     setSelectedCard(newSelectedCard);
   };
 
-  const onSelectSlot = (card: AnyCard, slot: BoardSlot) => {};
+  const onSelectSlot = (card: SelectedCard, slot: BoardSlot) => {};
 
   useEffect(() => {
     if (!isGameOngoing) {
@@ -199,6 +201,8 @@ const GameProvider = (props: Props) => {
         roomCode,
         isGameOngoing,
         isYourTurn,
+        cropsHand,
+        goodsHand,
         selectedCard,
         currentStage,
         currentTurn,

@@ -1,74 +1,7 @@
-import { CROPS_SIZE, ROW_SIZE } from "../../../common/constants";
 import { cropIds } from "../../../common/game/crops/crops";
 import { goodIds } from "../../../common/game/goods/goods";
 import { AnyCard, Crop, Good, User } from "../../../common/types";
-import { GoodsSlots } from "../../Board/Board";
 import { GameContextType } from "../GameProvider";
-
-export const computeDisplayableBoards = (context: GameContextType) => {
-  let leftMilpa: (AnyCard | undefined)[] = Array(CROPS_SIZE).fill(undefined);
-  let rightMilpa: (AnyCard | undefined)[] = Array(CROPS_SIZE).fill(undefined);
-  let leftEdges: GoodsSlots = {
-    top: Array(ROW_SIZE).fill(undefined),
-    bottom: Array(ROW_SIZE).fill(undefined),
-    left: Array(ROW_SIZE).fill(undefined),
-    right: Array(ROW_SIZE).fill(undefined),
-  };
-  let rightEdges: GoodsSlots = {
-    top: Array(ROW_SIZE).fill(undefined),
-    bottom: Array(ROW_SIZE).fill(undefined),
-    left: Array(ROW_SIZE).fill(undefined),
-    right: Array(ROW_SIZE).fill(undefined),
-  };
-
-  if (
-    context.yourMilpa &&
-    context.otherMilpa &&
-    context.yourMilpa.milpa &&
-    context.otherMilpa.milpa
-  ) {
-    if (context.yourMilpa.milpa.crops && context.otherMilpa.milpa.crops) {
-      leftMilpa = [
-        ...context.yourMilpa.milpa.crops[0],
-        ...context.yourMilpa.milpa.crops[1],
-        ...context.yourMilpa.milpa.crops[2],
-        ...context.yourMilpa.milpa.crops[3],
-      ];
-      rightMilpa = [
-        ...context.otherMilpa.milpa?.crops[0],
-        ...context.otherMilpa.milpa?.crops[1],
-        ...context.otherMilpa.milpa?.crops[2],
-        ...context.otherMilpa.milpa?.crops[3],
-      ];
-    }
-  }
-
-  if (
-    context.yourMilpa &&
-    context.otherMilpa &&
-    context.yourMilpa.milpa &&
-    context.otherMilpa.milpa
-  ) {
-    if (context.yourMilpa.milpa.goods && context.otherMilpa.milpa.goods) {
-      leftEdges = {
-        top: context.yourMilpa.milpa?.goods[0],
-        bottom: context.yourMilpa.milpa?.goods[1],
-        left: context.yourMilpa.milpa?.goods[2],
-        right: context.yourMilpa.milpa?.goods[3],
-      };
-      rightEdges = {
-        top: context.otherMilpa.milpa?.goods[0],
-        bottom: context.otherMilpa.milpa?.goods[1],
-        left: context.otherMilpa.milpa?.goods[2],
-        right: context.otherMilpa.milpa?.goods[3],
-      };
-    }
-  }
-  return {
-    leftBoard: { milpa: leftMilpa, edges: leftEdges },
-    rightBoard: { milpa: rightMilpa, edges: rightEdges },
-  };
-};
 
 export const computeCanCardInteractWithMilpaSlot = (
   context: GameContextType,
