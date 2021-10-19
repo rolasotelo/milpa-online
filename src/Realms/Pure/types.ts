@@ -101,6 +101,8 @@ export type GameRoutePropsType = RouteComponentProps<
   { nickname: string }
 >;
 
+export type RoutePropsType = RouteComponentProps<{}, StaticContext, unknown>;
+
 export interface DeckDefinition<T> {
   card: T;
   total: number;

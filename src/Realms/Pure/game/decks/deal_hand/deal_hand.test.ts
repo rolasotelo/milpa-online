@@ -1,5 +1,5 @@
 import { deal_hand } from "..";
-import { CROPS_HAND_SIZE } from "../../../../../common/constants";
+import { CROPS_HAND_SIZE } from "../../../constants";
 import { Beans, Corn } from "../../cards";
 
 test("should return hand of right size and deck returned must be consistent", () => {

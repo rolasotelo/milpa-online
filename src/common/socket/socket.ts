@@ -1,5 +1,5 @@
 import { io } from "socket.io-client";
-import { MiSocket } from "../types";
+import { MiSocket } from "../../Realms/Pure/types";
 
 const URL = "http://localhost:3000";
 

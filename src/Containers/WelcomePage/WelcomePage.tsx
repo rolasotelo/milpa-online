@@ -1,8 +1,8 @@
 import React from "react";
 import { hot } from "react-hot-loader/root";
-import { RoutePropsType } from "../../common/types";
 import HeroBox from "../../Components/HeroBox/HeroBox";
 import Layout from "../../Components/Layout/Layout";
+import { RoutePropsType } from "../../Realms/Pure/types";
 
 const PlayTranslator = ["PLAY", "JUGAR", "HRÁT"];
 

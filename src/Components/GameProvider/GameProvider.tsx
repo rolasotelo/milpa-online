@@ -1,90 +1,62 @@
-import React, { createContext, useEffect, useState } from "react";
-import { WAITING_TIME } from "../../common/constants";
-import { cropIds } from "../../common/game/crops/crops";
-import { goodIds } from "../../common/game/goods/goods";
+import React, { createContext, useEffect, useMemo, useState } from "react";
 import newSocket from "../../common/socket/socket";
 import {
-  AnyCard,
-  Crop,
-  GameRoutePropsType,
-  GameStatus,
-  Good,
-  Milpa,
-  User,
-} from "../../common/types";
-import {
+  handleConnection,
   handleConnectionError,
-  handleConnectionOrReconnection,
   handleOkStartGame,
   handlePlayerDisconnection,
   handleRoomFilled,
   handleSessionSaved,
   handleStartGame,
   handleStartGameHandshake,
-  handleStartUpdateMilpa,
-  handleUpdateCropInMilpa,
-  handleUpdateGoodInMilpa,
+  handleStartUpdateBoard,
+  handleUpdateBoards,
   handleUsersInRoom,
-  UserPlusSessionIDAndRoomCode,
-} from "./handlers/gameHandlers";
+} from "../../Realms/Lesser/handlers";
+import { WAITING_TIME } from "../../Realms/Pure/constants";
+import { Event, Players } from "../../Realms/Pure/enums";
 import {
-  computeCurrentTurn,
-  computeHands,
-  computeInteractions,
-  computeIsYourTurn,
-  computeMilpasForDisplay,
-} from "./utils/helpers";
-
-type YourMilpa = {
-  isYourMilpa: boolean;
-  milpa: Milpa | undefined;
-};
+  compute_boards_for_display,
+  compute_can_interact_with_card,
+  compute_current_stage,
+  compute_current_turn,
+  compute_hands,
+  compute_is_your_turn,
+  create_players,
+  ReturnTypeCanInteractWithCard,
+} from "../../Realms/Pure/game/helpers";
+import {
+  BoardForDisplay,
+  BoardSlot,
+  Crop,
+  GameRoutePropsType,
+  GameStatus,
+  Good,
+  Player,
+  SelectedCard,
+} from "../../Realms/Pure/types";
 
 export type GameContextType = {
-  nickname: string | undefined;
+  nickname: string;
   roomCode: string;
-  players: User[];
-  isPlaying: boolean;
-  cropsHand: Crop[];
-  goodsHand: Good[];
-  isYourTurn: boolean;
-  cardSelected: {
-    card: Crop | Good | undefined;
-    index: number;
-  };
-  onClickCard: (card: Crop | Good, index: number) => void;
-  yourMilpa: YourMilpa | undefined;
-  otherMilpa: YourMilpa | undefined;
-  canCardInMilpaSlot: (isYourMilpa: boolean) => {
-    interactWithEmptySlot: boolean;
-    interactWithOtherCardsInOwnFilledSlot: boolean;
-    interactWithOtherCardsInOthersFilledSlots: boolean;
-    interactWithFilledSlot: boolean;
-  };
-  canCardInteractWithFilledSlot: (
-    anyCard: AnyCard,
-    isYourMilpa: boolean,
-    interactWithOtherCardsInOwnFilledSlot: boolean,
-    interactWithOtherCardsInOthersFilledSlots: boolean,
-    interactWithFilledSlot: boolean,
-    ownCardsCardSelectedCanInteractWith: (cropIds | goodIds)[],
-    othersCardsCardSelectedCanInteractWith: (cropIds | goodIds)[]
-  ) => boolean;
-  canCardInEdgeSlot: (isYourMilpa: boolean) => {
-    interactWithEmptySlot: boolean;
-    interactWithOtherCardsInOwnFilledSlot: boolean;
-    interactWithOtherCardsInOthersFilledSlots: boolean;
-    interactWithFilledSlot: boolean;
-  };
-  onClickCropSlot: (position: { column: number; row: number }) => void;
-  onClickGoodSlot: (
-    position: {
-      column: number;
-      row: number;
-    },
-    isYourMilpa: boolean
+  isGameOngoing: boolean;
+  isYourTurn: boolean | undefined;
+  selectedCard: Readonly<SelectedCard>;
+  currentTurn: number | undefined;
+  currentStage: number | undefined;
+  boards: readonly [
+    Readonly<BoardForDisplay> | undefined,
+    Readonly<BoardForDisplay> | undefined
+  ];
+  cropsHand: readonly Crop[] | undefined;
+  goodsHand: readonly Good[] | undefined;
+  canInteractWithCard: ReturnTypeCanInteractWithCard;
+  onSelectCard: (
+    card: Readonly<Crop> | Readonly<Good>,
+    indexFromHand: number
   ) => void;
-  currenTurn: number | undefined;
+  onSelectSlot: (card: SelectedCard, slot: BoardSlot) => void;
+  opponentsNickname: string;
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -95,72 +67,77 @@ interface Props {
 }
 
 const GameProvider = (props: Props) => {
-  let nicknameFromLocation: string = "";
-  if (props.routerProps.location.state?.nickname) {
-    nicknameFromLocation = props.routerProps.location.state.nickname;
-  }
-  const roomCodeFromLocation = props.routerProps.match.params.gamecode;
+  const nicknameFromProps = props.routerProps.location.state.nickname;
+  const realNickname = nicknameFromProps ? nicknameFromProps : "";
+  const roomCodeFromProps = props.routerProps.match.params.gamecode;
+  const you = {
+    nickname: realNickname,
+    self: true,
+    connected: true,
+  };
+  const noSelectedCard = {
+    card: undefined,
+    type: undefined,
+    indexFromHand: undefined,
+  };
 
-  const [players, setPlayers] = useState<User[]>([
-    { self: true, connected: true, nickname: nicknameFromLocation },
-    { self: false, connected: true, nickname: "Waiting..." },
-  ]);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [nickname, setNickname] = useState(nicknameFromLocation);
-  const [roomCode, setRoomCode] = useState(roomCodeFromLocation);
-  const [socket, _] = useState(
-    newSocket(roomCodeFromLocation, nicknameFromLocation)
-  );
   const [idTimeout, setIdTimeout] = useState<undefined | NodeJS.Timeout>(
     undefined
   );
-  const [cardSelected, setCardSelected] = useState<{
-    card: Crop | Good | undefined;
-    index: number;
-  }>({ card: undefined, index: 0 });
 
-  const isYourTurn = computeIsYourTurn(players);
-  const currentTurn = computeCurrentTurn(players);
-  const { yourMilpa, otherMilpa } = computeMilpasForDisplay(players);
-  const { cropsHand, goodsHand } = computeHands(players);
-  const {
-    canCardInMilpaSlot,
-    canCardInEdgeSlot,
-    canCardInteractWithFilledSlot,
-  } = computeInteractions(isYourTurn, cardSelected);
+  const [nickname, setNickname] = useState(realNickname);
+  const [roomCode, setRoomCode] = useState(roomCodeFromProps);
+  // TODO test newSocket
+  const [socket, _] = useState(newSocket(roomCodeFromProps, realNickname));
+  const [isGameOngoing, setIsGameOngoing] = useState(false);
+  const [players, setPlayers] = useState<Readonly<[Player, Player]>>(
+    create_players(you)
+  );
+  const [selectedCard, setSelectedCard] =
+    useState<Readonly<SelectedCard>>(noSelectedCard);
 
-  const onClickCard = (card: Crop | Good, index: number) => {
-    setCardSelected({ card, index });
-  };
+  const isYourTurn = useMemo(() => compute_is_your_turn(players), [players]);
+  const currentTurn = useMemo(() => compute_current_turn(players), [players]);
+  const currentStage = useMemo(() => compute_current_stage(players), [players]);
+  const boards = useMemo(() => compute_boards_for_display(players), [players]);
+  const { cropsHand, goodsHand } = useMemo(
+    () => compute_hands(players),
+    [players]
+  );
+  const opponentsNickname = players[Players.Opponent]
+    ? players[Players.Opponent].nickname
+    : "";
+  // TODO how do I use callback ?
+  const canInteractWithCard = compute_can_interact_with_card(
+    selectedCard,
+    isYourTurn
+  );
 
-  const onClickCropSlot = (position: { column: number; row: number }) => {
-    handleUpdateCropInMilpa(
-      socket,
-      cardSelected,
-      position,
-      players,
-      setPlayers,
-      setCardSelected
-    );
-  };
-
-  const onClickGoodSlot = (
-    position: { column: number; row: number },
-    isYourMilpa: boolean
+  const onSelectCard = (
+    card: Readonly<Crop> | Readonly<Good>,
+    indexFromHand: number
   ) => {
-    handleUpdateGoodInMilpa(
-      socket,
-      cardSelected,
-      position,
+    const newSelectedCard: Readonly<SelectedCard> = {
+      indexFromHand,
+      type: card.type,
+      card,
+    };
+    setSelectedCard(newSelectedCard);
+  };
+
+  const onSelectSlot = (card: SelectedCard, slot: BoardSlot) => {
+    handleUpdateBoards(
+      card,
+      slot,
       players,
       setPlayers,
-      setCardSelected,
-      isYourMilpa
+      setSelectedCard,
+      socket
     );
   };
 
   useEffect(() => {
-    if (!isPlaying) {
+    if (!isGameOngoing) {
       const id = setTimeout(() => {
         props.routerProps.history.push("/play", { nickname });
         sessionStorage.removeItem("sessionID");
@@ -173,37 +150,37 @@ const GameProvider = (props: Props) => {
       }
     }
     return () => {};
-  }, [isPlaying]);
+  }, [isGameOngoing]);
 
   useEffect(() => {
-    handleConnectionOrReconnection(socket, sessionStorage, nickname);
+    handleConnection(socket, sessionStorage, nickname);
 
-    socket.on("connect_error", (err) => {
+    socket.on(Event.Connection_Error, (err: Error) => {
       handleConnectionError(err);
     });
 
-    socket.on("session saved", (user: UserPlusSessionIDAndRoomCode) => {
-      handleSessionSaved(user, socket, setNickname, setRoomCode);
+    socket.on(Event.Session_Saved, (playerPayload: Readonly<Player>) => {
+      handleSessionSaved(playerPayload, socket, setNickname, setRoomCode);
     });
 
-    socket.on("users in room", (users: User[]) => {
-      handleUsersInRoom(users, setPlayers, socket);
+    socket.on(Event.Users_In_Room, (playersPayload: ReadonlyArray<Player>) => {
+      handleUsersInRoom(playersPayload, setPlayers, socket);
     });
 
-    socket.on("room filled", () => {
+    socket.on(Event.Room_Filled, () => {
       handleRoomFilled(props.routerProps, nickname);
     });
 
-    socket.on("start game", (sessionID: string, users: User[]) => {
-      handleStartGame(setPlayers, users, socket);
+    socket.on(Event.Start_Game, (playersPayload: ReadonlyArray<Player>) => {
+      handleStartGame(playersPayload, setPlayers, socket);
     });
 
-    socket.on("player disconnected", ({ userID, nickname }) => {
-      handlePlayerDisconnection(setIsPlaying);
+    socket.on(Event.Player_Disconnection, () => {
+      handlePlayerDisconnection(setIsGameOngoing);
     });
 
-    socket.on("ok start game", () => {
-      handleOkStartGame(setIsPlaying);
+    socket.on(Event.Ok_Start_Game, () => {
+      handleOkStartGame(setIsGameOngoing);
     });
 
     return () => {
@@ -215,16 +192,16 @@ const GameProvider = (props: Props) => {
     const listenerStartGameHandshake = (gameStatus: GameStatus) => {
       handleStartGameHandshake(players, setPlayers, gameStatus, socket);
     };
-    socket.on("start game handshake", listenerStartGameHandshake);
+    socket.on(Event.Start_Game_Handshake, listenerStartGameHandshake);
 
     const listenerStartUpdateMilpa = (gameStatus: GameStatus) => {
-      handleStartUpdateMilpa(players, setPlayers, gameStatus, socket);
+      handleStartUpdateBoard(players, setPlayers, gameStatus, socket);
     };
-    socket.on("start update milpa", listenerStartUpdateMilpa);
+    socket.on(Event.Start_Update_Board, listenerStartUpdateMilpa);
 
     return () => {
-      socket.off("start game handshake", listenerStartGameHandshake);
-      socket.off("start update milpa", listenerStartUpdateMilpa);
+      socket.off(Event.Start_Game_Handshake, listenerStartGameHandshake);
+      socket.off(Event.Start_Update_Board, listenerStartUpdateMilpa);
     };
   }, [players]);
 
@@ -232,22 +209,19 @@ const GameProvider = (props: Props) => {
     <GameContext.Provider
       value={{
         nickname,
+        opponentsNickname,
         roomCode,
-        players,
-        isPlaying,
+        isGameOngoing,
+        isYourTurn,
         cropsHand,
         goodsHand,
-        isYourTurn,
-        cardSelected,
-        onClickCard,
-        yourMilpa,
-        otherMilpa,
-        canCardInMilpaSlot,
-        canCardInEdgeSlot,
-        canCardInteractWithFilledSlot,
-        onClickCropSlot,
-        onClickGoodSlot,
-        currenTurn: currentTurn,
+        selectedCard,
+        currentStage,
+        currentTurn,
+        boards,
+        canInteractWithCard,
+        onSelectCard,
+        onSelectSlot,
       }}
     >
       {props.children}

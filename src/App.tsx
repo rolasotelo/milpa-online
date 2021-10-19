@@ -5,12 +5,12 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import { GameRoutePropsType, RoutePropsType } from "./common/types";
 import CreateOrJoinGameProvider from "./Components/CreateOrJoinGameProvider/CreateOrJoinGameProvider";
-import GameProvider from "./Components/GameProvider/GameProviderFP";
+import GameProvider from "./Components/GameProvider/GameProvider";
 import CreateOrJoinGame from "./Containers/CreateOrJoinGame/CreateOrJoinGame";
 import Game from "./Containers/Game/Game";
 import WelcomePage from "./Containers/WelcomePage/WelcomePage";
+import { GameRoutePropsType, RoutePropsType } from "./Realms/Pure/types";
 
 interface Props {}
 
