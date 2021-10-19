@@ -55,6 +55,7 @@ export interface BoardSlot {
   type: SlotType | undefined;
   row: number | undefined;
   column: number | undefined;
+  isYourBoard: boolean;
   cards: ReadonlyArray<AnyCard>;
 }
 
@@ -90,7 +91,7 @@ export interface GameStatus {
 }
 
 export interface BoardForDisplay {
-  isYourMilpa: boolean;
+  isYourBoard: boolean;
   board: Board;
 }
 

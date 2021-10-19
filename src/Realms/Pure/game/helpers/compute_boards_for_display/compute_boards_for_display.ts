@@ -6,8 +6,8 @@ export const compute_boards_for_display = (
 ): Readonly<
   [Readonly<BoardForDisplay> | undefined, Readonly<BoardForDisplay> | undefined]
 > => {
-  let yourMilpa: Readonly<BoardForDisplay> | undefined = undefined;
-  let opponentsMilpa: Readonly<BoardForDisplay> | undefined = undefined;
+  let yourBoard: Readonly<BoardForDisplay> | undefined = undefined;
+  let opponentsBoard: Readonly<BoardForDisplay> | undefined = undefined;
   if (
     players &&
     players[Players.Opponent] &&
@@ -15,13 +15,13 @@ export const compute_boards_for_display = (
     players[Players.Opponent].userID &&
     players[Players.You].gameStatus
   ) {
-    yourMilpa = {
-      isYourMilpa: true,
+    yourBoard = {
+      isYourBoard: true,
       board:
         players[Players.You].gameStatus?.boards[players[Players.You].userID!]!,
     };
-    opponentsMilpa = {
-      isYourMilpa: false,
+    opponentsBoard = {
+      isYourBoard: false,
       board:
         players[Players.You].gameStatus?.boards[
           players[Players.Opponent].userID!
@@ -29,5 +29,5 @@ export const compute_boards_for_display = (
     };
   }
 
-  return [yourMilpa, opponentsMilpa];
+  return [yourBoard, opponentsBoard];
 };

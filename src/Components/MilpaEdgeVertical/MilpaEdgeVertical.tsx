@@ -5,7 +5,7 @@ import Good from "../Good/Good";
 
 interface Props {
   slots: ReadonlyArray<BoardSlot>;
-  isYourMilpa: boolean;
+  isYourBoard: boolean;
 }
 
 const MilpaEdgeVertical = (props: Props) => {
@@ -19,7 +19,7 @@ const MilpaEdgeVertical = (props: Props) => {
           <Good
             key={index}
             boardSlot={boardSlot}
-            canInteract={canInteract(props.isYourMilpa, boardSlot)}
+            canInteract={canInteract(props.isYourBoard, boardSlot)}
           />
         );
       })}

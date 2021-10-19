@@ -8,3 +8,4 @@ export * from "./handleStartGame/handleStartGame";
 export * from "./handleStartGameHandshake/handleStartGameHandshake";
 export * from "./handleStartUpdateBoard/handleStartUpdateBoard";
 export * from "./handleUsersInRoom/handleUsersInRoom";
+export * from "./handleUpdateBoards/handleUpdateBoards";

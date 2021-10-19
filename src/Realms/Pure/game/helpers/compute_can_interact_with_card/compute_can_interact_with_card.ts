@@ -4,7 +4,7 @@ import { BoardSlot, SelectedCard } from "../../../types";
 import { EmptySlot } from "../../cards";
 
 export type ReturnTypeCanInteractWithCard = (
-  isYourMilpa: boolean,
+  isYourBoard: boolean,
   slot: BoardSlot
 ) => boolean;
 
@@ -13,7 +13,7 @@ export const compute_can_interact_with_card = (
   isYourTurn: boolean | undefined
 ): ReturnTypeCanInteractWithCard => {
   let canInteractWithCard: ReturnTypeCanInteractWithCard = (
-    isYourMilpa: boolean,
+    isYourBoard: boolean,
     slot: Readonly<BoardSlot>
   ) => {
     return false;
@@ -25,12 +25,12 @@ export const compute_can_interact_with_card = (
     typeof selectedCard.indexFromHand === "number" &&
     selectedCard.type
   ) {
-    canInteractWithCard = (isYourMilpa: boolean, slot: Readonly<BoardSlot>) => {
+    canInteractWithCard = (isYourBoard: boolean, slot: Readonly<BoardSlot>) => {
       if (slot.type === undefined || slot.cards.length === 0) {
         return false;
       }
       const isEmptySlot = slot.cards.toString() === [EmptySlot].toString();
-      if (isYourMilpa) {
+      if (isYourBoard) {
         if (isEmptySlot) {
           return canInteractWithEmptySlotInYourBoard(selectedCard, slot);
         } else {

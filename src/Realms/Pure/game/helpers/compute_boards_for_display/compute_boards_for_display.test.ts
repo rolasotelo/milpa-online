@@ -7,6 +7,7 @@ import { Corn, EmptySlot, Tlaloc } from "../../cards";
 test("should return milpas from game status with isYourMilpa attribute", () => {
   const USERID = "123456789";
   const USERIDFOROPPONENT = "987654321";
+  const isYourBoard = true;
   const yourMilpa = {
     milpa: [
       [
@@ -14,6 +15,7 @@ test("should return milpas from game status with isYourMilpa attribute", () => {
           type: SlotType.Milpa,
           row: Row.First,
           column: Column.First,
+          isYourBoard,
           cards: [{ ...EmptySlot }],
         },
       ],
@@ -24,6 +26,7 @@ test("should return milpas from game status with isYourMilpa attribute", () => {
           type: SlotType.Edge,
           row: Row.First,
           column: Column.First,
+          isYourBoard,
           cards: [{ ...EmptySlot }],
         },
       ],
@@ -36,6 +39,7 @@ test("should return milpas from game status with isYourMilpa attribute", () => {
           type: SlotType.Milpa,
           row: Row.First,
           column: Column.First,
+          isYourBoard: !isYourBoard,
           cards: [{ ...Corn }],
         },
       ],
@@ -46,6 +50,7 @@ test("should return milpas from game status with isYourMilpa attribute", () => {
           type: SlotType.Edge,
           row: Row.First,
           column: Column.First,
+          isYourBoard: !isYourBoard,
           cards: [{ ...Tlaloc }],
         },
       ],
@@ -71,9 +76,9 @@ test("should return milpas from game status with isYourMilpa attribute", () => {
   ];
   const [yourMilpaForDisplay, opponentsMilpaForDisplay] =
     compute_boards_for_display(players);
-  expect(yourMilpaForDisplay!.isYourMilpa).toBeTruthy();
+  expect(yourMilpaForDisplay!.isYourBoard).toBeTruthy();
   expect(yourMilpaForDisplay!.board).toEqual(yourMilpa);
-  expect(opponentsMilpaForDisplay!.isYourMilpa).toBeFalsy();
+  expect(opponentsMilpaForDisplay!.isYourBoard).toBeFalsy();
   expect(opponentsMilpaForDisplay!.board).toEqual(opponentsMilpa);
 });
 

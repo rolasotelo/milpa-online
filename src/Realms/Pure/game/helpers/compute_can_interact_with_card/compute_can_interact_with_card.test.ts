@@ -10,14 +10,17 @@ test("should return undefined if it's not your turn or any parameter in selected
     type: undefined,
   };
   let isYourTurn: boolean | undefined = true;
+
   const canInteractWithCard = compute_can_interact_with_card(
     selectedCard,
     isYourTurn
   );
+  const isYourBoard = true;
   const cardsInSlot: Readonly<BoardSlot> = {
     type: SlotType.Milpa,
     row: Row.First,
     column: Column.First,
+    isYourBoard,
     cards: [EmptySlot],
   };
   expect(canInteractWithCard(true, cardsInSlot)).toBeFalsy();
@@ -45,16 +48,17 @@ test("should return function that computes if a card can interact with an empty 
     selectedCard,
     isYourTurn
   );
-  const isYourMilpa = true;
+  const isYourBoard = true;
   const cardsInSlot: Readonly<BoardSlot> = {
     type: SlotType.Milpa,
     row: Row.First,
     column: Column.First,
+    isYourBoard,
     cards: [EmptySlot],
   };
-  const interaction1 = canInteractWithCard(isYourMilpa, cardsInSlot);
+  const interaction1 = canInteractWithCard(isYourBoard, cardsInSlot);
   expect(interaction1).toBeTruthy();
-  const interaction2 = canInteractWithCard(!isYourMilpa, cardsInSlot);
+  const interaction2 = canInteractWithCard(!isYourBoard, cardsInSlot);
   expect(interaction2).toBeFalsy();
 });
 
@@ -69,15 +73,16 @@ test("should return function that computes if a card can interact with an non em
     selectedCard,
     isYourTurn
   );
-  const isYourMilpa = true;
+  const isYourBoard = true;
   const cardsInSlot: Readonly<BoardSlot> = {
     type: SlotType.Milpa,
     row: Row.First,
     column: Column.First,
+    isYourBoard,
     cards: [Manure],
   };
-  const interaction1 = canInteractWithCard(isYourMilpa, cardsInSlot);
+  const interaction1 = canInteractWithCard(isYourBoard, cardsInSlot);
   expect(interaction1).toBeTruthy();
-  const interaction2 = canInteractWithCard(!isYourMilpa, cardsInSlot);
+  const interaction2 = canInteractWithCard(!isYourBoard, cardsInSlot);
   expect(interaction2).toBeFalsy();
 });

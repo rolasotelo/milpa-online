@@ -12,10 +12,10 @@ export const initialize_game = (): {
   const cropsDeck = create_deck(CROPSDECKDEFINITION);
   const goodsDeck = create_deck(GOODSDECKDEFINITION);
 
-  const yourMilpa = create_milpa(EmptySlot);
-  const opponentsMilpa = create_milpa(EmptySlot);
-  const yourEdge = create_edges(EmptySlot);
-  const opponentsEdge = create_edges(EmptySlot);
+  const yourMilpa = create_milpa(true, EmptySlot);
+  const opponentsMilpa = create_milpa(false, EmptySlot);
+  const yourEdge = create_edges(true, EmptySlot);
+  const opponentsEdge = create_edges(false, EmptySlot);
 
   return {
     cropsDeck,

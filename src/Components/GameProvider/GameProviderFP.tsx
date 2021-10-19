@@ -11,6 +11,7 @@ import {
   handleStartGame,
   handleStartGameHandshake,
   handleStartUpdateBoard,
+  handleUpdateBoards,
   handleUsersInRoom,
 } from "../../Realms/Lesser/handlers";
 import { WAITING_TIME } from "../../Realms/Pure/constants";
@@ -124,7 +125,16 @@ const GameProvider = (props: Props) => {
     setSelectedCard(newSelectedCard);
   };
 
-  const onSelectSlot = (card: SelectedCard, slot: BoardSlot) => {};
+  const onSelectSlot = (card: SelectedCard, slot: BoardSlot) => {
+    handleUpdateBoards(
+      card,
+      slot,
+      players,
+      setPlayers,
+      setSelectedCard,
+      socket
+    );
+  };
 
   useEffect(() => {
     if (!isGameOngoing) {

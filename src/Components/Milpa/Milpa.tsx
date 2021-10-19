@@ -27,7 +27,7 @@ const Milpa = (props: Props) => {
   const downEdgeSlots: ReadonlyArray<BoardSlot> = props.boardForDisplay
     ? props.boardForDisplay.board.edges[Edge.Down]
     : [];
-  const isYourMilpa = !!props.boardForDisplay?.isYourMilpa;
+  const isYourBoard = !!props.boardForDisplay?.isYourBoard;
   const unFlatennedMilpas: Readonly<BoardSlot[][]> = props.boardForDisplay
     ? props.boardForDisplay.board.milpa
     : [];
@@ -39,9 +39,9 @@ const Milpa = (props: Props) => {
         <StatusBoard />
       </div>
       <div className="flex flex-col items-center h-full">
-        <MilpaEdgeHorizontal isYourMilpa={isYourMilpa} slots={topEdgeSlots} />
+        <MilpaEdgeHorizontal isYourBoard={isYourBoard} slots={topEdgeSlots} />
         <div className="flex flex-row items-center justify-evenly w-full px-1">
-          <MilpaEdgeVertical isYourMilpa={isYourMilpa} slots={leftEdgeSlots} />
+          <MilpaEdgeVertical isYourBoard={isYourBoard} slots={leftEdgeSlots} />
           <div
             className="w-80 h-80  bg-yellow-800 grid grid-cols-4 py-2
            items-center rounded-lg"
@@ -51,14 +51,14 @@ const Milpa = (props: Props) => {
                 <Crop
                   key={index}
                   boardSlot={boardSlot}
-                  canInteract={canInteract(isYourMilpa, boardSlot)}
+                  canInteract={canInteract(isYourBoard, boardSlot)}
                 />
               );
             })}
           </div>
-          <MilpaEdgeVertical isYourMilpa={isYourMilpa} slots={rightEdgeSlots} />
+          <MilpaEdgeVertical isYourBoard={isYourBoard} slots={rightEdgeSlots} />
         </div>
-        <MilpaEdgeHorizontal isYourMilpa={isYourMilpa} slots={downEdgeSlots} />
+        <MilpaEdgeHorizontal isYourBoard={isYourBoard} slots={downEdgeSlots} />
       </div>
     </div>
   );
