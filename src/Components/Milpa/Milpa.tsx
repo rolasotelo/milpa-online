@@ -52,6 +52,7 @@ const Milpa = (props: Props) => {
                   key={index}
                   boardSlot={boardSlot}
                   canInteract={canInteract(isYourBoard, boardSlot)}
+                  isYourBoard={isYourBoard}
                 />
               );
             })}

@@ -1,4 +1,4 @@
-import { find } from "underscore";
+import { find, intersection, pluck } from "underscore";
 import { SlotType } from "../../../enums";
 import { BoardSlot, SelectedCard } from "../../../types";
 import { EmptySlot } from "../../cards";
@@ -81,18 +81,20 @@ const canInteractWithNonEmptySlotInYourBoard = (
       if (typeof card.canInteractWith.ownFilledMilpaSlots === "boolean") {
         canInteract = card.canInteractWith.ownFilledMilpaSlots;
       } else {
-        canInteract = !!find(slot.cards, (card) => {
-          return card.id === selectedCard.card?.id;
-        });
+        canInteract = !!intersection(
+          pluck(slot.cards, "id"),
+          card.canInteractWith.ownFilledMilpaSlots
+        );
       }
       break;
     case SlotType.Edge:
       if (typeof card.canInteractWith.ownFilledEdgeSlots === "boolean") {
         canInteract = card.canInteractWith.ownFilledEdgeSlots;
       } else {
-        canInteract = !!find(slot.cards, (card) => {
-          return card.id === selectedCard.card?.id;
-        });
+        canInteract = !!intersection(
+          pluck(slot.cards, "id"),
+          card.canInteractWith.ownFilledEdgeSlots
+        );
       }
       break;
     default:

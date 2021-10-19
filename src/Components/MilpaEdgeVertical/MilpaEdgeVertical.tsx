@@ -20,6 +20,7 @@ const MilpaEdgeVertical = (props: Props) => {
             key={index}
             boardSlot={boardSlot}
             canInteract={canInteract(props.isYourBoard, boardSlot)}
+            isYourBoard={props.isYourBoard}
           />
         );
       })}

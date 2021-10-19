@@ -20,12 +20,12 @@ import {
 export const handleUpdateBoards = (
   card: SelectedCard,
   slot: BoardSlot,
+  isYourBoard: boolean,
   players: Readonly<[Player, Player]>,
   setPlayers: React.Dispatch<React.SetStateAction<readonly [Player, Player]>>,
   setSelectedCard: React.Dispatch<React.SetStateAction<Readonly<SelectedCard>>>,
   socket: MiSocket
 ) => {
-  const isYourBoard = slot.isYourBoard;
   const cardType = card.type;
   const slotType = slot.type;
   const playersCopy = players.slice();

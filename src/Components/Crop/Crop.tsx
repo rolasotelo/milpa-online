@@ -6,6 +6,7 @@ import { BoardSlot } from "../../Realms/Pure/types";
 interface Props {
   boardSlot: Readonly<BoardSlot>;
   canInteract: boolean;
+  isYourBoard: boolean;
 }
 
 const Crop = (props: Props) => {
@@ -16,7 +17,11 @@ const Crop = (props: Props) => {
       className="disabled:cursor-not-allowed"
       onClick={() => {
         if (context.selectedCard) {
-          context.onSelectSlot(context.selectedCard, props.boardSlot);
+          context.onSelectSlot(
+            context.selectedCard,
+            props.boardSlot,
+            props.isYourBoard
+          );
         }
       }}
     >

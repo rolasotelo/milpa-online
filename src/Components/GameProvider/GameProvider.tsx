@@ -55,7 +55,11 @@ export type GameContextType = {
     card: Readonly<Crop> | Readonly<Good>,
     indexFromHand: number
   ) => void;
-  onSelectSlot: (card: SelectedCard, slot: BoardSlot) => void;
+  onSelectSlot: (
+    card: SelectedCard,
+    slot: BoardSlot,
+    isYourBoard: boolean
+  ) => void;
   opponentsNickname: string;
 };
 
@@ -125,10 +129,15 @@ const GameProvider = (props: Props) => {
     setSelectedCard(newSelectedCard);
   };
 
-  const onSelectSlot = (card: SelectedCard, slot: BoardSlot) => {
+  const onSelectSlot = (
+    card: SelectedCard,
+    slot: BoardSlot,
+    isYourBoard: boolean
+  ) => {
     handleUpdateBoards(
       card,
       slot,
+      isYourBoard,
       players,
       setPlayers,
       setSelectedCard,

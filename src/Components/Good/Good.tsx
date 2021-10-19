@@ -6,6 +6,7 @@ import { BoardSlot } from "../../Realms/Pure/types";
 interface Props {
   boardSlot: Readonly<BoardSlot>;
   canInteract: boolean;
+  isYourBoard: boolean;
 }
 
 const Good = (props: Props) => {
@@ -18,7 +19,11 @@ const Good = (props: Props) => {
       } w-16 h-16 mx-auto bg-yellow-900 hover:bg-yellow-700 flex justify-center items-center rounded-md disabled:cursor-not-allowed`}
       onClick={() => {
         if (context.selectedCard) {
-          context.onSelectSlot(context.selectedCard, props.boardSlot);
+          context.onSelectSlot(
+            context.selectedCard,
+            props.boardSlot,
+            props.isYourBoard
+          );
         }
       }}
     >
