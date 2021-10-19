@@ -4,7 +4,7 @@ import { Column, Row, SlotType } from "../../../enums";
 import { Player } from "../../../types";
 import { Corn, EmptySlot, Tlaloc } from "../../cards";
 
-test("should return milpas from game status with isYourMilpa attribute", () => {
+test("should return milpas from game status with isYourBoard attribute", () => {
   const USERID = "123456789";
   const USERIDFOROPPONENT = "987654321";
   const isYourBoard = true;
