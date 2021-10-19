@@ -1,6 +1,5 @@
 import { where } from "underscore";
 import { create_deck } from "..";
-import { CROPS_DECK_SIZE } from "../../../constants";
 import { Card, Total } from "../../../enums";
 import { Crop, DeckDefinition } from "../../../types";
 import { Beans, Corn } from "../../cards";
@@ -12,7 +11,7 @@ test("should return deck of right size", () => {
   ];
   const deck = create_deck(deckdefinition);
   expect(Array.isArray(deck)).toBeTruthy();
-  expect(deck.length).toEqual(CROPS_DECK_SIZE);
+  expect(deck.length).toEqual(Total.Corn + Total.Beans);
 });
 
 test("should return individual copies of cards", () => {

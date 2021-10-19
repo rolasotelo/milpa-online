@@ -1,11 +1,11 @@
-import { CardType, GoodId, ModifierId } from "../../enums";
+import { CardType, ModifierId } from "../../enums";
 import { Empty } from "../../types";
 
 export const EmptySlot: Readonly<Empty> = {
   id: "empty",
   type: CardType.Empty,
   name: "Empty",
-  icon: "🍂",
+  icon: "",
   description: "How you got here?",
   rules: "I'm not even mad",
   resume: "",

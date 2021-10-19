@@ -1,11 +1,24 @@
 export enum CropId {
   Corn = "corn",
   Beans = "beans",
+  BlueCorn = "blueCorn",
+  Chilli = "chilli",
+  Tomatillo = "tomatillo",
+  Tomatoe = "tomatoe",
+  Quelites = "quelites",
+  RedCorn = "redCorn",
+  Pupmkin = "pumpkin",
 }
 
 export enum GoodId {
   Tlaloc = "tlaloc",
   Manure = "manure",
+  Shovel = "shovel",
+  Maguey = "maguey",
+  Cactus = "cactus",
+  Coatlicue = "coatlicue",
+  Cricket = "cricket",
+  Huitlacoche = "huitlacoche",
 }
 
 export enum ModifierId {
@@ -79,8 +92,21 @@ export enum Event {
 }
 
 export enum Total {
-  Corn = 32,
-  Beans = 32,
-  Manure = 32,
-  Tlaloc = 32,
+  Corn = 14,
+  Beans = 6,
+  BlueCorn = 8,
+  Chilli = 6,
+  Tomatillo = 6,
+  Tomatoe = 6,
+  Quelites = 5,
+  RedCorn = 8,
+  Pumpkin = 5,
+  Manure = 8,
+  Tlaloc = 8,
+  Shovel = 4,
+  Maguey = 12,
+  Cactus = 8,
+  Coatlicue = 3,
+  Cricket = 3,
+  Huitlacoche = 4,
 }
