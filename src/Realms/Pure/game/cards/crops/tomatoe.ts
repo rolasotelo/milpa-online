@@ -2,7 +2,7 @@ import { CropId, CardType, GoodId } from "../../../enums";
 import { Crop } from "../../../types";
 
 export const Tomatoe: Readonly<Crop> = {
-  id: CropId.Corn,
+  id: CropId.Tomatoe,
   type: CardType.Crop,
   name: "Tomatoe",
   icon: "🍅",

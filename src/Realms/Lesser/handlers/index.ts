@@ -1,5 +1,6 @@
 export * from "./handleConnection/handleConnection";
 export * from "./handleConnectionError/handleConnectionError";
+export * from "./handleNewCardInSlot/handleNewCardInSlot";
 export * from "./handleOkStartGame/handleOkStartGame";
 export * from "./handlePlayerDisconnection/handlePlayerDisconnection";
 export * from "./handleRoomFilled/handleRoomFilled";
@@ -7,5 +8,5 @@ export * from "./handleSessionSaved/handleSessionSaved";
 export * from "./handleStartGame/handleStartGame";
 export * from "./handleStartGameHandshake/handleStartGameHandshake";
 export * from "./handleStartUpdateBoard/handleStartUpdateBoard";
-export * from "./handleUsersInRoom/handleUsersInRoom";
 export * from "./handleUpdateBoards/handleUpdateBoards";
+export * from "./handleUsersInRoom/handleUsersInRoom";

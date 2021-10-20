@@ -1,5 +1,8 @@
+import { contains } from "underscore";
+import { handleNewCardInSlot } from "..";
 import { CROPS_HAND_SIZE, GOODS_HAND_SIZE } from "../../../Pure/constants";
 import { Event, Players } from "../../../Pure/enums";
+import { EmptySlot, Shovel } from "../../../Pure/game/cards";
 import { deal_hand } from "../../../Pure/game/decks";
 import {
   compute_next_stage,
@@ -67,15 +70,15 @@ export const handleUpdateBoards = (
       (newGoodsHand as Good[]).splice(card.indexFromHand!, 1);
     }
     if (slotType === "milpa") {
-      (
-        (yourNewMilpa as BoardSlot[][])[slot.row!][slot.column!]
-          .cards as AnyCard[]
-      ).push(card.card!);
+      handleNewCardInSlot(
+        (yourNewMilpa as BoardSlot[][])[slot.row!][slot.column!],
+        card.card!
+      );
     } else if (slotType === "edge") {
-      (
-        (yourNewEdges as BoardSlot[][])[slot.row!][slot.column!]
-          .cards as AnyCard[]
-      ).push(card.card!);
+      handleNewCardInSlot(
+        (yourNewEdges as BoardSlot[][])[slot.row!][slot.column!],
+        card.card!
+      );
     }
   } else {
     opponentsNewMilpa = boardsMap.get(
@@ -92,15 +95,15 @@ export const handleUpdateBoards = (
       (newGoodsHand as Good[]).splice(card.indexFromHand!, 1);
     }
     if (slotType === "milpa") {
-      (
-        (opponentsNewMilpa as BoardSlot[][])[slot.row!][slot.column!]
-          .cards as AnyCard[]
-      ).push(card.card!);
+      handleNewCardInSlot(
+        (opponentsNewMilpa as BoardSlot[][])[slot.row!][slot.column!],
+        card.card!
+      );
     } else if (slotType === "edge") {
-      (
-        (opponentsNewEdges as BoardSlot[][])[slot.row!][slot.column!]
-          .cards as AnyCard[]
-      ).push(card.card!);
+      handleNewCardInSlot(
+        (opponentsNewEdges as BoardSlot[][])[slot.row!][slot.column!],
+        card.card!
+      );
     }
   }
 
