@@ -1,6 +1,8 @@
 import { find, findIndex, intersection, pluck } from "underscore";
+import { MAX_CARD_PER_SLOT, TOTAL_TURNS } from "../../../constants";
 import { SlotType } from "../../../enums";
 import { BoardSlot, SelectedCard } from "../../../types";
+import { Shovel } from "../../cards";
 
 export type ReturnTypeCanInteractWithCard = (
   isYourBoard: boolean,
@@ -9,7 +11,8 @@ export type ReturnTypeCanInteractWithCard = (
 
 export const compute_can_interact_with_card = (
   selectedCard: Readonly<SelectedCard>,
-  isYourTurn: boolean | undefined
+  isYourTurn: boolean | undefined,
+  currentTurn: number | undefined
 ): ReturnTypeCanInteractWithCard => {
   let canInteractWithCard: ReturnTypeCanInteractWithCard = (
     isYourBoard: boolean,
@@ -19,13 +22,20 @@ export const compute_can_interact_with_card = (
   };
 
   if (
+    currentTurn &&
+    currentTurn <= TOTAL_TURNS &&
     isYourTurn &&
     selectedCard.card &&
     typeof selectedCard.indexFromHand === "number" &&
     selectedCard.type
   ) {
     canInteractWithCard = (isYourBoard: boolean, slot: Readonly<BoardSlot>) => {
-      if (slot.type === undefined || slot.cards.length === 0) {
+      if (
+        slot.type === undefined ||
+        slot.cards.length === 0 ||
+        (slot.cards.length >= MAX_CARD_PER_SLOT &&
+          selectedCard.card?.id !== Shovel.id)
+      ) {
         return false;
       }
 

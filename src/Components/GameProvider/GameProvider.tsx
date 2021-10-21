@@ -114,7 +114,8 @@ const GameProvider = (props: Props) => {
   // TODO how do I use callback ?
   const canInteractWithCard = compute_can_interact_with_card(
     selectedCard,
-    isYourTurn
+    isYourTurn,
+    currentTurn
   );
 
   const onSelectCard = (

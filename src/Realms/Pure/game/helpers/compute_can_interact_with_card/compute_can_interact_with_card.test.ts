@@ -1,9 +1,10 @@
 import { compute_can_interact_with_card } from "..";
+import { TOTAL_TURNS } from "../../../constants";
 import { CardType, Column, Row, SlotType } from "../../../enums";
 import { BoardSlot, SelectedCard } from "../../../types";
-import { Corn, EmptySlot, Manure } from "../../cards";
+import { Corn, EmptySlot, Huitlacoche, Manure, Shovel } from "../../cards";
 
-test("should return undefined if it's not your turn or any parameter in selected card is undefined", () => {
+test("should return false if it's not your turn or it's beyond max turns or any parameter in selected card is undefined", () => {
   const selectedCard: Readonly<SelectedCard> = {
     card: undefined,
     indexFromHand: undefined,
@@ -13,7 +14,8 @@ test("should return undefined if it's not your turn or any parameter in selected
 
   const canInteractWithCard = compute_can_interact_with_card(
     selectedCard,
-    isYourTurn
+    isYourTurn,
+    1
   );
   const isYourBoard = true;
   const cardsInSlot: Readonly<BoardSlot> = {
@@ -32,9 +34,17 @@ test("should return undefined if it's not your turn or any parameter in selected
   isYourTurn = undefined;
   const canInteractWithCard2 = compute_can_interact_with_card(
     selectedCard2,
-    isYourTurn
+    isYourTurn,
+    1
   );
   expect(canInteractWithCard2(true, cardsInSlot)).toBeFalsy();
+  isYourTurn = true;
+  const canInteractWithCard3 = compute_can_interact_with_card(
+    selectedCard2,
+    isYourTurn,
+    TOTAL_TURNS + 1
+  );
+  expect(canInteractWithCard3(true, cardsInSlot)).toBeFalsy();
 });
 
 test("should return function that computes if a card can interact with an empty slot", () => {
@@ -46,7 +56,8 @@ test("should return function that computes if a card can interact with an empty 
   let isYourTurn: boolean | undefined = true;
   const canInteractWithCard = compute_can_interact_with_card(
     selectedCard,
-    isYourTurn
+    isYourTurn,
+    1
   );
   const isYourBoard = true;
   const cardsInSlot: Readonly<BoardSlot> = {
@@ -71,7 +82,8 @@ test("should return function that computes if a card can interact with an non em
   let isYourTurn: boolean | undefined = true;
   const canInteractWithCard = compute_can_interact_with_card(
     selectedCard,
-    isYourTurn
+    isYourTurn,
+    1
   );
   const isYourBoard = true;
   const cardsInSlot: Readonly<BoardSlot> = {
@@ -85,4 +97,30 @@ test("should return function that computes if a card can interact with an non em
   expect(interaction1).toBeTruthy();
   const interaction2 = canInteractWithCard(!isYourBoard, cardsInSlot);
   expect(interaction2).toBeFalsy();
+});
+
+test("should return function that computes if a shovel can interact with filled slots", () => {
+  const selectedCard: Readonly<SelectedCard> = {
+    card: { ...Shovel },
+    indexFromHand: 7,
+    type: CardType.Good,
+  };
+  let isYourTurn: boolean | undefined = true;
+  const canInteractWithCard = compute_can_interact_with_card(
+    selectedCard,
+    isYourTurn,
+    1
+  );
+  const isYourBoard = true;
+  const cardsInSlot: Readonly<BoardSlot> = {
+    type: SlotType.Milpa,
+    row: Row.First,
+    column: Column.First,
+    isYourBoard,
+    cards: [{ ...Corn }, { ...Huitlacoche }],
+  };
+  const interaction1 = canInteractWithCard(isYourBoard, cardsInSlot);
+  expect(interaction1).toBeTruthy();
+  const interaction2 = canInteractWithCard(!isYourBoard, cardsInSlot);
+  expect(interaction2).toBeTruthy();
 });

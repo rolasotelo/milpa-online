@@ -36,6 +36,6 @@ test("should return board with unique copies of cards in milpa and edges", () =>
     "🥕"
   );
   expect(board.milpa[Row.Fourth][Column.Fourth].cards[Card.First].icon).toEqual(
-    "🍂"
+    ""
   );
 });
