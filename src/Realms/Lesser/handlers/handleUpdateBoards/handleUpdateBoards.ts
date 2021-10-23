@@ -1,15 +1,12 @@
-import { contains } from "underscore";
 import { handleNewCardInSlot } from "..";
 import { CROPS_HAND_SIZE, GOODS_HAND_SIZE } from "../../../Pure/constants";
 import { Event, Players } from "../../../Pure/enums";
-import { EmptySlot, Shovel } from "../../../Pure/game/cards";
 import { deal_hand } from "../../../Pure/game/decks";
 import {
   compute_next_stage,
   compute_next_turn,
 } from "../../../Pure/game/helpers";
 import {
-  AnyCard,
   Board,
   BoardSlot,
   Crop,
