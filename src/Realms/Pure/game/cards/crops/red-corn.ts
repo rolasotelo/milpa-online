@@ -12,7 +12,12 @@ export const RedCorn: Readonly<Crop> = {
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: true,
-    ownFilledMilpaSlots: [GoodId.Manure],
+    ownFilledMilpaSlots: [
+      GoodId.Manure,
+      CropId.Beans,
+      CropId.Chilli,
+      CropId.Tomatoe,
+    ],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,
     othersEmptyMilpaSlots: false,

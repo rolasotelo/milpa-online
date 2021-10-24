@@ -8,7 +8,7 @@ export const Manure: Readonly<Good> = {
   icon: "💩",
   description: "🪰",
   rules: "WIP",
-  resume: "4 🍫",
+  resume: "+4 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: true,

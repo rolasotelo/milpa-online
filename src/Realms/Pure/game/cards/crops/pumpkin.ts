@@ -13,7 +13,7 @@ export const Pumpkin: Readonly<Crop> = {
   canInteractWith: {
     ownEmptyMilpaSlots: true,
     ownFilledMilpaSlots: [GoodId.Manure],
-    ownEmptyEdgeSlots: false,
+    ownEmptyEdgeSlots: true,
     ownFilledEdgeSlots: false,
     othersEmptyMilpaSlots: false,
     othersFilledMilpaSlots: false,

@@ -1,5 +1,4 @@
-import { findIndex } from "underscore";
-import { GoodId, ModifierId } from "../../../Pure/enums";
+import { ModifierId } from "../../../Pure/enums";
 import { EmptySlot } from "../../../Pure/game/cards";
 import {
   is_empty,

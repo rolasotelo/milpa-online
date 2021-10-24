@@ -2,7 +2,7 @@ import { find, findIndex, intersection, pluck } from "underscore";
 import { MAX_CARD_PER_SLOT, TOTAL_TURNS } from "../../../constants";
 import { SlotType } from "../../../enums";
 import { BoardSlot, SelectedCard } from "../../../types";
-import { Shovel } from "../../cards";
+import { Huitlacoche, Shovel } from "../../cards";
 
 export type ReturnTypeCanInteractWithCard = (
   isYourBoard: boolean,
@@ -34,7 +34,8 @@ export const compute_can_interact_with_card = (
         slot.type === undefined ||
         slot.cards.length === 0 ||
         (slot.cards.length >= MAX_CARD_PER_SLOT &&
-          selectedCard.card?.id !== Shovel.id)
+          selectedCard.card?.id !== Shovel.id &&
+          selectedCard.card?.id !== Huitlacoche.id)
       ) {
         return false;
       }
