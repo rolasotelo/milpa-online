@@ -1,4 +1,5 @@
 import React from "react";
+import useGameContext from "../../Hooks/useGameContext/useGameContext";
 import MonthCard from "../MonthCard/MonthCard";
 
 interface Props {}
@@ -23,13 +24,14 @@ const months = [
 ];
 
 const Calendar = (props: Props) => {
+  const context = useGameContext();
   return (
     <div className="flex flex-wrap w-full h-20 bg-mexicanGreen-dark justify-between items-center px-1 rounded-xl mb-1">
       {months.map((month: string, index) => {
         return (
           <MonthCard
             key={index}
-            isCurrentMonth={month === months[0]}
+            isCurrentMonth={index + 1 === context.currentTurn}
             text={month}
           />
         );

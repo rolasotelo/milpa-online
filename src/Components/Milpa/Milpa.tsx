@@ -1,49 +1,37 @@
 import React from "react";
-import { AnyCard } from "../../common/types";
+import { flatten } from "underscore";
 import useGameContext from "../../Hooks/useGameContext/useGameContext";
-import { GoodsSlots } from "../Board/Board";
-import CacaoBoard from "../CacaoBoard/CacaoBoard";
+import { Edge } from "../../Realms/Pure/enums";
+import { BoardForDisplay, BoardSlot } from "../../Realms/Pure/types";
 import Crop from "../Crop/Crop";
 import MilpaEdgeHorizontal from "../MilpaEdgeHorizontal/MilpaEdgeHorizontal";
 import MilpaEdgeVertical from "../MilpaEdgeVertical/MilpaEdgeVertical";
 import StatusBoard from "../StatusBoard/StatusBoard";
-import { cropIds } from "../../common/game/crops/crops";
-import { goodIds } from "../../common/game/goods/goods";
-import { ROW_SIZE } from "../../common/constants";
 
 interface Props {
-  milpa: (AnyCard | undefined)[];
-  edges: GoodsSlots;
-  isYourMilpa: boolean;
+  boardForDisplay: Readonly<BoardForDisplay> | undefined;
 }
 
 const Milpa = (props: Props) => {
   const context = useGameContext();
-  const {
-    interactWithEmptySlot,
-    interactWithFilledSlot,
-    interactWithOtherCardsInOthersFilledSlots,
-    interactWithOtherCardsInOwnFilledSlot,
-  } = context.canCardInMilpaSlot(props.isYourMilpa);
-  const canCardInteractWith = (anyCard: AnyCard | undefined) => {
-    return anyCard
-      ? context.canCardInteractWithFilledSlot(
-          anyCard,
-          props.isYourMilpa,
-          interactWithOtherCardsInOwnFilledSlot,
-          interactWithOtherCardsInOthersFilledSlots,
-          interactWithFilledSlot,
-          context.cardSelected?.canInteractWith.ownFilledMilpaSlots as (
-            | cropIds
-            | goodIds
-          )[],
-          context.cardSelected?.canInteractWith.othersFilledMilpaSlots as (
-            | cropIds
-            | goodIds
-          )[]
-        )
-      : interactWithEmptySlot;
-  };
+  const canInteract = context.canInteractWithCard;
+  const topEdgeSlots: ReadonlyArray<BoardSlot> = props.boardForDisplay
+    ? props.boardForDisplay.board.edges[Edge.Top]
+    : [];
+  const leftEdgeSlots: ReadonlyArray<BoardSlot> = props.boardForDisplay
+    ? props.boardForDisplay.board.edges[Edge.Left]
+    : [];
+  const rightEdgeSlots: ReadonlyArray<BoardSlot> = props.boardForDisplay
+    ? props.boardForDisplay.board.edges[Edge.Right]
+    : [];
+  const downEdgeSlots: ReadonlyArray<BoardSlot> = props.boardForDisplay
+    ? props.boardForDisplay.board.edges[Edge.Down]
+    : [];
+  const isYourBoard = !!props.boardForDisplay?.isYourBoard;
+  const unFlatennedMilpas: Readonly<BoardSlot[][]> = props.boardForDisplay
+    ? props.boardForDisplay.board.milpa
+    : [];
+  const milpas: ReadonlyArray<BoardSlot> = flatten(unFlatennedMilpas);
 
   return (
     <div className="flex flex-col bg-mexicanGreen-light w-3/8 rounded-2xl">
@@ -51,45 +39,27 @@ const Milpa = (props: Props) => {
         <StatusBoard />
       </div>
       <div className="flex flex-col items-center h-full">
-        <MilpaEdgeHorizontal
-          isYourMilpa={props.isYourMilpa}
-          anyCards={props.edges.top}
-          row={0}
-        />
+        <MilpaEdgeHorizontal isYourBoard={isYourBoard} slots={topEdgeSlots} />
         <div className="flex flex-row items-center justify-evenly w-full px-1">
-          <MilpaEdgeVertical
-            isYourMilpa={props.isYourMilpa}
-            anyCards={props.edges.left}
-            row={2}
-          />
+          <MilpaEdgeVertical isYourBoard={isYourBoard} slots={leftEdgeSlots} />
           <div
             className="w-80 h-80  bg-yellow-800 grid grid-cols-4 py-2
            items-center rounded-lg"
           >
-            {props.milpa.map((anyCard, index) => {
+            {milpas.map((boardSlot, index) => {
               return (
                 <Crop
                   key={index}
-                  card={anyCard}
-                  canInteract={canCardInteractWith(anyCard)}
-                  column={index % ROW_SIZE}
-                  row={Math.floor(index / ROW_SIZE)}
+                  boardSlot={boardSlot}
+                  canInteract={canInteract(isYourBoard, boardSlot)}
+                  isYourBoard={isYourBoard}
                 />
               );
             })}
           </div>
-          <MilpaEdgeVertical
-            isYourMilpa={props.isYourMilpa}
-            anyCards={props.edges.right}
-            row={3}
-          />
+          <MilpaEdgeVertical isYourBoard={isYourBoard} slots={rightEdgeSlots} />
         </div>
-
-        <MilpaEdgeHorizontal
-          isYourMilpa={props.isYourMilpa}
-          anyCards={props.edges.bottom}
-          row={1}
-        />
+        <MilpaEdgeHorizontal isYourBoard={isYourBoard} slots={downEdgeSlots} />
       </div>
     </div>
   );

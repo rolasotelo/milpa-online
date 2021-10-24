@@ -1,10 +1,12 @@
 import React, { ReactNode } from "react";
 import { useHistory } from "react-router-dom";
+import { Players } from "../../Realms/Pure/enums";
 
 interface Props {
   children: ReactNode;
   players: { local: string | undefined; remote: string };
   yourTurn: boolean;
+  scores: [string, string];
 }
 
 const LayoutGame = (props: Props) => {
@@ -23,7 +25,9 @@ const LayoutGame = (props: Props) => {
                 fontSize: "2rem",
               }}
             >
-              <a href="#">{`${props.players.local?.toUpperCase()} : 0 🍫`}</a>
+              <a href="#">{`${props.players.local?.toUpperCase()} : ${
+                props.scores[Players.You]
+              } 🍫`}</a>
               {props.yourTurn && (
                 <a
                   href="#"
@@ -63,7 +67,9 @@ const LayoutGame = (props: Props) => {
               )}
               <a href="#">
                 {props.players.remote
-                  ? `0 🍫 : ${props.players.remote?.toUpperCase()}`
+                  ? `${
+                      props.scores[Players.Opponent]
+                    }  🍫 : ${props.players.remote?.toUpperCase()}`
                   : "Waiting..."}
               </a>
             </div>

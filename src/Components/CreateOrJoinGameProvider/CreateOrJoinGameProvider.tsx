@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { RoutePropsType } from "../../common/types";
+import { RoutePropsType } from "../../Realms/Pure/types";
 
 const RandomNicknames = [
   "Tomate con pena",

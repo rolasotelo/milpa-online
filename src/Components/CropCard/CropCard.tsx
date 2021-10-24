@@ -1,9 +1,10 @@
 import React from "react";
-import { Crop } from "../../common/types";
 import useGameContext from "../../Hooks/useGameContext/useGameContext";
+import { Crop } from "../../Realms/Pure/types";
 
 interface Props {
   crop: Crop;
+  index: number;
 }
 
 const CropCard = (props: Props) => {
@@ -11,7 +12,7 @@ const CropCard = (props: Props) => {
   return (
     <button
       onClick={() => {
-        context.onClickCard(props.crop);
+        context.onSelectCard(props.crop, props.index);
       }}
     >
       <div className="bg-mexicanBone m-2 h-14 rounded-lg  hover:ring-4 hover:ring-mexicanPink">
