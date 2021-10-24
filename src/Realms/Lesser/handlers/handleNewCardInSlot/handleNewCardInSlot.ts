@@ -1,6 +1,11 @@
 import { findIndex } from "underscore";
-import { GoodId } from "../../../Pure/enums";
+import { GoodId, ModifierId } from "../../../Pure/enums";
 import { EmptySlot } from "../../../Pure/game/cards";
+import {
+  is_empty,
+  is_there_manure,
+  is_there_shovel,
+} from "../../../Pure/game/helpers";
 import { AnyCard, BoardSlot } from "../../../Pure/types";
 
 export const handleNewCardInSlot = (
@@ -11,17 +16,18 @@ export const handleNewCardInSlot = (
 ): [Readonly<BoardSlot[][]>, AnyCard] => {
   const WIPSlots = slots.slice();
   const slot = WIPSlots[row][column];
-  const newCards = slot.cards.slice();
+  const newCards = slot.cards as AnyCard[];
   newCards.push(card);
   const newCard = addModifiersToCard(slot, card);
 
-  if (isEmpty(slot)) {
+  if (is_empty(slot)) {
     newCards.splice(0, 1);
   }
-  if (isThereManure(slot)) {
+  if (is_there_manure(slot)) {
+    console.log("manure detected");
     newCards.splice(0, 1);
   }
-  if (isThereShovel(slot)) {
+  if (is_there_shovel(slot)) {
     newCards.splice(0);
     newCards.push(EmptySlot);
   }
@@ -35,25 +41,10 @@ export const handleNewCardInSlot = (
   return [WIPSlots, newCard];
 };
 
-const isEmpty = (slot: BoardSlot) => {
-  return findIndex(slot.cards, (card) => card.id === "empty") >= 0;
-};
-
-const isThereManure = (slot: BoardSlot) => {
-  return (
-    findIndex(slot.cards, (card) => card.id === GoodId.Manure) >= 0 &&
-    slot.cards.length > 1
-  );
-};
-
-const isThereShovel = (slot: BoardSlot) => {
-  return findIndex(slot.cards, (card) => card.id === GoodId.Shovel) >= 0;
-};
-
 const addModifiersToCard = (slot: BoardSlot, card: AnyCard) => {
   const newCard = { ...card };
-  if (isThereManure(slot)) {
-    newCard.modifier.push();
+  if (is_there_manure(slot)) {
+    newCard.modifier.push(ModifierId.Manure);
   }
   return newCard;
 };

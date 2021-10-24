@@ -11,6 +11,7 @@ import {
   score_on_manure_played,
   score_on_pumpkin_played,
   score_on_quelites_played,
+  score_on_red_corn_played,
   score_on_shovel_played,
   score_on_tlaloc_played,
   score_on_tomatillo_played,
@@ -42,6 +43,9 @@ export const compute_score_on_card_played = (
       break;
     case CropId.Quelites:
       newScores = score_on_quelites_played(oldScores, card.modifier);
+      break;
+    case CropId.RedCorn:
+      newScores = score_on_red_corn_played(oldScores, card.modifier);
       break;
     case CropId.Tomatillo:
       newScores = score_on_tomatillo_played(oldScores, card.modifier);
