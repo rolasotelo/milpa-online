@@ -31,12 +31,19 @@ export const TOTAL_STAGES = 6;
 export const MAX_CARD_PER_SLOT = 2;
 export const TOTAL_TURNS = 16;
 
-export const WAITING_PLAYER: Readonly<Player> = {
-  self: false,
-  connected: false,
-  nickname: "Waiting ...",
-};
+// + Scoring
+export const MANURE_MUTIPLIER = 3;
+export const CACAO_WHEN_BEANS_PLAYED = 2;
+export const CACAO_WHEN_BLUE_CORN_PLAYED = 3;
+export const CACAO_WHEN_CHILLI_PLAYED = 4;
+export const CACAO_WHEN_CORN_PLAYED = 3;
+export const CACAO_WHEN_PUMPKIN_PLAYED = 2;
+export const CACAO_WHEN_QUELITES_PLAYED = 5;
+export const CACAO_WHEN_RED_CORN_PLAYED = 3;
+export const CACAO_WHEN_TOMATILLO_PLAYED = 4;
+export const CACAO_WHEN_TOMATOE_PLAYED = 3;
 
+// + Decks definitions
 export const CROPSDECKDEFINITION: ReadonlyArray<DeckDefinition<Crop>> = [
   { card: Corn, total: Total.Corn },
   { card: Beans, total: Total.Beans },
@@ -70,4 +77,10 @@ export const EMPTYGAMESTATUS: Readonly<GameStatus> = {
   goodsDeck: [],
   goodsHand: [],
   score: {},
+};
+
+export const WAITING_PLAYER: Readonly<Player> = {
+  self: false,
+  connected: false,
+  nickname: "Waiting ...",
 };
