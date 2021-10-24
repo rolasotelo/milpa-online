@@ -8,7 +8,7 @@ export const Corn: Readonly<Crop> = {
   icon: "🌽",
   description: "El cultivo más importante, no importa si no lo crees.",
   rules: "WIP",
-  resume: "+1 🍫",
+  resume: "+3 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: true,

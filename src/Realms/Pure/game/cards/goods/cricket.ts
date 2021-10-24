@@ -8,7 +8,7 @@ export const Cricket: Readonly<Good> = {
   icon: "🦗",
   description: "Patitas sonoras",
   rules: "WIP",
-  resume: "+5 🍫",
+  resume: "-2 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: false,

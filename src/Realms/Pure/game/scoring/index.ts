@@ -11,6 +11,7 @@ export * from "./maguey/score_on_maguey_played";
 export * from "./manure/score_on_manure_played";
 export * from "./pumpkin/score_on_pumpkin_played";
 export * from "./quelites/score_on_quelites_played";
+export * from "./read-corn/score_on_red_corn_played";
 export * from "./shovel/score_on_shovel_played";
 export * from "./tlaloc/score_on_tlaloc_played";
 export * from "./tomatillo/score_on_tomatillo_played";

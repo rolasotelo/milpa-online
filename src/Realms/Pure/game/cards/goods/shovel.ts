@@ -8,7 +8,7 @@ export const Shovel: Readonly<Good> = {
   icon: "🧹",
   description: "barrer barrer",
   rules: "WIP",
-  resume: "-1 🍫",
+  resume: "-2 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: false,

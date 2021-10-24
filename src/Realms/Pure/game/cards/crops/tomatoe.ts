@@ -8,7 +8,7 @@ export const Tomatoe: Readonly<Crop> = {
   icon: "🍅",
   description: "De nada Italianos",
   rules: "WIP",
-  resume: "+2 🍫",
+  resume: "+3 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: true,

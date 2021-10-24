@@ -8,7 +8,7 @@ export const Chilli: Readonly<Crop> = {
   icon: "🌶",
   description: "Éntrale cuñado!",
   rules: "WIP",
-  resume: "+3 🍫",
+  resume: "+4 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: true,

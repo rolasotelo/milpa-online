@@ -5,10 +5,10 @@ export const Huitlacoche: Readonly<Good> = {
   id: GoodId.Huitlacoche,
   type: CardType.Good,
   name: "Huitlacoche",
-  icon: "🍆",
+  icon: "🍄",
   description: "Lo amas o lo odias",
   rules: "WIP",
-  resume: "+2 🍫",
+  resume: "+5 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: false,

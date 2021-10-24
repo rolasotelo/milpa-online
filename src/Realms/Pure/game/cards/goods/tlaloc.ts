@@ -8,7 +8,7 @@ export const Tlaloc: Readonly<Good> = {
   icon: "⛈",
   description: "Baile a tlaloc",
   rules: "WIP",
-  resume: "+5 🍫",
+  resume: "+3 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: false,

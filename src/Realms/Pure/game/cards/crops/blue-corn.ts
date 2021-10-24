@@ -8,7 +8,7 @@ export const BlueCorn: Readonly<Crop> = {
   icon: "🍆",
   description: "El cultivo azul más importante del mundo",
   rules: "WIP",
-  resume: "+1 🍫",
+  resume: "+3 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: true,

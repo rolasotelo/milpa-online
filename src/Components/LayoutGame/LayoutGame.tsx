@@ -68,7 +68,7 @@ const LayoutGame = (props: Props) => {
               <a href="#">
                 {props.players.remote
                   ? `${
-                      props.scores[Players.You]
+                      props.scores[Players.Opponent]
                     }  🍫 : ${props.players.remote?.toUpperCase()}`
                   : "Waiting..."}
               </a>

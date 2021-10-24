@@ -162,9 +162,9 @@ const getOldMilpasAndEdges = (
 ) => {
   const yourOldMilpa = boardsMap.get(yourID)!.milpa;
 
-  const yourOldEdges = boardsMap.get(opponentsID)!.edges;
+  const yourOldEdges = boardsMap.get(yourID)!.edges;
 
-  const opponentsOldMilpa = boardsMap.get(yourID)!.milpa;
+  const opponentsOldMilpa = boardsMap.get(opponentsID)!.milpa;
 
   const opponentsOldEdges = boardsMap.get(opponentsID)!.edges;
   return [yourOldMilpa, yourOldEdges, opponentsOldMilpa, opponentsOldEdges];

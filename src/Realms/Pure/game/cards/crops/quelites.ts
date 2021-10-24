@@ -8,7 +8,7 @@ export const Quelites: Readonly<Crop> = {
   icon: "🌱",
   description: "Green is good for your body",
   rules: "WIP",
-  resume: "+8 🍫",
+  resume: "+5 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: false,

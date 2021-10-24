@@ -8,11 +8,16 @@ export const Beans: Readonly<Crop> = {
   icon: "🌰",
   description: "Entre más negros mejor",
   rules: "WIP",
-  resume: "+3 🍫",
+  resume: "+2 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: true,
-    ownFilledMilpaSlots: [GoodId.Manure, CropId.Corn],
+    ownFilledMilpaSlots: [
+      GoodId.Manure,
+      CropId.Corn,
+      CropId.BlueCorn,
+      CropId.RedCorn,
+    ],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,
     othersEmptyMilpaSlots: false,

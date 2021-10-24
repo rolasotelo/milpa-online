@@ -8,7 +8,7 @@ export const RedCorn: Readonly<Crop> = {
   icon: "🥕",
   description: "El cultivo rojo más importante del mundo",
   rules: "WIP",
-  resume: "+1 🍫",
+  resume: "+3 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: true,

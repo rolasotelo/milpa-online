@@ -8,7 +8,7 @@ export const Tomatillo: Readonly<Crop> = {
   icon: "🍈",
   description: "Chilaquiles verdes yummmi, said nobody",
   rules: "WIP",
-  resume: "+3 🍫",
+  resume: "+4 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: true,

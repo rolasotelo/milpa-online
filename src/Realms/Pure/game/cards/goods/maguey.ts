@@ -8,7 +8,7 @@ export const Maguey: Readonly<Good> = {
   icon: "🦚",
   description: "La única planta que necesitarás",
   rules: "WIP",
-  resume: "+3 🍫",
+  resume: "-2 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: false,

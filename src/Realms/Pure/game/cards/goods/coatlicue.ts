@@ -8,7 +8,7 @@ export const Coatlicue: Readonly<Good> = {
   icon: "🏺",
   description: "Aztec goddess who gave birth to the moon.",
   rules: "WIP",
-  resume: "+8 🍫",
+  resume: "-3 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: false,

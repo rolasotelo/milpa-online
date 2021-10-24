@@ -12,10 +12,13 @@ export const compute_current_scores = (
   if (!!players[Players.You].gameStatus) {
     currentScoresObject = players[Players.You].gameStatus!.score;
   }
-  const currentScoresMap = new Map(Object.entries(currentScoresObject!));
-  const yourScore = currentScoresMap.get(players[Players.You].userID!);
-  const opponentsScore = currentScoresMap.get(
-    players[Players.Opponent].userID!
-  );
+  let yourScore;
+  let opponentsScore;
+  if (currentScoresObject) {
+    const currentScoresMap = new Map(Object.entries(currentScoresObject));
+    yourScore = currentScoresMap.get(players[Players.You].userID!);
+    opponentsScore = currentScoresMap.get(players[Players.Opponent].userID!);
+  }
+
   return [yourScore, opponentsScore];
 };

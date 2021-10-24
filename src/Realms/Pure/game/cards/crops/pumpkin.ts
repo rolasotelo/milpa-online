@@ -8,7 +8,7 @@ export const Pumpkin: Readonly<Crop> = {
   icon: "🎃",
   description: "Por qué no hay iconos de calabazas",
   rules: "WIP",
-  resume: "+6 🍫",
+  resume: "+2 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: true,
