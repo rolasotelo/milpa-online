@@ -1,5 +1,6 @@
 export * from "./compute_boards_for_display/compute_boards_for_display";
 export * from "./compute_can_interact_with_card/compute_can_interact_with_card";
+export * from "./compute_current_scores/compute_current_scores";
 export * from "./compute_current_stage/compute_current_stage";
 export * from "./compute_current_turn/compute_current_turn";
 export * from "./compute_hands/compute_hands";

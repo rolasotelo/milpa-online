@@ -1,12 +1,15 @@
+import { filter } from "underscore";
 import { handleNewCardInSlot } from "..";
 import { CROPS_HAND_SIZE, GOODS_HAND_SIZE } from "../../../Pure/constants";
-import { Event, Players } from "../../../Pure/enums";
+import { CardType, Event, Players, SlotType } from "../../../Pure/enums";
 import { deal_hand } from "../../../Pure/game/decks";
 import {
   compute_next_stage,
   compute_next_turn,
 } from "../../../Pure/game/helpers";
+import { compute_score_on_card_played } from "../../../Pure/game/scoring";
 import {
+  AnyCard,
   Board,
   BoardSlot,
   Crop,
@@ -28,81 +31,53 @@ export const handleUpdateBoards = (
 ) => {
   const cardType = card.type;
   const slotType = slot.type;
+  const indexFromHand = card.indexFromHand!;
   const playersCopy = players.slice();
   const oldGameStatus = playersCopy[Players.You].gameStatus!;
   const boardsMap = new Map(
     Object.entries(playersCopy[Players.You]?.gameStatus?.boards!)
   );
-  let yourNewMilpa = undefined;
-  const yourOldMilpa = boardsMap
-    .get(playersCopy[Players.You].userID!)!
-    .milpa.slice();
-  let yourNewEdges = undefined;
-  const yourOldEdges = boardsMap
-    .get(playersCopy[Players.You].userID!)!
-    .edges.slice();
-  let opponentsNewMilpa = undefined;
-  const opponentsOldMilpa = boardsMap
-    .get(playersCopy[Players.Opponent].userID!)!
-    .milpa.slice();
-  let opponentsNewEdges = undefined;
-  const opponentsOldEdges = boardsMap
-    .get(playersCopy[Players.Opponent].userID!)!
-    .edges.slice();
-  let oldCropsDeck = playersCopy[Players.You]?.gameStatus?.cropsDeck!;
-  let oldGoodsDeck = playersCopy[Players.You]?.gameStatus?.goodsDeck!;
-  let newCropsHand = undefined;
-  let oldCropsHand = playersCopy[Players.You]?.gameStatus?.cropsHand.slice()!;
-  let newGoodsHand = undefined;
-  let oldGoodsHand = playersCopy[Players.You]?.gameStatus?.goodsHand.slice()!;
+  const scores = new Map(
+    Object.entries(playersCopy[Players.You]?.gameStatus?.score!)
+  );
+  const yourID = playersCopy[Players.You].userID!;
+  const opponentsID = playersCopy[Players.Opponent].userID!;
 
-  if (isYourBoard) {
-    yourNewMilpa = boardsMap.get(playersCopy[Players.You].userID!)!.milpa;
-    yourNewEdges = boardsMap.get(playersCopy[Players.You].userID!)!.edges;
-    if (cardType === "crop") {
-      newCropsHand = playersCopy[Players.You]?.gameStatus?.cropsHand!;
-      (newCropsHand as Crop[]).splice(card.indexFromHand!, 1);
-    } else if (cardType === "good") {
-      newGoodsHand = playersCopy[Players.You]?.gameStatus?.goodsHand!;
-      (newGoodsHand as Good[]).splice(card.indexFromHand!, 1);
-    }
-    if (slotType === "milpa") {
-      handleNewCardInSlot(
-        (yourNewMilpa as BoardSlot[][])[slot.row!][slot.column!],
-        card.card!
-      );
-    } else if (slotType === "edge") {
-      handleNewCardInSlot(
-        (yourNewEdges as BoardSlot[][])[slot.row!][slot.column!],
-        card.card!
-      );
-    }
-  } else {
-    opponentsNewMilpa = boardsMap.get(
-      playersCopy[Players.Opponent].userID!
-    )!.milpa;
-    opponentsNewEdges = boardsMap.get(
-      playersCopy[Players.Opponent].userID!
-    )!.edges;
-    if (cardType === "crop") {
-      newCropsHand = playersCopy[Players.You]?.gameStatus?.cropsHand!;
-      (newCropsHand as Crop[]).splice(card.indexFromHand!, 1);
-    } else if (cardType === "good") {
-      newGoodsHand = playersCopy[Players.You]?.gameStatus?.goodsHand!;
-      (newGoodsHand as Good[]).splice(card.indexFromHand!, 1);
-    }
-    if (slotType === "milpa") {
-      handleNewCardInSlot(
-        (opponentsNewMilpa as BoardSlot[][])[slot.row!][slot.column!],
-        card.card!
-      );
-    } else if (slotType === "edge") {
-      handleNewCardInSlot(
-        (opponentsNewEdges as BoardSlot[][])[slot.row!][slot.column!],
-        card.card!
-      );
-    }
-  }
+  const [yourOldMilpa, yourOldEdges, opponentsOldMilpa, opponentsOldEdges] =
+    getOldMilpasAndEdges(boardsMap, yourID, opponentsID);
+  const [oldCropsDeck, oldGoodsDeck, oldCropsHand, oldGoodsHand] =
+    getOldDecksAndHands(oldGameStatus);
+  const oldScores = getOldScores(scores, yourID, opponentsID);
+
+  // + Update milpas, edges and hands
+  const [newCropsHand, newGoodsHand] = updateHands(
+    [oldCropsHand, oldGoodsHand],
+    cardType,
+    indexFromHand
+  );
+  const [
+    yourNewMilpa,
+    yourNewEdges,
+    opponentsNewMilpa,
+    opponentsNewEdges,
+    cardWithModifiers,
+  ] = updateMilpasAndEdges(
+    isYourBoard,
+    slotType,
+    yourOldMilpa,
+    yourOldEdges,
+    opponentsOldMilpa,
+    opponentsOldEdges,
+    slot,
+    card
+  );
+  const [yourNewScore, opponentsNewScore] = compute_score_on_card_played(
+    oldScores,
+    cardWithModifiers!
+  );
+  const newScores: Map<string, number> = new Map();
+  newScores.set(yourID, yourNewScore);
+  newScores.set(opponentsID, opponentsNewScore);
 
   const yourNewBoard: Board = {
     milpa: yourNewMilpa ? yourNewMilpa : yourOldMilpa,
@@ -115,16 +90,14 @@ export const handleUpdateBoards = (
   };
 
   const newBoards: Map<string, Board> = new Map();
-  newBoards.set(playersCopy[Players.You].userID!, yourNewBoard);
-  newBoards.set(playersCopy[Players.Opponent].userID!, opponentsNewBoard);
+  newBoards.set(yourID, yourNewBoard);
+  newBoards.set(opponentsID, opponentsNewBoard);
 
   const newStage = compute_next_stage(oldGameStatus.currentStage);
   const newTurn = compute_next_turn(oldGameStatus.currentTurn, newStage);
 
   const isFinalStage = newStage === 1;
-  const newPlayerInTurnID = isFinalStage
-    ? playersCopy[Players.You].userID!
-    : playersCopy[Players.Opponent].userID!;
+  const newPlayerInTurnID = isFinalStage ? yourID : opponentsID;
 
   let newGameStatus: GameStatus;
   if (isFinalStage) {
@@ -146,6 +119,7 @@ export const handleUpdateBoards = (
       cropsDeck: newCropsDeck,
       goodsDeck: newGoodsDeck,
       boards: Object.fromEntries(newBoards),
+      score: Object.fromEntries(newScores),
     };
   } else {
     newGameStatus = {
@@ -158,6 +132,7 @@ export const handleUpdateBoards = (
       cropsDeck: oldCropsDeck,
       goodsDeck: oldGoodsDeck,
       boards: Object.fromEntries(newBoards),
+      score: Object.fromEntries(newScores),
     };
   }
 
@@ -178,4 +153,121 @@ export const handleUpdateBoards = (
     indexFromHand: undefined,
     type: undefined,
   });
+};
+
+const getOldMilpasAndEdges = (
+  boardsMap: Map<string, Readonly<Board>>,
+  yourID: string,
+  opponentsID: string
+) => {
+  const yourOldMilpa = boardsMap.get(yourID)!.milpa;
+
+  const yourOldEdges = boardsMap.get(opponentsID)!.edges;
+
+  const opponentsOldMilpa = boardsMap.get(yourID)!.milpa;
+
+  const opponentsOldEdges = boardsMap.get(opponentsID)!.edges;
+  return [yourOldMilpa, yourOldEdges, opponentsOldMilpa, opponentsOldEdges];
+};
+
+const getOldDecksAndHands = (
+  gameStatus: GameStatus
+): [readonly Crop[], readonly Good[], readonly Crop[], readonly Good[]] => {
+  const oldCropsDeck = gameStatus.cropsDeck!;
+  const oldGoodsDeck = gameStatus.goodsDeck!;
+  const oldCropsHand = gameStatus.cropsHand!;
+  const oldGoodsHand = gameStatus.goodsHand!;
+  return [oldCropsDeck, oldGoodsDeck, oldCropsHand, oldGoodsHand];
+};
+
+const getOldScores = (
+  scores: Map<string, number>,
+  yourID: string,
+  OpponentsID: string
+) => {
+  const yourOldScore = scores.get(yourID)!;
+  const opponentsOldScore = scores.get(OpponentsID)!;
+  return [yourOldScore, opponentsOldScore] as [number, number];
+};
+
+const updateHands = (
+  oldHands: [readonly Crop[] | undefined, readonly Good[] | undefined],
+  type: CardType | undefined,
+  indexFromHand: number
+): [readonly Crop[] | undefined, readonly Good[] | undefined] => {
+  let newCropsHand;
+  let newGoodsHand;
+  if (type === "crop") {
+    newCropsHand = filter(oldHands[0]!, (_, index) => {
+      return index !== indexFromHand;
+    });
+  } else if (type === "good") {
+    newGoodsHand = filter(oldHands[1]!, (_, index) => {
+      return index !== indexFromHand;
+    });
+  }
+  return [newCropsHand, newGoodsHand];
+};
+
+const updateMilpasAndEdges = (
+  isYourBoard: boolean,
+  slotType: SlotType | undefined,
+  yourOldMilpa: readonly BoardSlot[][],
+  yourOldEdges: readonly BoardSlot[][],
+  opponentsOldMilpa: readonly BoardSlot[][],
+  opponentsOldEdges: readonly BoardSlot[][],
+  slot: BoardSlot,
+  card: SelectedCard
+): [
+  readonly BoardSlot[][] | undefined,
+  readonly BoardSlot[][] | undefined,
+  readonly BoardSlot[][] | undefined,
+  readonly BoardSlot[][] | undefined,
+  undefined | AnyCard
+] => {
+  let yourNewMilpa: readonly BoardSlot[][] | undefined = undefined;
+  let yourNewEdges: readonly BoardSlot[][] | undefined = undefined;
+  let opponentsNewMilpa: readonly BoardSlot[][] | undefined = undefined;
+  let opponentsNewEdges: readonly BoardSlot[][] | undefined = undefined;
+  let cardWithModifiers: undefined | AnyCard = undefined;
+  if (isYourBoard) {
+    if (slotType === "milpa") {
+      [yourNewMilpa, cardWithModifiers] = handleNewCardInSlot(
+        yourOldMilpa,
+        slot.row!,
+        slot.column!,
+        card.card!
+      );
+    } else if (slotType === "edge") {
+      [yourNewEdges, cardWithModifiers] = handleNewCardInSlot(
+        yourOldEdges,
+        slot.row!,
+        slot.column!,
+        card.card!
+      );
+    }
+  } else {
+    if (slotType === "milpa") {
+      [opponentsNewMilpa, cardWithModifiers] = handleNewCardInSlot(
+        opponentsOldMilpa,
+        slot.row!,
+        slot.column!,
+        card.card!
+      );
+    } else if (slotType === "edge") {
+      [opponentsNewEdges, cardWithModifiers] = handleNewCardInSlot(
+        opponentsOldEdges,
+        slot.row!,
+        slot.column!,
+        card.card!
+      );
+    }
+  }
+  return [
+    yourNewMilpa,
+    yourNewEdges,
+    opponentsNewMilpa,
+    opponentsNewEdges,
+    cardWithModifiers,
+  ];
 };

@@ -18,6 +18,7 @@ import { Event, Players } from "../../Realms/Pure/enums";
 import {
   compute_boards_for_display,
   compute_can_interact_with_card,
+  compute_current_scores,
   compute_current_stage,
   compute_current_turn,
   compute_hands,
@@ -61,6 +62,7 @@ export type GameContextType = {
     isYourBoard: boolean
   ) => void;
   opponentsNickname: string;
+  scores: [number | undefined, number | undefined];
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -102,6 +104,7 @@ const GameProvider = (props: Props) => {
 
   const isYourTurn = useMemo(() => compute_is_your_turn(players), [players]);
   const currentTurn = useMemo(() => compute_current_turn(players), [players]);
+  const scores = useMemo(() => compute_current_scores(players), [players]);
   const currentStage = useMemo(() => compute_current_stage(players), [players]);
   const boards = useMemo(() => compute_boards_for_display(players), [players]);
   const { cropsHand, goodsHand } = useMemo(
@@ -223,6 +226,7 @@ const GameProvider = (props: Props) => {
         roomCode,
         isGameOngoing,
         isYourTurn,
+        scores,
         cropsHand,
         goodsHand,
         selectedCard,
