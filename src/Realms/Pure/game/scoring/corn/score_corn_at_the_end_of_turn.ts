@@ -23,7 +23,7 @@ export const score_corn_at_the_end_of_turn = (
   };
 };
 
-const is_there_corn_in_slot = is_there_in_slot(Corn);
+export const is_there_corn_in_slot = is_there_in_slot(Corn);
 
 export const is_there_corn_row = (row: MilpaRow): Boolean => {
   const is_there = reduce(
