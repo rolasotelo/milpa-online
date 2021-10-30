@@ -3,7 +3,7 @@ export * from "./blue-corn/score_on_blue_corn_played";
 export * from "./cactus/score_on_cactus_played";
 export * from "./chilli/score_on_chilli_played";
 export * from "./coatlicue/score_on_coatlicue_played";
-export * from "./compute_board_and_score/compute_board_and_score_on_end_of_turn";
+export * from "./compute_board_and_score/compute_board_and_score_at_the_end_of_turn";
 export * from "./compute_score_on_card_played/compute_score_on_card_played";
 export * from "./corn/score_corn_at_the_end_of_turn";
 export * from "./corn/score_on_corn_played";

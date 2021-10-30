@@ -15,3 +15,4 @@ export * from "./initialize_game/initialize_game";
 export * from "./initialize_players/initialize_players";
 export * from "./is";
 export * from "./transpose_matix/transpose_matrix";
+export * from "./compute_total_rows_of_card_in_milpa/compute_total_rows_of_card_in_milpa";

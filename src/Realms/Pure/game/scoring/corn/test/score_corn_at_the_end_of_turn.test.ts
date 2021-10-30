@@ -38,14 +38,6 @@ describe("Is there corn row", () => {
   });
 });
 
-describe("Compute total rows of corn", () => {
-  describe("when there is rows of corn", () => {
-    test("then it should return total rows", () => {
-      expect(compute_total_rows_of_corn(MILPA_WITH_CORN_ROW())).toEqual(1);
-    });
-  });
-});
-
 describe("Score corn at the end of the turn 🌽⏰:", () => {
   describe("when a row of corns is in the board", () => {
     const board: Readonly<Board> = {
