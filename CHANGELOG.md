@@ -35,3 +35,9 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 - Start of functional programming overhaul. Enter the Pure Realm. (rola@hey.com) Oct 2021
 - Now Milpa and Edges are of type AnyCard[][][] which means that there can be an array of cards on each slot, no limit is provided yet. (rola@hey.com) Oct 2021
 - Now a complete game can be played, and although there is no scoring at the end of each turn nor at the end of the game, a good architecture for this has been developed. The other two moments of scoring will be attended on another PR due to this being already quite large. (rola@hey.com) Oct 2021
+
+## Issue [#22](https://github.com/rolasotelo/la-milpa-online/issues/22)
+
+### Score at the end of turn and final score
+
+- Now it's time to compute the score at the end of each turn and at the end of the game. It's a different problem than scoring after playing a card, because it will potentially alter any card in the board and have to consider whole rows and colums and the state of both the milpa and its edges. My first approach will be a function that receives both the current score a board state of a player and returns an updated copy. This function will probably flatten the milpa and edges to find all different present cards and then apply the another function specific to that card that again will receive the whole board and score. (rola@hey.com) Oct 2021
