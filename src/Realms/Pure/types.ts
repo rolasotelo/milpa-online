@@ -43,6 +43,8 @@ export type AnyCard = Crop | Good | Empty;
 
 export type Milpa = BoardSlot[][];
 
+export type MilpaRow = [AnyCard[], AnyCard[], AnyCard[], AnyCard[]];
+
 export type Edges = BoardSlot[][];
 
 export interface SelectedCard {

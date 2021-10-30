@@ -14,3 +14,4 @@ export * from "./create_players/create_players";
 export * from "./initialize_game/initialize_game";
 export * from "./initialize_players/initialize_players";
 export * from "./is";
+export * from "./transpose_matix/transpose_matrix";

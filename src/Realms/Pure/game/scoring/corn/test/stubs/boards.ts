@@ -1,5 +1,5 @@
 import { SlotType } from "../../../../../enums";
-import { AnyCard, Milpa } from "../../../../../types";
+import { AnyCard, Milpa, MilpaRow } from "../../../../../types";
 import { Beans, Corn } from "../../../../cards";
 
 const board_slot = (type: SlotType, isYourBoard: boolean) => {
@@ -14,40 +14,49 @@ const board_slot = (type: SlotType, isYourBoard: boolean) => {
   };
 };
 
-const at = board_slot(SlotType.Milpa, true);
+const milpaSlot = board_slot(SlotType.Milpa, true);
+
+const milpaRow = (rowIndex: number, cards: MilpaRow) => {
+  return [
+    milpaSlot(rowIndex, 0, cards[0]),
+    milpaSlot(rowIndex, 1, cards[1]),
+    milpaSlot(rowIndex, 2, cards[2]),
+    milpaSlot(rowIndex, 3, cards[3]),
+  ];
+};
 
 export const MILPA_WITH_CORN_ROW = (): Milpa => {
   return [
-    [at(0, 0, [Corn]), at(0, 1, [Corn]), at(0, 2, [Corn]), at(0, 3, [Corn])],
-    [at(1, 0, [Beans]), at(1, 1, [Corn]), at(1, 2, [Corn]), at(1, 3, [Corn])],
-    [at(2, 0, [Corn]), at(2, 1, [Beans]), at(2, 2, [Corn]), at(2, 3, [Corn])],
-    [at(3, 0, [Corn]), at(3, 1, [Corn]), at(3, 2, [Beans]), at(3, 3, [Beans])],
+    milpaRow(0, [[Corn], [Corn], [Corn], [Corn]]),
+    milpaRow(1, [[Corn], [Beans], [Corn], [Corn]]),
+    milpaRow(2, [[Corn], [Corn], [Beans], [Corn]]),
+    milpaRow(3, [[Beans], [Corn], [Corn], [Beans]]),
   ];
 };
 
 export const MILPA_WITH_CORN_COLUMN = (): Milpa => {
   return [
-    [at(0, 0, [Beans]), at(0, 1, [Corn]), at(0, 2, [Corn]), at(0, 3, [Corn])],
-    [at(1, 0, [Beans]), at(1, 1, [Corn]), at(1, 2, [Corn]), at(1, 3, [Corn])],
-    [at(2, 0, [Corn]), at(2, 1, [Beans]), at(2, 2, [Corn]), at(2, 3, [Corn])],
-    [at(3, 0, [Corn]), at(3, 1, [Corn]), at(3, 2, [Beans]), at(3, 3, [Corn])],
+    milpaRow(0, [[Corn], [Corn], [Corn], [Beans]]),
+    milpaRow(1, [[Corn], [Beans], [Corn], [Corn]]),
+    milpaRow(2, [[Corn], [Corn], [Beans], [Corn]]),
+    milpaRow(3, [[Corn], [Corn], [Corn], [Beans]]),
   ];
 };
 
 export const MILPA_WITH_CORN_COLUMN_AND_ROW = (): Milpa => {
   return [
-    [at(0, 0, [Corn]), at(0, 1, [Corn]), at(0, 2, [Corn]), at(0, 3, [Corn])],
-    [at(1, 0, [Beans]), at(1, 1, [Corn]), at(1, 2, [Corn]), at(1, 3, [Corn])],
-    [at(2, 0, [Corn]), at(2, 1, [Beans]), at(2, 2, [Corn]), at(2, 3, [Corn])],
-    [at(3, 0, [Corn]), at(3, 1, [Corn]), at(3, 2, [Beans]), at(3, 3, [Corn])],
+    milpaRow(0, [[Corn], [Corn], [Corn], [Corn]]),
+    milpaRow(1, [[Corn], [Beans], [Corn], [Corn]]),
+    milpaRow(2, [[Corn], [Corn], [Beans], [Corn]]),
+    milpaRow(3, [[Corn], [Corn], [Corn], [Beans]]),
   ];
 };
 
 export const MILPA_WITHOUT_CORN_COLUMN_OR_ROW = (): Milpa => {
   return [
-    [at(0, 0, [Corn]), at(0, 1, [Corn]), at(0, 2, [Corn]), at(0, 3, [Beans])],
-    [at(1, 0, [Beans]), at(1, 1, [Corn]), at(1, 2, [Corn]), at(1, 3, [Corn])],
-    [at(2, 0, [Corn]), at(2, 1, [Beans]), at(2, 2, [Corn]), at(2, 3, [Corn])],
-    [at(3, 0, [Corn]), at(3, 1, [Corn]), at(3, 2, [Beans]), at(3, 3, [Corn])],
+    milpaRow(0, [[Beans], [Corn], [Corn], [Corn]]),
+    milpaRow(1, [[Corn], [Beans], [Corn], [Corn]]),
+    milpaRow(2, [[Corn], [Corn], [Beans], [Corn]]),
+    milpaRow(3, [[Corn], [Corn], [Corn], [Beans]]),
   ];
 };

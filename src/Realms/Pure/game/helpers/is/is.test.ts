@@ -1,8 +1,23 @@
-import { is_there_manure, is_there_shovel } from ".";
+import { is_there_in_slot, is_there_manure, is_there_shovel } from ".";
 import { is_empty } from "..";
 import { SlotType } from "../../../enums";
 import { BoardSlot } from "../../../types";
-import { Corn, EmptySlot, Manure, Shovel } from "../../cards";
+import { Beans, Chilli, Corn, EmptySlot, Manure, Shovel } from "../../cards";
+
+describe("Is there In Slot", () => {
+  const is_there_corn_in_slot = is_there_in_slot(Corn);
+  describe("when card to compare is present", () => {
+    test("then it should return true", () => {
+      expect(is_there_corn_in_slot([Beans, Corn])).toBeTruthy();
+    });
+  });
+
+  describe("when card to compare is not present", () => {
+    test("then it should return false", () => {
+      expect(is_there_corn_in_slot([Beans, Chilli])).toBeFalsy();
+    });
+  });
+});
 
 test("should return true if there is empty slot for is empty", () => {
   const slots: BoardSlot = {
