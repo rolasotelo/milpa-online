@@ -1,0 +1,1 @@
+export const PLUS_PER_CORN_ROW_OR_COLUMN = 15;
