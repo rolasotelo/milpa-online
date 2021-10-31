@@ -1,9 +1,9 @@
-import { score_beans_at_the_end_of_turn } from "../..";
 import { Board } from "../../../../types";
 import {
   PLUS_PER_BEANS_WHEN_HARVEST,
   PLUS_PER_BEANS_WITH_CORN,
 } from "../constants";
+import { score_beans_at_the_end_of_turn } from "../score_beans_at_the_end_of_turn";
 import { MILPA_WITH_3_BEANS_AND_CORN_TOGETHER } from "./stubs/boards";
 
 describe("Score beans at the end of the turn 🌰⏰:", () => {

@@ -41,6 +41,7 @@ export const score_beans_at_the_end_of_turn = (
   };
 };
 
+console.log("type of compute total cards", typeof compute_total_cards_in_board);
 const compute_total_beans = compute_total_cards_in_board(Beans);
 
 export const is_beans_harvest_turn = (turn: number) => {

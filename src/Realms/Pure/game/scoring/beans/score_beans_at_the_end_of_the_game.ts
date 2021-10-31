@@ -1,5 +1,5 @@
 import { Board } from "../../../types";
-import { Beans, Corn } from "../../cards";
+import { Beans } from "../../cards";
 import {
   compute_total_adjacencies_of_card_in_milpa,
   is_there_in_slot,

@@ -1,6 +1,9 @@
-import { score_on_beans_played } from "..";
-import { CACAO_WHEN_BEANS_PLAYED, MANURE_MUTIPLIER } from "../../../constants";
-import { ModifierId } from "../../../enums";
+import { score_on_beans_played } from "../..";
+import {
+  CACAO_WHEN_BEANS_PLAYED,
+  MANURE_MUTIPLIER,
+} from "../../../../constants";
+import { ModifierId } from "../../../../enums";
 
 test("should return new scores which depend on modifiers", () => {
   const oldScores: [number, number] = [1, 1];
