@@ -1,7 +1,7 @@
-import { score_corn_at_the_end_of_turn } from "../..";
 import { Board, MilpaRow } from "../../../../types";
 import { Beans, Corn } from "../../../cards";
 import { PLUS_PER_CORN_ROW_OR_COLUMN } from "../costants";
+import { score_corn_at_the_end_of_the_game } from "../score_corn_at_the_end_of_the_game";
 import { is_there_corn_row } from "../score_corn_at_the_end_of_turn";
 import {
   MILPA_WITHOUT_CORN_COLUMN_OR_ROW,
@@ -35,9 +35,7 @@ describe("Is there corn row", () => {
   });
 });
 
-describe("Score corn at the end of the turn 🌽⏰:", () => {
-  const firstTurn = 1;
-  const cornHarvestingTurn = 13;
+describe("Score corn at the end of the game 🌽🎊:", () => {
   describe("when a row of corns is in the board", () => {
     const board: Readonly<Board> = {
       milpa: MILPA_WITH_CORN_ROW(),
@@ -45,7 +43,7 @@ describe("Score corn at the end of the turn 🌽⏰:", () => {
     };
     test("then it should return a plus score", () => {
       const { board: newBoard, score: deltaScore } =
-        score_corn_at_the_end_of_turn(board, cornHarvestingTurn);
+        score_corn_at_the_end_of_the_game(board);
       expect(deltaScore).toEqual(PLUS_PER_CORN_ROW_OR_COLUMN);
       expect(newBoard).toEqual(board);
     });
@@ -58,7 +56,7 @@ describe("Score corn at the end of the turn 🌽⏰:", () => {
     };
     test("then it should return a plus score", () => {
       const { board: newBoard, score: deltaScore } =
-        score_corn_at_the_end_of_turn(board, cornHarvestingTurn);
+        score_corn_at_the_end_of_the_game(board);
       expect(deltaScore).toEqual(PLUS_PER_CORN_ROW_OR_COLUMN);
       expect(newBoard).toEqual(board);
     });
@@ -71,7 +69,7 @@ describe("Score corn at the end of the turn 🌽⏰:", () => {
     };
     test("then it should return plus 0 score", () => {
       const { board: newBoard, score: deltaScore } =
-        score_corn_at_the_end_of_turn(board, cornHarvestingTurn);
+        score_corn_at_the_end_of_the_game(board);
       expect(deltaScore).toEqual(0);
       expect(newBoard).toEqual(board);
     });
@@ -84,7 +82,7 @@ describe("Score corn at the end of the turn 🌽⏰:", () => {
     };
     test("then it should return plus score times the columns and rows", () => {
       const { board: newBoard, score: deltaScore } =
-        score_corn_at_the_end_of_turn(board, cornHarvestingTurn);
+        score_corn_at_the_end_of_the_game(board);
       expect(deltaScore).toEqual(PLUS_PER_CORN_ROW_OR_COLUMN * 2);
       expect(newBoard).toEqual(board);
     });

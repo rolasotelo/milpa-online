@@ -8,9 +8,8 @@ import {
 } from "../../helpers";
 import { PLUS_PER_CORN_ROW_OR_COLUMN } from "./costants";
 
-export const score_corn_at_the_end_of_turn = (
-  board: Board,
-  turn: number
+export const score_corn_at_the_end_of_the_game = (
+  board: Board
 ): { board: Board; score: number } => {
   const milpa = board.milpa;
   let totalRows = compute_total_rows_of_corn(milpa);

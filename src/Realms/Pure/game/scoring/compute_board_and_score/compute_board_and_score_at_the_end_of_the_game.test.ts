@@ -1,4 +1,4 @@
-import { compute_board_and_score_at_the_end_of_turn } from "..";
+import { compute_board_and_score_at_the_end_of_the_game } from "..";
 import { Board } from "../../../types";
 import { PLUS_PER_CORN_ROW_OR_COLUMN } from "../corn/costants";
 import {
@@ -6,9 +6,7 @@ import {
   MILPA_WITH_CORN_ROW,
 } from "../corn/test/stubs/boards";
 
-describe("Compute board and score at the end of turn", () => {
-  const turn = 1;
-  const cornHarvestingTurn = 13;
+describe("Compute board and score at the end of the game", () => {
   describe("when board contains corns row", () => {
     const initialScore = 17;
     const board: Readonly<Board> = {
@@ -16,11 +14,7 @@ describe("Compute board and score at the end of turn", () => {
       edges: [[]],
     };
     const { board: newBoard, score: newScore } =
-      compute_board_and_score_at_the_end_of_turn(
-        board,
-        initialScore,
-        cornHarvestingTurn
-      );
+      compute_board_and_score_at_the_end_of_the_game(board, initialScore);
     test("then it should add to the score", () => {
       expect(newBoard).toEqual(board);
       expect(newScore).toEqual(initialScore + PLUS_PER_CORN_ROW_OR_COLUMN);
@@ -33,11 +27,7 @@ describe("Compute board and score at the end of turn", () => {
       edges: [[]],
     };
     const { board: newBoard, score: newScore } =
-      compute_board_and_score_at_the_end_of_turn(
-        board,
-        initialScore,
-        cornHarvestingTurn
-      );
+      compute_board_and_score_at_the_end_of_the_game(board, initialScore);
     test("then it should add to the score twice", () => {
       expect(newBoard).toEqual(board);
       expect(newScore).toEqual(initialScore + 2 * PLUS_PER_CORN_ROW_OR_COLUMN);

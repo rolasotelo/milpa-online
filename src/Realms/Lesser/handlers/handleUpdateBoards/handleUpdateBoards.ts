@@ -1,6 +1,10 @@
 import { filter } from "underscore";
 import { handleNewCardInSlot } from "..";
-import { CROPS_HAND_SIZE, GOODS_HAND_SIZE } from "../../../Pure/constants";
+import {
+  CROPS_HAND_SIZE,
+  GOODS_HAND_SIZE,
+  TOTAL_TURNS,
+} from "../../../Pure/constants";
 import { CardType, Event, Players, SlotType } from "../../../Pure/enums";
 import { deal_hand } from "../../../Pure/game/decks";
 import {
@@ -8,6 +12,7 @@ import {
   compute_next_turn,
 } from "../../../Pure/game/helpers";
 import {
+  compute_board_and_score_at_the_end_of_the_game,
   compute_board_and_score_at_the_end_of_turn,
   compute_score_on_card_played,
 } from "../../../Pure/game/scoring";
@@ -111,19 +116,44 @@ export const handleUpdateBoards = (
       score: yourNewScoreAfterEndTurnScore,
     } = compute_board_and_score_at_the_end_of_turn(
       yourNewBoardBeforeEndTurnScore,
-      yourNewScoreBeforeEndTurnScore
+      yourNewScoreBeforeEndTurnScore,
+      oldGameStatus.currentTurn
     );
     const {
       board: opponentsNewBoardAfterEndTurnScore,
       score: opponentsNewScoreAfterEndTurnScore,
     } = compute_board_and_score_at_the_end_of_turn(
       opponentsNewBoardBeforeEndTurnScore,
-      opponentsNewScoreBeforeEndTurnScore
+      opponentsNewScoreBeforeEndTurnScore,
+      oldGameStatus.currentTurn
     );
-    newScores.set(yourID, yourNewScoreAfterEndTurnScore);
-    newScores.set(opponentsID, opponentsNewScoreAfterEndTurnScore);
-    newBoards.set(yourID, yourNewBoardAfterEndTurnScore);
-    newBoards.set(opponentsID, opponentsNewBoardAfterEndTurnScore);
+    if (newTurn > TOTAL_TURNS) {
+      const {
+        board: yourNewBoardAfterEndGameScore,
+        score: yourNewScoreAfterEndGameScore,
+      } = compute_board_and_score_at_the_end_of_the_game(
+        yourNewBoardAfterEndTurnScore,
+        yourNewScoreAfterEndTurnScore
+      );
+      const {
+        board: opponentsNewBoardAfterEndGameScore,
+        score: opponentsNewScoreAfterEndGameScore,
+      } = compute_board_and_score_at_the_end_of_the_game(
+        opponentsNewBoardAfterEndTurnScore,
+        opponentsNewScoreAfterEndTurnScore
+      );
+
+      newScores.set(yourID, yourNewScoreAfterEndGameScore);
+      newScores.set(opponentsID, opponentsNewScoreAfterEndGameScore);
+      newBoards.set(yourID, yourNewBoardAfterEndGameScore);
+      newBoards.set(opponentsID, opponentsNewBoardAfterEndGameScore);
+    } else {
+      newScores.set(yourID, yourNewScoreAfterEndTurnScore);
+      newScores.set(opponentsID, opponentsNewScoreAfterEndTurnScore);
+      newBoards.set(yourID, yourNewBoardAfterEndTurnScore);
+      newBoards.set(opponentsID, opponentsNewBoardAfterEndTurnScore);
+    }
+
     newGameStatus = {
       ...oldGameStatus,
       playerInTurnID: newPlayerInTurnID,

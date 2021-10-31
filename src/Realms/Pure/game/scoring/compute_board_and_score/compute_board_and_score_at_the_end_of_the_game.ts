@@ -1,11 +1,11 @@
 import { flatten, pluck } from "underscore";
 import { is_there_corn_in_slot, score_corn_at_the_end_of_turn } from "..";
 import { Board } from "../../../types";
+import { score_corn_at_the_end_of_the_game } from "../corn/score_corn_at_the_end_of_the_game";
 
-export const compute_board_and_score_at_the_end_of_turn = (
+export const compute_board_and_score_at_the_end_of_the_game = (
   board: Board,
-  score: number,
-  turn: number
+  score: number
 ): { board: Board; score: number } => {
   const allCardsInMilpa = flatten(pluck(flatten(board.milpa), "cards"));
 
@@ -13,7 +13,7 @@ export const compute_board_and_score_at_the_end_of_turn = (
   let newBoard = board;
   if (is_there_corn_in_slot(allCardsInMilpa)) {
     const { board: newBoardFromCorn, score: newScoreFromcorn } =
-      score_corn_at_the_end_of_turn(newBoard, turn);
+      score_corn_at_the_end_of_the_game(newBoard);
     newScore = newScore + newScoreFromcorn;
     newBoard = newBoardFromCorn;
   }
