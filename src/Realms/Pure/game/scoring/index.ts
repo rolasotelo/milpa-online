@@ -6,6 +6,7 @@ export * from "./coatlicue/score_on_coatlicue_played";
 export * from "./compute_board_and_score/compute_board_and_score_at_the_end_of_the_game";
 export * from "./compute_board_and_score/compute_board_and_score_at_the_end_of_turn";
 export * from "./compute_score_on_card_played/compute_score_on_card_played";
+export * from "./compute_total_cards_in_slot/compute_total_cards_in_slot";
 export * from "./corn/score_corn_at_the_end_of_turn";
 export * from "./corn/score_on_corn_played";
 export * from "./cricket/score_on_cricket_played";

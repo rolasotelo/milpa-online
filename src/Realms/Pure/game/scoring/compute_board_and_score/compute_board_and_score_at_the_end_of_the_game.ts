@@ -1,5 +1,5 @@
 import { flatten, pluck } from "underscore";
-import { is_there_corn_in_slot, score_corn_at_the_end_of_turn } from "..";
+import { is_there_corn_in_slot } from "..";
 import { Board } from "../../../types";
 import { score_corn_at_the_end_of_the_game } from "../corn/score_corn_at_the_end_of_the_game";
 
