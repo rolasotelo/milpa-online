@@ -1,22 +1,12 @@
-import { indexOf, reduce } from "underscore";
+import { indexOf } from "underscore";
 import {
   compute_total_cards_in_board,
   compute_total_cards_in_board_with_modifier,
-  compute_total_modifiers_in_board,
 } from "..";
 import { ModifierId } from "../../../enums";
-import { Board, BoardSlot, MilpaRow } from "../../../types";
+import { Board } from "../../../types";
 import { Corn } from "../../cards";
-import {
-  compute_total_rows_of_card_in_milpa,
-  is_there_in_slot,
-  transpose_matrix,
-} from "../../helpers";
-import {
-  CORN_HARVEST_TURNS,
-  PLUS_PER_CORN_ROW_OR_COLUMN,
-  PLUS_PER_CORN_WHEN_HARVEST,
-} from "./costants";
+import { CORN_HARVEST_TURNS, PLUS_PER_CORN_WHEN_HARVEST } from "./costants";
 
 export const score_corn_at_the_end_of_turn = (
   board: Board,

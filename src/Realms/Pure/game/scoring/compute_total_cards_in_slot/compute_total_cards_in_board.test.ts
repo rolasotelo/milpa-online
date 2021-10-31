@@ -1,9 +1,12 @@
 import {
   compute_total_cards_in_board,
+  compute_total_cards_in_board_sharing_slot_with,
   compute_total_cards_in_board_with_modifier,
+  slot_has_cards,
 } from "..";
-import { ModifierId } from "../../../enums";
-import { Corn } from "../../cards";
+import { CropId, ModifierId } from "../../../enums";
+import { Beans, Corn, Quelites } from "../../cards";
+import { MILPA_WITH_3_BEANS_AND_CORN_TOGETHER } from "../beans/test/stubs/boards";
 import {
   MILPA_WITH_CORN_AND_HUITLACOCHE,
   MILPA_WITH_CORN_COLUMN,
@@ -29,6 +32,41 @@ describe("Compute total Cards with modifier in board", () => {
           ModifierId.Huitlacoche
         );
       expect(compute_total_corn_with_huitlacoche(milpa)).toEqual(4);
+    });
+  });
+});
+
+describe("Slot has cards", () => {
+  const card1 = CropId.Corn;
+  const card2 = CropId.Beans;
+  describe("when provided list containing desired cards", () => {
+    const slot = [Corn, Beans, Quelites];
+    test("then it should return true", () => {
+      expect(slot_has_cards(slot, card1, card2)).toBeTruthy();
+    });
+  });
+  describe("when provided list not containing desired cards", () => {
+    const slot = [Corn, Quelites];
+    test("then it should return false", () => {
+      expect(slot_has_cards(slot, card1, card2)).toBeFalsy();
+    });
+  });
+});
+
+describe("Compute total cards in board sharing slot with", () => {
+  const look_for_beans_and_corn =
+    compute_total_cards_in_board_sharing_slot_with(Beans, CropId.Corn);
+  describe("when provided 2 cards to look for and milpa containing them together", () => {
+    const milpa = MILPA_WITH_3_BEANS_AND_CORN_TOGETHER();
+    test("then it should return proper count", () => {
+      expect(look_for_beans_and_corn(milpa)).toEqual(3);
+    });
+  });
+
+  describe("when provided 2 cards to look for and milpa not containing them together", () => {
+    const milpa = MILPA_WITH_CORN_COLUMN();
+    test("then it should return 0", () => {
+      expect(look_for_beans_and_corn(milpa)).toEqual(0);
     });
   });
 });
