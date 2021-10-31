@@ -1,36 +1,20 @@
 import { score_corn_at_the_end_of_turn } from "../..";
-import { Board, MilpaRow } from "../../../../types";
-import { Beans, Corn } from "../../../cards";
-import { PLUS_PER_CORN_ROW_OR_COLUMN } from "../costants";
-import { is_there_corn_row } from "../score_corn_at_the_end_of_turn";
-import {
-  MILPA_WITHOUT_CORN_COLUMN_OR_ROW,
-  MILPA_WITH_CORN_COLUMN,
-  MILPA_WITH_CORN_COLUMN_AND_ROW,
-  MILPA_WITH_CORN_ROW,
-} from "./stubs/boards";
+import { Board } from "../../../../types";
+import { PLUS_PER_CORN_WHEN_HARVEST } from "../costants";
+import { is_corn_harvest_turn } from "../score_corn_at_the_end_of_turn";
+import { MILPA_WITH_CORN_AND_HUITLACOCHE } from "./stubs/boards";
 
-describe("Is there corn row", () => {
-  describe("when a row with corns is provided", () => {
-    const CORN_ROW: MilpaRow = [
-      [Corn, Beans],
-      [Corn, Beans],
-      [Corn, Beans],
-      [Corn, Beans],
-    ];
+describe("Is corn harvest turn", () => {
+  describe("when passed a harvest turn", () => {
+    const turn = 13;
     test("then it should return true", () => {
-      expect(is_there_corn_row(CORN_ROW)).toBeTruthy();
+      expect(is_corn_harvest_turn(turn)).toBeTruthy();
     });
   });
-  describe("when a row with corns is not provided", () => {
-    const NO_CORN_ROW: MilpaRow = [
-      [Corn, Beans],
-      [Corn, Beans],
-      [Beans],
-      [Corn, Beans],
-    ];
+  describe("when not passed a harvest turn", () => {
+    const turn = 11;
     test("then it should return false", () => {
-      expect(is_there_corn_row(NO_CORN_ROW)).toBeFalsy();
+      expect(is_corn_harvest_turn(turn)).toBeFalsy();
     });
   });
 });
@@ -38,55 +22,25 @@ describe("Is there corn row", () => {
 describe("Score corn at the end of the turn 🌽⏰:", () => {
   const firstTurn = 1;
   const cornHarvestingTurn = 13;
-  describe("when a row of corns is in the board", () => {
-    const board: Readonly<Board> = {
-      milpa: MILPA_WITH_CORN_ROW(),
-      edges: [[]],
-    };
-    test("then it should return a plus score", () => {
-      const { board: newBoard, score: deltaScore } =
+  const board: Board = {
+    milpa: MILPA_WITH_CORN_AND_HUITLACOCHE(),
+    edges: [[]],
+  };
+  describe("when it is harvest turn and there is corn in milpa", () => {
+    const expectedScore =
+      8 * PLUS_PER_CORN_WHEN_HARVEST + 4 * 2 * PLUS_PER_CORN_WHEN_HARVEST;
+    test("then it should return proper scoring", () => {
+      const { board: newBoard, score: newScore } =
         score_corn_at_the_end_of_turn(board, cornHarvestingTurn);
-      expect(deltaScore).toEqual(PLUS_PER_CORN_ROW_OR_COLUMN);
-      expect(newBoard).toEqual(board);
+      expect(newScore).toEqual(expectedScore);
     });
   });
-
-  describe("when a column of corns is in the board", () => {
-    const board: Readonly<Board> = {
-      milpa: MILPA_WITH_CORN_COLUMN(),
-      edges: [[]],
-    };
-    test("then it should return a plus score", () => {
-      const { board: newBoard, score: deltaScore } =
-        score_corn_at_the_end_of_turn(board, cornHarvestingTurn);
-      expect(deltaScore).toEqual(PLUS_PER_CORN_ROW_OR_COLUMN);
-      expect(newBoard).toEqual(board);
-    });
-  });
-
-  describe("when there is no row nor column of corns is in the board", () => {
-    const board: Readonly<Board> = {
-      milpa: MILPA_WITHOUT_CORN_COLUMN_OR_ROW(),
-      edges: [[]],
-    };
-    test("then it should return plus 0 score", () => {
-      const { board: newBoard, score: deltaScore } =
-        score_corn_at_the_end_of_turn(board, cornHarvestingTurn);
-      expect(deltaScore).toEqual(0);
-      expect(newBoard).toEqual(board);
-    });
-  });
-
-  describe("when there is multiple rows or columns", () => {
-    const board: Readonly<Board> = {
-      milpa: MILPA_WITH_CORN_COLUMN_AND_ROW(),
-      edges: [[]],
-    };
-    test("then it should return plus score times the columns and rows", () => {
-      const { board: newBoard, score: deltaScore } =
-        score_corn_at_the_end_of_turn(board, cornHarvestingTurn);
-      expect(deltaScore).toEqual(PLUS_PER_CORN_ROW_OR_COLUMN * 2);
-      expect(newBoard).toEqual(board);
+  describe("when it is not harvest turn and there is corn in milpa", () => {
+    const expectedScore = 0;
+    test("then it should return proper 0", () => {
+      const { board: newBoard, score: newScore } =
+        score_corn_at_the_end_of_turn(board, firstTurn);
+      expect(newScore).toEqual(expectedScore);
     });
   });
 });

@@ -34,8 +34,7 @@ export const handleNewCardInSlot = (
   const cards = slot.cards as AnyCard[];
   if (is_there_corn_in_slot(cards) && card.id === GoodId.Huitlacoche) {
     newCards.pop();
-    console.log(pluck(newCards, "id"));
-    console.log(indexOf(pluck(newCards, "id"), CropId.Corn));
+
     newCards[indexOf(pluck(newCards, "id"), CropId.Corn)].modifier.push(
       ModifierId.Huitlacoche
     );

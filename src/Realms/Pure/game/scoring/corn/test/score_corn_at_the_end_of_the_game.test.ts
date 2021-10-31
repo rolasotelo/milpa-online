@@ -1,8 +1,7 @@
+import { is_there_corn_row, score_corn_at_the_end_of_the_game } from "../..";
 import { Board, MilpaRow } from "../../../../types";
 import { Beans, Corn } from "../../../cards";
 import { PLUS_PER_CORN_ROW_OR_COLUMN } from "../costants";
-import { score_corn_at_the_end_of_the_game } from "../score_corn_at_the_end_of_the_game";
-import { is_there_corn_row } from "../score_corn_at_the_end_of_turn";
 import {
   MILPA_WITHOUT_CORN_COLUMN_OR_ROW,
   MILPA_WITH_CORN_COLUMN,
