@@ -1,0 +1,6 @@
+export const PLUS_PER_BLUE_CORN_DIAGONAL_OF_3 = 13;
+export const PLUS_PER_BLUE_CORN_WHEN_HARVEST = 3;
+export const PLUS_PER_BLUE_CORN_WHEN_HARVEST_WITH_HUITLACOCHE = 2;
+export const BLUE_CORN_HARVEST_TURNS = () => {
+  return [13, 14, 15];
+};

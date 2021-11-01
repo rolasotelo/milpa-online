@@ -6,7 +6,11 @@ import {
 import { ModifierId } from "../../../enums";
 import { Board } from "../../../types";
 import { Corn } from "../../cards";
-import { CORN_HARVEST_TURNS, PLUS_PER_CORN_WHEN_HARVEST } from "./costants";
+import {
+  CORN_HARVEST_TURNS,
+  PLUS_PER_CORN_WHEN_HARVEST,
+  PLUS_PER_CORN_WHEN_HARVEST_WITH_HUITLACOCHE,
+} from "./costants";
 
 export const score_corn_at_the_end_of_turn = (
   board: Board,
@@ -20,10 +24,9 @@ export const score_corn_at_the_end_of_turn = (
     totalCorn = compute_total_corns(milpa);
     totalCornWithHuitlacoche = compute_total_corn_with_huitlacoche(milpa);
   }
-  const totalCornWithoutHuitlacoche = totalCorn - totalCornWithHuitlacoche;
   const finalScore =
-    totalCornWithoutHuitlacoche * PLUS_PER_CORN_WHEN_HARVEST +
-    totalCornWithHuitlacoche * PLUS_PER_CORN_WHEN_HARVEST * 2;
+    totalCorn * PLUS_PER_CORN_WHEN_HARVEST +
+    totalCornWithHuitlacoche * PLUS_PER_CORN_WHEN_HARVEST_WITH_HUITLACOCHE;
 
   return {
     board: { ...board },

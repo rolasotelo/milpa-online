@@ -1,14 +1,14 @@
-import { pluck, flatten } from "underscore";
+import { flatten, pluck } from "underscore";
 import {
   compute_total_adjacencies,
   compute_total_adjacencies_of_card_in_milpa,
   is_there_in_slot,
 } from "..";
-import { Beans, Corn } from "../../cards";
-import { MILPA_WITH_CORN_COLUMN } from "../../scoring/corn/test/stubs/boards";
+import { Corn } from "../../cards";
+import { MILPA_WITH_1_CORN_COLUMN } from "../../scoring/corn/test/stubs/boards";
 
 describe("Compute total adjacencies", () => {
-  const milpa = MILPA_WITH_CORN_COLUMN();
+  const milpa = MILPA_WITH_1_CORN_COLUMN();
   describe("when given milpa with adjacencies", () => {
     const allSlots = pluck(flatten(milpa), "cards");
     test("should return proper count", () => {
@@ -21,7 +21,7 @@ describe("Compute total adjacencies", () => {
 
 describe("Compute total adjacencies of card in milpa", () => {
   const is_there_corn_in_slot = is_there_in_slot(Corn);
-  const milpa = MILPA_WITH_CORN_COLUMN();
+  const milpa = MILPA_WITH_1_CORN_COLUMN();
   const compute_total_corn_adjacents_to_corn =
     compute_total_adjacencies_of_card_in_milpa(is_there_corn_in_slot, Corn);
   describe("When milpa with corns adjacencies is provided", () => {

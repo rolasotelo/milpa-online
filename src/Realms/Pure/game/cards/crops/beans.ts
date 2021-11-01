@@ -7,8 +7,8 @@ export const Beans: Readonly<Crop> = {
   name: "Beans",
   icon: "🌰",
   description: "Entre más negros mejor",
-  rules: `Harvest turns: 8,9,10,11 (+1 🍫 extra with any corn).\n 
-  +3 🍫 for each Beans adjacent to these Beans at the end of the game`,
+  rules: `Harvest + 4🍫  (+1 🍫 extra with any corn) on turns: 8,9,10,11 .\n 
+  +4 🍫 for each Beans adjacent to these Beans at the end of the game`,
   resume: "+2 🍫",
   modifier: [],
   canInteractWith: {

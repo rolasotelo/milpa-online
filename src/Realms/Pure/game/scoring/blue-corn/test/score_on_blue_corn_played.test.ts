@@ -1,9 +1,9 @@
-import { score_on_blue_corn_played } from "..";
+import { score_on_blue_corn_played } from "../..";
 import {
   CACAO_WHEN_BLUE_CORN_PLAYED,
   MANURE_MUTIPLIER,
-} from "../../../constants";
-import { ModifierId } from "../../../enums";
+} from "../../../../constants";
+import { ModifierId } from "../../../../enums";
 
 test("should return new scores which depend on modifiers", () => {
   const oldScores: [number, number] = [1, 1];

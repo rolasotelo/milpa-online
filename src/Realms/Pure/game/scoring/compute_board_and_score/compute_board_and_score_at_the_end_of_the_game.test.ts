@@ -2,15 +2,15 @@ import { compute_board_and_score_at_the_end_of_the_game } from "..";
 import { Board } from "../../../types";
 import { PLUS_PER_CORN_ROW_OR_COLUMN } from "../corn/costants";
 import {
-  MILPA_WITH_CORN_COLUMN_AND_ROW,
-  MILPA_WITH_CORN_ROW,
+  MILPA_WITH_1_CORN_COLUMN_AND_1_CORN_ROW,
+  MILPA_WITH_1_CORN_ROW,
 } from "../corn/test/stubs/boards";
 
 describe("Compute board and score at the end of the game", () => {
   describe("when board contains corns row", () => {
     const initialScore = 17;
     const board: Readonly<Board> = {
-      milpa: MILPA_WITH_CORN_ROW(),
+      milpa: MILPA_WITH_1_CORN_ROW(),
       edges: [[]],
     };
     const { board: newBoard, score: newScore } =
@@ -23,7 +23,7 @@ describe("Compute board and score at the end of the game", () => {
   describe("when board contains corns row and column", () => {
     const initialScore = 17;
     const board: Readonly<Board> = {
-      milpa: MILPA_WITH_CORN_COLUMN_AND_ROW(),
+      milpa: MILPA_WITH_1_CORN_COLUMN_AND_1_CORN_ROW(),
       edges: [[]],
     };
     const { board: newBoard, score: newScore } =

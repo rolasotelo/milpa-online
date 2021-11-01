@@ -4,9 +4,9 @@ import { Beans, Corn } from "../../../cards";
 import { PLUS_PER_CORN_ROW_OR_COLUMN } from "../costants";
 import {
   MILPA_WITHOUT_CORN_COLUMN_OR_ROW,
-  MILPA_WITH_CORN_COLUMN,
-  MILPA_WITH_CORN_COLUMN_AND_ROW,
-  MILPA_WITH_CORN_ROW,
+  MILPA_WITH_1_CORN_COLUMN,
+  MILPA_WITH_1_CORN_COLUMN_AND_1_CORN_ROW,
+  MILPA_WITH_1_CORN_ROW,
 } from "./stubs/boards";
 
 describe("Is there corn row", () => {
@@ -37,7 +37,7 @@ describe("Is there corn row", () => {
 describe("Score corn at the end of the game 🌽🎊:", () => {
   describe("when a row of corns is in the board", () => {
     const board: Readonly<Board> = {
-      milpa: MILPA_WITH_CORN_ROW(),
+      milpa: MILPA_WITH_1_CORN_ROW(),
       edges: [[]],
     };
     test("then it should return a plus score", () => {
@@ -50,7 +50,7 @@ describe("Score corn at the end of the game 🌽🎊:", () => {
 
   describe("when a column of corns is in the board", () => {
     const board: Readonly<Board> = {
-      milpa: MILPA_WITH_CORN_COLUMN(),
+      milpa: MILPA_WITH_1_CORN_COLUMN(),
       edges: [[]],
     };
     test("then it should return a plus score", () => {
@@ -76,7 +76,7 @@ describe("Score corn at the end of the game 🌽🎊:", () => {
 
   describe("when there is multiple rows or columns", () => {
     const board: Readonly<Board> = {
-      milpa: MILPA_WITH_CORN_COLUMN_AND_ROW(),
+      milpa: MILPA_WITH_1_CORN_COLUMN_AND_1_CORN_ROW(),
       edges: [[]],
     };
     test("then it should return plus score times the columns and rows", () => {

@@ -8,13 +8,13 @@ import { CropId, ModifierId } from "../../../enums";
 import { Beans, Corn, Quelites } from "../../cards";
 import { MILPA_WITH_3_BEANS_AND_CORN_TOGETHER } from "../beans/test/stubs/boards";
 import {
-  MILPA_WITH_CORN_AND_HUITLACOCHE,
-  MILPA_WITH_CORN_COLUMN,
+  MILPA_WITH_12_CORN_4_WITH_HUITLACOCHE,
+  MILPA_WITH_1_CORN_COLUMN,
 } from "../corn/test/stubs/boards";
 
 describe("Compute total Cards in board", () => {
   describe("when milpa and crop to compare is given", () => {
-    const milpa = MILPA_WITH_CORN_COLUMN();
+    const milpa = MILPA_WITH_1_CORN_COLUMN();
     test("then it should return the total of copies of that crop", () => {
       const compute_total_corn = compute_total_cards_in_board(Corn);
       expect(compute_total_corn(milpa)).toEqual(12);
@@ -24,7 +24,7 @@ describe("Compute total Cards in board", () => {
 
 describe("Compute total Cards with modifier in board", () => {
   describe("when milpa and crop and modifier to compare is given", () => {
-    const milpa = MILPA_WITH_CORN_AND_HUITLACOCHE();
+    const milpa = MILPA_WITH_12_CORN_4_WITH_HUITLACOCHE();
     test("then it should return the total of copies of that crop", () => {
       const compute_total_corn_with_huitlacoche =
         compute_total_cards_in_board_with_modifier(
@@ -64,7 +64,7 @@ describe("Compute total cards in board sharing slot with", () => {
   });
 
   describe("when provided 2 cards to look for and milpa not containing them together", () => {
-    const milpa = MILPA_WITH_CORN_COLUMN();
+    const milpa = MILPA_WITH_1_CORN_COLUMN();
     test("then it should return 0", () => {
       expect(look_for_beans_and_corn(milpa)).toEqual(0);
     });

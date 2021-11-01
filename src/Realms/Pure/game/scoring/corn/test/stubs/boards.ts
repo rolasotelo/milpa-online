@@ -3,7 +3,7 @@ import { Milpa } from "../../../../../types";
 import { Beans, Corn, RedCorn } from "../../../../cards";
 import { milpa_row } from "../../../common";
 
-export const MILPA_WITH_CORN_ROW = (): Milpa => {
+export const MILPA_WITH_1_CORN_ROW = (): Milpa => {
   return [
     milpa_row(0, [[Corn], [Corn], [Corn], [Corn]]),
     milpa_row(1, [[Corn], [Beans], [Corn], [Corn]]),
@@ -12,7 +12,7 @@ export const MILPA_WITH_CORN_ROW = (): Milpa => {
   ];
 };
 
-export const MILPA_WITH_CORN_COLUMN = (): Milpa => {
+export const MILPA_WITH_1_CORN_COLUMN = (): Milpa => {
   return [
     milpa_row(0, [[Corn], [Corn], [Corn], [Beans]]),
     milpa_row(1, [[Corn], [Beans], [Corn], [Corn]]),
@@ -21,7 +21,7 @@ export const MILPA_WITH_CORN_COLUMN = (): Milpa => {
   ];
 };
 
-export const MILPA_WITH_CORN_COLUMN_AND_ROW = (): Milpa => {
+export const MILPA_WITH_1_CORN_COLUMN_AND_1_CORN_ROW = (): Milpa => {
   return [
     milpa_row(0, [[Corn], [Corn], [Corn], [Corn]]),
     milpa_row(1, [[Corn], [Beans], [Corn], [Corn]]),
@@ -39,7 +39,7 @@ export const MILPA_WITHOUT_CORN_COLUMN_OR_ROW = (): Milpa => {
   ];
 };
 
-export const MILPA_WITH_CORN_AND_HUITLACOCHE = (): Milpa => {
+export const MILPA_WITH_12_CORN_4_WITH_HUITLACOCHE = (): Milpa => {
   return [
     milpa_row(0, [
       [{ ...Corn, modifier: [ModifierId.Huitlacoche] }],
