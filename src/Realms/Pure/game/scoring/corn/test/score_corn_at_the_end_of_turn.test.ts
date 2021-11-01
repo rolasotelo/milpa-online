@@ -3,7 +3,7 @@ import { Board } from "../../../../types";
 import {
   PLUS_PER_CORN_WHEN_HARVEST,
   PLUS_PER_CORN_WHEN_HARVEST_WITH_HUITLACOCHE,
-} from "../costants";
+} from "../constants";
 import { is_corn_harvest_turn } from "../score_corn_at_the_end_of_turn";
 import { MILPA_WITH_12_CORN_4_WITH_HUITLACOCHE } from "./stubs/boards";
 

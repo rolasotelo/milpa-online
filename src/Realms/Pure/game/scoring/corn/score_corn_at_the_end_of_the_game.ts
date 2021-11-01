@@ -6,7 +6,7 @@ import {
   is_there_in_slot,
   transpose_matrix,
 } from "../../helpers";
-import { PLUS_PER_CORN_ROW_OR_COLUMN } from "./costants";
+import { PLUS_PER_CORN_ROW_OR_COLUMN } from "./constants";
 
 export const score_corn_at_the_end_of_the_game = (
   board: Board

@@ -1,6 +1,6 @@
 import { compute_board_and_score_at_the_end_of_the_game } from "..";
 import { Board } from "../../../types";
-import { PLUS_PER_CORN_ROW_OR_COLUMN } from "../corn/costants";
+import { PLUS_PER_CORN_ROW_OR_COLUMN } from "../corn/constants";
 import {
   MILPA_WITH_1_CORN_COLUMN_AND_1_CORN_ROW,
   MILPA_WITH_1_CORN_ROW,

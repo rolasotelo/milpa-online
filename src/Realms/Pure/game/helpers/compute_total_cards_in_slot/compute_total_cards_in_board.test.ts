@@ -1,16 +1,16 @@
 import {
   compute_total_cards_in_board,
-  compute_total_cards_in_board_sharing_slot_with,
   compute_total_cards_in_board_with_modifier,
   slot_has_cards,
+  compute_total_cards_in_board_sharing_slot_with,
 } from "..";
 import { CropId, ModifierId } from "../../../enums";
 import { Beans, Corn, Quelites } from "../../cards";
-import { MILPA_WITH_3_BEANS_AND_CORN_TOGETHER } from "../beans/test/stubs/boards";
+import { MILPA_WITH_3_BEANS_AND_CORN_TOGETHER } from "../../scoring/beans/test/stubs/boards";
 import {
   MILPA_WITH_12_CORN_4_WITH_HUITLACOCHE,
   MILPA_WITH_1_CORN_COLUMN,
-} from "../corn/test/stubs/boards";
+} from "../../scoring/corn/test/stubs/boards";
 
 describe("Compute total Cards in board", () => {
   describe("when milpa and crop to compare is given", () => {

@@ -1,11 +1,11 @@
 import { indexOf } from "underscore";
-import {
-  compute_total_cards_in_board,
-  compute_total_cards_in_board_with_modifier,
-} from "..";
 import { ModifierId } from "../../../enums";
 import { Board } from "../../../types";
 import { BlueCorn, Corn } from "../../cards";
+import {
+  compute_total_cards_in_board,
+  compute_total_cards_in_board_with_modifier,
+} from "../../helpers";
 import {
   BLUE_CORN_HARVEST_TURNS,
   PLUS_PER_BLUE_CORN_WHEN_HARVEST,

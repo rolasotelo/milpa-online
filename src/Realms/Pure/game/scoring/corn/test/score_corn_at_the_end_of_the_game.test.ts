@@ -1,7 +1,7 @@
 import { is_there_corn_row, score_corn_at_the_end_of_the_game } from "../..";
 import { Board, MilpaRow } from "../../../../types";
 import { Beans, Corn } from "../../../cards";
-import { PLUS_PER_CORN_ROW_OR_COLUMN } from "../costants";
+import { PLUS_PER_CORN_ROW_OR_COLUMN } from "../constants";
 import {
   MILPA_WITHOUT_CORN_COLUMN_OR_ROW,
   MILPA_WITH_1_CORN_COLUMN,
@@ -61,7 +61,7 @@ describe("Score corn at the end of the game 🌽🎊:", () => {
     });
   });
 
-  describe("when there is no row nor column of corns is in the board", () => {
+  describe("when there is no row nor column of corns in the board", () => {
     const board: Readonly<Board> = {
       milpa: MILPA_WITHOUT_CORN_COLUMN_OR_ROW(),
       edges: [[]],

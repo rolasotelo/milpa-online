@@ -1,7 +1,7 @@
 export * from "./compute_board_and_score/compute_board_and_score_at_the_end_of_the_game";
 export * from "./compute_board_and_score/compute_board_and_score_at_the_end_of_turn";
 export * from "./compute_score_on_card_played/compute_score_on_card_played";
-export * from "./compute_total_cards_in_slot/compute_total_cards_in_slot";
+
 export * from "./beans/score_beans_at_the_end_of_the_game";
 export * from "./beans/score_beans_at_the_end_of_turn";
 export * from "./beans/score_on_beans_played";
@@ -25,3 +25,4 @@ export * from "./tlaloc/score_on_tlaloc_played";
 export * from "./tomatillo/score_on_tomatillo_played";
 export * from "./tomatoe/score_on_tomatoe_played";
 export * from "./blue-corn/score_blue_corn_at_the_end_of_turn";
+export * from "./blue-corn/score_blue_corn_at_the_end_of_the_game";

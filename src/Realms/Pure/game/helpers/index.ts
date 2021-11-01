@@ -8,6 +8,8 @@ export * from "./compute_is_your_turn/compute_is_your_turn";
 export * from "./compute_next_stage/compute_next_stage";
 export * from "./compute_next_turn/compute_next_turn";
 export * from "./compute_total_adjacencies_of_card_in_milpa/compute_total_adjacencies_of_card_in_milpa";
+export * from "./compute_total_cards_in_slot/compute_total_cards_in_slot";
+export * from "./compute_total_diagonals_of_3_of_card_in_milpa/compute_total_diagonals_of_3_of_card_in_milpa";
 export * from "./compute_total_rows_of_card_in_milpa/compute_total_rows_of_card_in_milpa";
 export * from "./create_board/create_board";
 export * from "./create_edges/create_edges";

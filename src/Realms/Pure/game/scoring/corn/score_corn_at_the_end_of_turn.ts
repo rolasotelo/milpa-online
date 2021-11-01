@@ -1,16 +1,16 @@
 import { indexOf } from "underscore";
-import {
-  compute_total_cards_in_board,
-  compute_total_cards_in_board_with_modifier,
-} from "..";
 import { ModifierId } from "../../../enums";
 import { Board } from "../../../types";
 import { Corn } from "../../cards";
 import {
+  compute_total_cards_in_board,
+  compute_total_cards_in_board_with_modifier,
+} from "../../helpers";
+import {
   CORN_HARVEST_TURNS,
   PLUS_PER_CORN_WHEN_HARVEST,
   PLUS_PER_CORN_WHEN_HARVEST_WITH_HUITLACOCHE,
-} from "./costants";
+} from "./constants";
 
 export const score_corn_at_the_end_of_turn = (
   board: Board,

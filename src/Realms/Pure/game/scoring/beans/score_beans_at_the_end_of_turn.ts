@@ -1,11 +1,11 @@
 import { indexOf } from "underscore";
-import {
-  compute_total_cards_in_board,
-  compute_total_cards_in_board_sharing_slot_with,
-} from "..";
 import { CropId } from "../../../enums";
 import { Board } from "../../../types";
 import { Beans } from "../../cards";
+import {
+  compute_total_cards_in_board,
+  compute_total_cards_in_board_sharing_slot_with,
+} from "../../helpers";
 import {
   BEANS_HARVEST_TURNS,
   PLUS_PER_BEANS_WHEN_HARVEST,
