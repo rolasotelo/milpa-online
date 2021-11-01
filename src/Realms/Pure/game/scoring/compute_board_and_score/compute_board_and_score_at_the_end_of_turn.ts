@@ -1,8 +1,10 @@
 import { flatten, pluck } from "underscore";
 import {
   is_there_beans_in_slot,
+  is_there_blue_corn_in_slot,
   is_there_corn_in_slot,
   score_beans_at_the_end_of_turn,
+  score_blue_corn_at_the_end_of_turn,
   score_corn_at_the_end_of_turn,
 } from "..";
 import { Board } from "../../../types";
@@ -27,6 +29,12 @@ export const compute_board_and_score_at_the_end_of_turn = (
       score_beans_at_the_end_of_turn(newBoard, turn);
     newScore = newScore + newScoreFromBeans;
     newBoard = newBoardFromBeans;
+  }
+  if (is_there_blue_corn_in_slot(allCardsInMilpa)) {
+    const { board: newBoardFromBlueCorn, score: newScoreFromBlueCorn } =
+      score_blue_corn_at_the_end_of_turn(newBoard, turn);
+    newScore = newScore + newScoreFromBlueCorn;
+    newBoard = newBoardFromBlueCorn;
   }
 
   return {
