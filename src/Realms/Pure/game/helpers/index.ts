@@ -19,3 +19,4 @@ export * from "./initialize_game/initialize_game";
 export * from "./initialize_players/initialize_players";
 export * from "./is";
 export * from "./transpose_matix/transpose_matrix";
+export * from "./compute_history_board_for_display/compute_history_board_for_display";
