@@ -5,7 +5,13 @@ import {
   GOODS_HAND_SIZE,
   TOTAL_TURNS,
 } from "../../../Pure/constants";
-import { CardType, Event, Players, SlotType } from "../../../Pure/enums";
+import {
+  CardType,
+  Event,
+  Players,
+  ScoreLogType,
+  SlotType,
+} from "../../../Pure/enums";
 import { deal_hand } from "../../../Pure/game/decks";
 import {
   compute_next_stage,
@@ -45,7 +51,7 @@ export const handleUpdateBoards = (
   const oldGameStatus = playersCopy[Players.You].gameStatus!;
   const yourNickname = playersCopy[Players.You].nickname;
   const opponentsNickname = playersCopy[Players.Opponent].nickname;
-  let newScoreHistory =
+  const newScoreHistory =
     playersCopy[Players.You].gameStatus!.scoringHistory.slice();
   const boardsMap = new Map(
     Object.entries(playersCopy[Players.You]?.gameStatus?.boards!)
@@ -131,12 +137,10 @@ export const handleUpdateBoards = (
       yourNewScoreBeforeEndTurnScore,
       oldGameStatus.currentTurn
     );
-    const yourScoringLogFromTurnEndWithName = yourScoringLogFromTurnEnd.map(
-      (log) => {
-        return { ...log, name: `${yourNickname} - End of turn` };
-      }
-    );
-    newScoreHistory = newScoreHistory.concat(yourScoringLogFromTurnEndWithName);
+    newScoreHistory.push({
+      ...yourScoringLogFromTurnEnd,
+      name: `${yourNickname} - End of turn`,
+    });
     const {
       board: opponentsNewBoardAfterEndTurnScore,
       score: opponentsNewScoreAfterEndTurnScore,
@@ -146,13 +150,22 @@ export const handleUpdateBoards = (
       opponentsNewScoreBeforeEndTurnScore,
       oldGameStatus.currentTurn
     );
-    const opponentsScoringLogFromTurnEndWithName =
-      opponentsScoringLogFromTurnEnd.map((log) => {
-        return { ...log, name: `${opponentsNickname} - End of turn` };
-      });
-    newScoreHistory = newScoreHistory.concat(
-      opponentsScoringLogFromTurnEndWithName
-    );
+    newScoreHistory.push({
+      ...opponentsScoringLogFromTurnEnd,
+      name: `${opponentsNickname} - End of turn`,
+    });
+    newScoreHistory.push({
+      name: `${yourNickname} - End of turn score`,
+      description: [`${yourNewScoreAfterEndTurnScore} 🍫`],
+      type: ScoreLogType.Final_Score,
+      icon: null,
+    });
+    newScoreHistory.push({
+      name: `${opponentsNickname} - End of turn score`,
+      description: [`${opponentsNewScoreAfterEndTurnScore} 🍫`],
+      type: ScoreLogType.Final_Score,
+      icon: null,
+    });
     newScoreHistory.push(generate_start_of_turn_log(newTurn));
     if (newTurn > TOTAL_TURNS) {
       const {
@@ -163,14 +176,10 @@ export const handleUpdateBoards = (
         yourNewBoardAfterEndTurnScore,
         yourNewScoreAfterEndTurnScore
       );
-      const yourScoringLogFromGameEndWithName = yourScoringLogFromGameEnd.map(
-        (log) => {
-          return { ...log, name: `${yourNickname} - Game End` };
-        }
-      );
-      newScoreHistory = newScoreHistory.concat(
-        yourScoringLogFromGameEndWithName
-      );
+      newScoreHistory.push({
+        ...yourScoringLogFromGameEnd,
+        name: `${opponentsNickname} - End of game`,
+      });
       const {
         board: opponentsNewBoardAfterEndGameScore,
         score: opponentsNewScoreAfterEndGameScore,
@@ -179,13 +188,22 @@ export const handleUpdateBoards = (
         opponentsNewBoardAfterEndTurnScore,
         opponentsNewScoreAfterEndTurnScore
       );
-      const opponentsScoringLogFromGameEndWithName =
-        opponentsScoringLogFromGameEnd.map((log) => {
-          return { ...log, name: `${opponentsNickname} - Game End` };
-        });
-      newScoreHistory = newScoreHistory.concat(
-        opponentsScoringLogFromGameEndWithName
-      );
+      newScoreHistory.push({
+        ...opponentsScoringLogFromGameEnd,
+        name: `${opponentsNickname} - End of game`,
+      });
+      newScoreHistory.push({
+        name: `${yourNickname} - Final score`,
+        description: [`${yourNewScoreAfterEndGameScore} 🍫`],
+        type: ScoreLogType.Final_Score,
+        icon: null,
+      });
+      newScoreHistory.push({
+        name: `${opponentsNickname} - Final Score`,
+        description: [`${opponentsNewScoreAfterEndGameScore} 🍫`],
+        type: ScoreLogType.Final_Score,
+        icon: null,
+      });
 
       newScores.set(yourID, yourNewScoreAfterEndGameScore);
       newScores.set(opponentsID, opponentsNewScoreAfterEndGameScore);

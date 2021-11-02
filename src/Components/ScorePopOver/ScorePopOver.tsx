@@ -56,9 +56,13 @@ const ScorePopOver = (props: Props) => {
                   <p
                     className={`flex items-center p-2 m-1 ${
                       item.type !== ScoreLogType.Turn
-                        ? item.name.includes(nickname)
-                          ? "bg-mexicanBone"
-                          : "bg-mexicanBoneLight"
+                        ? item.type !== ScoreLogType.Final_Score
+                          ? item.type !== ScoreLogType.End_Of_Turn
+                            ? item.name.includes(nickname)
+                              ? "bg-mexicanBone"
+                              : "bg-mexicanBoneLight"
+                            : "bg-mexicanBlue"
+                          : "bg-mexicanPink"
                         : "bg-mexicanGreen-light"
                     } transition duration-150 ease-in-out rounded-lg focus:outline-none`}
                   >
@@ -79,7 +83,9 @@ const ScorePopOver = (props: Props) => {
                           <p
                             key={index}
                             className={`text-sm  ${
-                              item.type !== ScoreLogType.Turn
+                              item.type !== ScoreLogType.Turn &&
+                              item.type !== ScoreLogType.End_Of_Turn &&
+                              item.type !== ScoreLogType.Final_Score
                                 ? item.name.includes(nickname)
                                   ? "text-left text-gray-700"
                                   : "text-right text-gray-700"

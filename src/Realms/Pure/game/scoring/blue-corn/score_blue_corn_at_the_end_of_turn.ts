@@ -1,7 +1,7 @@
 import { indexOf } from "underscore";
 import { ModifierId } from "../../../enums";
 import { Board } from "../../../types";
-import { BlueCorn, Corn } from "../../cards";
+import { BlueCorn } from "../../cards";
 import {
   compute_total_cards_in_board,
   compute_total_cards_in_board_with_modifier,
@@ -21,7 +21,7 @@ export const score_blue_corn_at_the_end_of_turn = (
   let totalBlueCornWithHuitlacoche = 0;
 
   if (is_blue_corn_harvest_turn(turn)) {
-    totalBlueCorn = compute_total_corns(milpa);
+    totalBlueCorn = compute_total_blue_corns(milpa);
     totalBlueCornWithHuitlacoche =
       compute_total_blue_corn_with_huitlacoche(milpa);
   }
@@ -37,7 +37,7 @@ export const score_blue_corn_at_the_end_of_turn = (
   };
 };
 
-const compute_total_corns = compute_total_cards_in_board(Corn);
+const compute_total_blue_corns = compute_total_cards_in_board(BlueCorn);
 
 export const is_blue_corn_harvest_turn = (turn: number) => {
   return indexOf(BLUE_CORN_HARVEST_TURNS(), turn) >= 0;
