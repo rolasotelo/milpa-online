@@ -117,16 +117,9 @@ const ScorePopOver = (props: Props) => {
               className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5"
               style={{ maxHeight: "40rem", overflow: "scroll" }}
             >
-              <div className="relative  bg-white p-7 flex flex-col">
+              <div className="relative  bg-white p-3 flex flex-col">
                 {solutions.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
-                  >
-                    <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white sm:h-12 sm:w-12">
-                      <item.icon aria-hidden="true" />
-                    </div>
+                  <p className="flex items-center p-2 m-1 transition duration-150 ease-in-out rounded-lg focus:outline-none">
                     <div className="ml-4">
                       <p className="text-sm font-medium text-gray-900">
                         {item.name}
@@ -135,23 +128,20 @@ const ScorePopOver = (props: Props) => {
                         {item.description}
                       </p>
                     </div>
-                  </a>
+                  </p>
                 ))}
               </div>
-              <div className="p-4 bg-gray-50">
-                <a
-                  href="##"
-                  className="flow-root px-2 py-2 transition duration-150 ease-in-out rounded-md hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
-                >
+              <div className="p-4 bg-mexicanGreen-light">
+                <p className="flow-root px-2 py-2 transition duration-150 ease-in-out rounded-md  focus:outline-none">
                   <span className="flex items-center">
                     <span className="text-sm font-medium text-gray-900">
                       Documentation
                     </span>
                   </span>
-                  <span className="block text-sm text-gray-500">
+                  <span className="block text-sm text-white">
                     Start integrating products and tools
                   </span>
-                </a>
+                </p>
               </div>
             </div>
           </Popover.Panel>
