@@ -14,7 +14,7 @@ const Board = (props: Props) => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-row">
+      <div className="flex flex-row items-center">
         <Calendar />
         <ScorePopOver />
       </div>

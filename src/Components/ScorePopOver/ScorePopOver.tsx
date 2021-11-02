@@ -1,80 +1,113 @@
-import { Popover, Transition } from "@headlessui/react";
-import React, { Fragment, LegacyRef, useState } from "react";
+import { Popover } from "@headlessui/react";
+import React, { LegacyRef, useMemo, useState } from "react";
 import { usePopper } from "react-popper";
-const solutions = [
-  {
-    name: "Insights",
-    description: "Measure actions your users take",
-    href: "##",
-    icon: IconOne,
-  },
-  {
-    name: "Automations",
-    description: "Create your own targeted content",
-    href: "##",
-    icon: IconTwo,
-  },
-  {
-    name: "Reports",
-    description: "Keep track of your growth",
-    href: "##",
-    icon: IconThree,
-  },
-  {
-    name: "Insights",
-    description: "Measure actions your users take",
-    href: "##",
-    icon: IconOne,
-  },
-  {
-    name: "Automations",
-    description: "Create your own targeted content",
-    href: "##",
-    icon: IconTwo,
-  },
-  {
-    name: "Reports",
-    description: "Keep track of your growth",
-    href: "##",
-    icon: IconThree,
-  },
-  {
-    name: "Insights",
-    description: "Measure actions your users take",
-    href: "##",
-    icon: IconOne,
-  },
-  {
-    name: "Automations",
-    description: "Create your own targeted content",
-    href: "##",
-    icon: IconTwo,
-  },
-  {
-    name: "Reports",
-    description: "Keep track of your growth",
-    href: "##",
-    icon: IconThree,
-  },
-  {
-    name: "Insights",
-    description: "Measure actions your users take",
-    href: "##",
-    icon: IconOne,
-  },
-  {
-    name: "Automations",
-    description: "Create your own targeted content",
-    href: "##",
-    icon: IconTwo,
-  },
-  {
-    name: "Reports",
-    description: "Keep track of your growth",
-    href: "##",
-    icon: IconThree,
-  },
-];
+const enum ScoreLogsType {
+  Card_Played = "card played",
+  End_Of_Turn = "end of turn",
+  Final_Score = "card played",
+  Total_Score = "total score",
+  Turn = "turn",
+}
+const solutions = () => {
+  return [
+    {
+      name: "Turn 1",
+      description: ["Atlcahualo"],
+      type: ScoreLogsType.Turn,
+      icon: IconOne,
+    },
+    {
+      name: "Rolando",
+      description: ["🌽 Corn Played : +5 🍫"],
+      type: ScoreLogsType.Card_Played,
+      icon: IconOne,
+    },
+    {
+      name: "Gabinka",
+      description: ["💩 Manure Played: +3 🍫"],
+      type: ScoreLogsType.Card_Played,
+      icon: IconOne,
+    },
+    {
+      name: "Rolando",
+      description: ["🌰 Beans Played : +4 🍫"],
+      type: ScoreLogsType.Card_Played,
+      icon: IconOne,
+    },
+    {
+      name: "Gabinka",
+      description: ["🍆 Blue Corn Played on 💩 Manure: +12 🍫"],
+      type: ScoreLogsType.Card_Played,
+      icon: IconOne,
+    },
+    {
+      name: "Rolando",
+      description: ["🌵 Cactus Played : +6 🍫"],
+      type: ScoreLogsType.Card_Played,
+      icon: IconOne,
+    },
+    {
+      name: "Gabinka",
+      description: ["🏺 Coatlicue Played: -2 🍫"],
+      type: ScoreLogsType.Card_Played,
+      icon: IconOne,
+    },
+    {
+      name: "Rolando - End of first turn",
+      description: [
+        "🌵 Cactus Played : +6 🍫",
+        "🍆 Cactus Played : +6 🍫",
+        "🥕 Cactus Played : +6 🍫",
+        "🌵 Cactus Played : +6 🍫",
+        "🌰 Cactus Played : +6 🍫",
+      ],
+      type: ScoreLogsType.End_Of_Turn,
+      icon: IconOne,
+    },
+    {
+      name: "Gabinka - End of first turn",
+      description: [
+        "🌵 Cactus Played : +6 🍫",
+        "🍄 Huitlacoche Played : +6 🍫",
+        "🥕 RedCorn Played : +6 🍫",
+        "🏺 Coatlicue Played : +6 🍫",
+        "🌰 Beans Played : +6 🍫",
+      ],
+      type: ScoreLogsType.End_Of_Turn,
+      icon: IconOne,
+    },
+    {
+      name: "Turn 2",
+      description: ["Tlacaxipe-Hualiztli"],
+      type: ScoreLogsType.Turn,
+      icon: IconOne,
+    },
+    {
+      name: "Gabinka",
+      description: ["🍄 Played Huitlacoche on 🥕 Red Corn: +5 🍫"],
+      type: ScoreLogsType.Card_Played,
+      icon: IconOne,
+    },
+    {
+      name: "Rolando",
+      description: ["🌵 Cactus Played : +6 🍫"],
+      type: ScoreLogsType.Card_Played,
+      icon: IconOne,
+    },
+    {
+      name: "Gabinka",
+      description: ["🌽 Corn Played: +4 🍫"],
+      type: ScoreLogsType.Card_Played,
+      icon: IconOne,
+    },
+    {
+      name: "Rolando",
+      description: ["🌧 Tlaloc Played : +4 🍫"],
+      type: ScoreLogsType.Card_Played,
+      icon: IconOne,
+    },
+  ];
+};
 interface Props {}
 
 const ScorePopOver = (props: Props) => {
@@ -83,7 +116,12 @@ const ScorePopOver = (props: Props) => {
   let { styles, attributes } = usePopper(referenceElement, popperElement, {
     placement: "left-end",
   });
+  const yourName = "Rolando";
 
+  const reversedSolution = useMemo(
+    () => solutions().reverse().slice(),
+    [solutions]
+  );
   return (
     <Popover className="relative">
       {({ open }) => (
@@ -93,19 +131,19 @@ const ScorePopOver = (props: Props) => {
               setReferenceElement as LegacyRef<HTMLButtonElement> | undefined
             }
           >
-            <div
-              className="bg-button-menu focus:bg-button-menu-pressed focus:outline-none"
+            <button
+              className="bg-button-leaderboard focus:bg-button-leaderboard-pressed focus:outline-none"
               style={{
                 width: "50px",
                 height: "50px",
               }}
             />
           </Popover.Button>
-          {/* <Popover.Overlay
+          <Popover.Overlay
             className={`${
               open ? "opacity-30 fixed inset-0" : "opacity-0"
             } bg-black`}
-          /> */}
+          />
 
           <Popover.Panel
             className="absolute px-4 mt-3 sm:px-0 w-80 "
@@ -114,19 +152,48 @@ const ScorePopOver = (props: Props) => {
             {...attributes.popper}
           >
             <div
-              className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5"
+              className="rounded-lg shadow-lg ring-1 ring-black bg-m ring-opacity-5"
               style={{ maxHeight: "40rem", overflow: "scroll" }}
             >
-              <div className="relative  bg-white p-3 flex flex-col">
-                {solutions.map((item) => (
-                  <p className="flex items-center p-2 m-1 transition duration-150 ease-in-out rounded-lg focus:outline-none">
-                    <div className="ml-4">
-                      <p className="text-sm font-medium text-gray-900">
+              <div className="relative  bg-mexicanGreen-dark p-3 flex flex-col">
+                {reversedSolution.map((item) => (
+                  <p
+                    className={`flex items-center p-2 m-1 ${
+                      item.type !== ScoreLogsType.Turn
+                        ? item.name.includes(yourName)
+                          ? "bg-mexicanBone"
+                          : "bg-mexicanBoneLight"
+                        : "bg-mexicanGreen-light"
+                    } transition duration-150 ease-in-out rounded-lg focus:outline-none`}
+                  >
+                    <div className="mx-4 w-full">
+                      <p
+                        className={`text-sm font-medium text-gray-900 ${
+                          item.type !== ScoreLogsType.Turn
+                            ? item.name.includes(yourName)
+                              ? "text-left"
+                              : "text-right"
+                            : "text-center"
+                        }`}
+                      >
                         {item.name}
                       </p>
-                      <p className="text-sm text-gray-500">
-                        {item.description}
-                      </p>
+                      {item.description.map((description, index) => {
+                        return (
+                          <p
+                            key={index}
+                            className={`text-sm  ${
+                              item.type !== ScoreLogsType.Turn
+                                ? item.name.includes(yourName)
+                                  ? "text-left text-gray-700"
+                                  : "text-right text-gray-700"
+                                : "text-center text-white"
+                            }`}
+                          >
+                            {description}
+                          </p>
+                        );
+                      })}
                     </div>
                   </p>
                 ))}
@@ -135,11 +202,12 @@ const ScorePopOver = (props: Props) => {
                 <p className="flow-root px-2 py-2 transition duration-150 ease-in-out rounded-md  focus:outline-none">
                   <span className="flex items-center">
                     <span className="text-sm font-medium text-gray-900">
-                      Documentation
+                      Scoring History
                     </span>
                   </span>
                   <span className="block text-sm text-white">
-                    Start integrating products and tools
+                    Here you will find a log with all Cacao 🍫 added to your
+                    total score. GLHV!
                   </span>
                 </p>
               </div>
