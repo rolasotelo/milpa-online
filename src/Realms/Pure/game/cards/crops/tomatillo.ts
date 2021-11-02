@@ -12,7 +12,7 @@ export const Tomatillo: Readonly<Crop> = {
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: true,
-    ownFilledMilpaSlots: [GoodId.Manure, CropId.Chilli],
+    ownFilledMilpaSlots: [GoodId.Manure, CropId.Chilli, CropId.Pupmkin],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,
     othersEmptyMilpaSlots: false,

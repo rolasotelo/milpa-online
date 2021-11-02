@@ -42,38 +42,39 @@ const ScorePopOver = (props: Props) => {
           />
 
           <Popover.Panel
-            className="absolute px-4 mt-3 sm:px-0 w-80 "
+            className="absolute px-4 mt-3 sm:px-0 w-96 "
             ref={setPopperElement as LegacyRef<HTMLDivElement> | undefined}
             style={styles.popper}
             {...attributes.popper}
           >
             <div
-              className="rounded-lg shadow-lg ring-1 ring-black bg-m ring-opacity-5"
-              style={{ maxHeight: "40rem", overflow: "scroll" }}
+              className="overflow-y-scroll rounded-lg shadow-lg ring-1 ring-black bg-m ring-opacity-5"
+              style={{ maxHeight: "40rem" }}
             >
               <div className="relative  bg-mexicanGreen-dark p-3 flex flex-col">
                 {history.map((item) => (
                   <p
                     className={`flex items-center p-2 m-1 ${
-                      item.type !== ScoreLogType.Turn
-                        ? item.type !== ScoreLogType.Final_Score
-                          ? item.type !== ScoreLogType.End_Of_Turn
-                            ? item.name.includes(nickname)
-                              ? "bg-mexicanBone"
-                              : "bg-mexicanBoneLight"
-                            : "bg-mexicanBlue"
-                          : "bg-mexicanPink"
-                        : "bg-mexicanGreen-light"
+                      item.type === ScoreLogType.Turn
+                        ? "bg-mexicanGreen-light"
+                        : item.type === ScoreLogType.Final_Score
+                        ? "bg-mexicanPink"
+                        : item.type === ScoreLogType.End_Of_Turn
+                        ? "bg-mexicanBlue"
+                        : item.name.includes(nickname)
+                        ? "bg-mexicanBone"
+                        : "bg-mexicanBoneLight"
                     } transition duration-150 ease-in-out rounded-lg focus:outline-none`}
                   >
                     <div className="mx-4 w-full">
                       <p
                         className={`text-sm font-medium text-gray-900 ${
-                          item.type !== ScoreLogType.Turn
-                            ? item.name.includes(nickname)
-                              ? "text-left"
-                              : "text-right"
-                            : "text-center"
+                          item.type === ScoreLogType.Turn ||
+                          item.type === ScoreLogType.Final_Score
+                            ? "text-center"
+                            : item.name.includes(nickname)
+                            ? "text-left"
+                            : "text-right"
                         }`}
                       >
                         {item.name}
@@ -83,9 +84,14 @@ const ScorePopOver = (props: Props) => {
                           <p
                             key={index}
                             className={`text-sm  ${
-                              item.type !== ScoreLogType.Turn &&
-                              item.type !== ScoreLogType.End_Of_Turn &&
-                              item.type !== ScoreLogType.Final_Score
+                              item.type === ScoreLogType.Turn ||
+                              item.type == ScoreLogType.Final_Score
+                                ? "text-center text-white"
+                                : item.type === ScoreLogType.End_Of_Turn
+                                ? item.name.includes(nickname)
+                                  ? "text-left text-white"
+                                  : "text-right text-white"
+                                : item.type === ScoreLogType.Card_Played
                                 ? item.name.includes(nickname)
                                   ? "text-left text-gray-700"
                                   : "text-right text-gray-700"

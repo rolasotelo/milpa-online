@@ -30,6 +30,9 @@ export const score_blue_corn_at_the_end_of_turn = (
     totalBlueCorn * PLUS_PER_BLUE_CORN_WHEN_HARVEST +
     totalBlueCornWithHuitlacoche *
       PLUS_PER_BLUE_CORN_WHEN_HARVEST_WITH_HUITLACOCHE;
+  console.log("total blue corn", totalBlueCorn);
+  console.log("total blue with huitlacoche", totalBlueCornWithHuitlacoche);
+  console.log("total score", finalScore);
 
   return {
     board: { ...board },

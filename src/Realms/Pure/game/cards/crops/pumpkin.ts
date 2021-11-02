@@ -12,7 +12,7 @@ export const Pumpkin: Readonly<Crop> = {
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: true,
-    ownFilledMilpaSlots: [GoodId.Manure],
+    ownFilledMilpaSlots: [GoodId.Manure, CropId.Tomatillo],
     ownEmptyEdgeSlots: true,
     ownFilledEdgeSlots: false,
     othersEmptyMilpaSlots: false,

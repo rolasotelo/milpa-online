@@ -95,28 +95,29 @@ export enum Event {
 
 export enum Total {
   Corn = 14,
-  Beans = 6,
+  Beans = 8,
   BlueCorn = 8,
   Chilli = 6,
-  Tomatillo = 6,
-  Tomatoe = 6,
+  Tomatillo = 4,
+  Tomatoe = 7,
   Quelites = 5,
   RedCorn = 8,
-  Pumpkin = 5,
+  Pumpkin = 4,
+
   Manure = 8,
   Tlaloc = 8,
-  Shovel = 4,
+  Shovel = 2,
   Maguey = 12,
   Cactus = 8,
   Coatlicue = 3,
-  Cricket = 3,
-  Huitlacoche = 4,
+  Cricket = 2,
+  Huitlacoche = 5,
 }
 
 export const enum ScoreLogType {
   Card_Played = "card played",
   End_Of_Turn = "end of turn",
-  Final_Score = "card played",
+  Final_Score = "final score",
   Total_Score = "total score",
   Turn = "turn",
 }

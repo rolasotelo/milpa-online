@@ -139,7 +139,7 @@ export const handleUpdateBoards = (
     );
     newScoreHistory.push({
       ...yourScoringLogFromTurnEnd,
-      name: `${yourNickname} - End of turn`,
+      name: `${yourNickname} - End of turn scoring`,
     });
     const {
       board: opponentsNewBoardAfterEndTurnScore,
@@ -152,16 +152,16 @@ export const handleUpdateBoards = (
     );
     newScoreHistory.push({
       ...opponentsScoringLogFromTurnEnd,
-      name: `${opponentsNickname} - End of turn`,
+      name: `${opponentsNickname} - End of turn scoring`,
     });
     newScoreHistory.push({
-      name: `${yourNickname} - End of turn score`,
+      name: `${yourNickname} - Final score for Turn ${oldGameStatus.currentTurn}`,
       description: [`${yourNewScoreAfterEndTurnScore} 🍫`],
       type: ScoreLogType.Final_Score,
       icon: null,
     });
     newScoreHistory.push({
-      name: `${opponentsNickname} - End of turn score`,
+      name: `${opponentsNickname} - Final score for Turn ${oldGameStatus.currentTurn}`,
       description: [`${opponentsNewScoreAfterEndTurnScore} 🍫`],
       type: ScoreLogType.Final_Score,
       icon: null,
@@ -178,7 +178,7 @@ export const handleUpdateBoards = (
       );
       newScoreHistory.push({
         ...yourScoringLogFromGameEnd,
-        name: `${opponentsNickname} - End of game`,
+        name: `${yourNickname} - End of game`,
       });
       const {
         board: opponentsNewBoardAfterEndGameScore,
