@@ -111,4 +111,5 @@ export const MONTHS = [
   "Quecholli",
   "Panque-tzaliztli",
   "Atemoztli",
+  "Final Score",
 ];

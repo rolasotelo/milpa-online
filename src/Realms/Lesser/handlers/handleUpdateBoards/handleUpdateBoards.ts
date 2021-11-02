@@ -15,6 +15,7 @@ import {
   compute_board_and_score_at_the_end_of_the_game,
   compute_board_and_score_at_the_end_of_turn,
   compute_score_on_card_played,
+  generate_start_of_turn_log,
 } from "../../../Pure/game/scoring";
 import {
   AnyCard,
@@ -42,6 +43,10 @@ export const handleUpdateBoards = (
   const indexFromHand = card.indexFromHand!;
   const playersCopy = players.slice();
   const oldGameStatus = playersCopy[Players.You].gameStatus!;
+  const yourNickname = playersCopy[Players.You].nickname;
+  const opponentsNickname = playersCopy[Players.Opponent].nickname;
+  let newScoreHistory =
+    playersCopy[Players.You].gameStatus!.scoringHistory.slice();
   const boardsMap = new Map(
     Object.entries(playersCopy[Players.You]?.gameStatus?.boards!)
   );
@@ -79,8 +84,14 @@ export const handleUpdateBoards = (
     slot,
     card
   );
-  const [yourNewScoreBeforeEndTurnScore, opponentsNewScoreBeforeEndTurnScore] =
-    compute_score_on_card_played(oldScores, cardWithModifiers!);
+  const {
+    scores: [
+      yourNewScoreBeforeEndTurnScore,
+      opponentsNewScoreBeforeEndTurnScore,
+    ],
+    scoringLog: scoringLogOnCardPlayed,
+  } = compute_score_on_card_played(oldScores, cardWithModifiers!);
+  newScoreHistory.push({ ...scoringLogOnCardPlayed, name: yourNickname });
   const newScores: Map<string, number> = new Map();
 
   const yourNewBoardBeforeEndTurnScore: Board = {
@@ -114,33 +125,66 @@ export const handleUpdateBoards = (
     const {
       board: yourNewBoardAfterEndTurnScore,
       score: yourNewScoreAfterEndTurnScore,
+      scoringLog: yourScoringLogFromTurnEnd,
     } = compute_board_and_score_at_the_end_of_turn(
       yourNewBoardBeforeEndTurnScore,
       yourNewScoreBeforeEndTurnScore,
       oldGameStatus.currentTurn
     );
+    const yourScoringLogFromTurnEndWithName = yourScoringLogFromTurnEnd.map(
+      (log) => {
+        return { ...log, name: `${yourNickname} - End of turn` };
+      }
+    );
+    newScoreHistory = newScoreHistory.concat(yourScoringLogFromTurnEndWithName);
     const {
       board: opponentsNewBoardAfterEndTurnScore,
       score: opponentsNewScoreAfterEndTurnScore,
+      scoringLog: opponentsScoringLogFromTurnEnd,
     } = compute_board_and_score_at_the_end_of_turn(
       opponentsNewBoardBeforeEndTurnScore,
       opponentsNewScoreBeforeEndTurnScore,
       oldGameStatus.currentTurn
     );
+    const opponentsScoringLogFromTurnEndWithName =
+      opponentsScoringLogFromTurnEnd.map((log) => {
+        return { ...log, name: `${opponentsNickname} - End of turn` };
+      });
+    newScoreHistory = newScoreHistory.concat(
+      opponentsScoringLogFromTurnEndWithName
+    );
+    newScoreHistory.push(generate_start_of_turn_log(newTurn));
     if (newTurn > TOTAL_TURNS) {
       const {
         board: yourNewBoardAfterEndGameScore,
         score: yourNewScoreAfterEndGameScore,
+        scoringLog: yourScoringLogFromGameEnd,
       } = compute_board_and_score_at_the_end_of_the_game(
         yourNewBoardAfterEndTurnScore,
         yourNewScoreAfterEndTurnScore
       );
+      const yourScoringLogFromGameEndWithName = yourScoringLogFromGameEnd.map(
+        (log) => {
+          return { ...log, name: `${yourNickname} - Game End` };
+        }
+      );
+      newScoreHistory = newScoreHistory.concat(
+        yourScoringLogFromGameEndWithName
+      );
       const {
         board: opponentsNewBoardAfterEndGameScore,
         score: opponentsNewScoreAfterEndGameScore,
+        scoringLog: opponentsScoringLogFromGameEnd,
       } = compute_board_and_score_at_the_end_of_the_game(
         opponentsNewBoardAfterEndTurnScore,
         opponentsNewScoreAfterEndTurnScore
+      );
+      const opponentsScoringLogFromGameEndWithName =
+        opponentsScoringLogFromGameEnd.map((log) => {
+          return { ...log, name: `${opponentsNickname} - Game End` };
+        });
+      newScoreHistory = newScoreHistory.concat(
+        opponentsScoringLogFromGameEndWithName
       );
 
       newScores.set(yourID, yourNewScoreAfterEndGameScore);
@@ -165,6 +209,7 @@ export const handleUpdateBoards = (
       goodsDeck: newGoodsDeck,
       boards: Object.fromEntries(newBoards),
       score: Object.fromEntries(newScores),
+      scoringHistory: newScoreHistory,
     };
   } else {
     newScores.set(yourID, yourNewScoreBeforeEndTurnScore);
@@ -182,6 +227,7 @@ export const handleUpdateBoards = (
       goodsDeck: oldGoodsDeck,
       boards: Object.fromEntries(newBoards),
       score: Object.fromEntries(newScores),
+      scoringHistory: newScoreHistory,
     };
   }
 

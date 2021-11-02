@@ -87,7 +87,7 @@ export type ScoringHistory = {
   name: string;
   description: string[];
   type: ScoreLogType;
-  icon: () => JSX.Element;
+  icon: (() => JSX.Element) | null;
 };
 
 export interface GameStatus {
