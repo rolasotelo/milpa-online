@@ -2,6 +2,7 @@ import { CROPS_HAND_SIZE, GOODS_HAND_SIZE } from "../../../Pure/constants";
 import { Event, Players } from "../../../Pure/enums";
 import { deal_hand } from "../../../Pure/game/decks";
 import { initialize_game } from "../../../Pure/game/helpers";
+import { generate_start_of_turn_log } from "../../../Pure/game/scoring";
 import { Board, GameStatus, MiSocket, Player } from "../../../Pure/types";
 
 export const handleStartGame = (
@@ -40,6 +41,7 @@ export const handleStartGame = (
       cropsHand: newCropsHand,
       goodsHand: newGoodsHand,
       boards: Object.fromEntries(boards),
+      scoringHistory: [generate_start_of_turn_log(1)],
     };
 
     socket.emit(Event.Start_Game_Handshake, sessionID, startGameStatus);

@@ -112,3 +112,11 @@ export enum Total {
   Cricket = 3,
   Huitlacoche = 4,
 }
+
+export const enum ScoreLogType {
+  Card_Played = "card played",
+  End_Of_Turn = "end of turn",
+  Final_Score = "card played",
+  Total_Score = "total score",
+  Turn = "turn",
+}

@@ -80,6 +80,7 @@ export const EMPTYGAMESTATUS: Readonly<GameStatus> = {
   boards: {},
   cropsDeck: [],
   cropsHand: [],
+  scoringHistory: [],
   currentStage: 0,
   currentTurn: 0,
   goodsDeck: [],
@@ -92,3 +93,22 @@ export const WAITING_PLAYER: Readonly<Player> = {
   connected: false,
   nickname: "Waiting ...",
 };
+
+export const MONTHS = [
+  "Atlcahualo",
+  "Tlacaxipe-hualiztli",
+  "Tozoztontli",
+  "Huey tozoztli",
+  "Tóxcatl",
+  "Etzalcualiztli",
+  "Tecuilhuitontli",
+  "Huey tecuílhuitl",
+  "Tlaxochimaco-miccailhuitontli",
+  "Xocotlhuetzi-huey miccaílhuitl",
+  "Ochpaniztli",
+  "Teotleco",
+  "Tepeilhuitl",
+  "Quecholli",
+  "Panque-tzaliztli",
+  "Atemoztli",
+];
