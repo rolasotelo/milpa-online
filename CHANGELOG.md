@@ -40,4 +40,8 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 
 ### Score at the end of turn and final score
 
+    continuation of the implementation of rules plus score history popover.
+
 - Now it's time to compute the score at the end of each turn and at the end of the game. It's a different problem than scoring after playing a card, because it will potentially alter any card in the board and have to consider whole rows and colums and the state of both the milpa and its edges. My first approach will be a function that receives both the current score a board state of a player and returns an updated copy. This function will probably flatten the milpa and edges to find all different present cards and then apply the another function specific to that card that again will receive the whole board and score. (rola@hey.com) Oct 2021
+
+- Making the rules for scoring at the end of the turn and atthe end of the game is now properly set up and thers is a full implementation for corn, blue corn and beans. And just as important as that is the system I implemented for storing and dispalying a score history that is so helpful in card games. I will continue with the remaining card rules in different PR due to this one already being long enough. I just want to mention how cool and helpful underscore has been for messing with arrays and objects (rola@hey.com) Nov 2021
