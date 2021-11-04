@@ -2,7 +2,14 @@ import { StaticContext } from "react-router";
 import { RouteComponentProps } from "react-router-dom";
 import { Socket } from "socket.io-client";
 import { DefaultEventsMap } from "socket.io-client/build/typed-events";
-import { CardType, CropId, GoodId, ModifierId, SlotType } from "./enums";
+import {
+  CardType,
+  CropId,
+  GoodId,
+  ModifierId,
+  ScoreLogType,
+  SlotType,
+} from "./enums";
 
 export interface MiSocket extends Socket<DefaultEventsMap, DefaultEventsMap> {
   userID?: string;
@@ -43,6 +50,8 @@ export type AnyCard = Crop | Good | Empty;
 
 export type Milpa = BoardSlot[][];
 
+export type MilpaRow = [AnyCard[], AnyCard[], AnyCard[], AnyCard[]];
+
 export type Edges = BoardSlot[][];
 
 export interface SelectedCard {
@@ -74,10 +83,18 @@ export type Player = {
   gameStatus?: GameStatus;
 };
 
+export type ScoringHistory = {
+  name: string;
+  description: string[];
+  type: ScoreLogType;
+  icon: (() => JSX.Element) | null;
+};
+
 export interface GameStatus {
   playerInTurnID: string;
   currentTurn: number;
   currentStage: number;
+  scoringHistory: ScoringHistory[];
   score: {
     [k: string]: number;
   };

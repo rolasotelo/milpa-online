@@ -1,7 +1,9 @@
-import { ModifierId } from "../../../Pure/enums";
-import { EmptySlot } from "../../../Pure/game/cards";
+import { indexOf, pluck } from "underscore";
+import { CropId, GoodId, ModifierId } from "../../../Pure/enums";
+import { BlueCorn, Corn, EmptySlot, RedCorn } from "../../../Pure/game/cards";
 import {
   is_empty,
+  is_there_in_slot,
   is_there_manure,
   is_there_shovel,
 } from "../../../Pure/game/helpers";
@@ -23,13 +25,33 @@ export const handleNewCardInSlot = (
     newCards.splice(0, 1);
   }
   if (is_there_manure(slot)) {
-    console.log("manure detected");
     newCards.splice(0, 1);
   }
   if (is_there_shovel(slot)) {
     newCards.splice(0);
     newCards.push(EmptySlot);
   }
+  const cards = slot.cards as AnyCard[];
+  if (is_there_corn_in_slot(cards) && card.id === GoodId.Huitlacoche) {
+    newCards.pop();
+
+    newCards[indexOf(pluck(newCards, "id"), CropId.Corn)].modifier.push(
+      ModifierId.Huitlacoche
+    );
+  }
+  if (is_there_blue_corn_in_slot(cards) && card.id === GoodId.Huitlacoche) {
+    newCards.pop();
+    newCards[indexOf(pluck(newCards, "id"), CropId.BlueCorn)].modifier.push(
+      ModifierId.Huitlacoche
+    );
+  }
+  if (is_there_red_corn_in_slot(cards) && card.id === GoodId.Huitlacoche) {
+    newCards.pop();
+    newCards[indexOf(pluck(newCards, "id"), CropId.RedCorn)].modifier.push(
+      ModifierId.Huitlacoche
+    );
+  }
+
   const newSlot = {
     ...slot,
     cards: newCards,
@@ -47,3 +69,7 @@ const addModifiersToCard = (slot: BoardSlot, card: AnyCard) => {
   }
   return newCard;
 };
+
+const is_there_corn_in_slot = is_there_in_slot(Corn);
+const is_there_blue_corn_in_slot = is_there_in_slot(BlueCorn);
+const is_there_red_corn_in_slot = is_there_in_slot(RedCorn);

@@ -22,6 +22,7 @@ import {
   compute_current_stage,
   compute_current_turn,
   compute_hands,
+  compute_history_board_for_display,
   compute_is_your_turn,
   create_players,
   ReturnTypeCanInteractWithCard,
@@ -34,6 +35,7 @@ import {
   GameStatus,
   Good,
   Player,
+  ScoringHistory,
   SelectedCard,
 } from "../../Realms/Pure/types";
 
@@ -63,6 +65,7 @@ export type GameContextType = {
   ) => void;
   opponentsNickname: string;
   scores: [number | undefined, number | undefined];
+  history: readonly ScoringHistory[];
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -107,6 +110,10 @@ const GameProvider = (props: Props) => {
   const scores = useMemo(() => compute_current_scores(players), [players]);
   const currentStage = useMemo(() => compute_current_stage(players), [players]);
   const boards = useMemo(() => compute_boards_for_display(players), [players]);
+  const history = useMemo(
+    () => compute_history_board_for_display(players),
+    [players]
+  );
   const { cropsHand, goodsHand } = useMemo(
     () => compute_hands(players),
     [players]
@@ -236,6 +243,7 @@ const GameProvider = (props: Props) => {
         canInteractWithCard,
         onSelectCard,
         onSelectSlot,
+        history,
       }}
     >
       {props.children}
