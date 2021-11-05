@@ -28,3 +28,4 @@ export * from "./blue-corn/score_blue_corn_at_the_end_of_turn";
 export * from "./blue-corn/score_blue_corn_at_the_end_of_the_game";
 export * from "./history/generate_start_of_turn_log";
 export * from "./chilli/score_chilli_at_the_end_of_turn";
+export * from "./chilli/score_chilli_at_the_end_of_the_game";
