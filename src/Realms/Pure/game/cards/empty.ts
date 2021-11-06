@@ -9,7 +9,7 @@ export const EmptySlot: Readonly<Empty> = {
   description: "How you got here?",
   rules: "I'm not even mad",
   resume: "",
-  modifier: [ModifierId.Empty],
+  modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: false,
     ownFilledMilpaSlots: false,

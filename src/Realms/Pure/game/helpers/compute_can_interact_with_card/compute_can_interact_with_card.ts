@@ -1,6 +1,13 @@
-import { find, findIndex, intersection, pluck } from "underscore";
+import {
+  find,
+  findIndex,
+  flatten,
+  intersection,
+  pluck,
+  reduce,
+} from "underscore";
 import { MAX_CARD_PER_SLOT, TOTAL_TURNS } from "../../../constants";
-import { SlotType } from "../../../enums";
+import { GoodId, ModifierId, SlotType } from "../../../enums";
 import { BoardSlot, SelectedCard } from "../../../types";
 import { Huitlacoche, Shovel } from "../../cards";
 
@@ -35,7 +42,9 @@ export const compute_can_interact_with_card = (
         slot.cards.length === 0 ||
         (slot.cards.length >= MAX_CARD_PER_SLOT &&
           selectedCard.card?.id !== Shovel.id &&
-          selectedCard.card?.id !== Huitlacoche.id)
+          selectedCard.card?.id !== Huitlacoche.id) ||
+        (is_modifier_already_present_in_slot(slot, ModifierId.Huitlacoche) &&
+          selectedCard.card?.id === GoodId.Huitlacoche)
       ) {
         return false;
       }
@@ -163,4 +172,17 @@ const canInteractWithNonEmptySlotInOpponentsBoard = (
       canInteract = false;
   }
   return canInteract;
+};
+
+export const is_modifier_already_present_in_slot = (
+  slot: Readonly<BoardSlot>,
+  modifierId: ModifierId
+): Boolean => {
+  return reduce(
+    flatten(pluck(slot.cards, "modifier")),
+    (alreadyPresent: Boolean, modifier) => {
+      return alreadyPresent || modifier === modifierId;
+    },
+    false
+  );
 };

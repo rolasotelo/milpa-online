@@ -26,15 +26,12 @@ const ScorePopOver = (props: Props) => {
             ref={
               setReferenceElement as LegacyRef<HTMLButtonElement> | undefined
             }
-          >
-            <button
-              className="bg-button-leaderboard focus:bg-button-leaderboard-pressed focus:outline-none"
-              style={{
-                width: "50px",
-                height: "50px",
-              }}
-            />
-          </Popover.Button>
+            className="bg-button-leaderboard focus:bg-button-leaderboard-pressed focus:outline-none"
+            style={{
+              width: "50px",
+              height: "50px",
+            }}
+          ></Popover.Button>
           <Popover.Overlay
             className={`${
               open ? "opacity-30 fixed inset-0" : "opacity-0"
@@ -52,8 +49,9 @@ const ScorePopOver = (props: Props) => {
               style={{ maxHeight: "40rem" }}
             >
               <div className="relative  bg-mexicanGreen-dark p-3 flex flex-col">
-                {history.map((item) => (
+                {history.map((item, index) => (
                   <p
+                    key={index}
                     className={`flex items-center p-2 m-1 ${
                       item.type === ScoreLogType.Turn
                         ? "bg-mexicanGreen-light"

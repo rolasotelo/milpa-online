@@ -1,8 +1,18 @@
-import { compute_can_interact_with_card } from "..";
+import {
+  compute_can_interact_with_card,
+  is_modifier_already_present_in_slot,
+} from "..";
 import { TOTAL_TURNS } from "../../../constants";
-import { CardType, Column, Row, SlotType } from "../../../enums";
+import { CardType, Column, ModifierId, Row, SlotType } from "../../../enums";
 import { BoardSlot, SelectedCard } from "../../../types";
-import { Corn, EmptySlot, Huitlacoche, Manure, Shovel } from "../../cards";
+import {
+  Beans,
+  Corn,
+  EmptySlot,
+  Huitlacoche,
+  Manure,
+  Shovel,
+} from "../../cards";
 
 test("should return false if it's not your turn or it's beyond max turns or any parameter in selected card is undefined", () => {
   const selectedCard: Readonly<SelectedCard> = {
@@ -123,4 +133,35 @@ test("should return function that computes if a shovel can interact with filled 
   expect(interaction1).toBeTruthy();
   const interaction2 = canInteractWithCard(!isYourBoard, cardsInSlot);
   expect(interaction2).toBeTruthy();
+});
+
+describe("is_modifier_already_present_in_slot", () => {
+  describe("when given slot with already present modifier", () => {
+    test("then it should return true", () => {
+      const cardsInSlot: Readonly<BoardSlot> = {
+        type: SlotType.Milpa,
+        row: Row.First,
+        column: Column.First,
+        isYourBoard: true,
+        cards: [{ ...Corn, modifier: [ModifierId.Huitlacoche] }, Beans],
+      };
+      expect(
+        is_modifier_already_present_in_slot(cardsInSlot, ModifierId.Huitlacoche)
+      ).toBeTruthy();
+    });
+  });
+  describe("when given slot without provided modifier", () => {
+    test("then it should return false", () => {
+      const cardsInSlot: Readonly<BoardSlot> = {
+        type: SlotType.Milpa,
+        row: Row.First,
+        column: Column.First,
+        isYourBoard: true,
+        cards: [Corn, Beans],
+      };
+      expect(
+        is_modifier_already_present_in_slot(cardsInSlot, ModifierId.Huitlacoche)
+      ).toBeFalsy();
+    });
+  });
 });
