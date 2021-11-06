@@ -7,12 +7,13 @@ export const Pumpkin: Readonly<Crop> = {
   name: "Pumpkin",
   icon: "🎃",
   description: "Por qué no hay iconos de calabazas",
-  rules: "WIP",
+  rules: `40% chance of producing a Pumpkin Flower each turn, +3% for each flower (before turn 15).\n 
+  +8 🍫 per 🎃 Pumpkin at the end of the game.`,
   resume: "+2 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: true,
-    ownFilledMilpaSlots: [GoodId.Manure, CropId.Tomatillo],
+    ownFilledMilpaSlots: [GoodId.Manure, CropId.Tomatillo, CropId.Flower],
     ownEmptyEdgeSlots: true,
     ownFilledEdgeSlots: false,
     othersEmptyMilpaSlots: false,

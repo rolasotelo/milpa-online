@@ -7,7 +7,7 @@ export const Manure: Readonly<Good> = {
   name: "Manure",
   icon: "💩",
   description: "🪰",
-  rules: "WIP",
+  rules: "x3 🍫 for the next card you play on this slot",
   resume: "+4 🍫",
   modifier: [],
   canInteractWith: {

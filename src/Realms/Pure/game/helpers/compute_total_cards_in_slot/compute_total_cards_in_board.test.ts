@@ -3,9 +3,11 @@ import {
   compute_total_cards_in_board_with_modifier,
   slot_has_cards,
   compute_total_cards_in_board_sharing_slot_with,
+  compute_total_cards_but_one_in_slot,
 } from "..";
 import { CropId, ModifierId } from "../../../enums";
 import { Beans, Corn, Quelites } from "../../cards";
+import { Flower } from "../../cards/crops/flower";
 import { MILPA_WITH_3_BEANS_AND_CORN_TOGETHER } from "../../scoring/beans/test/stubs/boards";
 import {
   MILPA_WITH_12_CORN_4_WITH_HUITLACOCHE,
@@ -67,6 +69,17 @@ describe("Compute total cards in board sharing slot with", () => {
     const milpa = MILPA_WITH_1_CORN_COLUMN();
     test("then it should return 0", () => {
       expect(look_for_beans_and_corn(milpa)).toEqual(0);
+    });
+  });
+});
+
+describe("compute_total_cards_but_one_in_slot", () => {
+  describe("given slot with 5 cards, 2 of them been flowers", () => {
+    const cards = [Flower, Corn, Corn, Beans, Flower];
+    const compute_total_cards_but_flower =
+      compute_total_cards_but_one_in_slot(Flower);
+    test("then it shoul return 3", () => {
+      expect(compute_total_cards_but_flower(cards)).toEqual(3);
     });
   });
 });

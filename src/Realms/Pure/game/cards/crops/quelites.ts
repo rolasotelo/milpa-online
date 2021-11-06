@@ -12,7 +12,12 @@ export const Quelites: Readonly<Crop> = {
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: true,
-    ownFilledMilpaSlots: [CropId.Corn, CropId.RedCorn, CropId.BlueCorn],
+    ownFilledMilpaSlots: [
+      CropId.Corn,
+      CropId.RedCorn,
+      CropId.BlueCorn,
+      CropId.Flower,
+    ],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,
     othersEmptyMilpaSlots: false,

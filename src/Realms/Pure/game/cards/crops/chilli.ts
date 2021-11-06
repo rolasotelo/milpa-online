@@ -7,7 +7,8 @@ export const Chilli: Readonly<Crop> = {
   name: "Chilli",
   icon: "🌶",
   description: "Éntrale cuñado!",
-  rules: "WIP",
+  rules: `Harvest +8🍫 (-4 🍫  with other crops) on turns: 3,4,5,14,15,16.\n 
+  +5 🍫 per Chilli diagonally adjacent`,
   resume: "+4 🍫",
   modifier: [],
   canInteractWith: {
@@ -19,6 +20,7 @@ export const Chilli: Readonly<Crop> = {
       CropId.RedCorn,
       CropId.Tomatillo,
       CropId.Tomatoe,
+      CropId.Flower,
     ],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,

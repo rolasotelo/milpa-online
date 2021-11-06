@@ -1,4 +1,4 @@
-import { GoodId, CardType } from "../../../enums";
+import { GoodId, CardType, CropId } from "../../../enums";
 import { Good } from "../../../types";
 
 export const Coatlicue: Readonly<Good> = {
@@ -14,10 +14,10 @@ export const Coatlicue: Readonly<Good> = {
     ownEmptyMilpaSlots: false,
     ownFilledMilpaSlots: false,
     ownEmptyEdgeSlots: true,
-    ownFilledEdgeSlots: false,
+    ownFilledEdgeSlots: [CropId.Flower],
     othersEmptyMilpaSlots: false,
     othersFilledMilpaSlots: false,
     othersEmptyEdgeSlots: true,
-    othersFilledEdgeSlots: false,
+    othersFilledEdgeSlots: [CropId.Flower],
   },
 };

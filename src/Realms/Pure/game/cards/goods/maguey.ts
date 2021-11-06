@@ -1,4 +1,4 @@
-import { GoodId, CardType } from "../../../enums";
+import { GoodId, CardType, CropId } from "../../../enums";
 import { Good } from "../../../types";
 
 export const Maguey: Readonly<Good> = {
@@ -14,7 +14,7 @@ export const Maguey: Readonly<Good> = {
     ownEmptyMilpaSlots: false,
     ownFilledMilpaSlots: false,
     ownEmptyEdgeSlots: true,
-    ownFilledEdgeSlots: false,
+    ownFilledEdgeSlots: [CropId.Flower],
     othersEmptyMilpaSlots: false,
     othersFilledMilpaSlots: false,
     othersEmptyEdgeSlots: false,

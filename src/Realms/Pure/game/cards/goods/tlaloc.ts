@@ -1,4 +1,4 @@
-import { CardType, GoodId } from "../../../enums";
+import { CardType, CropId, GoodId } from "../../../enums";
 import { Good } from "../../../types";
 
 export const Tlaloc: Readonly<Good> = {
@@ -14,7 +14,7 @@ export const Tlaloc: Readonly<Good> = {
     ownEmptyMilpaSlots: false,
     ownFilledMilpaSlots: false,
     ownEmptyEdgeSlots: true,
-    ownFilledEdgeSlots: false,
+    ownFilledEdgeSlots: [CropId.Flower],
     othersEmptyMilpaSlots: false,
     othersFilledMilpaSlots: false,
     othersEmptyEdgeSlots: false,

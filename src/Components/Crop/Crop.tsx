@@ -1,5 +1,5 @@
 import React from "react";
-import { pluck } from "underscore";
+import { flatten, pluck } from "underscore";
 import useGameContext from "../../Hooks/useGameContext/useGameContext";
 import { BoardSlot } from "../../Realms/Pure/types";
 
@@ -30,7 +30,7 @@ const Crop = (props: Props) => {
           props.canInteract && "border-2 border-mexicanBone"
         } w-16 h-16 mx-auto bg-yellow-900 hover:bg-yellow-700 flex justify-center items-center rounded-md`}
       >
-        {pluck(props.boardSlot.cards, "icon").toString()}
+        <p>{pluck(props.boardSlot.cards, "icon").toString()}</p>
       </div>
     </button>
   );

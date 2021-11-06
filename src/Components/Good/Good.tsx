@@ -1,5 +1,5 @@
 import React from "react";
-import { pluck } from "underscore";
+import { flatten, pluck } from "underscore";
 import useGameContext from "../../Hooks/useGameContext/useGameContext";
 import { BoardSlot } from "../../Realms/Pure/types";
 
@@ -27,7 +27,7 @@ const Good = (props: Props) => {
         }
       }}
     >
-      {pluck(props.boardSlot.cards, "icon").toString()}
+      <p>{pluck(props.boardSlot.cards, "icon").toString()}</p>
     </button>
   );
 };

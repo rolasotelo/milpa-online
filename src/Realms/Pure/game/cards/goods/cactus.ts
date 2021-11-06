@@ -1,4 +1,4 @@
-import { GoodId, CardType } from "../../../enums";
+import { GoodId, CardType, CropId } from "../../../enums";
 import { Good } from "../../../types";
 
 export const Cactus: Readonly<Good> = {
@@ -12,9 +12,9 @@ export const Cactus: Readonly<Good> = {
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: true,
-    ownFilledMilpaSlots: false,
+    ownFilledMilpaSlots: [CropId.Flower],
     ownEmptyEdgeSlots: true,
-    ownFilledEdgeSlots: false,
+    ownFilledEdgeSlots: [CropId.Flower],
     othersEmptyMilpaSlots: false,
     othersFilledMilpaSlots: false,
     othersEmptyEdgeSlots: false,
