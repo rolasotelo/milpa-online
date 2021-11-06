@@ -66,3 +66,15 @@ export const slot_has_cards = (
     indexOf(pluck(slot, "id"), card2) >= 0
   );
 };
+
+export const compute_total_cards_but_one_in_slot = (card: AnyCard) => {
+  return (slot: readonly AnyCard[]) => {
+    return reduce(
+      slot,
+      (total, c) => {
+        return c.id !== card.id ? total + 1 : total;
+      },
+      0
+    );
+  };
+};
