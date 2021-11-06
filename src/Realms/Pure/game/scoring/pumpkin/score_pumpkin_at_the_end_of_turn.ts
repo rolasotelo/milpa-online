@@ -22,11 +22,12 @@ export const score_pumpkin_at_the_end_of_turn = (
   while (totalPumpkin > 0) {
     const isThereNewFlower =
       Math.random() * 100 <=
-      NEW_FLOWER_PERCENTAGE + totalNewFlowers * EXTRA_PERCENTAGE_PER_FLOWER;
+      NEW_FLOWER_PERCENTAGE + totalFlowers * EXTRA_PERCENTAGE_PER_FLOWER;
     if (isThereNewFlower) {
       const milpaOrEdges = Math.floor(Math.random() * 2);
       const row = Math.floor(Math.random() * 4);
       const column = Math.floor(Math.random() * 4);
+
       if (milpaOrEdges === 0) {
         ((milpa as BoardSlot[][])[row][column].cards as AnyCard[]).push({
           ...Flower,

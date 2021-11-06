@@ -7,7 +7,7 @@ export const Pumpkin: Readonly<Crop> = {
   name: "Pumpkin",
   icon: "🎃",
   description: "Por qué no hay iconos de calabazas",
-  rules: `25% chance of producing a Pumpkin Flower each turn, +3% for each flower (before turn 15).\n 
+  rules: `50% chance of producing a Pumpkin Flower each turn, +3% for each flower (before turn 15).\n 
   +10 🍫 per 🎃 Pumpkin at the end of the game.`,
   resume: "+2 🍫",
   modifier: [],

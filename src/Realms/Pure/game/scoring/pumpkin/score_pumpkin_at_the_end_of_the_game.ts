@@ -11,6 +11,7 @@ export const score_pumpkin_at_the_end_of_the_game = (
   const totalPumpkin =
     compute_total_pumpkins(milpa) + compute_total_pumpkins(edges);
   const totalScore = totalPumpkin * PLUS_PER_PUMPKIN_AT_THE_END_OF_GAME;
+
   return {
     board: { ...board },
     score: totalScore,

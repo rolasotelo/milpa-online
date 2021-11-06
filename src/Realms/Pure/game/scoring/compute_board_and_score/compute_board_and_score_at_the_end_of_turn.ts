@@ -26,6 +26,7 @@ export const compute_board_and_score_at_the_end_of_turn = (
   scoringLog: ScoringHistory;
 } => {
   const allCardsInMilpa = flatten(pluck(flatten(board.milpa), "cards"));
+  const allCardsInEdges = flatten(pluck(flatten(board.edges), "cards"));
 
   let newScore = score;
   let newBoard = board;
@@ -79,7 +80,10 @@ export const compute_board_and_score_at_the_end_of_turn = (
       );
     }
   }
-  if (is_there_pumpkin_in_slot(allCardsInMilpa)) {
+  if (
+    is_there_pumpkin_in_slot(allCardsInMilpa) ||
+    is_there_pumpkin_in_slot(allCardsInEdges)
+  ) {
     const { board: newBoardFromPumpkin, score: newFlowers } =
       score_pumpkin_at_the_end_of_turn(newBoard, turn);
     newBoard = newBoardFromPumpkin;
@@ -89,7 +93,10 @@ export const compute_board_and_score_at_the_end_of_turn = (
       );
     }
   }
-  if (is_there_flower_in_slot(allCardsInMilpa)) {
+  if (
+    is_there_flower_in_slot(allCardsInMilpa) ||
+    is_there_flower_in_slot(allCardsInEdges)
+  ) {
     const { board: newBoardFromFlower, score: newScoreFromFlowers } =
       score_flower_at_the_end_of_turn(newBoard, turn);
     newScore = newScore + newScoreFromFlowers;
