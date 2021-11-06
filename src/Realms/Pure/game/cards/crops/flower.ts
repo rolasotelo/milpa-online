@@ -1,15 +1,14 @@
 import { CardType, CropId, GoodId } from "../../../enums";
 import { Crop } from "../../../types";
 
-export const Pumpkin: Readonly<Crop> = {
-  id: CropId.Pupmkin,
+export const Flower: Readonly<Crop> = {
+  id: CropId.Flower,
   type: CardType.Crop,
-  name: "Pumpkin",
-  icon: "🎃",
-  description: "Por qué no hay iconos de calabazas",
-  rules: `20% chance of producing a Pumpkin Flower each turn (before turn 15).\n 
-  +10 🍫 per 🎃 Pumpkin at the end of the game.`,
-  resume: "+2 🍫",
+  name: "Pumpkin Flower",
+  icon: "🌼",
+  description: "En quesadillitas perro!!",
+  rules: `Harvest: +5 🍫 for each 🌼 Pumpkin Flower (Pumpkin Flowers on empty slots become Pumpkins) on turn: 15.\n`,
+  resume: "+0🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: true,

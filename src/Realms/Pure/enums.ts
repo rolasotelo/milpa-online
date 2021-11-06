@@ -8,6 +8,7 @@ export enum CropId {
   Quelites = "quelites",
   RedCorn = "redCorn",
   Pupmkin = "pumpkin",
+  Flower = "flower",
 }
 
 export enum GoodId {

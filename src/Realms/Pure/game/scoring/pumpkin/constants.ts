@@ -1,0 +1,2 @@
+export const PLUS_PER_PUMPKIN_AT_THE_END_OF_GAME = 10;
+export const NEW_FLOWER_PERCENTAGE = 20;

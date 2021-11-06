@@ -6,7 +6,6 @@ import {
   Chilli,
   Corn,
   Tomatillo,
-  Tomatoe,
 } from "../../../../cards";
 import { milpa_row } from "../../../common";
 
