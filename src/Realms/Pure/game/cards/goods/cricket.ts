@@ -1,4 +1,4 @@
-import { CardType, GoodId } from "../../../enums";
+import { CardType, CropId, GoodId } from "../../../enums";
 import { Good } from "../../../types";
 
 export const Cricket: Readonly<Good> = {
@@ -18,6 +18,6 @@ export const Cricket: Readonly<Good> = {
     othersEmptyMilpaSlots: false,
     othersFilledMilpaSlots: false,
     othersEmptyEdgeSlots: true,
-    othersFilledEdgeSlots: false,
+    othersFilledEdgeSlots: [CropId.Flower],
   },
 };

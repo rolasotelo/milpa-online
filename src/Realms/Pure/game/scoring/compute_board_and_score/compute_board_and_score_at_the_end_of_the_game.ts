@@ -23,6 +23,7 @@ export const compute_board_and_score_at_the_end_of_the_game = (
   scoringLog: ScoringHistory;
 } => {
   const allCardsInMilpa = flatten(pluck(flatten(board.milpa), "cards"));
+  const allCardsInEdges = flatten(pluck(flatten(board.edges), "cards"));
 
   let newScore = score;
   let newBoard = board;
@@ -76,7 +77,10 @@ export const compute_board_and_score_at_the_end_of_the_game = (
       );
     }
   }
-  if (is_there_pumpkin_in_slot(allCardsInMilpa)) {
+  if (
+    is_there_pumpkin_in_slot(allCardsInMilpa) ||
+    is_there_pumpkin_in_slot(allCardsInEdges)
+  ) {
     const { board: newBoardFromPumpkin, score: newScoreFromPumpkin } =
       score_pumpkin_at_the_end_of_the_game(newBoard);
     newScore = newScore + newScoreFromPumpkin;

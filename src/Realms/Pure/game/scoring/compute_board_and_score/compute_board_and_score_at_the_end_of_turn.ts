@@ -108,7 +108,7 @@ export const compute_board_and_score_at_the_end_of_turn = (
     }
   }
   if (scoringLog.description.length === 0) {
-    scoringLog.description.push(`No 🍫 Cacao to add`);
+    scoringLog.description.push(`+ 0 🍫`);
   }
 
   return {
