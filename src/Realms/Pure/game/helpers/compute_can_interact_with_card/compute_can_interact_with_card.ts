@@ -6,10 +6,9 @@ import {
   pluck,
   reduce,
 } from "underscore";
-import { compute_total_cards_but_one_in_slot } from "..";
 import { MAX_CARD_PER_SLOT, TOTAL_TURNS } from "../../../constants";
 import { GoodId, ModifierId, SlotType } from "../../../enums";
-import { BoardSlot, SelectedCard } from "../../../types";
+import { AnyCard, BoardSlot, SelectedCard } from "../../../types";
 import { Huitlacoche, Shovel } from "../../cards";
 import { Flower } from "../../cards/crops/flower";
 
@@ -42,12 +41,11 @@ export const compute_can_interact_with_card = (
       if (
         slot.type === undefined ||
         slot.cards.length === 0 ||
-        (slot.cards.length >= MAX_CARD_PER_SLOT &&
+        (compute_total_cards_but_flower(slot.cards) >= MAX_CARD_PER_SLOT &&
           selectedCard.card?.id !== Shovel.id &&
           selectedCard.card?.id !== Huitlacoche.id) ||
         (is_modifier_already_present_in_slot(slot, ModifierId.Huitlacoche) &&
-          selectedCard.card?.id === GoodId.Huitlacoche) ||
-        compute_total_cards_but_flower(slot.cards) >= MAX_CARD_PER_SLOT
+          selectedCard.card?.id === GoodId.Huitlacoche)
       ) {
         return false;
       }
@@ -188,6 +186,18 @@ export const is_modifier_already_present_in_slot = (
     },
     false
   );
+};
+
+export const compute_total_cards_but_one_in_slot = (card: AnyCard) => {
+  return (slot: readonly AnyCard[]) => {
+    return reduce(
+      slot,
+      (total, c) => {
+        return c.id !== card.id ? total + 1 : total;
+      },
+      0
+    );
+  };
 };
 
 const compute_total_cards_but_flower =
