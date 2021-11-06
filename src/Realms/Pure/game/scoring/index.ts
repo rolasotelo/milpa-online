@@ -31,3 +31,4 @@ export * from "./shovel/score_on_shovel_played";
 export * from "./tlaloc/score_on_tlaloc_played";
 export * from "./tomatillo/score_on_tomatillo_played";
 export * from "./tomatoe/score_on_tomatoe_played";
+export * from "./flower/score_flower_at_the_end_of_turn";

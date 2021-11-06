@@ -1,5 +1,6 @@
 import { AnyCard, Board, BoardSlot } from "../../../types";
 import { Flower } from "../../cards/crops/flower";
+import { is_empty } from "../../helpers";
 import { NEW_FLOWER_PERCENTAGE } from "./constants";
 
 export const score_pumpkin_at_the_end_of_turn = (
@@ -18,6 +19,16 @@ export const score_pumpkin_at_the_end_of_turn = (
       ((milpa as BoardSlot[][])[row][column].cards as AnyCard[]).push({
         ...Flower,
       });
+      if (is_empty(milpa[row][column])) {
+        ((milpa as BoardSlot[][])[row][column].cards as AnyCard[]).splice(0, 1);
+      }
+    } else {
+      ((edges as BoardSlot[][])[row][column].cards as AnyCard[]).push({
+        ...Flower,
+      });
+      if (is_empty(edges[row][column])) {
+        ((edges as BoardSlot[][])[row][column].cards as AnyCard[]).splice(0, 1);
+      }
     }
   }
 
