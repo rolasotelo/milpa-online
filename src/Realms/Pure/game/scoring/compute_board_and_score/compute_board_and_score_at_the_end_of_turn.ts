@@ -10,6 +10,7 @@ import {
   score_blue_corn_at_the_end_of_turn,
   score_chilli_at_the_end_of_turn,
   score_corn_at_the_end_of_turn,
+  score_flower_at_the_end_of_turn,
   score_pumpkin_at_the_end_of_turn,
 } from "..";
 import { ScoreLogType } from "../../../enums";
@@ -90,7 +91,7 @@ export const compute_board_and_score_at_the_end_of_turn = (
   }
   if (is_there_flower_in_slot(allCardsInMilpa)) {
     const { board: newBoardFromFlower, score: newScoreFromFlowers } =
-      score_pumpkin_at_the_end_of_turn(newBoard, turn);
+      score_flower_at_the_end_of_turn(newBoard, turn);
     newScore = newScore + newScoreFromFlowers;
     newBoard = newBoardFromFlower;
     if (newScoreFromFlowers !== 0) {

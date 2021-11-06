@@ -1,8 +1,11 @@
-import { compute_total_pumpkins } from "..";
+import { compute_total_flowers, compute_total_pumpkins } from "..";
 import { AnyCard, Board, BoardSlot } from "../../../types";
 import { Flower } from "../../cards/crops/flower";
 import { is_empty } from "../../helpers";
-import { NEW_FLOWER_PERCENTAGE } from "./constants";
+import {
+  EXTRA_PERCENTAGE_PER_FLOWER,
+  NEW_FLOWER_PERCENTAGE,
+} from "./constants";
 
 export const score_pumpkin_at_the_end_of_turn = (
   board: Board,
@@ -12,10 +15,14 @@ export const score_pumpkin_at_the_end_of_turn = (
   const edges = board.edges;
   let totalPumpkin =
     compute_total_pumpkins(milpa) + compute_total_pumpkins(edges);
+  const totalFlowers =
+    compute_total_flowers(milpa) + compute_total_flowers(edges);
   let totalNewFlowers = 0;
 
   while (totalPumpkin > 0) {
-    const isThereNewFlower = Math.random() * 100 <= NEW_FLOWER_PERCENTAGE;
+    const isThereNewFlower =
+      Math.random() * 100 <=
+      NEW_FLOWER_PERCENTAGE + totalNewFlowers * EXTRA_PERCENTAGE_PER_FLOWER;
     if (isThereNewFlower) {
       const milpaOrEdges = Math.floor(Math.random() * 2);
       const row = Math.floor(Math.random() * 4);

@@ -46,7 +46,7 @@ export const score_flower_at_the_end_of_turn = (
   };
 };
 
-const compute_total_flowers = compute_total_cards_in_board(Flower);
+export const compute_total_flowers = compute_total_cards_in_board(Flower);
 
 export const is_flower_harvest_turn = (turn: number) => {
   return indexOf(FLOWER_HARVEST_TURNS(), turn) >= 0;
