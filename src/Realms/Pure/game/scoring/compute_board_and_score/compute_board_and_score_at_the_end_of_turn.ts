@@ -4,10 +4,13 @@ import {
   is_there_blue_corn_in_slot,
   is_there_chilli_in_slot,
   is_there_corn_in_slot,
+  is_there_flower_in_slot,
+  is_there_pumpkin_in_slot,
   score_beans_at_the_end_of_turn,
   score_blue_corn_at_the_end_of_turn,
   score_chilli_at_the_end_of_turn,
   score_corn_at_the_end_of_turn,
+  score_pumpkin_at_the_end_of_turn,
 } from "..";
 import { ScoreLogType } from "../../../enums";
 import { Board, ScoringHistory } from "../../../types";
@@ -72,6 +75,27 @@ export const compute_board_and_score_at_the_end_of_turn = (
     if (newScoreFromChilli !== 0) {
       scoringLog.description.push(
         `+${newScoreFromChilli} 🍫 from 🌶 Chilli harvest`
+      );
+    }
+  }
+  if (is_there_pumpkin_in_slot(allCardsInMilpa)) {
+    const { board: newBoardFromPumpkin, score: newFlowers } =
+      score_pumpkin_at_the_end_of_turn(newBoard, turn);
+    newBoard = newBoardFromPumpkin;
+    if (newFlowers !== 0) {
+      scoringLog.description.push(
+        `+${newFlowers} new 🌼 Flowers from your 🎃 Pumpkins`
+      );
+    }
+  }
+  if (is_there_flower_in_slot(allCardsInMilpa)) {
+    const { board: newBoardFromFlower, score: newScoreFromFlowers } =
+      score_pumpkin_at_the_end_of_turn(newBoard, turn);
+    newScore = newScore + newScoreFromFlowers;
+    newBoard = newBoardFromFlower;
+    if (newScoreFromFlowers !== 0) {
+      scoringLog.description.push(
+        `+${newScoreFromFlowers} 🍫 from 🌼 Pumpkin Flowers harvest`
       );
     }
   }

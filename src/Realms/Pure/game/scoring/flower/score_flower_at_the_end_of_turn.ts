@@ -4,7 +4,7 @@ import { AnyCard, Board, BoardSlot } from "../../../types";
 import { Pumpkin } from "../../cards";
 import { Flower } from "../../cards/crops/flower";
 import { create_stack_of_copied_cards } from "../../decks";
-import { compute_total_cards_in_board } from "../../helpers";
+import { compute_total_cards_in_board, is_there_in_slot } from "../../helpers";
 import {
   FLOWER_HARVEST_TURNS,
   PLUS_PER_FLOWER_WHEN_HARVEST,
@@ -92,3 +92,5 @@ const slot_has_only_cards = (
     true
   );
 };
+
+export const is_there_flower_in_slot = is_there_in_slot(Flower);

@@ -17,6 +17,6 @@ export const score_pumpkin_at_the_end_of_the_game = (
   };
 };
 
-const compute_total_pumpkins = compute_total_cards_in_board(Pumpkin);
+export const compute_total_pumpkins = compute_total_cards_in_board(Pumpkin);
 
 export const is_there_pumpkin_in_slot = is_there_in_slot(Pumpkin);
