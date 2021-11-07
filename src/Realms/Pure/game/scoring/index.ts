@@ -34,3 +34,4 @@ export * from "./tomatoe/score_on_tomatoe_played";
 export * from "./flower/score_flower_at_the_end_of_turn";
 export * from "./cactus/score_cactus_at_the_end_of_turn";
 export * from "./cactus/score_cactus_at_the_end_of_the_game";
+export * from "./coatlicue/score_coatlicue_at_the_end_of_turn";

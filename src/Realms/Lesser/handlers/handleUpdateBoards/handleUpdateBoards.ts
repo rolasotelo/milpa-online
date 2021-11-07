@@ -8,6 +8,7 @@ import {
 import {
   CardType,
   Event,
+  ModifierId,
   Players,
   ScoreLogType,
   SlotType,
@@ -365,14 +366,14 @@ const updateMilpasAndEdges = (
         opponentsOldMilpa,
         slot.row!,
         slot.column!,
-        card.card!
+        { ...card.card!, modifier: [ModifierId.Opponents] }
       );
     } else if (slotType === "edge") {
       [opponentsNewEdges, cardWithModifiers] = handleNewCardInSlot(
         opponentsOldEdges,
         slot.row!,
         slot.column!,
-        card.card!
+        { ...card.card!, modifier: [ModifierId.Opponents] }
       );
     }
   }

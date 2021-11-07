@@ -13,6 +13,7 @@ interface Props {
 const iconDictionary: Map<string, string> = new Map<string, string>();
 iconDictionary.set(ModifierId.Huitlacoche, "🍄");
 iconDictionary.set(ModifierId.Tuna, "🍓");
+iconDictionary.set(ModifierId.Opponents, "💀");
 
 const Crop = (props: Props) => {
   const context = useGameContext();
