@@ -40,7 +40,9 @@ export const compute_board_and_score_at_the_end_of_the_game = (
     newBoard = newBoardFromCorn;
     if (newScoreFromCorn !== 0) {
       scoringLog.description.push(
-        `+${newScoreFromCorn}🍫 from 🌽 Corn columns and rows`
+        `${sign(
+          newScoreFromCorn
+        )} ${newScoreFromCorn}🍫 from 🌽 Corn columns and rows`
       );
     }
   }
@@ -51,7 +53,9 @@ export const compute_board_and_score_at_the_end_of_the_game = (
     newBoard = newBoardFromBeans;
     if (newScoreFromBeans !== 0) {
       scoringLog.description.push(
-        `+${newScoreFromBeans}🍫 from 🌰 Beans being adjacent`
+        `${sign(
+          newScoreFromBeans
+        )} ${newScoreFromBeans}🍫 from 🌰 Beans being adjacent`
       );
     }
   }
@@ -62,7 +66,9 @@ export const compute_board_and_score_at_the_end_of_the_game = (
     newBoard = newBoardFromBlueCorn;
     if (newScoreFromBlueCorn !== 0) {
       scoringLog.description.push(
-        `+${newScoreFromBlueCorn}🍫 from 🍆 Blue Corn diagonals`
+        `${sign(
+          newScoreFromBlueCorn
+        )} ${newScoreFromBlueCorn}🍫 from 🍆 Blue Corn diagonals`
       );
     }
   }
@@ -73,7 +79,9 @@ export const compute_board_and_score_at_the_end_of_the_game = (
     newBoard = newBoardFromChilli;
     if (newScoreFromChilli !== 0) {
       scoringLog.description.push(
-        `+${newScoreFromChilli} 🍫 from 🌶 Chilli diagonal adjacencies`
+        `${sign(
+          newScoreFromChilli
+        )} ${newScoreFromChilli} 🍫 from 🌶 Chilli diagonal adjacencies`
       );
     }
   }
@@ -87,7 +95,9 @@ export const compute_board_and_score_at_the_end_of_the_game = (
     newBoard = newBoardFromPumpkin;
     if (newScoreFromPumpkin !== 0) {
       scoringLog.description.push(
-        `+${newScoreFromPumpkin} 🍫 from all your 🎃 Pumpkins`
+        `${sign(
+          newScoreFromPumpkin
+        )} ${newScoreFromPumpkin} 🍫 from all your 🎃 Pumpkins`
       );
     }
   }
@@ -101,4 +111,8 @@ export const compute_board_and_score_at_the_end_of_the_game = (
     score: newScore,
     scoringLog,
   };
+};
+
+const sign = (value: number) => {
+  return value >= 0 ? "+" : "-";
 };

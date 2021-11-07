@@ -43,7 +43,7 @@ export const compute_board_and_score_at_the_end_of_turn = (
     newBoard = newBoardFromCorn;
     if (newScoreFromCorn !== 0) {
       scoringLog.description.push(
-        `+${newScoreFromCorn} 🍫 from 🌽 Corn harvest`
+        `${sign(newScoreFromCorn)} ${newScoreFromCorn} 🍫 from 🌽 Corn harvest`
       );
     }
   }
@@ -54,7 +54,9 @@ export const compute_board_and_score_at_the_end_of_turn = (
     newBoard = newBoardFromBeans;
     if (newScoreFromBeans !== 0) {
       scoringLog.description.push(
-        `+${newScoreFromBeans} 🍫 from 🌰 Beans harvest`
+        `${sign(
+          newScoreFromBeans
+        )}${newScoreFromBeans} 🍫 from 🌰 Beans harvest`
       );
     }
   }
@@ -65,7 +67,9 @@ export const compute_board_and_score_at_the_end_of_turn = (
     newBoard = newBoardFromBlueCorn;
     if (newScoreFromBlueCorn !== 0) {
       scoringLog.description.push(
-        `+${newScoreFromBlueCorn} 🍫 from 🍆 Blue Corn harvest`
+        `${sign(
+          newScoreFromBlueCorn
+        )} ${newScoreFromBlueCorn} 🍫 from 🍆 Blue Corn harvest`
       );
     }
   }
@@ -76,7 +80,9 @@ export const compute_board_and_score_at_the_end_of_turn = (
     newBoard = newBoardFromChilli;
     if (newScoreFromChilli !== 0) {
       scoringLog.description.push(
-        `+${newScoreFromChilli} 🍫 from 🌶 Chilli harvest`
+        `${sign(
+          newScoreFromChilli
+        )} ${newScoreFromChilli} 🍫 from 🌶 Chilli harvest`
       );
     }
   }
@@ -89,7 +95,7 @@ export const compute_board_and_score_at_the_end_of_turn = (
     newBoard = newBoardFromPumpkin;
     if (newFlowers !== 0) {
       scoringLog.description.push(
-        `+${newFlowers} new 🌼 Flowers from your 🎃 Pumpkins`
+        `+ ${newFlowers} new 🌼 Flowers from your 🎃 Pumpkins`
       );
     }
   }
@@ -103,7 +109,9 @@ export const compute_board_and_score_at_the_end_of_turn = (
     newBoard = newBoardFromFlower;
     if (newScoreFromFlowers !== 0) {
       scoringLog.description.push(
-        `+${newScoreFromFlowers} 🍫 from 🌼 Pumpkin Flowers harvest`
+        `${sign(
+          newScoreFromFlowers
+        )} ${newScoreFromFlowers} 🍫 from 🌼 Pumpkin Flowers harvest`
       );
     }
   }
@@ -116,4 +124,8 @@ export const compute_board_and_score_at_the_end_of_turn = (
     score: newScore,
     scoringLog,
   };
+};
+
+const sign = (value: number) => {
+  return value >= 0 ? "+" : "-";
 };
