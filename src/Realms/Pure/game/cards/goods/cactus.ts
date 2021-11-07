@@ -11,8 +11,8 @@ export const Cactus: Readonly<Good> = {
   resume: "+6 🍫",
   modifier: [],
   canInteractWith: {
-    ownEmptyMilpaSlots: true,
-    ownFilledMilpaSlots: [CropId.Flower],
+    ownEmptyMilpaSlots: false,
+    ownFilledMilpaSlots: false,
     ownEmptyEdgeSlots: true,
     ownFilledEdgeSlots: [CropId.Flower],
     othersEmptyMilpaSlots: false,
