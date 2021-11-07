@@ -6,9 +6,10 @@ export const Cactus: Readonly<Good> = {
   type: CardType.Good,
   name: "Cactus",
   icon: "🌵",
-  description: "luna dame una tuna",
-  rules: "WIP",
-  resume: "+6 🍫",
+  description: "Luna luna, dame una tuna",
+  rules: `15% chance of a Cactus growing Tunas at the end of each turn.\n 
+  -15 🍫 for 0 Cactus with Tuna, -10 🍫 for 1, +15 🍫 for 2, +30 🍫 for 3 and +50 for more at the end of the game.`,
+  resume: "+4 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: false,

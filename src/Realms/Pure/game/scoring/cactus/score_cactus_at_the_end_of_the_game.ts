@@ -11,11 +11,10 @@ import {
 } from "./constants";
 
 export const score_cactus_at_the_end_of_the_game = (
-  board: Board,
-  turn: number
+  board: Board
 ): { board: Board; score: number } => {
   const milpa = board.milpa;
-  const edges = board.milpa;
+  const edges = board.edges;
 
   let totalCactusWithTunas =
     +compute_total_cactus_with_tuna(milpa) +
