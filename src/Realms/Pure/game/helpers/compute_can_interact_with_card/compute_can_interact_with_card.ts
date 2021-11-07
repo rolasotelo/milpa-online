@@ -107,7 +107,7 @@ const canInteractWithNonEmptySlotInYourBoard = (
           intersection(
             pluck(slot.cards, "id"),
             card.canInteractWith.ownFilledMilpaSlots
-          ).length > 0;
+          ).length === pluck(slot.cards, "id").length;
       }
       break;
     case SlotType.Edge:
@@ -118,7 +118,7 @@ const canInteractWithNonEmptySlotInYourBoard = (
           intersection(
             pluck(slot.cards, "id"),
             card.canInteractWith.ownFilledEdgeSlots
-          ).length > 0;
+          ).length === pluck(slot.cards, "id").length;
       }
       break;
     default:
@@ -155,18 +155,22 @@ const canInteractWithNonEmptySlotInOpponentsBoard = (
       if (typeof card.canInteractWith.othersFilledMilpaSlots === "boolean") {
         canInteract = card.canInteractWith.othersFilledMilpaSlots;
       } else {
-        canInteract = !!find(slot.cards, (card) => {
-          return card.id === selectedCard.card?.id;
-        });
+        canInteract =
+          intersection(
+            pluck(slot.cards, "id"),
+            card.canInteractWith.othersFilledMilpaSlots
+          ).length === pluck(slot.cards, "id").length;
       }
       break;
     case SlotType.Edge:
       if (typeof card.canInteractWith.othersFilledEdgeSlots === "boolean") {
         canInteract = card.canInteractWith.othersFilledEdgeSlots;
       } else {
-        canInteract = !!find(slot.cards, (card) => {
-          return card.id === selectedCard.card?.id;
-        });
+        canInteract =
+          intersection(
+            pluck(slot.cards, "id"),
+            card.canInteractWith.othersFilledEdgeSlots
+          ).length === pluck(slot.cards, "id").length;
       }
       break;
     default:

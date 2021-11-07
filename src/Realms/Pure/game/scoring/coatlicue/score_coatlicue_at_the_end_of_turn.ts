@@ -25,12 +25,12 @@ export const score_coatlicue_at_the_end_of_turn = (
               Math.random() * 100 < OPPONENTS_COATLICUE_PERCENTAGE;
             if (isThereNewScore) {
               newScore = newScore + PLUS_PER_OPPONENTS_COATLICUE;
-            } else {
-              const isThereNewScore =
-                Math.random() * 100 < YOUR_COATLICUE_PERCENTAGE;
-              if (isThereNewScore) {
-                newScore = newScore + PLUS_PER_YOUR_COATLICUE;
-              }
+            }
+          } else {
+            const isThereNewScore =
+              Math.random() * 100 < YOUR_COATLICUE_PERCENTAGE;
+            if (isThereNewScore) {
+              newScore = newScore + PLUS_PER_YOUR_COATLICUE;
             }
           }
         }
