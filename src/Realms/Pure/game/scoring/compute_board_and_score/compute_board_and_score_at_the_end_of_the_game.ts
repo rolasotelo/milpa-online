@@ -2,11 +2,13 @@ import { flatten, pluck } from "underscore";
 import {
   is_there_beans_in_slot,
   is_there_blue_corn_in_slot,
+  is_there_cactus_in_slot,
   is_there_chilli_in_slot,
   is_there_corn_in_slot,
   is_there_pumpkin_in_slot,
   score_beans_at_the_end_of_the_game,
   score_blue_corn_at_the_end_of_the_game,
+  score_cactus_at_the_end_of_the_game,
   score_chilli_at_the_end_of_the_game,
   score_pumpkin_at_the_end_of_the_game,
 } from "..";
@@ -98,6 +100,22 @@ export const compute_board_and_score_at_the_end_of_the_game = (
         `${sign(
           newScoreFromPumpkin
         )} ${newScoreFromPumpkin} 🍫 from all your 🎃 Pumpkins`
+      );
+    }
+  }
+  if (
+    is_there_cactus_in_slot(allCardsInMilpa) ||
+    is_there_cactus_in_slot(allCardsInEdges)
+  ) {
+    const { board: newBoardFromCactus, score: newScoreFromCactus } =
+      score_cactus_at_the_end_of_the_game(newBoard);
+    newScore = newScore + newScoreFromCactus;
+    newBoard = newBoardFromCactus;
+    if (newScoreFromCactus !== 0) {
+      scoringLog.description.push(
+        `${sign(
+          newScoreFromCactus
+        )} ${newScoreFromCactus} 🍫 from all your 🌵 with 🍓 Tuna`
       );
     }
   }

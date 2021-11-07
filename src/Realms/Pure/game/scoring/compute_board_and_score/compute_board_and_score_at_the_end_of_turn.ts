@@ -2,12 +2,14 @@ import { flatten, pluck } from "underscore";
 import {
   is_there_beans_in_slot,
   is_there_blue_corn_in_slot,
+  is_there_cactus_in_slot,
   is_there_chilli_in_slot,
   is_there_corn_in_slot,
   is_there_flower_in_slot,
   is_there_pumpkin_in_slot,
   score_beans_at_the_end_of_turn,
   score_blue_corn_at_the_end_of_turn,
+  score_cactus_at_the_end_of_turn,
   score_chilli_at_the_end_of_turn,
   score_corn_at_the_end_of_turn,
   score_flower_at_the_end_of_turn,
@@ -112,6 +114,19 @@ export const compute_board_and_score_at_the_end_of_turn = (
         `${sign(
           newScoreFromFlowers
         )} ${newScoreFromFlowers} 🍫 from 🌼 Pumpkin Flowers harvest`
+      );
+    }
+  }
+  if (
+    is_there_cactus_in_slot(allCardsInMilpa) ||
+    is_there_cactus_in_slot(allCardsInEdges)
+  ) {
+    const { board: newBoardFromCactus, score: newTunas } =
+      score_cactus_at_the_end_of_turn(newBoard, turn);
+    newBoard = newBoardFromCactus;
+    if (newTunas !== 0) {
+      scoringLog.description.push(
+        ` ${newTunas} 🌵 Cactus became cactus with 🍓 Tuna`
       );
     }
   }
