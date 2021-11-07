@@ -132,5 +132,5 @@ export const compute_board_and_score_at_the_end_of_the_game = (
 };
 
 const sign = (value: number) => {
-  return value >= 0 ? "+" : "-";
+  return value >= 0 ? "+" : "";
 };

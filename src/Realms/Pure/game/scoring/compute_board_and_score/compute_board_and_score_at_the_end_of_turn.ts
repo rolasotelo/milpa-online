@@ -126,7 +126,7 @@ export const compute_board_and_score_at_the_end_of_turn = (
     newBoard = newBoardFromCactus;
     if (newTunas !== 0) {
       scoringLog.description.push(
-        ` ${newTunas} 🌵 Cactus became cactus with 🍓 Tuna`
+        ` ${newTunas} 🌵 Cactus became Cactus with 🍓 Tuna`
       );
     }
   }
@@ -142,5 +142,5 @@ export const compute_board_and_score_at_the_end_of_turn = (
 };
 
 const sign = (value: number) => {
-  return value >= 0 ? "+" : "-";
+  return value >= 0 ? "+" : "";
 };
