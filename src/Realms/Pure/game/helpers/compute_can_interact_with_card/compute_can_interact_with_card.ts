@@ -103,22 +103,38 @@ const canInteractWithNonEmptySlotInYourBoard = (
       if (typeof card.canInteractWith.ownFilledMilpaSlots === "boolean") {
         canInteract = card.canInteractWith.ownFilledMilpaSlots;
       } else {
-        canInteract =
-          intersection(
-            pluck(slot.cards, "id"),
-            card.canInteractWith.ownFilledMilpaSlots
-          ).length === pluck(slot.cards, "id").length;
+        if (card.id === GoodId.Huitlacoche) {
+          canInteract =
+            intersection(
+              pluck(slot.cards, "id"),
+              card.canInteractWith.ownFilledMilpaSlots
+            ).length > 0;
+        } else {
+          canInteract =
+            intersection(
+              pluck(slot.cards, "id"),
+              card.canInteractWith.ownFilledMilpaSlots
+            ).length === pluck(slot.cards, "id").length;
+        }
       }
       break;
     case SlotType.Edge:
       if (typeof card.canInteractWith.ownFilledEdgeSlots === "boolean") {
         canInteract = card.canInteractWith.ownFilledEdgeSlots;
       } else {
-        canInteract =
-          intersection(
-            pluck(slot.cards, "id"),
-            card.canInteractWith.ownFilledEdgeSlots
-          ).length === pluck(slot.cards, "id").length;
+        if (card.id === GoodId.Huitlacoche) {
+          canInteract =
+            intersection(
+              pluck(slot.cards, "id"),
+              card.canInteractWith.ownFilledEdgeSlots
+            ).length > 0;
+        } else {
+          canInteract =
+            intersection(
+              pluck(slot.cards, "id"),
+              card.canInteractWith.ownFilledEdgeSlots
+            ).length === pluck(slot.cards, "id").length;
+        }
       }
       break;
     default:

@@ -1,6 +1,6 @@
 export const PLUS_PER_0_TUNA_AT_THE_END_OF_GAME = -15;
 export const PLUS_PER_1_TUNA_AT_THE_END_OF_GAME = -10;
 export const PLUS_PER_2_TUNA_AT_THE_END_OF_GAME = 15;
-export const PLUS_PER_3_TUNA_AT_THE_END_OF_GAME = 30;
-export const PLUS_PER_4_TUNA_AT_THE_END_OF_GAME = 50;
+export const PLUS_PER_3_TUNA_AT_THE_END_OF_GAME = 40;
+export const PLUS_PER_4_TUNA_AT_THE_END_OF_GAME = 60;
 export const NEW_TUNA_PERCENTAGE = 15;
