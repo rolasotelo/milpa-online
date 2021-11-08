@@ -8,7 +8,7 @@ export const Cricket: Readonly<Good> = {
   icon: "🦗",
   description: "Patitas sonoras",
   rules: "WIP",
-  resume: "-2 🍫",
+  resume: "+1 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: false,
@@ -18,6 +18,6 @@ export const Cricket: Readonly<Good> = {
     othersEmptyMilpaSlots: false,
     othersFilledMilpaSlots: false,
     othersEmptyEdgeSlots: true,
-    othersFilledEdgeSlots: [CropId.Flower],
+    othersFilledEdgeSlots: [CropId.Flower, GoodId.Manure],
   },
 };
