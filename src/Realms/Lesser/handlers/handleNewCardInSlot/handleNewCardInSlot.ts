@@ -1,6 +1,13 @@
 import { indexOf, pluck } from "underscore";
 import { CropId, GoodId, ModifierId } from "../../../Pure/enums";
-import { BlueCorn, Corn, EmptySlot, RedCorn } from "../../../Pure/game/cards";
+import {
+  BlueCorn,
+  Corn,
+  EmptySlot,
+  Huitlacoche,
+  Manure,
+  RedCorn,
+} from "../../../Pure/game/cards";
 import {
   is_empty,
   is_there_in_slot,
@@ -24,8 +31,12 @@ export const handleNewCardInSlot = (
   if (is_empty(slot)) {
     newCards.splice(0, 1);
   }
-  if (is_there_manure(slot)) {
-    newCards.splice(0, 1);
+  if (
+    is_there_manure(slot) &&
+    card.id !== Manure.id &&
+    card.id !== Huitlacoche.id
+  ) {
+    newCards.splice(indexOf(pluck(newCards, "id"), Manure.id), 1);
   }
   if (is_there_shovel(slot)) {
     newCards.splice(0);

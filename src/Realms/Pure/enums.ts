@@ -27,6 +27,9 @@ export enum ModifierId {
   Empty = "empty",
   Manure = "manure",
   Huitlacoche = "huitlacoche",
+  Tuna = "tuna",
+  Yours = "yours",
+  Opponents = "opponents",
 }
 
 export enum CardType {

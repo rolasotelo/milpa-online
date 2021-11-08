@@ -59,3 +59,13 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 - Scoring Chilli at the end of the game was quite simple having already implemented the scoring of blue corn. This time the adjacency needed to be diagonally instead, the the instead of putting conditions for checking top, bottom, left and right, checking topLeft, topRight, bottomLeft and bottomRight was needed. (rola@hey.com) Nov 2021
 
 - I really like the idea of implemeting some randomness in the game when it still gives you room to act on. For example with Pumpkin flowers, you can still decide if you want to put something on top of them or not, I'm still not sure what to do with manure, but I will probably work on that next, because it already hapenned to me that I can not end a game because manure cannot been put ot top of anything but empty slots. (rola@hey.com) Nov 2021
+
+## Issue [#27](https://github.com/rolasotelo/la-milpa-online/issues/27)
+
+### Implement scoring for Cactus and Coatlicue
+
+    Scoring Cactus and Coatlicue at the end of turn and at the end of game. Plus make Manure so you can place it on top of other crops.
+
+- I have a good idea on what to implement for Coatlicue, when the figure is placed in your board then there will be a percentage of gaining her favor each turn and scoring some points, but in the case the figure is placed in the opponents board another slower percentage will have the opposite effect. I plan to discern wheter a firuge is yours or not with a modifier. (rola@hey.com) Nov 2021
+
+- Now that game has more card rules, I have realized that too many limitations on what cards can be played on top of what card can make for the game being solved so I decided to make not only manure playable on top of other cards, but also corns (Corn, Blue Corn and Red Corn) now will be playable on top of each other, but of course the rule of maximum 2 crops in a slot will still be there. This will make posible to have all the end of game corn conditions satisfied more than once each. Next PR will implement Red Corn and Huitlacoche scoring, which will make natural to handle the new corn interactions (rola@hey.com) Nov 2021

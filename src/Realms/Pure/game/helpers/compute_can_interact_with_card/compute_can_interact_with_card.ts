@@ -9,7 +9,7 @@ import {
 import { MAX_CARD_PER_SLOT, TOTAL_TURNS } from "../../../constants";
 import { GoodId, ModifierId, SlotType } from "../../../enums";
 import { AnyCard, BoardSlot, SelectedCard } from "../../../types";
-import { Huitlacoche, Shovel } from "../../cards";
+import { Huitlacoche, Manure, Shovel } from "../../cards";
 import { Flower } from "../../cards/crops/flower";
 
 export type ReturnTypeCanInteractWithCard = (
@@ -41,7 +41,8 @@ export const compute_can_interact_with_card = (
       if (
         slot.type === undefined ||
         slot.cards.length === 0 ||
-        (compute_total_cards_but_flower(slot.cards) >= MAX_CARD_PER_SLOT &&
+        (compute_total_cards_but_flower_and_manure(slot.cards) >=
+          MAX_CARD_PER_SLOT &&
           selectedCard.card?.id !== Shovel.id &&
           selectedCard.card?.id !== Huitlacoche.id) ||
         (is_modifier_already_present_in_slot(slot, ModifierId.Huitlacoche) &&
@@ -103,22 +104,38 @@ const canInteractWithNonEmptySlotInYourBoard = (
       if (typeof card.canInteractWith.ownFilledMilpaSlots === "boolean") {
         canInteract = card.canInteractWith.ownFilledMilpaSlots;
       } else {
-        canInteract =
-          intersection(
-            pluck(slot.cards, "id"),
-            card.canInteractWith.ownFilledMilpaSlots
-          ).length > 0;
+        if (card.id === GoodId.Huitlacoche) {
+          canInteract =
+            intersection(
+              pluck(slot.cards, "id"),
+              card.canInteractWith.ownFilledMilpaSlots
+            ).length > 0;
+        } else {
+          canInteract =
+            intersection(
+              pluck(slot.cards, "id"),
+              card.canInteractWith.ownFilledMilpaSlots
+            ).length === pluck(slot.cards, "id").length;
+        }
       }
       break;
     case SlotType.Edge:
       if (typeof card.canInteractWith.ownFilledEdgeSlots === "boolean") {
         canInteract = card.canInteractWith.ownFilledEdgeSlots;
       } else {
-        canInteract =
-          intersection(
-            pluck(slot.cards, "id"),
-            card.canInteractWith.ownFilledEdgeSlots
-          ).length > 0;
+        if (card.id === GoodId.Huitlacoche) {
+          canInteract =
+            intersection(
+              pluck(slot.cards, "id"),
+              card.canInteractWith.ownFilledEdgeSlots
+            ).length > 0;
+        } else {
+          canInteract =
+            intersection(
+              pluck(slot.cards, "id"),
+              card.canInteractWith.ownFilledEdgeSlots
+            ).length === pluck(slot.cards, "id").length;
+        }
       }
       break;
     default:
@@ -155,18 +172,22 @@ const canInteractWithNonEmptySlotInOpponentsBoard = (
       if (typeof card.canInteractWith.othersFilledMilpaSlots === "boolean") {
         canInteract = card.canInteractWith.othersFilledMilpaSlots;
       } else {
-        canInteract = !!find(slot.cards, (card) => {
-          return card.id === selectedCard.card?.id;
-        });
+        canInteract =
+          intersection(
+            pluck(slot.cards, "id"),
+            card.canInteractWith.othersFilledMilpaSlots
+          ).length === pluck(slot.cards, "id").length;
       }
       break;
     case SlotType.Edge:
       if (typeof card.canInteractWith.othersFilledEdgeSlots === "boolean") {
         canInteract = card.canInteractWith.othersFilledEdgeSlots;
       } else {
-        canInteract = !!find(slot.cards, (card) => {
-          return card.id === selectedCard.card?.id;
-        });
+        canInteract =
+          intersection(
+            pluck(slot.cards, "id"),
+            card.canInteractWith.othersFilledEdgeSlots
+          ).length === pluck(slot.cards, "id").length;
       }
       break;
     default:
@@ -200,5 +221,27 @@ export const compute_total_cards_but_one_in_slot = (card: AnyCard) => {
   };
 };
 
-const compute_total_cards_but_flower =
-  compute_total_cards_but_one_in_slot(Flower);
+export const compute_total_cards_but = (cards: AnyCard[]) => {
+  return (slot: readonly AnyCard[]) => {
+    return reduce(
+      slot,
+      (total, c) => {
+        return reduce(
+          cards,
+          (isThereOneOfTheCards, card) => {
+            return isThereOneOfTheCards || card.id === c.id;
+          },
+          false
+        )
+          ? total
+          : total + 1;
+      },
+      0
+    );
+  };
+};
+
+const compute_total_cards_but_flower_and_manure = compute_total_cards_but([
+  Flower,
+  Manure,
+]);

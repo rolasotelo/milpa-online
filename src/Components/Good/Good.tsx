@@ -1,6 +1,7 @@
 import React from "react";
-import { flatten, pluck } from "underscore";
+import { flatten, map, pluck, without } from "underscore";
 import useGameContext from "../../Hooks/useGameContext/useGameContext";
+import { ModifierId } from "../../Realms/Pure/enums";
 import { BoardSlot } from "../../Realms/Pure/types";
 
 interface Props {
@@ -8,6 +9,10 @@ interface Props {
   canInteract: boolean;
   isYourBoard: boolean;
 }
+const iconDictionary: Map<string, string> = new Map<string, string>();
+iconDictionary.set(ModifierId.Huitlacoche, "🍄");
+iconDictionary.set(ModifierId.Tuna, "🍓");
+iconDictionary.set(ModifierId.Opponents, "💀");
 
 const Good = (props: Props) => {
   const context = useGameContext();
@@ -28,6 +33,14 @@ const Good = (props: Props) => {
       }}
     >
       <p>{pluck(props.boardSlot.cards, "icon").toString()}</p>
+      <p>
+        {without(
+          map(flatten(pluck(props.boardSlot.cards, "modifier")), (modifier) => {
+            return iconDictionary.get(modifier);
+          }),
+          undefined
+        ).toString()}
+      </p>
     </button>
   );
 };

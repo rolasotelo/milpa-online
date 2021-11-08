@@ -32,7 +32,7 @@ export const compute_score_on_card_played = (
       scoringLog = {
         name: "Player",
         description: [
-          `+${
+          `${sign(newScores[Players.You] - oldScores[Players.You])} ${
             newScores[Players.You] - oldScores[Players.You]
           }🍫 from 🌰 Bean played`,
         ],
@@ -45,7 +45,7 @@ export const compute_score_on_card_played = (
       scoringLog = {
         name: "Player",
         description: [
-          `+${
+          `${sign(newScores[Players.You] - oldScores[Players.You])} ${
             newScores[Players.You] - oldScores[Players.You]
           }🍫 from 🍆 Blue Corn played`,
         ],
@@ -58,7 +58,7 @@ export const compute_score_on_card_played = (
       scoringLog = {
         name: "Player",
         description: [
-          `+${
+          `${sign(newScores[Players.You] - oldScores[Players.You])} ${
             newScores[Players.You] - oldScores[Players.You]
           }🍫 from 🌶 Chilli played`,
         ],
@@ -71,7 +71,7 @@ export const compute_score_on_card_played = (
       scoringLog = {
         name: "Player",
         description: [
-          `+${
+          `${sign(newScores[Players.You] - oldScores[Players.You])} ${
             newScores[Players.You] - oldScores[Players.You]
           }🍫 from 🌽 Corn played`,
         ],
@@ -84,7 +84,7 @@ export const compute_score_on_card_played = (
       scoringLog = {
         name: "Player",
         description: [
-          `+${
+          `${sign(newScores[Players.You] - oldScores[Players.You])} ${
             newScores[Players.You] - oldScores[Players.You]
           }🍫 from 🎃 Pumpkin played`,
         ],
@@ -97,7 +97,7 @@ export const compute_score_on_card_played = (
       scoringLog = {
         name: "Player",
         description: [
-          `+${
+          `${sign(newScores[Players.You] - oldScores[Players.You])} ${
             newScores[Players.You] - oldScores[Players.You]
           }🍫 from 🌱 Quelites played`,
         ],
@@ -110,7 +110,7 @@ export const compute_score_on_card_played = (
       scoringLog = {
         name: "Player",
         description: [
-          `+${
+          `${sign(newScores[Players.You] - oldScores[Players.You])} ${
             newScores[Players.You] - oldScores[Players.You]
           }🍫 from 🥕 Red Corn played`,
         ],
@@ -123,7 +123,7 @@ export const compute_score_on_card_played = (
       scoringLog = {
         name: "Player",
         description: [
-          `+${
+          `${sign(newScores[Players.You] - oldScores[Players.You])} ${
             newScores[Players.You] - oldScores[Players.You]
           }🍫 from 🍈 Tomatillo played`,
         ],
@@ -136,7 +136,7 @@ export const compute_score_on_card_played = (
       scoringLog = {
         name: "Player",
         description: [
-          `+${
+          `${sign(newScores[Players.You] - oldScores[Players.You])} ${
             newScores[Players.You] - oldScores[Players.You]
           }🍫 from 🍅 Tomatoe played`,
         ],
@@ -149,7 +149,7 @@ export const compute_score_on_card_played = (
       scoringLog = {
         name: "Player",
         description: [
-          `+${
+          `${sign(newScores[Players.You] - oldScores[Players.You])} ${
             newScores[Players.You] - oldScores[Players.You]
           }🍫 from 🌵 Cactus played`,
         ],
@@ -162,7 +162,7 @@ export const compute_score_on_card_played = (
       scoringLog = {
         name: "Player",
         description: [
-          `+${
+          `${sign(newScores[Players.You] - oldScores[Players.You])} ${
             newScores[Players.You] - oldScores[Players.You]
           }🍫 from 🏺 Coatlicue played`,
         ],
@@ -175,7 +175,7 @@ export const compute_score_on_card_played = (
       scoringLog = {
         name: "Player",
         description: [
-          `+${
+          `${sign(newScores[Players.You] - oldScores[Players.You])} ${
             newScores[Players.You] - oldScores[Players.You]
           }🍫 from 🦗 Cricket played`,
         ],
@@ -188,7 +188,7 @@ export const compute_score_on_card_played = (
       scoringLog = {
         name: "Player",
         description: [
-          `+${
+          `${sign(newScores[Players.You] - oldScores[Players.You])} ${
             newScores[Players.You] - oldScores[Players.You]
           }🍫 from 🍄 Huitlacoche played`,
         ],
@@ -201,7 +201,7 @@ export const compute_score_on_card_played = (
       scoringLog = {
         name: "Player",
         description: [
-          `+${
+          `${sign(newScores[Players.You] - oldScores[Players.You])} ${
             newScores[Players.You] - oldScores[Players.You]
           }🍫 from 🦚 Maguey played`,
         ],
@@ -214,7 +214,7 @@ export const compute_score_on_card_played = (
       scoringLog = {
         name: "Player",
         description: [
-          `+${
+          `${sign(newScores[Players.You] - oldScores[Players.You])} ${
             newScores[Players.You] - oldScores[Players.You]
           }🍫 from 💩 Manure played`,
         ],
@@ -227,7 +227,7 @@ export const compute_score_on_card_played = (
       scoringLog = {
         name: "Player",
         description: [
-          `+${
+          `${sign(newScores[Players.You] - oldScores[Players.You])} ${
             newScores[Players.You] - oldScores[Players.You]
           }🍫 from 🧹 Shovel played`,
         ],
@@ -240,7 +240,7 @@ export const compute_score_on_card_played = (
       scoringLog = {
         name: "Player",
         description: [
-          `+${
+          `${sign(newScores[Players.You] - oldScores[Players.You])} ${
             newScores[Players.You] - oldScores[Players.You]
           }🍫 from 🌧 Tlaloc played`,
         ],
@@ -253,4 +253,8 @@ export const compute_score_on_card_played = (
       break;
   }
   return { scores: newScores, scoringLog };
+};
+
+const sign = (value: number) => {
+  return value >= 0 ? "+" : "";
 };
