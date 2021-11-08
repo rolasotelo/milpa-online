@@ -19,6 +19,8 @@ export const RedCorn: Readonly<Crop> = {
       CropId.Tomatoe,
       CropId.Quelites,
       CropId.Flower,
+      CropId.BlueCorn,
+      CropId.Corn,
     ],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,
