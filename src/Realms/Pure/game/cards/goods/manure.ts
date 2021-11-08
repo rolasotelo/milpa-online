@@ -13,7 +13,7 @@ export const Manure: Readonly<Good> = {
   canInteractWith: {
     ownEmptyMilpaSlots: true,
     ownFilledMilpaSlots: true,
-    ownEmptyEdgeSlots: true,
+    ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,
     othersEmptyMilpaSlots: false,
     othersFilledMilpaSlots: false,

@@ -7,7 +7,7 @@ export const Huitlacoche: Readonly<Good> = {
   name: "Huitlacoche",
   icon: "🍄",
   description: "Lo amas o lo odias",
-  rules: "WIP",
+  rules: `+15 🍫 if you have Huitlacoche in all 3 different corns`,
   resume: "+5 🍫",
   modifier: [],
   canInteractWith: {

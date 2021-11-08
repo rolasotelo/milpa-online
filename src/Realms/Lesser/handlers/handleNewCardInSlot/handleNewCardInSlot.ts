@@ -43,24 +43,28 @@ export const handleNewCardInSlot = (
     newCards.push(EmptySlot);
   }
   const cards = slot.cards as AnyCard[];
-  if (is_there_corn_in_slot(cards) && card.id === GoodId.Huitlacoche) {
+  if (
+    (is_there_corn_in_slot(cards) ||
+      is_there_blue_corn_in_slot(cards) ||
+      is_there_red_corn_in_slot(cards)) &&
+    card.id === GoodId.Huitlacoche
+  ) {
+    if (is_there_corn_in_slot(cards) && card.id === GoodId.Huitlacoche) {
+      newCards[indexOf(pluck(newCards, "id"), CropId.Corn)].modifier.push(
+        ModifierId.Huitlacoche
+      );
+    }
+    if (is_there_blue_corn_in_slot(cards) && card.id === GoodId.Huitlacoche) {
+      newCards[indexOf(pluck(newCards, "id"), CropId.BlueCorn)].modifier.push(
+        ModifierId.Huitlacoche
+      );
+    }
+    if (is_there_red_corn_in_slot(cards) && card.id === GoodId.Huitlacoche) {
+      newCards[indexOf(pluck(newCards, "id"), CropId.RedCorn)].modifier.push(
+        ModifierId.Huitlacoche
+      );
+    }
     newCards.pop();
-
-    newCards[indexOf(pluck(newCards, "id"), CropId.Corn)].modifier.push(
-      ModifierId.Huitlacoche
-    );
-  }
-  if (is_there_blue_corn_in_slot(cards) && card.id === GoodId.Huitlacoche) {
-    newCards.pop();
-    newCards[indexOf(pluck(newCards, "id"), CropId.BlueCorn)].modifier.push(
-      ModifierId.Huitlacoche
-    );
-  }
-  if (is_there_red_corn_in_slot(cards) && card.id === GoodId.Huitlacoche) {
-    newCards.pop();
-    newCards[indexOf(pluck(newCards, "id"), CropId.RedCorn)].modifier.push(
-      ModifierId.Huitlacoche
-    );
   }
 
   const newSlot = {
