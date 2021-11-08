@@ -1,0 +1,1 @@
+export const PLUS_PER_HUITLACOCHE_IN_ALL_CORNS = 15;

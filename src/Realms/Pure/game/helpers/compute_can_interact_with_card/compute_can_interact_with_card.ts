@@ -45,7 +45,10 @@ export const compute_can_interact_with_card = (
           MAX_CARD_PER_SLOT &&
           selectedCard.card?.id !== Shovel.id &&
           selectedCard.card?.id !== Huitlacoche.id) ||
-        (is_modifier_already_present_in_slot(slot, ModifierId.Huitlacoche) &&
+        (is_modifier_already_present_in_slot(
+          slot.cards,
+          ModifierId.Huitlacoche
+        ) &&
           selectedCard.card?.id === GoodId.Huitlacoche)
       ) {
         return false;
@@ -197,11 +200,11 @@ const canInteractWithNonEmptySlotInOpponentsBoard = (
 };
 
 export const is_modifier_already_present_in_slot = (
-  slot: Readonly<BoardSlot>,
+  cards: readonly AnyCard[],
   modifierId: ModifierId
 ): Boolean => {
   return reduce(
-    flatten(pluck(slot.cards, "modifier")),
+    flatten(pluck(cards, "modifier")),
     (alreadyPresent: Boolean, modifier) => {
       return alreadyPresent || modifier === modifierId;
     },
