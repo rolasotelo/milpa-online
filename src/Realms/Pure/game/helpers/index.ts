@@ -21,3 +21,4 @@ export * from "./is";
 export * from "./transpose_matix/transpose_matrix";
 export * from "./compute_history_board_for_display/compute_history_board_for_display";
 export * from "./compute_total_diagonal_adjacencies_of_card_in_milpa/compute_total_diagonal_adjacencies_of_card_in_milpa";
+export * from "./compute_total_squares_in_milpa/compute_total_squares_in_milpa";

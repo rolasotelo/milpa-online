@@ -26,3 +26,21 @@ export const MILPA_WITH_6_RED_CORN_3_WITH_HUITLACOCHE = (): Milpa => {
     ]),
   ];
 };
+
+export const MILPA_WITH_1_SQUARE_OF_RED_CORN = (): Milpa => {
+  return [
+    milpa_row(0, [[RedCorn], [Corn], [Corn], [Corn]]),
+    milpa_row(1, [[Corn], [Beans], [Corn], [Corn]]),
+    milpa_row(2, [[Corn], [Corn], [RedCorn], [RedCorn]]),
+    milpa_row(3, [[Beans], [Corn], [RedCorn], [RedCorn]]),
+  ];
+};
+
+export const MILPA_WITH_2_SQUARE_OF_RED_CORN = (): Milpa => {
+  return [
+    milpa_row(0, [[RedCorn], [RedCorn], [Corn], [Corn]]),
+    milpa_row(1, [[RedCorn], [RedCorn], [Corn], [Corn]]),
+    milpa_row(2, [[Corn], [Corn], [RedCorn], [RedCorn]]),
+    milpa_row(3, [[Beans], [Corn], [RedCorn], [RedCorn]]),
+  ];
+};
