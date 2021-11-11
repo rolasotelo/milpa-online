@@ -6,12 +6,14 @@ import {
   is_there_chilli_in_slot,
   is_there_corn_in_slot,
   is_there_pumpkin_in_slot,
+  is_there_red_corn_in_slot,
   score_beans_at_the_end_of_the_game,
   score_blue_corn_at_the_end_of_the_game,
   score_cactus_at_the_end_of_the_game,
   score_chilli_at_the_end_of_the_game,
   score_huitlacoche_at_the_end_of_the_game,
   score_pumpkin_at_the_end_of_the_game,
+  score_red_corn_at_the_end_of_the_game,
 } from "..";
 import { ModifierId, ScoreLogType } from "../../../enums";
 import { Board, ScoringHistory } from "../../../types";
@@ -133,6 +135,19 @@ export const compute_board_and_score_at_the_end_of_the_game = (
         `${sign(
           newScoreFromHuitlacoche
         )} ${newScoreFromHuitlacoche} 🍫 from 🍄 Huitlacoche variety`
+      );
+    }
+  }
+  if (is_there_red_corn_in_slot(allCardsInMilpa)) {
+    const { board: newBoardFromRedCorn, score: newScoreFromRedCorn } =
+      score_red_corn_at_the_end_of_the_game(newBoard);
+    newScore = newScore + newScoreFromRedCorn;
+    newBoard = newBoardFromRedCorn;
+    if (newScoreFromRedCorn !== 0) {
+      scoringLog.description.push(
+        `${sign(
+          newScoreFromRedCorn
+        )} ${newScoreFromRedCorn}🍫 from 🥕 Red Corn squares`
       );
     }
   }
