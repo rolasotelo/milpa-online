@@ -35,3 +35,6 @@ export * from "./flower/score_flower_at_the_end_of_turn";
 export * from "./cactus/score_cactus_at_the_end_of_turn";
 export * from "./cactus/score_cactus_at_the_end_of_the_game";
 export * from "./coatlicue/score_coatlicue_at_the_end_of_turn";
+export * from "./huitlacoche/score_huitlacoche_at_the_end_of_the_game";
+export * from "./read-corn/score_red_corn_at_the_end_of_the_turn";
+export * from "./read-corn/score_red_corn_at_the_end_of_the_game";

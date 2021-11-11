@@ -69,3 +69,11 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 - I have a good idea on what to implement for Coatlicue, when the figure is placed in your board then there will be a percentage of gaining her favor each turn and scoring some points, but in the case the figure is placed in the opponents board another slower percentage will have the opposite effect. I plan to discern wheter a firuge is yours or not with a modifier. (rola@hey.com) Nov 2021
 
 - Now that game has more card rules, I have realized that too many limitations on what cards can be played on top of what card can make for the game being solved so I decided to make not only manure playable on top of other cards, but also corns (Corn, Blue Corn and Red Corn) now will be playable on top of each other, but of course the rule of maximum 2 crops in a slot will still be there. This will make posible to have all the end of game corn conditions satisfied more than once each. Next PR will implement Red Corn and Huitlacoche scoring, which will make natural to handle the new corn interactions (rola@hey.com) Nov 2021
+
+## Issue [#29](https://github.com/rolasotelo/la-milpa-online/issues/29)
+
+### Implement scoring for Red Corn and Huitlacoche
+
+    Scoring Red corn and Huitlacoche at the end of turn and at the end of game. Plus make corns playable on top of each other.
+
+- I will start by making changing rules for all corn colors so they can be playable on top of each other, one thing that I need to keep an eye on is how huitlacoche going to interact with an stack of corns. (rola@hey.com) Nov 2021

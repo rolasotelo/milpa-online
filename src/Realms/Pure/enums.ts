@@ -108,14 +108,14 @@ export enum Total {
   RedCorn = 8,
   Pumpkin = 4,
 
-  Manure = 8,
-  Tlaloc = 8,
-  Shovel = 2,
-  Maguey = 12,
+  Manure = 7,
+  Tlaloc = 7,
+  Shovel = 4,
+  Maguey = 10,
   Cactus = 8,
-  Coatlicue = 3,
-  Cricket = 2,
-  Huitlacoche = 5,
+  Coatlicue = 5,
+  Cricket = 3,
+  Huitlacoche = 4,
 }
 
 export const enum ScoreLogType {

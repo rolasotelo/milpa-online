@@ -6,14 +6,18 @@ import {
   is_there_chilli_in_slot,
   is_there_corn_in_slot,
   is_there_pumpkin_in_slot,
+  is_there_red_corn_in_slot,
   score_beans_at_the_end_of_the_game,
   score_blue_corn_at_the_end_of_the_game,
   score_cactus_at_the_end_of_the_game,
   score_chilli_at_the_end_of_the_game,
+  score_huitlacoche_at_the_end_of_the_game,
   score_pumpkin_at_the_end_of_the_game,
+  score_red_corn_at_the_end_of_the_game,
 } from "..";
-import { ScoreLogType } from "../../../enums";
+import { ModifierId, ScoreLogType } from "../../../enums";
 import { Board, ScoringHistory } from "../../../types";
+import { is_modifier_already_present_in_slot } from "../../helpers";
 import { score_corn_at_the_end_of_the_game } from "../corn/score_corn_at_the_end_of_the_game";
 
 export const compute_board_and_score_at_the_end_of_the_game = (
@@ -116,6 +120,34 @@ export const compute_board_and_score_at_the_end_of_the_game = (
         `${sign(
           newScoreFromCactus
         )} ${newScoreFromCactus} 🍫 from all your 🌵 with 🍓 Tuna`
+      );
+    }
+  }
+  if (
+    is_modifier_already_present_in_slot(allCardsInMilpa, ModifierId.Huitlacoche)
+  ) {
+    const { board: newBoardFromHuitlacoche, score: newScoreFromHuitlacoche } =
+      score_huitlacoche_at_the_end_of_the_game(newBoard);
+    newScore = newScore + newScoreFromHuitlacoche;
+    newBoard = newBoardFromHuitlacoche;
+    if (newScoreFromHuitlacoche !== 0) {
+      scoringLog.description.push(
+        `${sign(
+          newScoreFromHuitlacoche
+        )} ${newScoreFromHuitlacoche} 🍫 from 🍄 Huitlacoche variety`
+      );
+    }
+  }
+  if (is_there_red_corn_in_slot(allCardsInMilpa)) {
+    const { board: newBoardFromRedCorn, score: newScoreFromRedCorn } =
+      score_red_corn_at_the_end_of_the_game(newBoard);
+    newScore = newScore + newScoreFromRedCorn;
+    newBoard = newBoardFromRedCorn;
+    if (newScoreFromRedCorn !== 0) {
+      scoringLog.description.push(
+        `${sign(
+          newScoreFromRedCorn
+        )} ${newScoreFromRedCorn}🍫 from 🥕 Red Corn squares`
       );
     }
   }

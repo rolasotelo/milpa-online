@@ -1,5 +1,5 @@
-import { score_on_huitlacoche_played } from "..";
-import { CACAO_WHEN_HUITLACOCHE_PLAYED } from "../../../constants";
+import { score_on_huitlacoche_played } from "../..";
+import { CACAO_WHEN_HUITLACOCHE_PLAYED } from "../../../../constants";
 
 test("should return new scores which depend on modifiers", () => {
   const oldScores: [number, number] = [1, 1];

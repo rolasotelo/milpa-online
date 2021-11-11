@@ -15,7 +15,7 @@ export const Coatlicue: Readonly<Good> = {
     ownEmptyMilpaSlots: false,
     ownFilledMilpaSlots: false,
     ownEmptyEdgeSlots: true,
-    ownFilledEdgeSlots: [CropId.Flower],
+    ownFilledEdgeSlots: [CropId.Flower, CropId.Pupmkin],
     othersEmptyMilpaSlots: false,
     othersFilledMilpaSlots: false,
     othersEmptyEdgeSlots: true,

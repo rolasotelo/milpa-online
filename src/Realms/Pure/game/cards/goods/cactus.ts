@@ -15,7 +15,7 @@ export const Cactus: Readonly<Good> = {
     ownEmptyMilpaSlots: false,
     ownFilledMilpaSlots: false,
     ownEmptyEdgeSlots: true,
-    ownFilledEdgeSlots: [CropId.Flower, GoodId.Manure],
+    ownFilledEdgeSlots: [CropId.Flower, GoodId.Manure, CropId.Pupmkin],
     othersEmptyMilpaSlots: false,
     othersFilledMilpaSlots: false,
     othersEmptyEdgeSlots: false,

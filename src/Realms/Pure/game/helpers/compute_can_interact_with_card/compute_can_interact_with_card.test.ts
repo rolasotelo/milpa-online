@@ -146,7 +146,10 @@ describe("is_modifier_already_present_in_slot", () => {
         cards: [{ ...Corn, modifier: [ModifierId.Huitlacoche] }, Beans],
       };
       expect(
-        is_modifier_already_present_in_slot(cardsInSlot, ModifierId.Huitlacoche)
+        is_modifier_already_present_in_slot(
+          cardsInSlot.cards,
+          ModifierId.Huitlacoche
+        )
       ).toBeTruthy();
     });
   });
@@ -160,7 +163,10 @@ describe("is_modifier_already_present_in_slot", () => {
         cards: [Corn, Beans],
       };
       expect(
-        is_modifier_already_present_in_slot(cardsInSlot, ModifierId.Huitlacoche)
+        is_modifier_already_present_in_slot(
+          cardsInSlot.cards,
+          ModifierId.Huitlacoche
+        )
       ).toBeFalsy();
     });
   });

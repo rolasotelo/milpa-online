@@ -18,6 +18,6 @@ export const Cricket: Readonly<Good> = {
     othersEmptyMilpaSlots: false,
     othersFilledMilpaSlots: false,
     othersEmptyEdgeSlots: true,
-    othersFilledEdgeSlots: [CropId.Flower, GoodId.Manure],
+    othersFilledEdgeSlots: true,
   },
 };

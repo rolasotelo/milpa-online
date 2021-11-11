@@ -7,7 +7,7 @@ export const Corn: Readonly<Crop> = {
   name: "Corn",
   icon: "🌽",
   description: "El cultivo más importante, no importa si no lo crees.",
-  rules: `Harvest +2🍫 (+2 🍫  with Huitlacoche) on turns: 12, 13, 14.\n 
+  rules: `Harvest +3🍫 (+4 🍫  with Huitlacoche) on turns: 12, 13, 14.\n 
     +15 🍫 per Corn row and colum at the end of the game`,
   resume: "+3 🍫",
   modifier: [],
@@ -20,6 +20,8 @@ export const Corn: Readonly<Crop> = {
       CropId.Tomatoe,
       CropId.Quelites,
       CropId.Flower,
+      CropId.RedCorn,
+      CropId.BlueCorn,
     ],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,
