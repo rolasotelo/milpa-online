@@ -1,6 +1,7 @@
 import {
   compute_total_blue_corn_with_huitlacoche,
   compute_total_corn_with_huitlacoche,
+  compute_total_red_corn_with_huitlacoche,
 } from "..";
 import { ModifierId } from "../../../enums";
 import { Board } from "../../../types";
@@ -29,6 +30,3 @@ export const score_huitlacoche_at_the_end_of_the_game = (
     score: huitlacocheInAllColors ? PLUS_PER_HUITLACOCHE_IN_ALL_CORNS : 0,
   };
 };
-
-export const compute_total_red_corn_with_huitlacoche =
-  compute_total_cards_in_board_with_modifier(RedCorn, ModifierId.Huitlacoche);
