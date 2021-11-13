@@ -18,6 +18,7 @@ export const Quelites: Readonly<Crop> = {
       CropId.BlueCorn,
       CropId.Flower,
       GoodId.Cricket,
+      GoodId.Manure,
     ],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,
