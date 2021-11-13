@@ -85,3 +85,5 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 - For Cricket I know I want to make them jump along a column or row in your milpa, depending on where it is put. And on every jump it will destroy a crop. (rola@hey.com) Nov 2021
 
 - The Score for Cricket has been probably the most difficult one that I have implemented and I had already imaginated it was going to be like this, because it has interactions between the milpa and the edges. But perhaps the thing that took me the most time was debugging the method that updates the crickets positions because of me not realizing that I was not deep copying the arrays. (rola@hey.com) Nov 2021
+
+- I'm still not sure what to implement as a rule for scoring quelites and cricket at the end of the game, or even if one is needed, but I will leave for a revision. Next in the list are Tomatillo and Maguey. (rola@hey.com) Nov 2021
