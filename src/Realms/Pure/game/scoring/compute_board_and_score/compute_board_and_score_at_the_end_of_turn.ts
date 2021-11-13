@@ -162,7 +162,10 @@ export const compute_board_and_score_at_the_end_of_turn = (
       );
     }
   }
-  if (is_there_crickets_in_slot(allCardsInMilpa)) {
+  if (
+    is_there_crickets_in_slot(allCardsInMilpa) ||
+    is_there_crickets_in_slot(allCardsInEdges)
+  ) {
     const { board: newBoardFromCricket, score: newScoreFromCricket } =
       score_cricket_at_the_end_of_turn(newBoard, turn);
     newScore = newScore + newScoreFromCricket;

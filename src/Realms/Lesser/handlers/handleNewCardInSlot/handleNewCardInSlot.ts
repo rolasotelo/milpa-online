@@ -41,8 +41,8 @@ export const handleNewCardInSlot = (
     newCards.splice(indexOf(pluck(newCards, "id"), Manure.id), 1);
   }
   const cards = slot.cards as AnyCard[];
-  if (is_there_crickets_in_slot(cards)) {
-    newCards.splice(indexOf(pluck(newCards, "id"), Manure.id), 1);
+  if (is_there_crickets_in_slot(cards) && card.id !== Cricket.id) {
+    newCards.splice(indexOf(pluck(newCards, "id"), Cricket.id), 1);
   }
   if (is_there_shovel(slot)) {
     newCards.splice(0);
