@@ -2,7 +2,10 @@ import { indexOf } from "underscore";
 import { CropId } from "../../../enums";
 import { Board } from "../../../types";
 import { Quelites } from "../../cards";
-import { compute_total_cards_in_board_sharing_slot_with } from "../../helpers";
+import {
+  compute_total_cards_in_board_sharing_slot_with,
+  is_there_in_slot,
+} from "../../helpers";
 import {
   PLUS_PER_QUELITES_WITH_CORN,
   QUELITES_HARVEST_TURNS,
@@ -48,3 +51,5 @@ export const compute_total_quelites_sharing_with_red_corn =
 
 export const compute_total_quelites_sharing_with_blue_corn =
   compute_total_cards_in_board_sharing_slot_with(Quelites, CropId.BlueCorn);
+
+export const is_there_quelites_in_slot = is_there_in_slot(Quelites);

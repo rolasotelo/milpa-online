@@ -7,7 +7,7 @@ export const Quelites: Readonly<Crop> = {
   name: "Quelites",
   icon: "🌱",
   description: "Green is good for your body",
-  rules: "WIP",
+  rules: `Harvest +4🍫 from Quelites with corn on turns: 2-9.\n`,
   resume: "+5 🍫",
   modifier: [],
   canInteractWith: {
