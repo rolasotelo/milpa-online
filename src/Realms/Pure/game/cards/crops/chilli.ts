@@ -21,6 +21,7 @@ export const Chilli: Readonly<Crop> = {
       CropId.Tomatillo,
       CropId.Tomatoe,
       CropId.Flower,
+      GoodId.Cricket,
     ],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,

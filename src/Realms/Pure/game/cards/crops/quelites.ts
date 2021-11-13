@@ -1,4 +1,4 @@
-import { CardType, CropId } from "../../../enums";
+import { CardType, CropId, GoodId } from "../../../enums";
 import { Crop } from "../../../types";
 
 export const Quelites: Readonly<Crop> = {
@@ -17,6 +17,7 @@ export const Quelites: Readonly<Crop> = {
       CropId.RedCorn,
       CropId.BlueCorn,
       CropId.Flower,
+      GoodId.Cricket,
     ],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,

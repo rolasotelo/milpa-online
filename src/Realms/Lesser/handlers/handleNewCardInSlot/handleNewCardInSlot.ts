@@ -3,6 +3,7 @@ import { CropId, GoodId, ModifierId } from "../../../Pure/enums";
 import {
   BlueCorn,
   Corn,
+  Cricket,
   EmptySlot,
   Huitlacoche,
   Manure,
@@ -14,6 +15,7 @@ import {
   is_there_manure,
   is_there_shovel,
 } from "../../../Pure/game/helpers";
+import { is_there_crickets_in_slot } from "../../../Pure/game/scoring";
 import { AnyCard, BoardSlot } from "../../../Pure/types";
 
 export const handleNewCardInSlot = (
@@ -38,11 +40,15 @@ export const handleNewCardInSlot = (
   ) {
     newCards.splice(indexOf(pluck(newCards, "id"), Manure.id), 1);
   }
+  const cards = slot.cards as AnyCard[];
+  if (is_there_crickets_in_slot(cards)) {
+    newCards.splice(indexOf(pluck(newCards, "id"), Manure.id), 1);
+  }
   if (is_there_shovel(slot)) {
     newCards.splice(0);
     newCards.push(EmptySlot);
   }
-  const cards = slot.cards as AnyCard[];
+
   if (
     (is_there_corn_in_slot(cards) ||
       is_there_blue_corn_in_slot(cards) ||
@@ -88,3 +94,4 @@ const addModifiersToCard = (slot: BoardSlot, card: AnyCard) => {
 const is_there_corn_in_slot = is_there_in_slot(Corn);
 const is_there_blue_corn_in_slot = is_there_in_slot(BlueCorn);
 const is_there_red_corn_in_slot = is_there_in_slot(RedCorn);
+const is_there_cricket_in_slot = is_there_in_slot(Cricket);
