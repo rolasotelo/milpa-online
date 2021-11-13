@@ -77,3 +77,13 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
     Scoring Red corn and Huitlacoche at the end of turn and at the end of game. Plus make corns playable on top of each other.
 
 - I will start by making changing rules for all corn colors so they can be playable on top of each other, one thing that I need to keep an eye on is how huitlacoche going to interact with an stack of corns. (rola@hey.com) Nov 2021
+
+## Issue [#31](https://github.com/rolasotelo/la-milpa-online/issues/31)
+
+### Implement scoring for Quelites and Cricket
+
+- For Cricket I know I want to make them jump along a column or row in your milpa, depending on where it is put. And on every jump it will destroy a crop. (rola@hey.com) Nov 2021
+
+- The Score for Cricket has been probably the most difficult one that I have implemented and I had already imaginated it was going to be like this, because it has interactions between the milpa and the edges. But perhaps the thing that took me the most time was debugging the method that updates the crickets positions because of me not realizing that I was not deep copying the arrays. (rola@hey.com) Nov 2021
+
+- I'm still not sure what to implement as a rule for scoring quelites and cricket at the end of the game, or even if one is needed, but I will leave for a revision. Next in the list are Tomatillo and Maguey. (rola@hey.com) Nov 2021

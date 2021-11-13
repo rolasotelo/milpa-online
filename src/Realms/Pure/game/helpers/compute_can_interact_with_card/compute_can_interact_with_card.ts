@@ -9,7 +9,7 @@ import {
 import { MAX_CARD_PER_SLOT, TOTAL_TURNS } from "../../../constants";
 import { GoodId, ModifierId, SlotType } from "../../../enums";
 import { AnyCard, BoardSlot, SelectedCard } from "../../../types";
-import { Huitlacoche, Manure, Shovel } from "../../cards";
+import { Cricket, Huitlacoche, Manure, Shovel } from "../../cards";
 import { Flower } from "../../cards/crops/flower";
 
 export type ReturnTypeCanInteractWithCard = (
@@ -41,7 +41,7 @@ export const compute_can_interact_with_card = (
       if (
         slot.type === undefined ||
         slot.cards.length === 0 ||
-        (compute_total_cards_but_flower_and_manure(slot.cards) >=
+        (compute_total_cards_but_flower_and_manure_and_cricket(slot.cards) >=
           MAX_CARD_PER_SLOT &&
           selectedCard.card?.id !== Shovel.id &&
           selectedCard.card?.id !== Huitlacoche.id) ||
@@ -244,7 +244,5 @@ export const compute_total_cards_but = (cards: AnyCard[]) => {
   };
 };
 
-const compute_total_cards_but_flower_and_manure = compute_total_cards_but([
-  Flower,
-  Manure,
-]);
+const compute_total_cards_but_flower_and_manure_and_cricket =
+  compute_total_cards_but([Flower, Manure, Cricket]);

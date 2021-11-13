@@ -1,4 +1,4 @@
-import { CardType, CropId } from "../../../enums";
+import { CardType, CropId, GoodId } from "../../../enums";
 import { Crop } from "../../../types";
 
 export const Quelites: Readonly<Crop> = {
@@ -7,7 +7,7 @@ export const Quelites: Readonly<Crop> = {
   name: "Quelites",
   icon: "🌱",
   description: "Green is good for your body",
-  rules: "WIP",
+  rules: `Harvest +4🍫 from Quelites with corn on turns: 2-9.\n`,
   resume: "+5 🍫",
   modifier: [],
   canInteractWith: {
@@ -17,6 +17,8 @@ export const Quelites: Readonly<Crop> = {
       CropId.RedCorn,
       CropId.BlueCorn,
       CropId.Flower,
+      GoodId.Cricket,
+      GoodId.Manure,
     ],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,

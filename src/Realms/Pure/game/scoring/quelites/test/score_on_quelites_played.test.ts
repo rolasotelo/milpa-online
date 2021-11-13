@@ -1,9 +1,9 @@
-import { score_on_quelites_played } from "..";
+import { score_on_quelites_played } from "../..";
 import {
   CACAO_WHEN_QUELITES_PLAYED,
   MANURE_MUTIPLIER,
-} from "../../../constants";
-import { ModifierId } from "../../../enums";
+} from "../../../../constants";
+import { ModifierId } from "../../../../enums";
 
 test("should return new scores which depend on modifiers", () => {
   const oldScores: [number, number] = [1, 1];

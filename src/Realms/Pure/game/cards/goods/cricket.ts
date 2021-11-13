@@ -7,7 +7,8 @@ export const Cricket: Readonly<Good> = {
   name: "Cricket",
   icon: "🦗",
   description: "Patitas sonoras",
-  rules: "WIP",
+  rules: `-8 🍫 for each Cricket in your board at the end of the turn.\n 
+  At the end of the turn every Cricket jumps to a different slot and eat a crop.`,
   resume: "+1 🍫",
   modifier: [],
   canInteractWith: {

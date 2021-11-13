@@ -8,7 +8,7 @@ export const RedCorn: Readonly<Crop> = {
   icon: "🥕",
   description: "El cultivo rojo más importante del mundo",
   rules: `Harvest +3🍫 (+5 🍫  with Huitlacoche) on turns: 11,12,13.\n 
-  +13 🍫 per Blue Corn diagonal of 3`,
+  +25 🍫 per Red Corn square`,
   resume: "+3 🍫",
   modifier: [],
   canInteractWith: {
@@ -22,6 +22,7 @@ export const RedCorn: Readonly<Crop> = {
       CropId.Flower,
       CropId.BlueCorn,
       CropId.Corn,
+      GoodId.Cricket,
     ],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,

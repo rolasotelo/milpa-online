@@ -20,6 +20,7 @@ export const Tomatoe: Readonly<Crop> = {
       CropId.Chilli,
       CropId.Flower,
       CropId.Tomatillo,
+      GoodId.Cricket,
     ],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,
