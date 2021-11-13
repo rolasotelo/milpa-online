@@ -1,1 +1,1 @@
-export const PLUS_PER_CRICKET_IN_YOUR_BOARD = -5;
+export const PLUS_PER_CRICKET_IN_YOUR_BOARD = -8;
