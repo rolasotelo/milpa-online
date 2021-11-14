@@ -87,3 +87,9 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 - The Score for Cricket has been probably the most difficult one that I have implemented and I had already imaginated it was going to be like this, because it has interactions between the milpa and the edges. But perhaps the thing that took me the most time was debugging the method that updates the crickets positions because of me not realizing that I was not deep copying the arrays. (rola@hey.com) Nov 2021
 
 - I'm still not sure what to implement as a rule for scoring quelites and cricket at the end of the game, or even if one is needed, but I will leave for a revision. Next in the list are Tomatillo and Maguey. (rola@hey.com) Nov 2021
+
+## Issue [#33](https://github.com/rolasotelo/la-milpa-online/issues/33)
+
+### Implement scoring for Maguey and Tomatillo
+
+- For Maguey I know that I want to make it so you gain extra cacao for your completed columns or rows, but I'm still not sure of how to make it different from corn. As for Tomatillo I also have a clear idea, this being that tomatillos can not be around each other which requiere a bit of planning but apart from that I'm not sure. (rola@hey.com) Nov 2021
