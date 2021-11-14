@@ -95,3 +95,11 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 - For Maguey I know that I want to make it so you gain extra cacao for your completed columns or rows, but I'm still not sure of how to make it different from corn. As for Tomatillo I also have a clear idea, this being that tomatillos can not be around each other which requiere a bit of planning but apart from that I'm not sure. (rola@hey.com) Nov 2021
 
 - 2 more cards to go. Tlaloc and Tomatoe and then some balancing. (rola@hey.com) Nov 2021
+
+## Issue [#35](https://github.com/rolasotelo/la-milpa-online/issues/35)
+
+### Implement scoring for Tomatoe and Tlaloc
+
+    Scoring Tomatoe and Tlaloc at the end of turn and at the end of game.
+
+- For Tomatoe I'm thinking that I could make it point extra cacao when it is in the same slot with tomatillo and for the scoring at the end of the game maybe scoring extra tomatoe if you surpass 3 tomatoes, which only one player can make it. As for Tlaloc I know that it should interact with the column or row it is immediatly out of, but I'm still not sure how, maybe It can point for every crop in the row or column and have a bonus if the line is full. (rola@hey.com) Nov 2021
