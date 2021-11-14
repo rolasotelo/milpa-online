@@ -93,3 +93,5 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 ### Implement scoring for Maguey and Tomatillo
 
 - For Maguey I know that I want to make it so you gain extra cacao for your completed columns or rows, but I'm still not sure of how to make it different from corn. As for Tomatillo I also have a clear idea, this being that tomatillos can not be around each other which requiere a bit of planning but apart from that I'm not sure. (rola@hey.com) Nov 2021
+
+- 2 more cards to go. Tlaloc and Tomatoe and then some balancing. (rola@hey.com) Nov 2021
