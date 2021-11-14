@@ -109,13 +109,13 @@ export enum Total {
   Pumpkin = 4,
 
   Manure = 7,
-  Tlaloc = 7,
+  Tlaloc = 5,
   Shovel = 4,
   Maguey = 10,
   Cactus = 8,
-  Coatlicue = 5,
+  Coatlicue = 6,
   Cricket = 3,
-  Huitlacoche = 4,
+  Huitlacoche = 5,
 }
 
 export const enum ScoreLogType {
