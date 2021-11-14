@@ -12,7 +12,9 @@ import {
   is_there_pumpkin_in_slot,
   is_there_quelites_in_slot,
   is_there_red_corn_in_slot,
+  is_there_tlaloc_in_slot,
   is_there_tomatillo_in_slot,
+  is_there_tomatoe_in_slot,
   score_beans_at_the_end_of_turn,
   score_blue_corn_at_the_end_of_turn,
   score_cactus_at_the_end_of_turn,
@@ -25,7 +27,9 @@ import {
   score_pumpkin_at_the_end_of_turn,
   score_quelites_at_the_end_of_turn,
   score_red_corn_at_the_end_of_turn,
+  score_tlaloc_at_the_end_of_turn,
   score_tomatillo_at_the_end_of_turn,
+  score_tomatoe_at_the_end_of_turn,
 } from "..";
 import { ScoreLogType } from "../../../enums";
 import { Board, ScoringHistory } from "../../../types";
@@ -220,6 +224,32 @@ export const compute_board_and_score_at_the_end_of_turn = (
         `${sign(
           newScoreFromTomatillo
         )} ${newScoreFromTomatillo} 🍫 from 🍈 Tomatillo harvest`
+      );
+    }
+  }
+  if (is_there_tomatoe_in_slot(allCardsInMilpa)) {
+    const { board: newBoardFromTomatoe, score: newScoreFromTomatoe } =
+      score_tomatoe_at_the_end_of_turn(newBoard, turn);
+    newScore = newScore + newScoreFromTomatoe;
+    newBoard = newBoardFromTomatoe;
+    if (newScoreFromTomatoe !== 0) {
+      scoringLog.description.push(
+        `${sign(
+          newScoreFromTomatoe
+        )} ${newScoreFromTomatoe} 🍫 from 🍈 Tomatoe harvest`
+      );
+    }
+  }
+  if (is_there_tlaloc_in_slot(allCardsInEdges)) {
+    const { board: newBoardFromTlaloc, score: newScoreFromTlaloc } =
+      score_tlaloc_at_the_end_of_turn(newBoard, turn);
+    newScore = newScore + newScoreFromTlaloc;
+    newBoard = newBoardFromTlaloc;
+    if (newScoreFromTlaloc !== 0) {
+      scoringLog.description.push(
+        `${sign(
+          newScoreFromTlaloc
+        )} ${newScoreFromTlaloc} 🍫 from 🌧 Tlaloc's favor`
       );
     }
   }

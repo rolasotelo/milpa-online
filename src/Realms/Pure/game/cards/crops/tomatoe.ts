@@ -7,7 +7,8 @@ export const Tomatoe: Readonly<Crop> = {
   name: "Tomatoe",
   icon: "🍅",
   description: "De nada Italianos",
-  rules: "WIP",
+  rules: `Harvest +2🍫 (+2 🍫 with Tomatillo or chilli) on turns: 2,4,6,8,10,12,14.\n 
+  +30 🍫 for having at least 4 Tomatoes`,
   resume: "+3 🍫",
   modifier: [],
   canInteractWith: {

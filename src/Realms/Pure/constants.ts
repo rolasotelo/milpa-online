@@ -49,7 +49,7 @@ export const CACAO_WHEN_HUITLACOCHE_PLAYED = 5;
 export const CACAO_WHEN_MAGUEY_PLAYED = +3;
 export const CACAO_WHEN_MANURE_PLAYED = 4;
 export const CACAO_WHEN_SHOVEL_PLAYED = -15;
-export const CACAO_WHEN_TLALOC_PLAYED = 3;
+export const CACAO_WHEN_TLALOC_PLAYED = 4;
 
 // + Decks definitions
 export const CROPSDECKDEFINITION: ReadonlyArray<DeckDefinition<Crop>> = [

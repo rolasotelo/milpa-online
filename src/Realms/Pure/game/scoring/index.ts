@@ -44,3 +44,6 @@ export * from "./maguey/score_maguey_at_the_end_of_the_turn";
 export * from "./maguey/score_maguey_at_the_end_of_the_game";
 export * from "./tomatillo/score_tomatillo_at_the_end_of_the_turn";
 export * from "./tomatillo/score_tomatillo_at_the_end_of_the_game";
+export * from "./tomatoe/score_tomatoe_at_the_end_of_the_turn";
+export * from "./tomatoe/score_tomatoe_at_the_end_of_the_game";
+export * from "./tlaloc/score_tlaloc_at_the_end_of_the_turn";
