@@ -8,6 +8,7 @@ import {
   is_there_maguey_in_slot,
   is_there_pumpkin_in_slot,
   is_there_red_corn_in_slot,
+  is_there_tomatillo_in_slot,
   score_beans_at_the_end_of_the_game,
   score_blue_corn_at_the_end_of_the_game,
   score_cactus_at_the_end_of_the_game,
@@ -16,6 +17,7 @@ import {
   score_maguey_at_the_end_of_the_game,
   score_pumpkin_at_the_end_of_the_game,
   score_red_corn_at_the_end_of_the_game,
+  score_tomatillo_at_the_end_of_the_game,
 } from "..";
 import { ModifierId, ScoreLogType } from "../../../enums";
 import { Board, ScoringHistory } from "../../../types";
@@ -163,6 +165,19 @@ export const compute_board_and_score_at_the_end_of_the_game = (
         `${sign(
           newScoreFromMaguey
         )} ${newScoreFromMaguey}🍫 from 🦚 around your milpa`
+      );
+    }
+  }
+  if (is_there_tomatillo_in_slot(allCardsInMilpa)) {
+    const { board: newBoardFromTomatillo, score: newScoreFromTomatillo } =
+      score_tomatillo_at_the_end_of_the_game(newBoard);
+    newScore = newScore + newScoreFromTomatillo;
+    newBoard = newBoardFromTomatillo;
+    if (newScoreFromTomatillo !== 0) {
+      scoringLog.description.push(
+        `${sign(
+          newScoreFromTomatillo
+        )} ${newScoreFromTomatillo}🍫 from 🍈 lonely Tomatillos`
       );
     }
   }

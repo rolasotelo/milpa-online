@@ -7,7 +7,8 @@ export const Tomatillo: Readonly<Crop> = {
   name: "Tomatillo",
   icon: "🍈",
   description: "Chilaquiles verdes yummmi, said nobody",
-  rules: "WIP",
+  rules: `Harvest +5🍫 (+4 🍫  if other crop is in slot) on turns: 8,9,10,11.\n 
+  +10 🍫 for each tomatillo not sorrounded by another tomatillo`,
   resume: "+4 🍫",
   modifier: [],
   canInteractWith: {
