@@ -2,7 +2,7 @@ import { indexOf, reduce } from "underscore";
 import { CardType } from "../../../enums";
 import { Board, BoardSlot } from "../../../types";
 import { Tlaloc } from "../../cards";
-import { transpose_matrix } from "../../helpers";
+import { is_there_in_slot, transpose_matrix } from "../../helpers";
 import {
   PLUS_PER_CROP_IN_LINE_PER_TLALOC,
   TLALOC_HARVEST_TURNS,
@@ -89,3 +89,5 @@ const compute_total_crops_in_line_with_tlalocs = (
   });
   return totalCropsInLineWithTlalocs;
 };
+
+export const is_there_tlaloc_in_slot = is_there_in_slot(Tlaloc);
