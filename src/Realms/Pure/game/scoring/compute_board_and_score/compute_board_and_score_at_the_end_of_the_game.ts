@@ -5,6 +5,7 @@ import {
   is_there_cactus_in_slot,
   is_there_chilli_in_slot,
   is_there_corn_in_slot,
+  is_there_maguey_in_slot,
   is_there_pumpkin_in_slot,
   is_there_red_corn_in_slot,
   score_beans_at_the_end_of_the_game,
@@ -12,6 +13,7 @@ import {
   score_cactus_at_the_end_of_the_game,
   score_chilli_at_the_end_of_the_game,
   score_huitlacoche_at_the_end_of_the_game,
+  score_maguey_at_the_end_of_the_game,
   score_pumpkin_at_the_end_of_the_game,
   score_red_corn_at_the_end_of_the_game,
 } from "..";
@@ -148,6 +150,19 @@ export const compute_board_and_score_at_the_end_of_the_game = (
         `${sign(
           newScoreFromRedCorn
         )} ${newScoreFromRedCorn}🍫 from 🥕 Red Corn squares`
+      );
+    }
+  }
+  if (is_there_maguey_in_slot(allCardsInEdges)) {
+    const { board: newBoardFromMaguey, score: newScoreFromMaguey } =
+      score_maguey_at_the_end_of_the_game(newBoard);
+    newScore = newScore + newScoreFromMaguey;
+    newBoard = newBoardFromMaguey;
+    if (newScoreFromMaguey !== 0) {
+      scoringLog.description.push(
+        `${sign(
+          newScoreFromMaguey
+        )} ${newScoreFromMaguey}🍫 from 🦚 around your milpa`
       );
     }
   }
