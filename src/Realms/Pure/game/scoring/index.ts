@@ -40,3 +40,7 @@ export * from "./read-corn/score_red_corn_at_the_end_of_the_turn";
 export * from "./read-corn/score_red_corn_at_the_end_of_the_game";
 export * from "./cricket/score_cricket_at_the_end_of_turn";
 export * from "./quelites/score_quelites_at_the_end_of_turn";
+export * from "./maguey/score_maguey_at_the_end_of_the_turn";
+export * from "./maguey/score_maguey_at_the_end_of_the_game";
+export * from "./tomatillo/score_tomatillo_at_the_end_of_the_turn";
+export * from "./tomatillo/score_tomatillo_at_the_end_of_the_game";

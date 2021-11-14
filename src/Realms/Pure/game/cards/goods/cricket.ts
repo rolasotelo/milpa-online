@@ -9,7 +9,7 @@ export const Cricket: Readonly<Good> = {
   description: "Patitas sonoras",
   rules: `-8 🍫 for each Cricket in your board at the end of the turn.\n 
   At the end of the turn every Cricket jumps to a different slot and eat a crop.`,
-  resume: "+1 🍫",
+  resume: "-3 🍫",
   modifier: [],
   canInteractWith: {
     ownEmptyMilpaSlots: false,

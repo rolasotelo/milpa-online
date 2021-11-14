@@ -44,11 +44,11 @@ export const CACAO_WHEN_TOMATILLO_PLAYED = 4;
 export const CACAO_WHEN_TOMATOE_PLAYED = 3;
 export const CACAO_WHEN_CACTUS_PLAYED = 4;
 export const CACAO_WHEN_COATLICUE_PLAYED = +2;
-export const CACAO_WHEN_CRICKET_PLAYED = +1;
+export const CACAO_WHEN_CRICKET_PLAYED = -3;
 export const CACAO_WHEN_HUITLACOCHE_PLAYED = 5;
 export const CACAO_WHEN_MAGUEY_PLAYED = +3;
 export const CACAO_WHEN_MANURE_PLAYED = 4;
-export const CACAO_WHEN_SHOVEL_PLAYED = -2;
+export const CACAO_WHEN_SHOVEL_PLAYED = -15;
 export const CACAO_WHEN_TLALOC_PLAYED = 3;
 
 // + Decks definitions

@@ -7,7 +7,8 @@ export const Maguey: Readonly<Good> = {
   name: "Maguey",
   icon: "🦚",
   description: "La única planta que necesitarás",
-  rules: "WIP",
+  rules: `Harvest +20 🍫 per edge full of magueys on turns: 11,12,13.\n 
+  +13 🍫 for every different edge with at least one Maguey at the end of the game.`,
   resume: "+3 🍫",
   modifier: [],
   canInteractWith: {

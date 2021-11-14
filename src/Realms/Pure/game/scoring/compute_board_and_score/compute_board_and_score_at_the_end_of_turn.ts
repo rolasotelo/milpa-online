@@ -8,9 +8,11 @@ import {
   is_there_corn_in_slot,
   is_there_crickets_in_slot,
   is_there_flower_in_slot,
+  is_there_maguey_in_slot,
   is_there_pumpkin_in_slot,
   is_there_quelites_in_slot,
   is_there_red_corn_in_slot,
+  is_there_tomatillo_in_slot,
   score_beans_at_the_end_of_turn,
   score_blue_corn_at_the_end_of_turn,
   score_cactus_at_the_end_of_turn,
@@ -19,9 +21,11 @@ import {
   score_corn_at_the_end_of_turn,
   score_cricket_at_the_end_of_turn,
   score_flower_at_the_end_of_turn,
+  score_maguey_at_the_end_of_turn,
   score_pumpkin_at_the_end_of_turn,
   score_quelites_at_the_end_of_turn,
   score_red_corn_at_the_end_of_turn,
+  score_tomatillo_at_the_end_of_turn,
 } from "..";
 import { ScoreLogType } from "../../../enums";
 import { Board, ScoringHistory } from "../../../types";
@@ -190,6 +194,32 @@ export const compute_board_and_score_at_the_end_of_turn = (
         `${sign(
           newScoreFromQuelites
         )} ${newScoreFromQuelites} 🍫 from 🌱 Quelites harvest`
+      );
+    }
+  }
+  if (is_there_maguey_in_slot(allCardsInEdges)) {
+    const { board: newBoardFromMaguey, score: newScoreFromMaguey } =
+      score_maguey_at_the_end_of_turn(newBoard, turn);
+    newScore = newScore + newScoreFromMaguey;
+    newBoard = newBoardFromMaguey;
+    if (newScoreFromMaguey !== 0) {
+      scoringLog.description.push(
+        `${sign(
+          newScoreFromMaguey
+        )} ${newScoreFromMaguey} 🍫 from 🦚 Maguey harvest`
+      );
+    }
+  }
+  if (is_there_tomatillo_in_slot(allCardsInMilpa)) {
+    const { board: newBoardFromTomatillo, score: newScoreFromTomatillo } =
+      score_tomatillo_at_the_end_of_turn(newBoard, turn);
+    newScore = newScore + newScoreFromTomatillo;
+    newBoard = newBoardFromTomatillo;
+    if (newScoreFromTomatillo !== 0) {
+      scoringLog.description.push(
+        `${sign(
+          newScoreFromTomatillo
+        )} ${newScoreFromTomatillo} 🍫 from 🍈 Tomatillo harvest`
       );
     }
   }
