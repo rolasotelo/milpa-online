@@ -7,7 +7,7 @@ export const Flower: Readonly<Crop> = {
   name: "Pumpkin Flower",
   icon: "🌼",
   description: "En quesadillitas perro!!",
-  rules: `Harvest: +4 🍫 for each 🌼 Pumpkin Flower (Pumpkin Flowers on empty slots become Pumpkins) on turn: 15.\n`,
+  rules: `Harvest: +2 🍫 for each 🌼 Pumpkin Flower (Pumpkin Flowers on empty slots become Pumpkins) on turn: 15.\n`,
   resume: "+0🍫",
   modifier: [],
   canInteractWith: {

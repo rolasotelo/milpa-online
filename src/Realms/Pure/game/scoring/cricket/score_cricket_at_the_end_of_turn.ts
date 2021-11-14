@@ -1,7 +1,7 @@
 import { filter, pluck } from "underscore";
 import { ModifierId } from "../../../enums";
 import { AnyCard, Board, BoardSlot } from "../../../types";
-import { Cricket, Pumpkin } from "../../cards";
+import { Cricket, EmptySlot, Pumpkin } from "../../cards";
 import { compute_total_cards_in_board, is_there_in_slot } from "../../helpers";
 import { PLUS_PER_CRICKET_IN_YOUR_BOARD } from "./constants";
 
@@ -37,12 +37,14 @@ const advance_crickets_in_milpa = (
     row.forEach((slot, columnIndex) => {
       slot.cards.forEach((card) => {
         if (card.id === Cricket.id) {
-          newMilpa[rowIndex][columnIndex].cards = [
-            ...filter(slot.cards, (card) => {
+          newMilpa[rowIndex][columnIndex].cards =
+            filter(slot.cards, (card) => {
               return card.id !== Cricket.id;
-            }),
-          ];
-
+            }).length === 0
+              ? [{ ...EmptySlot }]
+              : filter(slot.cards, (card) => {
+                  return card.id !== Cricket.id;
+                });
           const rowToJump = compute_new_random_row_or_column(rowIndex);
           const columnToJump = compute_new_random_row_or_column(columnIndex);
           (newMilpa[rowToJump][columnToJump].cards as AnyCard[]).pop();
@@ -68,9 +70,14 @@ const advance_crickets_from_edges = (
     row.forEach((slot, columnIndex) => {
       slot.cards.forEach((card) => {
         if (card.id === Cricket.id) {
-          newEdges[rowIndex][columnIndex].cards = filter(slot.cards, (card) => {
-            return card.id !== Cricket.id;
-          });
+          newEdges[rowIndex][columnIndex].cards =
+            filter(slot.cards, (card) => {
+              return card.id !== Cricket.id;
+            }).length === 0
+              ? [{ ...EmptySlot }]
+              : filter(slot.cards, (card) => {
+                  return card.id !== Cricket.id;
+                });
           const [rowToJump, columnToJump] =
             compute_new_row_and_column_from_cricket_in_edges(
               rowIndex,
