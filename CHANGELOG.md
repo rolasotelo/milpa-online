@@ -103,3 +103,9 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
     Scoring Tomatoe and Tlaloc at the end of turn and at the end of game.
 
 - For Tomatoe I'm thinking that I could make it point extra cacao when it is in the same slot with tomatillo and for the scoring at the end of the game maybe scoring extra tomatoe if you surpass 3 tomatoes, which only one player can make it. As for Tlaloc I know that it should interact with the column or row it is immediatly out of, but I'm still not sure how, maybe It can point for every crop in the row or column and have a bonus if the line is full. (rola@hey.com) Nov 2021
+
+## Issue [#37](https://github.com/rolasotelo/la-milpa-online/issues/37)
+
+### Welcome page revamp
+
+    Revamp welcome page with new 3D look. Plus Leader Board and Infographic sections.
