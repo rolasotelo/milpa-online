@@ -8,10 +8,6 @@ describe("Welcome Page", () => {
     const menuButton = screen.getByRole("button", {
       name: "Play",
     });
-    const languageButton = screen.getByRole("button", {
-      name: "Change language",
-    });
     expect(menuButton).toBeEnabled();
-    expect(languageButton).toBeEnabled();
   });
 });
