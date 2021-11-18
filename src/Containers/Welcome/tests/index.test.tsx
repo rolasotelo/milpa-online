@@ -5,8 +5,12 @@ import { Welcome } from "..";
 describe("Welcome Page", () => {
   test("should have proper initial state", () => {
     render(<Welcome />);
-    const menuButton = screen.getByRole("button", { name: "Play" });
-    const languageButton = screen.getByRole("button", { name: "Language" });
+    const menuButton = screen.getByRole("button", {
+      name: "Play",
+    });
+    const languageButton = screen.getByRole("button", {
+      name: "Change language",
+    });
     expect(menuButton).toBeEnabled();
     expect(languageButton).toBeEnabled();
   });

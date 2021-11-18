@@ -9,6 +9,7 @@ import CreateOrJoinGameProvider from "./Components/CreateOrJoinGameProvider/Crea
 import GameProvider from "./Components/GameProvider/GameProvider";
 import CreateOrJoinGame from "./Containers/CreateOrJoinGame/CreateOrJoinGame";
 import Game from "./Containers/Game/Game";
+import { Welcome } from "./Containers/Welcome";
 import WelcomePage from "./Containers/WelcomePage/WelcomePage";
 import { GameRoutePropsType, RoutePropsType } from "./Realms/Pure/types";
 
@@ -18,6 +19,7 @@ function App({}: Props): JSX.Element {
   return (
     <Router>
       <Switch>
+        <Route path="/welcome" exact component={Welcome} />
         <Route path="/" exact component={WelcomePage} />
         <Route path="/play/:gamecode" exact component={GamePage} />
         <Route

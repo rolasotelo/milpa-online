@@ -11,7 +11,7 @@ i18n
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
-    debug: true,
+    debug: false,
     fallbackLng: "en",
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
@@ -19,7 +19,42 @@ i18n
     resources: {
       en: {
         translation: {
-          // here we will place our translations...
+          welcome: {
+            herobox: {
+              callToAction: "Play",
+              changeLanguage: "Change language",
+            },
+          },
+        },
+      },
+      es: {
+        translation: {
+          welcome: {
+            herobox: {
+              callToAction: "Jugar",
+              changeLanguage: "Cambiar idioma",
+            },
+          },
+        },
+      },
+      fr: {
+        translation: {
+          welcome: {
+            herobox: {
+              callToAction: "Jouer",
+              changeLanguage: "Changer la langue ",
+            },
+          },
+        },
+      },
+      cz: {
+        translation: {
+          welcome: {
+            herobox: {
+              callToAction: "Hrát",
+              changeLanguage: "Změnit jazyk",
+            },
+          },
         },
       },
     },
