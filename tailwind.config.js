@@ -4,6 +4,22 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        milpaBeige: {
+          light: "#e1d8cc",
+          default: "#c3b19a",
+          dark: "#61584d",
+        },
+        milpaBlue: {
+          light: "#939aaa",
+          default: "#283556",
+          dark: "#141a2b",
+        },
+        milpaPink: {
+          light: "#e398b0",
+          default: "#c83262",
+          dark: "#641931",
+        },
+        // ! Old Colors, remove when possible
         mexicanPink: "#d91a60",
         mexicanBlue: "#253659",
         mexicanGreen: {
@@ -14,6 +30,7 @@ module.exports = {
         mexicanBone: "#c7b299",
         mexicanBoneLight: "#C7C3B8",
       },
+      container: {},
       spacing: {
         "60rem": "60rem",
         "35rem": "35rem",
@@ -25,16 +42,19 @@ module.exports = {
         "4.38rem": "4.38rem",
       },
       backgroundImage: {
-        "button-menu": "url('/static/buttons.svg#menu-button-usage')",
+        "button-menu":
+          "url('https://milpa-cardgame.s3.us-east-2.amazonaws.com/navbar.svg#menu-button-usage')",
         "button-menu-pressed":
-          "url('/static/buttons.svg#menu-button-pressed-usage')",
+          "url('https://milpa-cardgame.s3.us-east-2.amazonaws.com/navbar.svg#menu-button-pressed-usage')",
         "button-leaderboard":
-          "url('/static/buttons.svg#leaderboard-button-usage')",
+          "url('https://milpa-cardgame.s3.us-east-2.amazonaws.com/navbar.svg#leaderboard-button-usage')",
         "button-leaderboard-pressed":
-          "url('/static/buttons.svg#leaderboard-button-pressed-usage')",
-        "button-logo": "url('/static/buttons.svg#logo-button-usage')",
+          "url('https://milpa-cardgame.s3.us-east-2.amazonaws.com/navbar.svg#leaderboard-button-pressed-usage')",
+        "button-logo":
+          "url('https://milpa-cardgame.s3.us-east-2.amazonaws.com/navbar.svg#logo-button-usage')",
         "button-logo-pressed":
-          "url('/static/buttons.svg#logo-button-pressed-usage')",
+          "url('https://milpa-cardgame.s3.us-east-2.amazonaws.com/navbar.svg#logo-button-pressed-usage')",
+        // ! remove or update
         "button-blue": "url('/static/buttons.svg#blue-button-usage')",
         "button-blue-pressed":
           "url('/static/buttons.svg#blue-button-pressed-usage')",
@@ -53,8 +73,18 @@ module.exports = {
           "url('/static/banners.svg#green-banner-mobile-usage')",
       },
       width: {
+        "button-square": "50px",
+        // ! Old, remove when possible
         "3/8": "37.5%",
         "2/8": "25%",
+      },
+      height: {
+        "button-square": "50px",
+        // ! Old, remove when possible
+        "navbar-height": "50px",
+      },
+      maxWidth: {
+        "navbar-width": "960px",
       },
     },
   },

@@ -42,7 +42,7 @@ i18n
           welcome: {
             herobox: {
               callToAction: "Jouer",
-              changeLanguage: "Changer la langue ",
+              changeLanguage: "Changer la langue",
             },
           },
         },
