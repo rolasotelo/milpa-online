@@ -19,8 +19,8 @@ function App({}: Props): JSX.Element {
   return (
     <Router>
       <Switch>
-        <Route path="/welcome" exact component={Welcome} />
-        <Route path="/" exact component={WelcomePage} />
+        <Route path="/welcome" exact component={WelcomePage} />
+        <Route path="/" exact component={Welcome} />
         <Route path="/play/:gamecode" exact component={GamePage} />
         <Route
           path="/play"

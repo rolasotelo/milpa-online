@@ -19,11 +19,11 @@
     "start": "webpack serve --hot --mode development",
     "test": "jest",
     "test:watch": "jest --watch",
-    "sprite:buttons": "svg-sprite -s --symbol-dest svg-sprite --symbol-sprite buttons-sprite.svg svgs/individual-icons/buttons/*.svg",
-    "sprite:banners": "svg-sprite -s --symbol-dest svg-sprite --symbol-sprite banners-sprite.svg svgs/individual-icons/banners/*.svg",
-    "sprite:create": "svg-sprite -s --symbol-dest svg-sprite --symbol-sprite create-sprite.svg svgs/individual-icons/create/*.svg",
-    "sprite:welcome": "svg-sprite -s --symbol-dest svg-sprite --symbol-sprite welcome-sprite.svg svgs/individual-icons/welcome/*.svg",
-    "sprite:navbar": "svg-sprite -s --symbol-dest svg-sprite --symbol-sprite navbar-sprite.svg svgs/individual-icons/navbar/*.svg",
+    "sprite:buttons": "svg-sprite -s --symbol-dest svgs --symbol-sprite buttons-sprite.svg svgs/individual-icons/buttons/*.svg",
+    "sprite:banners": "svg-sprite -s --symbol-dest svg-s--symbol-sprite banners-sprite.svg svgs/individual-icons/banners/*.svg",
+    "sprite:create": "svg-sprite -s --symbol-dest svgs --symbol-sprite create-sprite.svg svgs/individual-icons/create/*.svg",
+    "sprite:welcome": "svg-sprite -s --symbol-dest svgs --symbol-sprite welcome-sprite.svg svgs/individual-icons/welcome/*.svg",
+    "sprite:navbar": "svg-sprite -s --symbol-dest svgs --symbol-sprite navbar-sprite.svg svgs/individual-icons/navbar/*.svg",
     "sprite": "yarn sprite:buttons && yarn sprite:banners && yarn sprite:create && yarn sprite:welcome"
   },
   "devDependencies": {

@@ -62,6 +62,7 @@ module.exports = {
         "button-pink-pressed":
           "url('/static/buttons.svg#pink-button-pressed-usage')",
         "play-background": "url('/static/welcome.svg#play-background-usage')",
+        "nopal-herobox": "url('/static/welcome.svg#nopal-herobox-usage')",
         "milpa-cardgame": "url('/static/welcome.svg#milpa-cardgame-usage')",
         "milpa-cardgame-mobile":
           "url('/static/welcome.svg#milpa-cardgame-mobile-usage')",
@@ -72,14 +73,19 @@ module.exports = {
         "green-banner-mobile":
           "url('/static/banners.svg#green-banner-mobile-usage')",
       },
+      margin: {
+        "herobox-top-web": "86px",
+      },
       width: {
         "button-square": "50px",
+        "herobox-web": "960px",
         // ! Old, remove when possible
         "3/8": "37.5%",
         "2/8": "25%",
       },
       height: {
         "button-square": "50px",
+        "herobox-web": "560px",
         // ! Old, remove when possible
         "navbar-height": "50px",
       },
