@@ -8,25 +8,9 @@ interface Props {
 const HeroBox = (props: Props) => {
   return (
     <div className="relative flex-col w-screen">
-      <div
-        className="relative w-20.38rem mx-auto  md:w-herobox-web h-herobox-web bg-milpaBlue-default ring-8 ring-inset ring-black mt-10 md:mt-herobox-top-web"
-        style={{ maxWidth: "100vw" }}
-      >
-        <div
-          className="absolute inset-x-0 md:bg-nopal-herobox mx-auto max-w-100vw"
-          style={{
-            width: "900px",
-            height: "650px",
-            top: "-94px",
-          }}
-        ></div>
-        <div
-          className="absolute inset-x-0 top-36 md:bg-milpa-web mx-auto"
-          style={{
-            width: "590px",
-            height: "220px",
-          }}
-        >
+      <div className="relative w-20.38rem mx-auto max-w-100vw md:w-herobox-web h-herobox-web bg-milpaBlue-default ring-8 ring-inset ring-black mt-10 md:mt-herobox-top-web">
+        <div className="absolute inset-x-0 -top-94px md:bg-nopal-herobox mx-auto max-w-100vw md:w-nopal-herobox md:h-nopal-herobox"></div>
+        <div className="absolute inset-x-0 top-36 md:bg-milpa-web mx-auto md:w-milpa-web md:h-milpa-web">
           {/* <div className="flex flex-col justify-center items-center">
             <div>
               <button
@@ -47,13 +31,7 @@ const HeroBox = (props: Props) => {
           </div> */}
         </div>
       </div>
-      <div
-        className="absolute inset-x-0 top-40 md:bg-mountains-herobox mx-auto max-w-100vw"
-        style={{
-          width: "1366px",
-          height: "550px",
-        }}
-      ></div>
+      <div className="absolute inset-x-0 top-40 md:bg-mountains-herobox mx-auto max-w-100vw md:w-mountains md:h-mountains"></div>
     </div>
   );
 };

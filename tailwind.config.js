@@ -82,7 +82,9 @@ module.exports = {
       width: {
         "button-square": "50px",
         "herobox-web": "960px",
-        mountains: "1366",
+        mountains: "1366px",
+        "milpa-web": "590px",
+        "nopal-herobox": "900px",
         // ! Old, remove when possible
         "3/8": "37.5%",
         "2/8": "25%",
@@ -90,12 +92,18 @@ module.exports = {
       height: {
         "button-square": "50px",
         "herobox-web": "560px",
+        mountains: "550px",
+        "milpa-web": "220px",
+        "nopal-herobox": "650px",
         // ! Old, remove when possible
         "navbar-height": "50px",
       },
       maxWidth: {
         "navbar-width": "960px",
         "100vw": "100vw",
+      },
+      inset: {
+        "-94px": "-94px",
       },
     },
   },
