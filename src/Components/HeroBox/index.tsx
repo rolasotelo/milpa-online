@@ -7,13 +7,17 @@ interface Props {
 
 const HeroBox = (props: Props) => {
   return (
-    <div className="flex-col">
-      <div className="relative w-20.38rem mx-auto  md:w-herobox-web h-herobox-web bg-milpaBlue-default ring-8 ring-inset ring-black mt-10 md:mt-herobox-top-web">
+    <div className="relative flex-col w-screen">
+      <div
+        className="relative w-20.38rem mx-auto  md:w-herobox-web h-herobox-web bg-milpaBlue-default ring-8 ring-inset ring-black mt-10 md:mt-herobox-top-web"
+        style={{ maxWidth: "100vw" }}
+      >
         <div
-          className="absolute inset-x-0 -top-24 md:bg-nopal-herobox mx-auto"
+          className="absolute inset-x-0 md:bg-nopal-herobox mx-auto max-w-100vw"
           style={{
             width: "900px",
             height: "650px",
+            top: "-94px",
           }}
         ></div>
         <div
@@ -42,15 +46,14 @@ const HeroBox = (props: Props) => {
             <div className="w-72 md:w-11/12 h-80 md:h-52 bg-milpa-cardgame-mobile md:bg-milpa-cardgame"></div>
           </div> */}
         </div>
-        <div
-          className="absolute inset-y-20 -right-48 md:bg-mountains-herobox mx-auto"
-          style={{
-            width: "1349px",
-            height: "550px",
-            maxWidth: "100vw",
-          }}
-        ></div>
       </div>
+      <div
+        className="absolute inset-x-0 top-40 md:bg-mountains-herobox mx-auto max-w-100vw"
+        style={{
+          width: "1366px",
+          height: "550px",
+        }}
+      ></div>
     </div>
   );
 };

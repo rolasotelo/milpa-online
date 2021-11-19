@@ -82,6 +82,7 @@ module.exports = {
       width: {
         "button-square": "50px",
         "herobox-web": "960px",
+        mountains: "1366",
         // ! Old, remove when possible
         "3/8": "37.5%",
         "2/8": "25%",
@@ -94,6 +95,7 @@ module.exports = {
       },
       maxWidth: {
         "navbar-width": "960px",
+        "100vw": "100vw",
       },
     },
   },

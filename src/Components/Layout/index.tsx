@@ -8,9 +8,7 @@ const Layout = (props: Props) => {
   return (
     <div className="bg-milpaBeige-default min-h-screen">
       <Navbar />
-      <div className="max-w-6xl flex flex-col  py-2 mx-auto">
-        {props.children}
-      </div>
+      <div className="flex flex-col  py-2 mx-auto">{props.children}</div>
     </div>
   );
 };

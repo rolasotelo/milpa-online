@@ -21,7 +21,7 @@ export const Welcome = (props: Props) => {
   const h = useHistory();
   return (
     <Layout>
-      <div className="flex justify-center">
+      <div className="flex justify-center mb-20">
         <HeroBox
           onClick={() => {
             h.push("/play");
@@ -40,7 +40,8 @@ export const Welcome = (props: Props) => {
             type="submit"
             onClick={() => i18n.changeLanguage(lng)}
           >
-            {` | ${lngs[lng].nativeName}`}
+            {` | ${lngs[lng].nativeName} | `}
+            &#160;
           </button>
         ))}
       </div>
