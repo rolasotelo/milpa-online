@@ -64,6 +64,7 @@ module.exports = {
         "play-background": "url('/static/welcome.svg#play-background-usage')",
         "nopal-herobox": "url('/static/welcome.svg#nopal-herobox-usage')",
         "milpa-web": "url('/static/welcome.svg#milpa-web-herobox-usage')",
+        "milpa-mobile": "url('/static/welcome.svg#milpa-mobile-herobox-usage')",
         "mountains-herobox":
           "url('/static/welcome.svg#mountains-herobox-usage')",
         "milpa-cardgame": "url('/static/welcome.svg#milpa-cardgame-usage')",
@@ -84,6 +85,7 @@ module.exports = {
         "herobox-web": "960px",
         mountains: "1366px",
         "milpa-web": "590px",
+        "milpa-mobile": "205px",
         "nopal-herobox": "900px",
         // ! Old, remove when possible
         "3/8": "37.5%",
@@ -94,6 +96,7 @@ module.exports = {
         "herobox-web": "560px",
         mountains: "550px",
         "milpa-web": "220px",
+        "milpa-mobile": "276px",
         "nopal-herobox": "650px",
         // ! Old, remove when possible
         "navbar-height": "50px",
@@ -104,6 +107,7 @@ module.exports = {
       },
       inset: {
         "-94px": "-94px",
+        "170px": "165px",
       },
     },
   },

@@ -21,7 +21,7 @@ export const Welcome = (props: Props) => {
   const h = useHistory();
   return (
     <Layout>
-      <div className="flex justify-center mb-20">
+      <div className="flex justify-center mb-40 md:mb-20">
         <HeroBox
           onClick={() => {
             h.push("/play");
