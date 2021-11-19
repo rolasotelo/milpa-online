@@ -63,6 +63,9 @@ module.exports = {
           "url('/static/buttons.svg#pink-button-pressed-usage')",
         "play-background": "url('/static/welcome.svg#play-background-usage')",
         "nopal-herobox": "url('/static/welcome.svg#nopal-herobox-usage')",
+        "milpa-web": "url('/static/welcome.svg#milpa-web-herobox-usage')",
+        "mountains-herobox":
+          "url('/static/welcome.svg#mountains-herobox-usage')",
         "milpa-cardgame": "url('/static/welcome.svg#milpa-cardgame-usage')",
         "milpa-cardgame-mobile":
           "url('/static/welcome.svg#milpa-cardgame-mobile-usage')",

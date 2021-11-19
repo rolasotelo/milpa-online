@@ -1,8 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
-import HeroBox from "../../Components/HeroBox/HeroBox";
-import Layout from "../../Components/Layout/Layout";
+import HeroBox from "../../Components/HeroBox";
+import Layout from "../../Components/Layout";
 
 interface Languages {
   [index: string]: { nativeName: string };
