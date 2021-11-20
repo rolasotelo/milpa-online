@@ -58,18 +58,11 @@ module.exports = {
         "button-blue": "url('/static/buttons.svg#blue-button-usage')",
         "button-blue-pressed":
           "url('/static/buttons.svg#blue-button-pressed-usage')",
-        "button-pink": "url('/static/buttons.svg#pink-button-usage')",
-        "button-pink-pressed":
-          "url('/static/buttons.svg#pink-button-pressed-usage')",
-        "play-background": "url('/static/welcome.svg#play-background-usage')",
         "nopal-herobox": "url('/static/welcome.svg#nopal-herobox-usage')",
         "milpa-web": "url('/static/welcome.svg#milpa-web-herobox-usage')",
         "milpa-mobile": "url('/static/welcome.svg#milpa-mobile-herobox-usage')",
         "mountains-herobox":
           "url('/static/welcome.svg#mountains-herobox-usage')",
-        "milpa-cardgame": "url('/static/welcome.svg#milpa-cardgame-usage')",
-        "milpa-cardgame-mobile":
-          "url('/static/welcome.svg#milpa-cardgame-mobile-usage')",
         "create-background":
           "url('/static/create.svg#create-background-usage')",
         "join-background": "url('/static/create.svg#join-background-usage')",
