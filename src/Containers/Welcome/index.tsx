@@ -30,13 +30,13 @@ export const Welcome = (props: Props) => {
         />
       </div>
 
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-20">
         {Object.keys(lngs).map((lng) => (
           <button
             key={lng}
             style={{
-              fontWeight: i18n.resolvedLanguage === lng ? 600 : 500,
-              fontFamily: "montserrat, sans-serif",
+              fontWeight: i18n.resolvedLanguage === lng ? 700 : 400,
+              fontFamily: "bookmania, sans-serif",
               fontStyle: "normal",
               fontSize: "1rem",
             }}
