@@ -12,13 +12,13 @@ const HeroBox = (props: Props) => {
         <div className="absolute inset-x-0 md:-top-94px bg-nopal-herobox mx-auto max-w-100vw w-20.38rem h-herobox-web md:w-nopal-herobox md:h-nopal-herobox"></div>
         <div className="absolute inset-x-0 top-170px bg-milpa-mobile md:bg-milpa-web mx-auto w-milpa-mobile h-milpa-mobile md:w-milpa-web md:h-milpa-web">
           <button
-            className="z-10 absolute -top-64 md:-top-60 right-0 md:right-10 bg-button-blue w-52 h-24 mt-32 md:mt-56 focus:outline-none focus:bg-button-blue-pressed pl-6 pt-5 focus:pl-4 focus:pt-3"
+            className="z-10 absolute -top-64 md:-top-60 right-0 md:right-10 bg-button-blue w-52 h-24 mt-32 md:mt-56 focus:outline-none focus:bg-button-blue-pressed pl-6 pt-3 focus:pl-4 focus:pt-1"
             onClick={props.onClick}
             style={{
-              fontFamily: "goodlife-sans-condensed, sans-serif",
-              fontWeight: 400,
+              fontFamily: "le-havre-rounded, sans-serif",
+              fontWeight: 700,
               fontStyle: "normal",
-              fontSize: "2.8rem",
+              fontSize: "2.25rem",
             }}
           >
             {props.text}

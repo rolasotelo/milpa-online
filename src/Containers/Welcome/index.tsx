@@ -35,7 +35,10 @@ export const Welcome = (props: Props) => {
           <button
             key={lng}
             style={{
-              fontWeight: i18n.resolvedLanguage === lng ? "bold" : "normal",
+              fontWeight: i18n.resolvedLanguage === lng ? 600 : 500,
+              fontFamily: "montserrat, sans-serif",
+              fontStyle: "normal",
+              fontSize: "1rem",
             }}
             type="submit"
             onClick={() => i18n.changeLanguage(lng)}
