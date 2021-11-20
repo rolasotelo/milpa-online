@@ -3,7 +3,9 @@ coverage/
 dist/
 !dist/index.html
 node_modules/
+svgs/
 *.log
+
 
 # OS generated files
 .DS_Store

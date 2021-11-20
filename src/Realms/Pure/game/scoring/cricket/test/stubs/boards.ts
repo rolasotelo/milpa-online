@@ -7,6 +7,7 @@ import {
   Cactus,
   Cricket,
   Chilli,
+  EmptySlot,
 } from "../../../../cards";
 import { milpa_row, edge_row } from "../../../common";
 
@@ -59,9 +60,9 @@ export const EDGES_WITH_2_CRICKETS = (): Edges => {
 
 export const EDGES_WITH_0_CRICKETS = (): Edges => {
   return [
-    edge_row(0, [[], [Cactus], [Cactus], [Cactus]]),
+    edge_row(0, [[EmptySlot], [Cactus], [Cactus], [Cactus]]),
     edge_row(1, [[Cactus], [Cactus], [Cactus], [Cactus]]),
     edge_row(2, [[Cactus], [Cactus], [Cactus], [Pumpkin]]),
-    edge_row(3, [[Cactus], [Cactus], [], [Cactus]]),
+    edge_row(3, [[Cactus], [Cactus], [EmptySlot], [Cactus]]),
   ];
 };
