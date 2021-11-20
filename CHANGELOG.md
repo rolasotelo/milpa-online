@@ -106,6 +106,8 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 
 ## Issue [#37](https://github.com/rolasotelo/la-milpa-online/issues/37)
 
-### Welcome page revamp
+### Welcome page revamp: Herobox
 
-    Revamp welcome page with new 3D look. Plus Leader Board and Infographic sections.
+    Revamp welcome page herobox with new 3D look.
+
+- This has been a really fruitful PR, a lot of lessons learned regarding fonts, css positioning and svg's, plus internationalization with l18n. I additionally hosted my first svg document in a S3 bucket. In next PR's I will complete the welcome page (Leaderboard and Infographic) plus I will try to put the translations in separate files for then using suspense loading when loading them. (rola@hey.com) Nov 2021
