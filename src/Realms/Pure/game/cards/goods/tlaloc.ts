@@ -7,7 +7,7 @@ export const Tlaloc: Readonly<Good> = {
   name: "Tlaloc",
   icon: "⛈",
   description: "Baile a tlaloc",
-  rules: `Harvest +1🍫 for each crop in the same line of each Tlaloc on turns: 9,10,11,12.\n`,
+  rules: `Harvest +1🍫 for each crop in the same line of each Tlaloc on turns: 8,9,10,11,12,13.\n`,
   resume: "+4 🍫",
   modifier: [],
   canInteractWith: {
@@ -18,6 +18,6 @@ export const Tlaloc: Readonly<Good> = {
     othersEmptyMilpaSlots: false,
     othersFilledMilpaSlots: false,
     othersEmptyEdgeSlots: false,
-    othersFilledEdgeSlots: false,
-  },
+    othersFilledEdgeSlots: false
+  }
 };

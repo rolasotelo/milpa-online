@@ -8,7 +8,7 @@ export const Pumpkin: Readonly<Crop> = {
   icon: "🎃",
   description: "Por qué no hay iconos de calabazas",
   rules: `40% chance of producing a Pumpkin Flower each turn, +3% for each flower (before turn 15).\n 
-  +6 🍫 per 🎃 Pumpkin at the end of the game.`,
+  +8 🍫 per 🎃 Pumpkin at the end of the game.`,
   resume: "+2 🍫",
   modifier: [],
   canInteractWith: {
@@ -19,6 +19,6 @@ export const Pumpkin: Readonly<Crop> = {
     othersEmptyMilpaSlots: false,
     othersFilledMilpaSlots: false,
     othersEmptyEdgeSlots: false,
-    othersFilledEdgeSlots: false,
-  },
+    othersFilledEdgeSlots: false
+  }
 };

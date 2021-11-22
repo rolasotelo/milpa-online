@@ -7,7 +7,7 @@ export const Cricket: Readonly<Good> = {
   name: "Cricket",
   icon: "🦗",
   description: "Patitas sonoras",
-  rules: `-8 🍫 for each Cricket in your board at the end of the turn.\n 
+  rules: `-10 🍫 for each Cricket in your board at the end of the turn.\n 
   At the end of the turn every Cricket jumps to a different slot and eat a crop.`,
   resume: "-3 🍫",
   modifier: [],
@@ -19,6 +19,6 @@ export const Cricket: Readonly<Good> = {
     othersEmptyMilpaSlots: false,
     othersFilledMilpaSlots: false,
     othersEmptyEdgeSlots: true,
-    othersFilledEdgeSlots: true,
-  },
+    othersFilledEdgeSlots: true
+  }
 };
