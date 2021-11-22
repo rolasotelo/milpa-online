@@ -7,7 +7,7 @@ export const Quelites: Readonly<Crop> = {
   name: "Quelites",
   icon: "🌱",
   description: "Green is good for your body",
-  rules: `Harvest +4🍫 from Quelites with corn on turns: 2-9.\n`,
+  rules: `Harvest +5🍫 from Quelites with corn on turns: 2-9.\n`,
   resume: "+5 🍫",
   modifier: [],
   canInteractWith: {
@@ -18,13 +18,13 @@ export const Quelites: Readonly<Crop> = {
       CropId.BlueCorn,
       CropId.Flower,
       GoodId.Cricket,
-      GoodId.Manure,
+      GoodId.Manure
     ],
     ownEmptyEdgeSlots: false,
     ownFilledEdgeSlots: false,
     othersEmptyMilpaSlots: false,
     othersFilledMilpaSlots: false,
     othersEmptyEdgeSlots: false,
-    othersFilledEdgeSlots: false,
-  },
+    othersFilledEdgeSlots: false
+  }
 };

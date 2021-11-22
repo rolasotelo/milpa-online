@@ -16,7 +16,7 @@ import {
   Shovel,
   Tlaloc,
   Tomatillo,
-  Tomatoe,
+  Tomatoe
 } from "./game/cards";
 import { Crop, DeckDefinition, GameStatus, Good, Player } from "./types";
 
@@ -43,7 +43,7 @@ export const CACAO_WHEN_RED_CORN_PLAYED = 3;
 export const CACAO_WHEN_TOMATILLO_PLAYED = 4;
 export const CACAO_WHEN_TOMATOE_PLAYED = 3;
 export const CACAO_WHEN_CACTUS_PLAYED = 4;
-export const CACAO_WHEN_COATLICUE_PLAYED = +2;
+export const CACAO_WHEN_COATLICUE_PLAYED = +7;
 export const CACAO_WHEN_CRICKET_PLAYED = -3;
 export const CACAO_WHEN_HUITLACOCHE_PLAYED = 5;
 export const CACAO_WHEN_MAGUEY_PLAYED = +3;
@@ -61,7 +61,7 @@ export const CROPSDECKDEFINITION: ReadonlyArray<DeckDefinition<Crop>> = [
   { card: Quelites, total: Total.Quelites },
   { card: RedCorn, total: Total.RedCorn },
   { card: Tomatillo, total: Total.Tomatillo },
-  { card: Tomatoe, total: Total.Tomatoe },
+  { card: Tomatoe, total: Total.Tomatoe }
 ];
 
 export const GOODSDECKDEFINITION: ReadonlyArray<DeckDefinition<Good>> = [
@@ -72,7 +72,7 @@ export const GOODSDECKDEFINITION: ReadonlyArray<DeckDefinition<Good>> = [
   { card: Cricket, total: Total.Cricket },
   { card: Huitlacoche, total: Total.Huitlacoche },
   { card: Maguey, total: Total.Maguey },
-  { card: Shovel, total: Total.Shovel },
+  { card: Shovel, total: Total.Shovel }
 ];
 
 export const EMPTYGAMESTATUS: Readonly<GameStatus> = {
@@ -85,13 +85,13 @@ export const EMPTYGAMESTATUS: Readonly<GameStatus> = {
   currentTurn: 0,
   goodsDeck: [],
   goodsHand: [],
-  score: {},
+  score: {}
 };
 
 export const WAITING_PLAYER: Readonly<Player> = {
   self: false,
   connected: false,
-  nickname: "Waiting ...",
+  nickname: "Waiting ..."
 };
 
 export const MONTHS = [
@@ -111,5 +111,5 @@ export const MONTHS = [
   "Quecholli",
   "Panque-tzaliztli",
   "Atemoztli",
-  "Final Score",
+  "Final Score"
 ];

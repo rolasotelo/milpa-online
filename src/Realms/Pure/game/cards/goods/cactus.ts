@@ -7,7 +7,7 @@ export const Cactus: Readonly<Good> = {
   name: "Cactus",
   icon: "🌵",
   description: "Luna luna, dame una tuna",
-  rules: `15% chance of a Cactus growing Tunas at the end of each turn.\n 
+  rules: `20% chance of a Cactus growing Tunas at the end of each turn.\n 
   -15 🍫 for 0 Cactus with Tuna, -10 🍫 for 1, +15 🍫 for 2, +40 🍫 for 3 and +60 for more at the end of the game.`,
   resume: "+4 🍫",
   modifier: [],
@@ -19,6 +19,6 @@ export const Cactus: Readonly<Good> = {
     othersEmptyMilpaSlots: false,
     othersFilledMilpaSlots: false,
     othersEmptyEdgeSlots: false,
-    othersFilledEdgeSlots: false,
-  },
+    othersFilledEdgeSlots: false
+  }
 };
