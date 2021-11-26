@@ -91,6 +91,10 @@ module.exports = {
         "milpa-mobile": "205px",
         "nopal-herobox": "900px",
         "symbol-divisor": "196px",
+        "brush-pink-1": "287px",
+        "brush-pink-2": "267px",
+        "brush-pink-3": "278px",
+        "brush-pink-4": "373px",
         // ! Old, remove when possible
         "3/8": "37.5%",
         "2/8": "25%",
@@ -103,6 +107,10 @@ module.exports = {
         "milpa-mobile": "276px",
         "nopal-herobox": "650px",
         "symbol-divisor": "66px",
+        "brush-pink-1": "451px",
+        "brush-pink-2": "251px",
+        "brush-pink-3": "560px",
+        "brush-pink-4": "547px",
         // ! Old, remove when possible
         "navbar-height": "50px",
       },
