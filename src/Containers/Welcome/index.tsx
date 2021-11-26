@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import HeroBox from "../../Components/HeroBox";
+import Infographic from "../../Components/Infographic/Infographic";
 import Layout from "../../Components/Layout";
 
 interface Languages {
@@ -21,7 +22,7 @@ export const Welcome = (props: Props) => {
   const h = useHistory();
   return (
     <Layout>
-      <div className="flex justify-center mb-40 md:mb-20">
+      <div className="flex justify-center">
         <HeroBox
           onClick={() => {
             h.push("/play");
@@ -30,7 +31,7 @@ export const Welcome = (props: Props) => {
         />
       </div>
 
-      <div className="flex justify-center mt-20">
+      {/* <div className="flex justify-center mt-20">
         {Object.keys(lngs).map((lng) => (
           <button
             key={lng}
@@ -47,6 +48,16 @@ export const Welcome = (props: Props) => {
             &#160;
           </button>
         ))}
+      </div> */}
+      <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor md:mt-40 md:mb-14  mx-auto" />
+
+      <div className="flex justify-center mb-40">
+        <Infographic
+          onClick={() => {
+            h.push("/play");
+          }}
+          text={t("welcome.herobox.callToAction")}
+        />
       </div>
     </Layout>
   );

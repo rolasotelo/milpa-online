@@ -69,6 +69,16 @@ module.exports = {
         "green-banner": "url('/static/banners.svg#green-banner-usage')",
         "green-banner-mobile":
           "url('/static/banners.svg#green-banner-mobile-usage')",
+        "brush-green-1": "url('/static/art.svg#brush-green-1-usage')",
+        "brush-pink-1": "url('/static/art.svg#brush-pink-1-usage')",
+        "brush-pink-2": "url('/static/art.svg#brush-pink-2-usage')",
+        "brush-pink-3": "url('/static/art.svg#brush-pink-3-usage')",
+        "brush-pink-4": "url('/static/art.svg#brush-pink-4-usage')",
+        "symbol-corner-1": "url('/static/art.svg#symbol-corner-1-usage')",
+        "symbol-corner-2": "url('/static/art.svg#symbol-corner-2-usage')",
+        "symbol-corner-3": "url('/static/art.svg#symbol-corner-3-usage')",
+        "symbol-corner-4": "url('/static/art.svg#symbol-corner-4-usage')",
+        "symbol-divisor": "url('/static/art.svg#symbol-divisor-usage')",
       },
       margin: {
         "herobox-top-web": "86px",
@@ -80,6 +90,7 @@ module.exports = {
         "milpa-web": "590px",
         "milpa-mobile": "205px",
         "nopal-herobox": "900px",
+        "symbol-divisor": "196px",
         // ! Old, remove when possible
         "3/8": "37.5%",
         "2/8": "25%",
@@ -91,6 +102,7 @@ module.exports = {
         "milpa-web": "220px",
         "milpa-mobile": "276px",
         "nopal-herobox": "650px",
+        "symbol-divisor": "66px",
         // ! Old, remove when possible
         "navbar-height": "50px",
       },
