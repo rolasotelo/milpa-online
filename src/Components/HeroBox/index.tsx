@@ -8,7 +8,9 @@ interface Props {
 const HeroBox = (props: Props) => {
   return (
     <div className="relative flex-col w-screen">
-      <div className="relative w-20.38rem mx-auto max-w-100vw md:w-herobox-web h-herobox-web bg-milpaBlue-default ring-8 ring-offset-0 ring-milpaBlue-dark mt-5 md:mt-herobox-top-web">
+      <div className=" relative w-20.38rem mx-auto max-w-100vw md:w-herobox-web h-herobox-web bg-milpaBlue-default ring-8 ring-offset-0 ring-milpaBlue-dark mt-5 md:mt-herobox-top-web">
+        {/* <div className="absolute -inset-y-16 -left-40 h-brush-pink-1 w-brush-pink-1 bg-brush-pink-1" />
+        <div className="absolute inset-y-32 -right-16 h-brush-pink-2 w-brush-pink-2 bg-brush-pink-2" /> */}
         <div className="absolute inset-x-0 md:-top-94px bg-nopal-herobox mx-auto max-w-100vw w-20.38rem h-herobox-web md:w-nopal-herobox md:h-nopal-herobox"></div>
         <div className="absolute inset-x-0 top-170px bg-milpa-mobile md:bg-milpa-web mx-auto w-milpa-mobile h-milpa-mobile md:w-milpa-web md:h-milpa-web">
           <button

@@ -24,6 +24,9 @@ i18n
               callToAction: "Play",
               changeLanguage: "Change language",
             },
+            infographic: {
+              whatisamilpa: "What is a Milpa?",
+            },
           },
         },
       },
@@ -33,6 +36,9 @@ i18n
             herobox: {
               callToAction: "Jugar",
               changeLanguage: "Cambiar idioma",
+            },
+            infographic: {
+              whatisamilpa: "Qué es una Milpa?",
             },
           },
         },
@@ -44,6 +50,9 @@ i18n
               callToAction: "Jouer",
               changeLanguage: "Changer la langue",
             },
+            infographic: {
+              whatisamilpa: "Qu'est-ce qu'une Milpa?",
+            },
           },
         },
       },
@@ -53,6 +62,9 @@ i18n
             herobox: {
               callToAction: "Hrát",
               changeLanguage: "Změnit jazyk",
+            },
+            infographic: {
+              whatisamilpa: "Co je to Milpa?",
             },
           },
         },
