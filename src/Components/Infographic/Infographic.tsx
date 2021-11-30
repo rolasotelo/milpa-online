@@ -1,10 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-interface Props {
-  onClick: () => void;
-  text: string;
-}
+interface Props {}
 
 interface Languages {
   [index: string]: { nativeName: string };
