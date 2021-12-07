@@ -5,7 +5,7 @@ dist/
 node_modules/
 svgs/
 *.log
-
+src/milpa.code-workspace
 
 # OS generated files
 .DS_Store

@@ -29,7 +29,6 @@ export const Welcome = (props: Props) => {
           text={t("welcome.herobox.callToAction")}
         />
       </div>
-
       <div className="flex justify-center mt-20">
         {Object.keys(lngs).map((lng) => (
           <button
