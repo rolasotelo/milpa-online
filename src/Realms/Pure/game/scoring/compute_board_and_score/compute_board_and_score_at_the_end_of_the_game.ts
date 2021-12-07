@@ -121,13 +121,12 @@ export const compute_board_and_score_at_the_end_of_the_game = (
       score_cactus_at_the_end_of_the_game(newBoard);
     newScore = newScore + newScoreFromCactus;
     newBoard = newBoardFromCactus;
-    if (newScoreFromCactus !== 0) {
-      scoringLog.description.push(
-        `${sign(
-          newScoreFromCactus
-        )} ${newScoreFromCactus} 🍫 from all your 🌵 with 🍓 Tuna`
-      );
-    }
+
+    scoringLog.description.push(
+      `${sign(
+        newScoreFromCactus
+      )} ${newScoreFromCactus} 🍫 from all your 🌵 with 🍓 Tuna`
+    );
   }
   if (
     is_modifier_already_present_in_slot(allCardsInMilpa, ModifierId.Huitlacoche)

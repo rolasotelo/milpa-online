@@ -8,7 +8,7 @@ const StatusBoard = (props: Props) => {
   const card = context.selectedCard.card;
   return (
     <div className="h-24 bg-mexicanBoneLight rounded-lg mt-1 mx-1 px-2">
-      {card ? <p>{`${card?.name}: ${card?.rules}`}</p> : null}
+      {card ? <p>{`${card.name}: ${card.rules}`}</p> : null}
     </div>
   );
 };

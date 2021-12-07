@@ -94,4 +94,3 @@ const addModifiersToCard = (slot: BoardSlot, card: AnyCard) => {
 const is_there_corn_in_slot = is_there_in_slot(Corn);
 const is_there_blue_corn_in_slot = is_there_in_slot(BlueCorn);
 const is_there_red_corn_in_slot = is_there_in_slot(RedCorn);
-const is_there_cricket_in_slot = is_there_in_slot(Cricket);

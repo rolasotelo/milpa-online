@@ -1,5 +1,5 @@
 import { EMPTYGAMESTATUS, WAITING_PLAYER } from "../../../constants";
-import { GameStatus, Player } from "../../../types";
+import { Player } from "../../../types";
 import { compute_current_stage } from "./compute_current_stage";
 
 test("should return turn number from your game status", () => {

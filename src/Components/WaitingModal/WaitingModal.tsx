@@ -12,10 +12,6 @@ interface Props {
 const WaitingModal = (props: Props) => {
   let [isOpen, setIsOpen] = useState(true);
 
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
   const openModal = () => {
     setIsOpen(true);
   };

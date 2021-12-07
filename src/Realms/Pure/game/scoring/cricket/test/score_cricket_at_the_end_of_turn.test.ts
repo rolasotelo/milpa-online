@@ -1,4 +1,3 @@
-import { pluck } from "underscore";
 import {
   compute_total_crickets,
   score_cricket_at_the_end_of_turn,
