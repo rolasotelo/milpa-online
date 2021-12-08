@@ -82,7 +82,7 @@ const Infographic = (props: Props) => {
                       fontSize: "1rem",
                     }}
                   >
-                    Bianca Dunn
+                    {t("welcome.infographic.source")}
                   </p>
                 </div>
               </div>
@@ -99,7 +99,7 @@ const Infographic = (props: Props) => {
                       lineHeight: "3rem",
                     }}
                   >
-                    Quidem Similique Illum Est
+                    {t("welcome.infographic.title")}
                   </div>
                   <div className="flex flex-row">
                     <div
@@ -111,13 +111,7 @@ const Infographic = (props: Props) => {
                         fontSize: "1rem",
                       }}
                     >
-                      Sit cum aut ullam non quibusdam excepturi cumque ullam
-                      eligendi quisquam animi quasi voluptate pariatur
-                      consequatur. Quis exercitationem molestiae temporibus
-                      libero dolor. Mollitia quaerat quibusdam voluptas qui quod
-                      possimus quod exercitationem ipsum culpa. Assumenda aut
-                      delectus et et similique. Sed cumque ut qui officiis vero
-                      officia voluptas eos doloremque.
+                      {t("welcome.infographic.paragraph1")}
                     </div>
                     <div
                       className="mt-5 mb-5 ml-5 text-milpaBeige-default leading-relaxed text-justify"
@@ -128,14 +122,7 @@ const Infographic = (props: Props) => {
                         fontSize: "1rem",
                       }}
                     >
-                      Dolores vero qui rerum numquam earum hic. Reiciendis est
-                      vitae et est alias in rerum consequatur sed culpa sed
-                      nostrum maiores. Tenetur nisi id recusandae. Non enim
-                      cumque minus eligendi dolorem vero est corporis
-                      dignissimos aut minima aperiam illum dolores. Id
-                      consequuntur incidunt dolorem sunt magnam natus vero
-                      cumque voluptas ad magni voluptatibus. Esse dolorem maxime
-                      non similique.
+                      {t("welcome.infographic.paragraph2")}
                     </div>
                   </div>
                 </div>
