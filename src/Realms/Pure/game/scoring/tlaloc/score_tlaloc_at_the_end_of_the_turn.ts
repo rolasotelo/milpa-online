@@ -28,7 +28,7 @@ export const score_tlaloc_at_the_end_of_turn = (
   };
 };
 
-export const is_tlaloc_harvest_turn = (turn: number) => {
+export const is_tlaloc_harvest_turn = (turn: number): boolean  => {
   return indexOf(TLALOC_HARVEST_TURNS(), turn) >= 0;
 };
 

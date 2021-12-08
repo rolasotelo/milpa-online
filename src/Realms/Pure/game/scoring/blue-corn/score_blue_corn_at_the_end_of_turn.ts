@@ -39,7 +39,7 @@ export const score_blue_corn_at_the_end_of_turn = (
 
 const compute_total_blue_corns = compute_total_cards_in_board(BlueCorn);
 
-export const is_blue_corn_harvest_turn = (turn: number) => {
+export const is_blue_corn_harvest_turn = (turn: number): boolean  => {
   return indexOf(BLUE_CORN_HARVEST_TURNS(), turn) >= 0;
 };
 

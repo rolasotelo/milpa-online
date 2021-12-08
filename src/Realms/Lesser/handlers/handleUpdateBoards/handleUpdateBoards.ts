@@ -44,7 +44,7 @@ export const handleUpdateBoards = (
   setPlayers: React.Dispatch<React.SetStateAction<readonly [Player, Player]>>,
   setSelectedCard: React.Dispatch<React.SetStateAction<Readonly<SelectedCard>>>,
   socket: MiSocket
-) => {
+): void  => {
   const cardType = card.type;
   const slotType = slot.type;
   const indexFromHand = card.indexFromHand!;

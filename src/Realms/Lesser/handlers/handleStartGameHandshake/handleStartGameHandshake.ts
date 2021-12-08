@@ -6,7 +6,7 @@ export const handleStartGameHandshake = (
   setPlayers: React.Dispatch<React.SetStateAction<readonly [Player, Player]>>,
   gameStatus: GameStatus,
   socket: MiSocket
-) => {
+): void  => {
   const sessionID = sessionStorage.getItem("sessionID");
   const newPlayers: Readonly<[Player, Player]> = [
     { ...players[Players.You], gameStatus: { ...gameStatus } },
