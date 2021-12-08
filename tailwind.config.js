@@ -19,6 +19,11 @@ module.exports = {
           default: "#c83262",
           dark: "#641931",
         },
+        milpaGreen: {
+          light: "#7c8c03",
+          default: "#324001",
+          dark: "#1a2601",
+        },
         // ! Old Colors, remove when possible
         mexicanPink: "#d91a60",
         mexicanBlue: "#253659",

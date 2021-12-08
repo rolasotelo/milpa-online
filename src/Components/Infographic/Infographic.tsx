@@ -20,9 +20,9 @@ const Infographic = (props: Props) => {
       <div className="relative w-20.38rem mx-auto max-w-100vw md:w-herobox-web h-herobox-web mt-5 md:mt-herobox-top-web">
         <div className="absolute -inset-y-14 -left-44 h-brush-pink-3 w-brush-pink-3 bg-brush-pink-3" />
         <div className="absolute -inset-y-52 -right-44 h-brush-pink-4 w-brush-pink-4 bg-brush-pink-4" />
-        <div className="relative w-20.38rem mx-auto max-w-100vw md:w-herobox-web h-herobox-web bg-milpaBlue-default ring-8 ring-inset ring-milpaBlue-dark ">
+        <div className="relative w-20.38rem mx-auto max-w-100vw md:w-herobox-web h-herobox-web bg-milpaBlue-default ring-8 ring-inset ring-milpaBlue-dark">
           <div className="flex flex-row  h-full">
-            <div className="flex flex-col w-72 items-center">
+            <div className="flex flex-col w-72 items-center ml-2">
               <div
                 className="text-mexicanBone w-48 h-60"
                 style={{
@@ -59,8 +59,33 @@ const Infographic = (props: Props) => {
                 ))}
               </div>
             </div>
-            <div className="flex flex-col w-full h-full">
-              <div className="col-span-5 w-full"></div>
+            <div className="flex flex-col w-full h-full mt-6 mr-6">
+              <div className="col-span-5 w-full h-32 bg-milpaBeige-default ring-8 ring-inset ring-milpaBeige-dark drop-shadow-2xl">
+                <div className="flex flex-col items-center h-full justify-center text-milpaGreen-default">
+                  <p
+                    className="max-w-lg milpaG"
+                    style={{
+                      fontWeight: 400,
+                      fontFamily: "goodlife-sans-condensed, sans-serif",
+                      fontStyle: "normal",
+                      fontSize: "1.5rem",
+                    }}
+                  >
+                    {t("welcome.infographic.quote")}
+                  </p>
+                  <p
+                    className="w-32 text-center"
+                    style={{
+                      fontWeight: 700,
+                      fontFamily: "bookmania, sans-serif",
+                      fontStyle: "normal",
+                      fontSize: "1rem",
+                    }}
+                  >
+                    Bianca Dunn
+                  </p>
+                </div>
+              </div>
               <div className="row-span-2 col-span-4"></div>
             </div>
           </div>

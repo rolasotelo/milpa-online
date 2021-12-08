@@ -26,6 +26,8 @@ i18n
             },
             infographic: {
               whatisamilpa: "What is a Milpa?",
+              quote:
+                "English maxime cupiditate aut itaque commodi quis labore recusandae qui fuga reprehenderit consequatur qui officiis non.",
             },
           },
         },
@@ -39,6 +41,8 @@ i18n
             },
             infographic: {
               whatisamilpa: "Qué es una Milpa?",
+              quote:
+                "Español maxime cupiditate aut itaque commodi quis labore recusandae qui fuga reprehenderit consequatur qui officiis non.",
             },
           },
         },
@@ -52,6 +56,8 @@ i18n
             },
             infographic: {
               whatisamilpa: "Qu'est-ce qu'une Milpa?",
+              quote:
+                "Français maxime cupiditate aut itaque commodi quis labore recusandae qui fuga reprehenderit consequatur qui officiis non.",
             },
           },
         },
@@ -65,6 +71,8 @@ i18n
             },
             infographic: {
               whatisamilpa: "Co je to Milpa?",
+              quote:
+                "Čestina maxime cupiditate aut itaque commodi quis labore recusandae qui fuga reprehenderit consequatur qui officiis non.",
             },
           },
         },
