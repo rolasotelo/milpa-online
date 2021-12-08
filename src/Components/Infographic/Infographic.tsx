@@ -22,7 +22,7 @@ const Infographic = (props: Props) => {
         <div className="absolute -inset-y-52 -right-44 h-brush-pink-4 w-brush-pink-4 bg-brush-pink-4" />
         <div className="relative w-20.38rem mx-auto max-w-100vw md:w-herobox-web h-herobox-web bg-milpaBlue-default ring-8 ring-inset ring-milpaBlue-dark">
           <div className="flex flex-row  h-full">
-            <div className="flex flex-col w-72 items-center ml-2">
+            <div className="flex flex-col w-72 items-center m-5">
               <div
                 className="text-mexicanBone w-48 h-60"
                 style={{
@@ -59,11 +59,11 @@ const Infographic = (props: Props) => {
                 ))}
               </div>
             </div>
-            <div className="flex flex-col w-full h-full mt-6 mr-6">
+            <div className="flex flex-col w-full h-full mt-6 mr-10">
               <div className="col-span-5 w-full h-32 bg-milpaBeige-default ring-8 ring-inset ring-milpaBeige-dark drop-shadow-2xl">
-                <div className="flex flex-col items-center h-full justify-center text-milpaGreen-default">
+                <div className="flex flex-col items-center h-full justify-center text-milpaGreen-default text-center">
                   <p
-                    className="max-w-lg milpaG"
+                    className="max-w-lg"
                     style={{
                       fontWeight: 400,
                       fontFamily: "goodlife-sans-condensed, sans-serif",
@@ -74,7 +74,7 @@ const Infographic = (props: Props) => {
                     {t("welcome.infographic.quote")}
                   </p>
                   <p
-                    className="w-32 text-center"
+                    className="w-32"
                     style={{
                       fontWeight: 700,
                       fontFamily: "bookmania, sans-serif",
@@ -86,7 +86,59 @@ const Infographic = (props: Props) => {
                   </p>
                 </div>
               </div>
-              <div className="row-span-2 col-span-4"></div>
+              <div className="row-span-2 col-span-4">
+                <div className="flex flex-row m-1 pt-3 pl-20 relative">
+                  <div
+                    className="absolute inset-y-32 -left-36 m-1 text-milpaBeige-default w-80 text-right"
+                    style={{
+                      fontWeight: 400,
+                      fontFamily: "goodlife-sans-condensed, sans-serif",
+                      fontStyle: "normal",
+                      fontSize: "3rem",
+                      transform: "rotate(-90deg)",
+                    }}
+                  >
+                    Quidem Similique Illum Est
+                  </div>
+                  <div className="flex flex-row">
+                    <div
+                      className="m-5 text-milpaBeige-default leading-relaxed text-justify"
+                      style={{
+                        fontWeight: 400,
+                        fontFamily: "bookmania, sans-serif",
+                        fontStyle: "normal",
+                        fontSize: "1rem",
+                      }}
+                    >
+                      Sit cum aut ullam non quibusdam excepturi cumque ullam
+                      eligendi quisquam animi quasi voluptate pariatur
+                      consequatur. Quis exercitationem molestiae temporibus
+                      libero dolor. Mollitia quaerat quibusdam voluptas qui quod
+                      possimus quod exercitationem ipsum culpa. Assumenda aut
+                      delectus et et similique. Sed cumque ut qui officiis vero
+                      officia voluptas eos doloremque.
+                    </div>
+                    <div
+                      className="mt-5 mb-5 ml-5 text-milpaBeige-default leading-relaxed text-justify"
+                      style={{
+                        fontWeight: 400,
+                        fontFamily: "bookmania, sans-serif",
+                        fontStyle: "normal",
+                        fontSize: "1rem",
+                      }}
+                    >
+                      Dolores vero qui rerum numquam earum hic. Reiciendis est
+                      vitae et est alias in rerum consequatur sed culpa sed
+                      nostrum maiores. Tenetur nisi id recusandae. Non enim
+                      cumque minus eligendi dolorem vero est corporis
+                      dignissimos aut minima aperiam illum dolores. Id
+                      consequuntur incidunt dolorem sunt magnam natus vero
+                      cumque voluptas ad magni voluptatibus. Esse dolorem maxime
+                      non similique.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
