@@ -16,7 +16,7 @@ const lngs: Languages = {
 const Infographic = (props: Props) => {
   const { t, i18n } = useTranslation();
   return (
-    <div className="relative flex-col w-screen overflow-x-hidden">
+    <div className="relative flex-col w-screen  overflow-x-hidden">
       <div className="relative w-20.38rem mx-auto max-w-100vw tablet:w-herobox-web tablet:h-herobox-web mt-5 tablet:mt-herobox-top-web">
         <div className="absolute -inset-y-14 -left-44 h-brush-pink-3 w-brush-pink-3 bg-brush-pink-3" />
         <div className="absolute -inset-y-52 -right-44 h-brush-pink-4 w-brush-pink-4 bg-brush-pink-4" />
@@ -113,7 +113,7 @@ const Infographic = (props: Props) => {
                       {t("welcome.infographic.paragraph1")}
                     </div>
                     <div
-                      className="mr-5 tablet:h-full tablet:mr-0 mt-5 mb-5 ml-3 text-milpaBeige-default leading-relaxed text-justify"
+                      className="mr-5 tablet:mr-0 mt-5 mb-5 ml-3 text-milpaBeige-default leading-relaxed text-justify"
                       style={{
                         fontWeight: 400,
                         fontFamily: "bookmania, sans-serif",

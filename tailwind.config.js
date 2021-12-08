@@ -68,6 +68,8 @@ module.exports = {
         "milpa-mobile": "url('/static/welcome.svg#milpa-mobile-herobox-usage')",
         "mountains-herobox":
           "url('/static/welcome.svg#mountains-herobox-usage')",
+        nopal: "url('/static/welcome.svg#nopal-usage')",
+        "corn-box": "url('/static/welcome.svg#corn-box-usage')",
         "create-background":
           "url('/static/create.svg#create-background-usage')",
         "join-background": "url('/static/create.svg#join-background-usage')",
@@ -103,6 +105,8 @@ module.exports = {
         "brush-pink-2": "267px",
         "brush-pink-3": "278px",
         "brush-pink-4": "373px",
+        nopal: "353px",
+        "corn-box": "156px",
         // ! Old, remove when possible
         "3/8": "37.5%",
         "2/8": "25%",
@@ -114,6 +118,8 @@ module.exports = {
         "milpa-web": "220px",
         "milpa-mobile": "276px",
         "nopal-herobox": "650px",
+        nopal: "199px",
+        "corn-box": "83px",
         "symbol-divisor": "66px",
         "brush-pink-1": "451px",
         "brush-pink-2": "251px",

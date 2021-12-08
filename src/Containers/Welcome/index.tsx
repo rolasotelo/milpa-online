@@ -24,11 +24,15 @@ export const Welcome = (props: Props) => {
 
       <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-32 md:mt-32 mb-6 md:mb-0  mx-auto" />
 
-      <div className="relative flex justify-center">
+      <div className="flex  justify-center">
         <Infographic />
       </div>
+      <div className="relative w-20.38rem tablet:w-herobox-web h-10 mx-auto">
+        <div className="absolute -bottom-32 tablet:-bottom-5 left-20 tablet:left-44 z-20 bg-corn-box  w-corn-box h-corn-box" />
+        <div className="absolute -bottom-28 tablet:bottom-0 -left-44 tablet:-left-20 z-20 bg-nopal  w-nopal h-nopal" />
+      </div>
 
-      <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-10 md:mt-14 mb-10 md:mb-14  mx-auto" />
+      <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-36 tablet:mt-10 md:mt-14 mb-10 md:mb-14  mx-auto" />
     </Layout>
   );
 };
