@@ -89,13 +89,14 @@ const Infographic = (props: Props) => {
               <div className="row-span-2 col-span-4">
                 <div className="flex flex-row m-1 pt-3 pl-20 relative">
                   <div
-                    className="absolute inset-y-32 -left-36 m-1 text-milpaBeige-default w-80 text-right"
+                    className="absolute inset-y-32 -left-28 m-1 text-milpaBeige-default w-80 text-right"
                     style={{
                       fontWeight: 400,
                       fontFamily: "goodlife-sans-condensed, sans-serif",
                       fontStyle: "normal",
                       fontSize: "3rem",
                       transform: "rotate(-90deg)",
+                      lineHeight: "3rem",
                     }}
                   >
                     Quidem Similique Illum Est
