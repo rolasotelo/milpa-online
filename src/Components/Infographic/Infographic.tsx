@@ -87,7 +87,7 @@ const Infographic = (props: Props) => {
                 </div>
               </div>
               <div className="row-span-2 col-span-4">
-                <div className="flex flex-col tablet:flex-row m-1 pt-3 tablet:pl-20 relative">
+                <div className="flex flex-col tablet:flex-row m-1 pt-3 tablet:pt-0 tablet:pl-20 relative">
                   <div
                     className="tablet:absolute tablet:inset-y-32 tablet:-left-28 m-1 pr-5 tablet:pr-0 text-milpaBeige-default w-80 text-right transform tablet:-rotate-90"
                     style={{
@@ -100,9 +100,9 @@ const Infographic = (props: Props) => {
                   >
                     {t("welcome.infographic.title")}
                   </div>
-                  <div className="flex flex-col tablet:flex-row">
+                  <div className="flex flex-col tablet:flex-row tablet:pl-5">
                     <div
-                      className="m-5 text-milpaBeige-default leading-relaxed text-justify"
+                      className="m-5 text-milpaBeige-default leading-relaxed text-justify "
                       style={{
                         fontWeight: 400,
                         fontFamily: "bookmania, sans-serif",
@@ -113,7 +113,7 @@ const Infographic = (props: Props) => {
                       {t("welcome.infographic.paragraph1")}
                     </div>
                     <div
-                      className="mr-5 tablet:mr-0 mt-5 mb-5 ml-5 text-milpaBeige-default leading-relaxed text-justify"
+                      className="mr-5 tablet:h-full tablet:mr-0 mt-5 mb-5 ml-3 text-milpaBeige-default leading-relaxed text-justify"
                       style={{
                         fontWeight: 400,
                         fontFamily: "bookmania, sans-serif",
@@ -121,7 +121,18 @@ const Infographic = (props: Props) => {
                         fontSize: "1rem",
                       }}
                     >
-                      {t("welcome.infographic.paragraph2")}
+                      <p>{t("welcome.infographic.paragraph2")}</p>
+                      <p
+                        className="mt-5 text-right"
+                        style={{
+                          fontWeight: 700,
+                          fontFamily: "bookmania, sans-serif",
+                          fontStyle: "normal",
+                          fontSize: "1rem",
+                        }}
+                      >
+                        {t("welcome.infographic.source2")}
+                      </p>
                     </div>
                   </div>
                 </div>
