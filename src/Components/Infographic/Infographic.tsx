@@ -17,12 +17,12 @@ const Infographic = (props: Props) => {
   const { t, i18n } = useTranslation();
   return (
     <div className="relative flex-col w-screen overflow-x-hidden">
-      <div className="relative w-20.38rem mx-auto max-w-100vw md:w-herobox-web md:h-herobox-web mt-5 md:mt-herobox-top-web">
+      <div className="relative w-20.38rem mx-auto max-w-100vw tablet:w-herobox-web tablet:h-herobox-web mt-5 tablet:mt-herobox-top-web">
         <div className="absolute -inset-y-14 -left-44 h-brush-pink-3 w-brush-pink-3 bg-brush-pink-3" />
         <div className="absolute -inset-y-52 -right-44 h-brush-pink-4 w-brush-pink-4 bg-brush-pink-4" />
-        <div className="relative w-20.38rem mx-auto max-w-100vw md:w-herobox-web md:h-herobox-web bg-milpaBlue-default ring-8 ring-inset ring-milpaBlue-dark">
-          <div className="flex flex-col md:flex-row  h-full">
-            <div className="flex flex-col w-72 items-center m-5">
+        <div className="relative w-20.38rem mx-auto max-w-100vw tablet:w-herobox-web tablet:h-herobox-web bg-milpaBlue-default ring-8 ring-inset ring-milpaBlue-dark">
+          <div className="flex flex-col tablet:flex-row  h-full">
+            <div className="flex flex-col w-72 items-center mt-5 ml-5 mr-5">
               <div
                 className="text-mexicanBone w-48 h-60"
                 style={{
@@ -35,7 +35,7 @@ const Infographic = (props: Props) => {
                 {t("welcome.infographic.whatisamilpa")}
               </div>
 
-              <div className="flex flex-col w-48">
+              <div className="flex flex-row tablet:flex-col flex-wrap w-48">
                 {Object.keys(lngs).map((lng) => (
                   <button
                     key={lng}
@@ -59,9 +59,9 @@ const Infographic = (props: Props) => {
                 ))}
               </div>
             </div>
-            <div className="flex flex-col w-full mt-6 mr-10">
-              <div className="col-span-5 w-full h-56  md:h-32 bg-milpaBeige-default ring-8 ring-inset ring-milpaBeige-dark drop-shadow-2xl">
-                <div className="flex flex-col items-center h-full justify-center text-milpaGreen-default text-center">
+            <div className="flex flex-col w-full tablet:mt-6 mr-10">
+              <div className="col-span-5 m-5 tablet:m-0 tablet:w-full h-80  tablet:h-32 bg-milpaBeige-default ring-8 ring-inset ring-milpaBeige-dark drop-shadow-2xl">
+                <div className="flex flex-col ml-5 mr-5  tablet:m-0 items-center h-full justify-center text-milpaGreen-default text-center">
                   <p
                     className="max-w-lg"
                     style={{
@@ -87,9 +87,9 @@ const Infographic = (props: Props) => {
                 </div>
               </div>
               <div className="row-span-2 col-span-4">
-                <div className="flex flex-col md:flex-row m-1 pt-3 md:pl-20 relative">
+                <div className="flex flex-col tablet:flex-row m-1 pt-3 tablet:pl-20 relative">
                   <div
-                    className="md:absolute md:inset-y-32 md:-left-28 m-1 pr-5 text-milpaBeige-default w-80 text-right transform md:-rotate-90"
+                    className="tablet:absolute tablet:inset-y-32 tablet:-left-28 m-1 pr-5 tablet:pr-0 text-milpaBeige-default w-80 text-right transform tablet:-rotate-90"
                     style={{
                       fontWeight: 400,
                       fontFamily: "goodlife-sans-condensed, sans-serif",
@@ -100,7 +100,7 @@ const Infographic = (props: Props) => {
                   >
                     {t("welcome.infographic.title")}
                   </div>
-                  <div className="flex flex-col md:flex-row">
+                  <div className="flex flex-col tablet:flex-row">
                     <div
                       className="m-5 text-milpaBeige-default leading-relaxed text-justify"
                       style={{
@@ -113,7 +113,7 @@ const Infographic = (props: Props) => {
                       {t("welcome.infographic.paragraph1")}
                     </div>
                     <div
-                      className="mr-5 md:mr-0 mt-5 mb-5 ml-5 text-milpaBeige-default leading-relaxed text-justify"
+                      className="mr-5 tablet:mr-0 mt-5 mb-5 ml-5 text-milpaBeige-default leading-relaxed text-justify"
                       style={{
                         fontWeight: 400,
                         fontFamily: "bookmania, sans-serif",

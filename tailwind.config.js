@@ -88,6 +88,9 @@ module.exports = {
       margin: {
         "herobox-top-web": "86px",
       },
+      screens: {
+        tablet: "960px",
+      },
       width: {
         "button-square": "50px",
         "herobox-web": "960px",
