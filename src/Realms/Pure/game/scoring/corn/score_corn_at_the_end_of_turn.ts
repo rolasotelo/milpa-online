@@ -36,7 +36,7 @@ export const score_corn_at_the_end_of_turn = (
 
 const compute_total_corns = compute_total_cards_in_board(Corn);
 
-export const is_corn_harvest_turn = (turn: number) => {
+export const is_corn_harvest_turn = (turn: number): boolean  => {
   return indexOf(CORN_HARVEST_TURNS(), turn) >= 0;
 };
 

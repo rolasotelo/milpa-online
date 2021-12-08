@@ -43,7 +43,7 @@ export const score_tomatoe_at_the_end_of_turn = (
 
 const compute_total_tomatoe = compute_total_cards_in_board(Tomatoe);
 
-export const is_tomatoe_harvest_turn = (turn: number) => {
+export const is_tomatoe_harvest_turn = (turn: number): boolean  => {
   return indexOf(TOMATOE_HARVEST_TURNS(), turn) >= 0;
 };
 

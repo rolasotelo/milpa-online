@@ -51,7 +51,7 @@ export const score_chilli_at_the_end_of_turn = (
 
 const compute_total_chilli = compute_total_cards_in_board(Chilli);
 
-export const is_chilli_harvest_turn = (turn: number) => {
+export const is_chilli_harvest_turn = (turn: number): boolean  => {
   return indexOf(CHILLI_HARVEST_TURNS(), turn) >= 0;
 };
 

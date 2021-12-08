@@ -9,7 +9,7 @@ export const handleStartGame = (
   playersPlayload: ReadonlyArray<Player>,
   setPlayers: React.Dispatch<React.SetStateAction<readonly [Player, Player]>>,
   socket: MiSocket
-) => {
+): void  => {
   const sessionID = sessionStorage.getItem("sessionID");
   if (!playersPlayload[Players.You].gameStatus) {
     const score: Map<string, number> = new Map();
