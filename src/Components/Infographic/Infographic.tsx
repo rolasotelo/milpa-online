@@ -1,3 +1,4 @@
+import { Callback } from "i18next";
 import React, { MouseEventHandler } from "react";
 import { TFunction, useTranslation } from "react-i18next";
 import { PropsWithChildren } from "../../common/interfaces";
@@ -11,6 +12,11 @@ const languages: LanguagesObject = {
   en: { nativeName: "English", code: "en" },
   fr: { nativeName: "Français", code: "fr" },
 };
+
+type ChangeLanguagei18n = (
+  lng?: string | undefined,
+  callback?: Callback | undefined
+) => Promise<TFunction>;
 
 interface EventTargetWithName extends EventTarget {
   name: string;
@@ -182,9 +188,13 @@ function Frame(props: PropsWithChildren) {
   );
 }
 
-function ChangeLanguage(i18n: any) {
-  const changeLanguage: MouseEventHandler<HTMLButtonElement> = (e) => {
-    i18n.changeLanguage((e.target as EventTargetWithName).name);
+function ChangeLanguage(
+  resolvedLanguage: string,
+  changeLanguage: ChangeLanguagei18n
+) {
+  const change: MouseEventHandler<HTMLButtonElement> = (e) => {
+    const { name: newLanguage } = e.target as EventTargetWithName;
+    changeLanguage(newLanguage);
   };
   return (
     <div className="flex flex-row tablet:flex-col flex-wrap w-48">
@@ -193,18 +203,18 @@ function ChangeLanguage(i18n: any) {
           key={languages[lng].code}
           name={languages[lng].code}
           className={`${
-            i18n.resolvedLanguage === lng
+            resolvedLanguage === lng
               ? "text-mexicanGreen-light underline"
               : "text-mexicanBone"
           } my-1 text-left z-30`}
           style={{
-            fontWeight: i18n.resolvedLanguage === lng ? 700 : 400,
+            fontWeight: resolvedLanguage === lng ? 700 : 400,
             fontFamily: "goodlife-sans-condensed, sans-serif",
             fontStyle: "normal",
             fontSize: "1.5rem",
           }}
           type="submit"
-          onClick={changeLanguage}
+          onClick={change}
         >
           {`${languages[lng].nativeName}`}
           &#160;
@@ -214,22 +224,27 @@ function ChangeLanguage(i18n: any) {
   );
 }
 
-function Languages(t: TFunction<"translation", undefined>, i18n: any) {
+function Languages(
+  t: TFunction<"translation", undefined>,
+  resolvedLanguage: string,
+  changeLanguage: ChangeLanguagei18n
+) {
   return (
     <div className="flex flex-col w-72 items-center mt-5 ml-5 mr-5">
       {WhatIsAMilpa(t)}
-      {ChangeLanguage(i18n)}
+      {ChangeLanguage(resolvedLanguage, changeLanguage)}
     </div>
   );
 }
 
 function Infographic() {
   const { t, i18n } = useTranslation();
+  const { resolvedLanguage, changeLanguage } = i18n;
 
   return (
     <Layout>
       <Frame>
-        {Languages(t, i18n)}
+        {Languages(t, resolvedLanguage, changeLanguage)}
         {Info(t)}
       </Frame>
     </Layout>
