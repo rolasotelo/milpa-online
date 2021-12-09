@@ -23,7 +23,7 @@ function Layout(props: PropsWithChildren) {
   return (
     <div className="relative flex-col w-screen overflow-x-hidden">
       <div className="relative w-20.38rem mx-auto max-w-100vw md:w-herobox-web h-herobox-web mt-5 md:mt-herobox-top-web">
-        {BrushStrokes}
+        {BrushStrokes()}
         {children}
       </div>
     </div>
