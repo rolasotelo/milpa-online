@@ -3,7 +3,7 @@ import useGameContext from "../../Hooks/useGameContext/useGameContext";
 
 interface Props {}
 
-const StatusBoard = (props: Props) => {
+function StatusBoard(props: Props) {
   const context = useGameContext();
   const card = context.selectedCard.card;
   const rules = card ? `${card.name}: ${card.rules}` : "";
@@ -12,6 +12,6 @@ const StatusBoard = (props: Props) => {
       {rules}
     </div>
   );
-};
+}
 
 export default StatusBoard;

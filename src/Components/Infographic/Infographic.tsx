@@ -44,7 +44,7 @@ function Infographic() {
               <div className="flex flex-row tablet:flex-col flex-wrap w-48">
                 {Object.keys(languages).map((lng, key) => (
                   <button
-                    key={key}
+                    key={languages[lng].code}
                     name={languages[lng].code}
                     className={`${
                       i18n.resolvedLanguage === lng
