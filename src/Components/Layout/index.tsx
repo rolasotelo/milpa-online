@@ -4,13 +4,14 @@ interface Props {
   children: ReactNode;
 }
 
-const Layout = (props: Props) => {
+function Layout(props: Props) {
+  const { children } = props;
   return (
     <div className="bg-milpaBeige-default min-h-screen">
       <Navbar />
-      <div className="flex flex-col  py-2 mx-auto">{props.children}</div>
+      <div className="flex flex-col mx-auto">{children}</div>
     </div>
   );
-};
+}
 
 export default Layout;

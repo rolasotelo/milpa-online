@@ -1,4 +1,3 @@
-import { flatten, pluck } from "underscore";
 import {
   compute_total_not_sorrounding_card_in_milpa,
   is_there_in_slot,

@@ -19,6 +19,11 @@ module.exports = {
           default: "#c83262",
           dark: "#641931",
         },
+        milpaGreen: {
+          light: "#7c8c03",
+          default: "#324001",
+          dark: "#1a2601",
+        },
         // ! Old Colors, remove when possible
         mexicanPink: "#d91a60",
         mexicanBlue: "#253659",
@@ -63,15 +68,30 @@ module.exports = {
         "milpa-mobile": "url('/static/welcome.svg#milpa-mobile-herobox-usage')",
         "mountains-herobox":
           "url('/static/welcome.svg#mountains-herobox-usage')",
+        nopal: "url('/static/welcome.svg#nopal-usage')",
+        "corn-box": "url('/static/welcome.svg#corn-box-usage')",
         "create-background":
           "url('/static/create.svg#create-background-usage')",
         "join-background": "url('/static/create.svg#join-background-usage')",
         "green-banner": "url('/static/banners.svg#green-banner-usage')",
         "green-banner-mobile":
           "url('/static/banners.svg#green-banner-mobile-usage')",
+        "brush-green-1": "url('/static/art.svg#brush-green-1-usage')",
+        "brush-pink-1": "url('/static/art.svg#brush-pink-1-usage')",
+        "brush-pink-2": "url('/static/art.svg#brush-pink-2-usage')",
+        "brush-pink-3": "url('/static/art.svg#brush-pink-3-usage')",
+        "brush-pink-4": "url('/static/art.svg#brush-pink-4-usage')",
+        "symbol-corner-1": "url('/static/art.svg#symbol-corner-1-usage')",
+        "symbol-corner-2": "url('/static/art.svg#symbol-corner-2-usage')",
+        "symbol-corner-3": "url('/static/art.svg#symbol-corner-3-usage')",
+        "symbol-corner-4": "url('/static/art.svg#symbol-corner-4-usage')",
+        "symbol-divisor": "url('/static/art.svg#symbol-divisor-usage')",
       },
       margin: {
         "herobox-top-web": "86px",
+      },
+      screens: {
+        tablet: "960px",
       },
       width: {
         "button-square": "50px",
@@ -80,6 +100,13 @@ module.exports = {
         "milpa-web": "590px",
         "milpa-mobile": "205px",
         "nopal-herobox": "900px",
+        "symbol-divisor": "196px",
+        "brush-pink-1": "287px",
+        "brush-pink-2": "267px",
+        "brush-pink-3": "278px",
+        "brush-pink-4": "373px",
+        nopal: "353px",
+        "corn-box": "156px",
         // ! Old, remove when possible
         "3/8": "37.5%",
         "2/8": "25%",
@@ -91,6 +118,13 @@ module.exports = {
         "milpa-web": "220px",
         "milpa-mobile": "276px",
         "nopal-herobox": "650px",
+        nopal: "199px",
+        "corn-box": "83px",
+        "symbol-divisor": "66px",
+        "brush-pink-1": "451px",
+        "brush-pink-2": "251px",
+        "brush-pink-3": "560px",
+        "brush-pink-4": "547px",
         // ! Old, remove when possible
         "navbar-height": "50px",
       },

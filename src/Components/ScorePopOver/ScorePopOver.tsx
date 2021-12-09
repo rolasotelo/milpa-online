@@ -50,7 +50,7 @@ const ScorePopOver = (props: Props) => {
             >
               <div className="relative  bg-mexicanGreen-dark p-3 flex flex-col">
                 {history.map((item, index) => (
-                  <p
+                  <div
                     key={index}
                     className={`flex items-center p-2 m-1 ${
                       item.type === ScoreLogType.Turn
@@ -101,7 +101,7 @@ const ScorePopOver = (props: Props) => {
                         );
                       })}
                     </div>
-                  </p>
+                  </div>
                 ))}
               </div>
               <div className="p-4 bg-mexicanGreen-light">

@@ -69,7 +69,7 @@ const LayoutGame = (props: Props) => {
                 {props.players.remote
                   ? `${
                       props.scores[Players.Opponent]
-                    }  🍫 : ${props.players.remote?.toUpperCase()}`
+                    }  🍫 : ${props.players.remote.toUpperCase()}`
                   : "Waiting..."}
               </a>
             </div>

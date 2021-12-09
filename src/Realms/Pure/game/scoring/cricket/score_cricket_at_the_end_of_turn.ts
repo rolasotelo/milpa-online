@@ -1,7 +1,7 @@
-import { filter, pluck } from "underscore";
+import { filter } from "underscore";
 import { ModifierId } from "../../../enums";
 import { AnyCard, Board, BoardSlot } from "../../../types";
-import { Cricket, EmptySlot, Pumpkin } from "../../cards";
+import { Cricket, EmptySlot } from "../../cards";
 import { compute_total_cards_in_board, is_there_in_slot } from "../../helpers";
 import { PLUS_PER_CRICKET_IN_YOUR_BOARD } from "./constants";
 

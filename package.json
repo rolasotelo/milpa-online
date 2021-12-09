@@ -24,6 +24,7 @@
     "sprite:create": "svg-sprite -s --symbol-dest svgs --symbol-sprite create-sprite.svg svgs/individual-icons/create/*.svg",
     "sprite:welcome": "svg-sprite -s --symbol-dest svgs --symbol-sprite welcome-sprite.svg svgs/individual-icons/welcome/*.svg",
     "sprite:navbar": "svg-sprite -s --symbol-dest svgs --symbol-sprite navbar-sprite.svg svgs/individual-icons/navbar/*.svg",
+    "sprite:art": "svg-sprite -s --symbol-dest svgs --symbol-sprite art-sprite.svg svgs/individual-icons/art/*.svg",
     "sprite": "yarn sprite:buttons && yarn sprite:banners && yarn sprite:create && yarn sprite:welcome"
   },
   "devDependencies": {

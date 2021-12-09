@@ -1,4 +1,4 @@
-import { flatten, indexOf, pluck, reduce } from "underscore";
+import { flatten, pluck, reduce } from "underscore";
 import { slot_has_card } from "..";
 import { CropId, GoodId } from "../../../enums";
 import { AnyCard, BoardSlot } from "../../../types";
