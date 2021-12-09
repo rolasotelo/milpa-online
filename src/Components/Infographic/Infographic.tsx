@@ -1,20 +1,26 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import { useTranslation } from "react-i18next";
 
-interface Props {}
-
 interface Languages {
-  [index: string]: { nativeName: string };
+  [index: string]: { nativeName: string; code: string };
 }
-const lngs: Languages = {
-  cz: { nativeName: "Čeština" },
-  es: { nativeName: "Español" },
-  en: { nativeName: "English" },
-  fr: { nativeName: "Français" },
+
+const languages: Languages = {
+  cz: { nativeName: "Čeština", code: "cz" },
+  es: { nativeName: "Español", code: "es" },
+  en: { nativeName: "English", code: "en" },
+  fr: { nativeName: "Français", code: "fr" },
 };
 
-const Infographic = (props: Props) => {
+interface EventTargetWithName extends EventTarget {
+  name: string;
+}
+
+function Infographic() {
   const { t, i18n } = useTranslation();
+  const changeLanguage: MouseEventHandler<HTMLButtonElement> = (e) => {
+    i18n.changeLanguage((e.target as EventTargetWithName).name);
+  };
   return (
     <div className="relative flex-col w-screen  overflow-x-hidden">
       <div className="relative w-20.38rem mx-auto max-w-100vw tablet:w-herobox-web tablet:h-herobox-web mt-5 tablet:mt-herobox-top-web">
@@ -36,9 +42,10 @@ const Infographic = (props: Props) => {
               </div>
 
               <div className="flex flex-row tablet:flex-col flex-wrap w-48">
-                {Object.keys(lngs).map((lng) => (
+                {Object.keys(languages).map((lng, key) => (
                   <button
-                    key={lng}
+                    key={key}
+                    name={languages[lng].code}
                     className={`${
                       i18n.resolvedLanguage === lng
                         ? "text-mexicanGreen-light underline"
@@ -51,9 +58,9 @@ const Infographic = (props: Props) => {
                       fontSize: "1.5rem",
                     }}
                     type="submit"
-                    onClick={() => i18n.changeLanguage(lng)}
+                    onClick={changeLanguage}
                   >
-                    {`${lngs[lng].nativeName}`}
+                    {`${languages[lng].nativeName}`}
                     &#160;
                   </button>
                 ))}
@@ -143,6 +150,6 @@ const Infographic = (props: Props) => {
       </div>
     </div>
   );
-};
+}
 
 export default Infographic;

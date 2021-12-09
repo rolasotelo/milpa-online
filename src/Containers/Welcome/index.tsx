@@ -5,9 +5,7 @@ import HeroBox from "../../Components/HeroBox";
 import Infographic from "../../Components/Infographic/Infographic";
 import Layout from "../../Components/Layout";
 
-interface Props {}
-
-export const Welcome = (props: Props) => {
+export function Welcome() {
   const { t } = useTranslation();
   const h = useHistory();
   return (
@@ -35,4 +33,4 @@ export const Welcome = (props: Props) => {
       <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-36 tablet:mt-10 md:mt-14 mb-10 md:mb-14  mx-auto" />
     </Layout>
   );
-};
+}

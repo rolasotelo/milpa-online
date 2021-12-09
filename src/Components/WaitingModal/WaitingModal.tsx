@@ -9,7 +9,7 @@ interface Props {
   buttonText: string;
 }
 
-const WaitingModal = (props: Props) => {
+function WaitingModal(props: Props) {
   let [isOpen, setIsOpen] = useState(true);
 
   const openModal = () => {
@@ -120,6 +120,6 @@ const WaitingModal = (props: Props) => {
       </Transition>
     </>
   );
-};
+}
 
 export default WaitingModal;

@@ -26,6 +26,10 @@ import { Board, ScoringHistory } from "../../../types";
 import { is_modifier_already_present_in_slot } from "../../helpers";
 import { score_corn_at_the_end_of_the_game } from "../corn/score_corn_at_the_end_of_the_game";
 
+const sign = (value: number) => {
+  return value >= 0 ? "+" : "";
+};
+
 export const compute_board_and_score_at_the_end_of_the_game = (
   board: Board,
   score: number
@@ -205,8 +209,4 @@ export const compute_board_and_score_at_the_end_of_the_game = (
     score: newScore,
     scoringLog,
   };
-};
-
-const sign = (value: number) => {
-  return value >= 0 ? "+" : "";
 };
