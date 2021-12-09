@@ -192,9 +192,9 @@ function ChangeLanguage(
   resolvedLanguage: string,
   changeLanguage: ChangeLanguagei18n
 ) {
-  const change: MouseEventHandler<HTMLButtonElement> = (e) => {
+  const change: MouseEventHandler<HTMLButtonElement> = async (e) => {
     const { name: newLanguage } = e.target as EventTargetWithName;
-    changeLanguage(newLanguage);
+    await changeLanguage(newLanguage);
   };
   return (
     <div className="flex flex-row tablet:flex-col flex-wrap w-48">
