@@ -4,7 +4,7 @@ export const handleConnection = (
   socket: MiSocket,
   sessionStorage: Storage,
   nickname: string
-) => {
+): void  => {
   const sessionID = sessionStorage.getItem("sessionID");
 
   if (sessionID) {

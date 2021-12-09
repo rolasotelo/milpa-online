@@ -43,7 +43,7 @@ export const score_beans_at_the_end_of_turn = (
 
 const compute_total_beans = compute_total_cards_in_board(Beans);
 
-export const is_beans_harvest_turn = (turn: number) => {
+export const is_beans_harvest_turn = (turn: number): boolean  => {
   return indexOf(BEANS_HARVEST_TURNS(), turn) >= 0;
 };
 

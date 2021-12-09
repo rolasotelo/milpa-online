@@ -250,7 +250,7 @@ export const compute_score_on_card_played = (
       break;
     default:
       throw Error(`${card.name}: scoring not implemented`);
-      break;
+      
   }
   return { scores: newScores, scoringLog };
 };

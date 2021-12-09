@@ -5,7 +5,7 @@ export const handleSessionSaved = (
   socket: MiSocket,
   setNickname: React.Dispatch<React.SetStateAction<string>>,
   setRoomCode: React.Dispatch<React.SetStateAction<string>>
-) => {
+): void  => {
   // attach the session ID to the next reconnection attempts
   socket.auth = { sessionID: player.sessionID, nickname: player.nickname };
   // store it in the localStorage

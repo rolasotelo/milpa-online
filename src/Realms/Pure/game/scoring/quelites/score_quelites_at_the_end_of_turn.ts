@@ -39,7 +39,7 @@ export const score_quelites_at_the_end_of_turn = (
   };
 };
 
-export const is_quelites_harvest_turn = (turn: number) => {
+export const is_quelites_harvest_turn = (turn: number): boolean  => {
   return indexOf(QUELITES_HARVEST_TURNS(), turn) >= 0;
 };
 

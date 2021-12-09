@@ -6,6 +6,7 @@ node_modules/
 svgs/
 *.log
 */milpa.code-workspace
+src/milpa.code-workspace
 
 # OS generated files
 .DS_Store
