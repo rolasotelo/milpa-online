@@ -39,7 +39,7 @@ export const score_red_corn_at_the_end_of_turn = (
 
 const compute_total_red_corns = compute_total_cards_in_board(RedCorn);
 
-export const is_red_corn_harvest_turn = (turn: number) => {
+export const is_red_corn_harvest_turn = (turn: number): boolean  => {
   return indexOf(RED_CORN_HARVEST_TURNS(), turn) >= 0;
 };
 

@@ -26,7 +26,7 @@ export const score_maguey_at_the_end_of_turn = (
   };
 };
 
-export const is_maguey_harvest_turn = (turn: number) => {
+export const is_maguey_harvest_turn = (turn: number): boolean  => {
   return indexOf(MAGUEY_HARVEST_TURNS(), turn) >= 0;
 };
 

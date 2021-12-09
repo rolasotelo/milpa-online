@@ -41,6 +41,6 @@ export const compute_total_adjacencies = (
 export const slot_has_card = (
   slot: readonly AnyCard[],
   card: GoodId | CropId | "empty"
-) => {
+): boolean  => {
   return indexOf(pluck(slot, "id"), card) >= 0;
 };
