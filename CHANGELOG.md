@@ -121,3 +121,11 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 - Continuation of the work done in the previous PR, now it's turn for the infographic section to be implemented. (rola@hey.com) Nov 2021
 
 - I learned a lot about responsiveness while takling the difficulties of this PR. And not only that but I started using DeepSource and DeepScan to see how good they are and what kind of value they can add for the project. For now, with the little experience that I have using them, they seem promising and I'm learning of antipatterns and even if some times it can be a little anoying to solve the issues, I can see how it is important to have consistent and good patterns. Next PR will be really interesting because I'm planning on implementing a carrousel for the leaderboard on smaller screens. (rola@hey.com) Dec 2021
+
+## Issue [#45](https://github.com/rolasotelo/la-milpa-online/issues/45)
+
+### Implement Leaderboard in Welcome page
+
+    Add infographic section to welcome page.
+
+- Continuation of the work done in the previous PR, now it's turn for the leaderboard section to be implemented. (rola@hey.com) Dec 2021
