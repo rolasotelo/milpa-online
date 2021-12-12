@@ -129,3 +129,5 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
     Add infographic section to welcome page.
 
 - Continuation of the work done in the previous PR, now it's turn for the leaderboard section to be implemented. (rola@hey.com) Dec 2021
+
+- repository name changed to milpa-online. (rola@hey.com) Dec 2021

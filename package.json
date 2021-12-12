@@ -1,9 +1,9 @@
 {
-  "name": "la-milpa-online",
+  "name": "milpa-online",
   "version": "1.0.0",
-  "description": "Client for 'Milpa' online card game",
+  "description": "Client for 'Milpa' online cardgame",
   "main": "src/index.js",
-  "repository": "git@github.com:rolasotelo/la-milpa-online.git",
+  "repository": "git@github.com:rolasotelo/milpa-online.git",
   "author": "Rolando Sotelo <rola@hey.com>",
   "keywords": [
     "react",
