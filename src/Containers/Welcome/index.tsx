@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import HeroBox from "../../Components/HeroBox";
 import Infographic from "../../Components/Infographic/Infographic";
 import Layout from "../../Components/Layout";
+import Leaderboard from "../../Components/Leaderboard/Leaderboard";
 
 export function Welcome() {
   const { t } = useTranslation();
@@ -33,7 +34,7 @@ export function Welcome() {
       <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-36 tablet:mt-10 md:mt-14   mx-auto" />
 
       <div className="flex  justify-center">
-        <Infographic />
+        <Leaderboard />
       </div>
 
       <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-36 tablet:mt-10 md:mt-14 mb-10 md:mb-14  mx-auto" />
