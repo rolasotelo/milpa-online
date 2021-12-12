@@ -30,6 +30,12 @@ export function Welcome() {
         <div className="absolute -bottom-28 tablet:bottom-0 -left-44 tablet:-left-20 z-20 bg-nopal  w-nopal h-nopal" />
       </div>
 
+      <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-36 tablet:mt-10 md:mt-14   mx-auto" />
+
+      <div className="flex  justify-center">
+        <Infographic />
+      </div>
+
       <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-36 tablet:mt-10 md:mt-14 mb-10 md:mb-14  mx-auto" />
     </Layout>
   );

@@ -1,6 +1,5 @@
-import { Callback } from "i18next";
 import React, { MouseEventHandler } from "react";
-import { TFunction, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { PropsWithChildren } from "../../common/interfaces";
 
 interface LanguagesObject {
@@ -12,11 +11,6 @@ const languages: LanguagesObject = {
   en: { nativeName: "English", code: "en" },
   fr: { nativeName: "Français", code: "fr" },
 };
-
-type ChangeLanguagei18n = (
-  lng?: string | undefined,
-  callback?: Callback | undefined
-) => Promise<TFunction>;
 
 interface EventTargetWithName extends EventTarget {
   name: string;
@@ -43,7 +37,8 @@ function Layout(props: PropsWithChildren) {
   );
 }
 
-function Quote(t: TFunction<"translation", undefined>) {
+function Quote() {
+  const { t } = useTranslation();
   return (
     <div className="col-span-5 m-5 tablet:m-0 tablet:w-full h-80  tablet:h-32 bg-milpaBeige-default ring-8 ring-inset ring-milpaBeige-dark drop-shadow-2xl">
       <div className="flex flex-col ml-5 mr-5  tablet:m-0 items-center h-full justify-center text-milpaGreen-default text-center">
@@ -74,7 +69,8 @@ function Quote(t: TFunction<"translation", undefined>) {
   );
 }
 
-function Title(t: TFunction<"translation", undefined>) {
+function Title() {
+  const { t } = useTranslation();
   return (
     <div
       className="tablet:absolute tablet:inset-y-32 tablet:-left-28 m-1 pr-5 tablet:pr-0 text-milpaBeige-default w-80 text-right transform tablet:-rotate-90"
@@ -91,7 +87,8 @@ function Title(t: TFunction<"translation", undefined>) {
   );
 }
 
-function FirstParagraph(t: TFunction<"translation", undefined>) {
+function FirstParagraph() {
+  const { t } = useTranslation();
   return (
     <div
       className="m-5 text-milpaBeige-default leading-relaxed text-justify "
@@ -107,7 +104,8 @@ function FirstParagraph(t: TFunction<"translation", undefined>) {
   );
 }
 
-function SecondParagraph(t: TFunction<"translation", undefined>) {
+function SecondParagraph() {
+  const { t } = useTranslation();
   return (
     <div
       className="mr-5 tablet:mr-0 mt-5 mb-5 ml-3 text-milpaBeige-default leading-relaxed text-justify"
@@ -134,36 +132,37 @@ function SecondParagraph(t: TFunction<"translation", undefined>) {
   );
 }
 
-function Paragraphs(t: TFunction<"translation", undefined>) {
+function Paragraphs() {
   return (
     <div className="flex flex-col tablet:flex-row tablet:pl-5">
-      {FirstParagraph(t)}
-      {SecondParagraph(t)}
+      <FirstParagraph />
+      <SecondParagraph />
     </div>
   );
 }
 
-function Content(t: TFunction<"translation", undefined>) {
+function Content() {
   return (
     <div className="row-span-2 col-span-4">
       <div className="flex flex-col tablet:flex-row m-1 pt-3 tablet:pt-0 tablet:pl-20 relative">
-        {Title(t)}
-        {Paragraphs(t)}
+        <Title />
+        <Paragraphs />
       </div>
     </div>
   );
 }
 
-function Info(t: TFunction<"translation", undefined>) {
+function Info() {
   return (
     <div className="flex flex-col w-full tablet:mt-6 mr-10">
-      {Quote(t)}
-      {Content(t)}
+      <Quote />
+      <Content />
     </div>
   );
 }
 
-function WhatIsAMilpa(t: TFunction<"translation", undefined>) {
+function WhatIsAMilpa() {
+  const { t } = useTranslation();
   return (
     <div
       className="text-mexicanBone w-48 h-60"
@@ -188,10 +187,9 @@ function Frame(props: PropsWithChildren) {
   );
 }
 
-function ChangeLanguage(
-  resolvedLanguage: string,
-  changeLanguage: ChangeLanguagei18n
-) {
+function ChangeLanguage() {
+  const { i18n } = useTranslation();
+  const { resolvedLanguage, changeLanguage } = i18n;
   const change: MouseEventHandler<HTMLButtonElement> = async (e) => {
     const { name: newLanguage } = e.target as EventTargetWithName;
     await changeLanguage(newLanguage);
@@ -224,28 +222,21 @@ function ChangeLanguage(
   );
 }
 
-function Languages(
-  t: TFunction<"translation", undefined>,
-  resolvedLanguage: string,
-  changeLanguage: ChangeLanguagei18n
-) {
+function Languages() {
   return (
     <div className="flex flex-col w-72 items-center mt-5 ml-5 mr-5">
-      {WhatIsAMilpa(t)}
-      {ChangeLanguage(resolvedLanguage, changeLanguage)}
+      <WhatIsAMilpa />
+      <ChangeLanguage />
     </div>
   );
 }
 
 function Infographic() {
-  const { t, i18n } = useTranslation();
-  const { resolvedLanguage, changeLanguage } = i18n;
-
   return (
     <Layout>
       <Frame>
-        {Languages(t, resolvedLanguage, changeLanguage)}
-        {Info(t)}
+        <Languages />
+        <Info />
       </Frame>
     </Layout>
   );
