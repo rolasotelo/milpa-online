@@ -68,9 +68,25 @@ function Title() {
   );
 }
 
-function Leaders() {
+function Card() {
   const { t } = useTranslation();
   return <div>{t("welcome.leaderboard.title")}</div>;
+}
+
+function Leaders() {
+  return (
+    <div className="flex fle-row flex-wrap">
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+    </div>
+  );
 }
 
 function Content() {

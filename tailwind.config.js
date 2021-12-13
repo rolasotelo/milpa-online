@@ -86,6 +86,10 @@ module.exports = {
         "symbol-corner-3": "url('/static/art.svg#symbol-corner-3-usage')",
         "symbol-corner-4": "url('/static/art.svg#symbol-corner-4-usage')",
         "symbol-divisor": "url('/static/art.svg#symbol-divisor-usage')",
+        "card-gold": "url('/static/leaderboard.svg#card-gold-usage')",
+        "card-green": "url('/static/leaderboard.svg#card-green-usage')",
+        "card-pink": "url('/static/leaderboard.svg#card-pink-usage')",
+        farmer: "url('/static/leaderboard.svg#farmer-usage')",
       },
       margin: {
         "herobox-top-web": "86px",
