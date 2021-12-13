@@ -1,9 +1,9 @@
 {
-  "name": "la-milpa-online",
+  "name": "milpa-online",
   "version": "1.0.0",
-  "description": "Client for 'Milpa' online card game",
+  "description": "Client for 'Milpa' online cardgame",
   "main": "src/index.js",
-  "repository": "git@github.com:rolasotelo/la-milpa-online.git",
+  "repository": "git@github.com:rolasotelo/milpa-online.git",
   "author": "Rolando Sotelo <rola@hey.com>",
   "keywords": [
     "react",
@@ -25,6 +25,7 @@
     "sprite:welcome": "svg-sprite -s --symbol-dest svgs --symbol-sprite welcome-sprite.svg svgs/individual-icons/welcome/*.svg",
     "sprite:navbar": "svg-sprite -s --symbol-dest svgs --symbol-sprite navbar-sprite.svg svgs/individual-icons/navbar/*.svg",
     "sprite:art": "svg-sprite -s --symbol-dest svgs --symbol-sprite art-sprite.svg svgs/individual-icons/art/*.svg",
+    "sprite:leaderboard": "svg-sprite -s --symbol-dest svgs --symbol-sprite leaderboard-sprite.svg svgs/individual-icons/leaderboard/*.svg",
     "sprite": "yarn sprite:buttons && yarn sprite:banners && yarn sprite:create && yarn sprite:welcome"
   },
   "devDependencies": {

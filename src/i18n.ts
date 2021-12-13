@@ -46,6 +46,11 @@ i18n
                 delectus et et similique.`,
               source2: "Beatae Et Voluptatem Vero",
             },
+            leaderboard: {
+              title: "Leaderboard",
+              subtitle:
+                "Earum deleniti eligendi ducimus iste consequatur accusantium ab.",
+            },
           },
         },
       },
@@ -77,6 +82,11 @@ i18n
                 possimus quod exercitationem ipsum culpa. Assumenda aut
                 delectus et et similique.`,
               source2: "Beatae Et Voluptatem Vero",
+            },
+            leaderboard: {
+              title: "Mejores Jugadores",
+              subtitle:
+                "Earum deleniti eligendi ducimus iste consequatur accusantium ab.",
             },
           },
         },
@@ -110,6 +120,11 @@ i18n
                 delectus et et similique.`,
               source2: "Beatae Et Voluptatem Vero",
             },
+            leaderboard: {
+              title: "Classement",
+              subtitle:
+                "Earum deleniti eligendi ducimus iste consequatur accusantium ab.",
+            },
           },
         },
       },
@@ -141,6 +156,11 @@ i18n
                 possimus quod exercitationem ipsum culpa. Assumenda aut
                 delectus et et similique.`,
               source2: "Beatae Et Voluptatem Vero",
+            },
+            leaderboard: {
+              title: "Žebříčkuz",
+              subtitle:
+                "Earum deleniti eligendi ducimus iste consequatur accusantium ab.",
             },
           },
         },

@@ -23,7 +23,7 @@ function Layout(props: PropsWithChildren) {
   return (
     <div className="relative flex-col w-screen overflow-x-hidden">
       <div className="relative w-20.38rem mx-auto max-w-100vw md:w-herobox-web h-herobox-web mt-5 md:mt-herobox-top-web">
-        {BrushStrokes()}
+        <BrushStrokes />
         {children}
       </div>
     </div>
@@ -39,7 +39,8 @@ function Frame(props: PropsWithChildren) {
   );
 }
 
-function PlayButton(onClick: () => void, text: string) {
+function PlayButton(props: { onClick: () => void; text: string }) {
+  const { onClick, text } = props;
   return (
     <button
       type="button"
@@ -57,12 +58,13 @@ function PlayButton(onClick: () => void, text: string) {
   );
 }
 
-function CallToAction(onClick: () => void, text: string) {
+function CallToAction(props: { onClick: () => void; text: string }) {
+  const { onClick, text } = props;
   return (
     <>
       <div className="absolute inset-x-0 md:-top-94px bg-nopal-herobox mx-auto max-w-100vw w-20.38rem h-herobox-web md:w-nopal-herobox md:h-nopal-herobox"></div>
       <div className="absolute inset-x-0 top-170px bg-milpa-mobile md:bg-milpa-web mx-auto w-milpa-mobile h-milpa-mobile md:w-milpa-web md:h-milpa-web">
-        {PlayButton(onClick, text)}
+        <PlayButton onClick={onClick} text={text} />
       </div>
     </>
   );
@@ -73,7 +75,9 @@ function HeroBox(props: Props) {
 
   return (
     <Layout>
-      <Frame>{CallToAction(onClick, text)}</Frame>
+      <Frame>
+        <CallToAction onClick={onClick} text={text} />
+      </Frame>
     </Layout>
   );
 }

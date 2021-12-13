@@ -86,6 +86,10 @@ module.exports = {
         "symbol-corner-3": "url('/static/art.svg#symbol-corner-3-usage')",
         "symbol-corner-4": "url('/static/art.svg#symbol-corner-4-usage')",
         "symbol-divisor": "url('/static/art.svg#symbol-divisor-usage')",
+        "card-gold": "url('/static/leaderboard.svg#card-gold-usage')",
+        "card-green": "url('/static/leaderboard.svg#card-green-usage')",
+        "card-pink": "url('/static/leaderboard.svg#card-pink-usage')",
+        farmer: "url('/static/leaderboard.svg#farmer-usage')",
       },
       margin: {
         "herobox-top-web": "86px",
@@ -105,8 +109,11 @@ module.exports = {
         "brush-pink-2": "267px",
         "brush-pink-3": "278px",
         "brush-pink-4": "373px",
+        "brush-green-1": "875px",
         nopal: "353px",
         "corn-box": "156px",
+        "leaderboard-card": "172px",
+        farmer: "504px",
         // ! Old, remove when possible
         "3/8": "37.5%",
         "2/8": "25%",
@@ -125,6 +132,9 @@ module.exports = {
         "brush-pink-2": "251px",
         "brush-pink-3": "560px",
         "brush-pink-4": "547px",
+        "brush-green-1": "504px",
+        "leaderboard-card": "232px",
+        farmer: "354px",
         // ! Old, remove when possible
         "navbar-height": "50px",
       },
