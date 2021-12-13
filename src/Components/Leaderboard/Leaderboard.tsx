@@ -41,7 +41,7 @@ function BrushStrokesBackground() {
 function Title() {
   const { t } = useTranslation();
   return (
-    <div className="flex flex-row-reverse text-milpaBeige-default">
+    <div className="flex flex-row-reverse text-milpaBeige-default max-h-20">
       <div
         className="mr-4 mt-1"
         style={{
@@ -68,23 +68,38 @@ function Title() {
   );
 }
 
-function Card() {
+function Card(props: { position: number }) {
   const { t } = useTranslation();
-  return <div>{t("welcome.leaderboard.title")}</div>;
+  const { position } = props;
+  const background = (position: number): string => {
+    if (position === 1) return "bg-card-gold";
+    if (position > 1 && position < 6) return "bg-card-pink";
+    return "bg-card-green";
+  };
+  return (
+    <div
+      className={`z-20 w-leaderboard-card h-leaderboard-card ${background(
+        position
+      )}`}
+    >
+      {position}
+    </div>
+  );
 }
 
 function Leaders() {
   return (
-    <div className="flex fle-row flex-wrap">
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+    <div className="flex fle-row flex-wrap justify-around mx-2">
+      <Card position={2} />
+      <Card position={3} />
+      <Card position={4} />
+      <Card position={5} />
+      <Card position={1} />
+      <Card position={6} />
+      <Card position={7} />
+      <Card position={8} />
+      <Card position={9} />
+      <div className="w-leaderboard-card h-leaderboard-card" />
     </div>
   );
 }

@@ -441,6 +441,6 @@
     </defs>
     <use id="card-green-usage" xlink:href="#card-green" class="sprite-symbol-usage"></use>
     <use id="card-pink-usage" xlink:href="#card-pink" class="sprite-symbol-usage"></use>
-    <use id="card-gold-usage" xlink:href="#card-green" class="sprite-symbol-usage"></use>
+    <use id="card-gold-usage" xlink:href="#card-gold" class="sprite-symbol-usage"></use>
     <use id="farmer-usage" xlink:href="#farmer" class="sprite-symbol-usage"></use>
 </svg>

@@ -112,6 +112,7 @@ module.exports = {
         "brush-green-1": "875px",
         nopal: "353px",
         "corn-box": "156px",
+        "leaderboard-card": "172px",
         // ! Old, remove when possible
         "3/8": "37.5%",
         "2/8": "25%",
@@ -131,6 +132,7 @@ module.exports = {
         "brush-pink-3": "560px",
         "brush-pink-4": "547px",
         "brush-green-1": "504px",
+        "leaderboard-card": "232px",
         // ! Old, remove when possible
         "navbar-height": "50px",
       },
