@@ -68,21 +68,69 @@ function Title() {
   );
 }
 
-function Card(props: { position: number }) {
-  const { t } = useTranslation();
-  const { position } = props;
+function Circle(props: { position: number; score: number }) {
+  const { position, score } = props;
+  return (
+    <div
+      className="flex flex-col text-center ml-5 mt-4 pb-3 h-40 justify-between"
+      style={{
+        fontFamily: "goodlife-serif, sans-serif",
+        fontWeight: 400,
+        fontStyle: "normal",
+        fontSize: "2.25rem",
+      }}
+    >
+      <p>#{position}</p>
+      <p>{score}</p>
+    </div>
+  );
+}
+
+function Rectangle(props: { nickname: string; date: string }) {
+  const { nickname, date } = props;
+  return (
+    <div
+      className="flex flex-col text-center ml-5 pb-1 h-10 justify-between text-milpaBeige-default max-h-20"
+      style={{
+        fontWeight: 400,
+        fontFamily: "bookmania, sans-serif",
+        fontStyle: "normal",
+        fontSize: "1rem",
+      }}
+    >
+      <p
+        style={{
+          fontWeight: 700,
+        }}
+      >
+        {nickname}
+      </p>
+      <p>{date}</p>
+    </div>
+  );
+}
+
+function Card(props: {
+  position: number;
+  score: number;
+  nickname: string;
+  date: string;
+}) {
+  const { position, score, nickname, date } = props;
   const background = (position: number): string => {
     if (position === 1) return "bg-card-gold";
     if (position > 1 && position < 6) return "bg-card-pink";
     return "bg-card-green";
   };
+
   return (
     <div
       className={`z-20 w-leaderboard-card h-leaderboard-card ${background(
         position
       )}`}
     >
-      {position}
+      <Circle position={position} score={score} />
+      <Rectangle nickname={nickname} date={date} />
     </div>
   );
 }
@@ -90,15 +138,35 @@ function Card(props: { position: number }) {
 function Leaders() {
   return (
     <div className="flex fle-row flex-wrap justify-around mx-2">
-      <Card position={2} />
-      <Card position={3} />
-      <Card position={4} />
-      <Card position={5} />
-      <Card position={1} />
-      <Card position={6} />
-      <Card position={7} />
-      <Card position={8} />
-      <Card position={9} />
+      <Card position={2} score={540} nickname="Don Song" date="18/12/2021" />
+      <Card position={3} score={537} nickname="Trisha Hall" date="18/02/2021" />
+      <Card
+        position={4}
+        score={530}
+        nickname="Dora Golstein"
+        date="13/02/2021"
+      />
+      <Card position={5} score={523} nickname="Tedy Cowan" date="12/01/2021" />
+      <Card position={1} score={550} nickname="Trisha Hall" date="18/02/2021" />
+      <Card position={6} score={520} nickname="Inley Li" date="14/11/2021" />
+      <Card
+        position={7}
+        score={511}
+        nickname="Deana Pittman"
+        date="13/07/2021"
+      />
+      <Card
+        position={8}
+        score={509}
+        nickname="Dora Golstein"
+        date="03/11/2021"
+      />
+      <Card
+        position={9}
+        score={508}
+        nickname="Alfredo Hall"
+        date="16/12/2021"
+      />
       <div className="w-leaderboard-card h-leaderboard-card" />
     </div>
   );
