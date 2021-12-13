@@ -130,4 +130,6 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 
 - Continuation of the work done in the previous PR, now it's turn for the leaderboard section to be implemented. (rola@hey.com) Dec 2021
 
-- repository name changed to milpa-online. (rola@hey.com) Dec 2021
+- Repository name changed to milpa-online. (rola@hey.com) Dec 2021
+
+- Leaderboard section with responsiveness finished. Icons for cards are still missing, I'm planning on having a sprite with around 15 different icons. A direct correspondence between icon id and sprite id will allow for cars to render the right icon. (rola@hey.com) Dec 2021
