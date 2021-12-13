@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { PropsWithChildren } from "../../common/interfaces";
 
 function BrushStrokes() {
@@ -37,11 +38,56 @@ function BrushStrokesBackground() {
   );
 }
 
+function Title() {
+  const { t } = useTranslation();
+  return (
+    <div className="flex flex-row-reverse text-milpaBeige-default">
+      <div
+        className="mr-4 mt-1"
+        style={{
+          fontWeight: 400,
+          fontFamily: "goodlife-sans-condensed, sans-serif",
+          fontStyle: "normal",
+          fontSize: "3.375rem",
+        }}
+      >
+        {t("welcome.leaderboard.title")}
+      </div>
+      <div
+        className="w-80 mt-5 mr-2 text-right"
+        style={{
+          fontWeight: 700,
+          fontFamily: "bookmania, sans-serif",
+          fontStyle: "normal",
+          fontSize: "1rem",
+        }}
+      >
+        {t("welcome.leaderboard.subtitle")}
+      </div>
+    </div>
+  );
+}
+
+function Leaders() {
+  const { t } = useTranslation();
+  return <div>{t("welcome.leaderboard.title")}</div>;
+}
+
+function Content() {
+  return (
+    <div className="flex flex-col w-full">
+      <Title />
+      <Leaders />
+    </div>
+  );
+}
+
 function Leaderboard() {
   return (
     <Layout>
       <Frame>
         <BrushStrokesBackground />
+        <Content />
       </Frame>
     </Layout>
   );
