@@ -105,6 +105,7 @@ module.exports = {
         "brush-pink-2": "267px",
         "brush-pink-3": "278px",
         "brush-pink-4": "373px",
+        "brush-green-1": "875px",
         nopal: "353px",
         "corn-box": "156px",
         // ! Old, remove when possible
@@ -125,6 +126,7 @@ module.exports = {
         "brush-pink-2": "251px",
         "brush-pink-3": "560px",
         "brush-pink-4": "547px",
+        "brush-green-1": "504px",
         // ! Old, remove when possible
         "navbar-height": "50px",
       },

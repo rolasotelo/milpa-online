@@ -14,7 +14,7 @@ function Layout(props: PropsWithChildren) {
   const { children } = props;
   return (
     <div className="relative flex-col w-screen  overflow-x-hidden">
-      <div className="relative w-20.38rem mx-auto max-w-100vw tablet:w-herobox-web tablet:h-herobox-web mt-5 tablet:mt-herobox-top-web">
+      <div className="relative w-20.38rem h-herobox-web mx-auto max-w-100vw tablet:w-herobox-web tablet:h-herobox-web mt-5 tablet:mt-herobox-top-web">
         <BrushStrokes />
         {children}
       </div>
@@ -25,16 +25,24 @@ function Layout(props: PropsWithChildren) {
 function Frame(props: PropsWithChildren) {
   const { children } = props;
   return (
-    <div className="relative w-20.38rem mx-auto max-w-100vw tablet:w-herobox-web tablet:h-herobox-web bg-milpaBlue-default ring-8 ring-inset ring-milpaBlue-dark">
+    <div className="relative w-20.38rem mx-auto max-w-100vw tablet:w-herobox-web h-herobox-web bg-milpaBlue-default ring-8 ring-inset ring-milpaBlue-dark overflow-x-hidden">
       <div className="flex flex-col tablet:flex-row  h-full">{children}</div>
     </div>
+  );
+}
+
+function BrushStrokesBackground() {
+  return (
+    <div className="absolute inset-x-10 top-6 h-brush-green-1 w-brush-green-1 bg-brush-green-1" />
   );
 }
 
 function Leaderboard() {
   return (
     <Layout>
-      <Frame>Holi</Frame>
+      <Frame>
+        <BrushStrokesBackground />
+      </Frame>
     </Layout>
   );
 }
