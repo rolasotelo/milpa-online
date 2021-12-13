@@ -18,10 +18,10 @@ export function Welcome() {
           }}
           text={t("welcome.herobox.callToAction")}
         />
-        <div className="absolute inset-x-0 top-32  md:top-44 bg-mountains-herobox mx-auto max-w-100vw md:w-mountains h-mountains" />
+        <div className="absolute inset-x-0 top-32  tablet:top-44 bg-mountains-herobox mx-auto max-w-100vw tablet:w-mountains h-mountains" />
       </div>
 
-      <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-32 md:mt-32 mb-6 md:mb-0  mx-auto" />
+      <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-32 talet:mt-32 mb-6 talet:mb-0  mx-auto" />
 
       <div className="flex  justify-center">
         <Infographic />
@@ -31,10 +31,13 @@ export function Welcome() {
         <div className="absolute -bottom-28 tablet:bottom-0 -left-44 tablet:-left-20 z-20 bg-nopal  w-nopal h-nopal" />
       </div>
 
-      <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-36 tablet:mt-10 md:mt-14   mx-auto" />
+      <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-36 tablet:mt-10 mb-6 talet:mb-0 mx-auto" />
 
       <div className="flex  justify-center">
         <Leaderboard />
+      </div>
+      <div className="relative w-20.38rem tablet:w-herobox-web h-10 mx-auto ">
+        <div className="absolute -bottom-36 tablet:-bottom-16 -left-40 tablet:-left-72 z-20 bg-farmer  w-farmer h-farmer" />
       </div>
 
       <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-36 tablet:mt-10 md:mt-14 mb-10 md:mb-14  mx-auto" />

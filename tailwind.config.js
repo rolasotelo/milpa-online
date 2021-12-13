@@ -113,6 +113,7 @@ module.exports = {
         nopal: "353px",
         "corn-box": "156px",
         "leaderboard-card": "172px",
+        farmer: "504px",
         // ! Old, remove when possible
         "3/8": "37.5%",
         "2/8": "25%",
@@ -133,6 +134,7 @@ module.exports = {
         "brush-pink-4": "547px",
         "brush-green-1": "504px",
         "leaderboard-card": "232px",
+        farmer: "354px",
         // ! Old, remove when possible
         "navbar-height": "50px",
       },
