@@ -34,16 +34,16 @@ function Frame(props: PropsWithChildren) {
 
 function BrushStrokesBackground() {
   return (
-    <div className="absolute inset-x-10 top-6 h-brush-green-1 w-brush-green-1 bg-brush-green-1" />
+    <div className="absolute inset-x-10 top-52 tablet:top-6 h-brush-green-1 w-brush-green-1 bg-brush-green-1" />
   );
 }
 
 function Title() {
   const { t } = useTranslation();
   return (
-    <div className="flex flex-row-reverse text-milpaBeige-default max-h-20">
+    <div className="flex flex-col tablet:flex-row-reverse text-milpaBeige-default tablet:max-h-20">
       <div
-        className="mr-4 mt-1"
+        className="mr-4 mt-1 text-right"
         style={{
           fontWeight: 400,
           fontFamily: "goodlife-sans-condensed, sans-serif",
@@ -54,7 +54,7 @@ function Title() {
         {t("welcome.leaderboard.title")}
       </div>
       <div
-        className="w-80 mt-5 mr-2 text-right"
+        className="tablet:w-80 mt-5 mr-4 tablet:mr-2 text-right"
         style={{
           fontWeight: 700,
           fontFamily: "bookmania, sans-serif",
@@ -125,9 +125,9 @@ function Card(props: {
 
   return (
     <div
-      className={`z-20 w-leaderboard-card h-leaderboard-card ${background(
-        position
-      )}`}
+      className={`z-20 w-leaderboard-card ${
+        position === 1 ? "mb-14 tablet:mb-0" : "mb-0"
+      } h-leaderboard-card ${background(position)}`}
     >
       <Circle position={position} score={score} />
       <Rectangle nickname={nickname} date={date} />
@@ -137,7 +137,8 @@ function Card(props: {
 
 function Leaders() {
   return (
-    <div className="flex fle-row flex-wrap justify-around mx-2">
+    <div className="flex fle-row flex-wrap justify-around mx-2 mt-10 tablet:mt-0">
+      <Card position={1} score={550} nickname="Trisha Hall" date="18/02/2021" />
       <Card position={2} score={540} nickname="Don Song" date="18/12/2021" />
       <Card position={3} score={537} nickname="Trisha Hall" date="18/02/2021" />
       <Card
@@ -147,7 +148,7 @@ function Leaders() {
         date="13/02/2021"
       />
       <Card position={5} score={523} nickname="Tedy Cowan" date="12/01/2021" />
-      <Card position={1} score={550} nickname="Trisha Hall" date="18/02/2021" />
+      <div className="w-leaderboard-card tablet:h-leaderboard-card" />
       <Card position={6} score={520} nickname="Inley Li" date="14/11/2021" />
       <Card
         position={7}
@@ -167,14 +168,13 @@ function Leaders() {
         nickname="Alfredo Hall"
         date="16/12/2021"
       />
-      <div className="w-leaderboard-card h-leaderboard-card" />
     </div>
   );
 }
 
 function Content() {
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full pb-5 tablet:pb-0">
       <Title />
       <Leaders />
     </div>
