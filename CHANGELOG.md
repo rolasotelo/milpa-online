@@ -1,8 +1,8 @@
 # Milpa Client
 
-Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
+Changelog for [la-milpa-online](https://github.com/rolasotelo/milpa-online)
 
-## Issue [#3](https://github.com/rolasotelo/la-milpa-online/issues/3)
+## Issue [#3](https://github.com/rolasotelo/milpa-online/issues/3)
 
 ### Persist players and handle disconnections (client side)
 
@@ -13,7 +13,7 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 - Probably later I will display a timer to let the player know for how long the room will be open, plus disconection messages for the remaining player. (rola@hey.com)
 - Now that connections are more or less handled, probably a first functional board will be a natural follow up to this issue. (rola@hey.com) Sep 2021
 
-## Issue [#6](https://github.com/rolasotelo/la-milpa-online/issues/6)
+## Issue [#6](https://github.com/rolasotelo/milpa-online/issues/6)
 
 ### Create match workflow (client side)
 
@@ -24,7 +24,7 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 - With this commit I pretty much finished the logic for the interaction between cards and filled or empty slots. I'm actually very happy of how everything turned out at the end. This idea regarding attribute canInteractWith ocurred to me about learning about Attribute Based Access Control Authorization. Next step is to complete the workflow with turn passing between players and finishing the match. (rola@hey) Sep 2021
 - Well you can place cards infinetly in any players milpa, I guess that's something jeje. Now in all seriousness I'm quite proud of the system that manages wheter you can play a card or not in a slot. It makes really easy to add new cards. The next step is to have a fully fleshed match with rules and scoring at the end of it. (rola@hey.com) Sep 2021
 
-## Issue [#19](https://github.com/rolasotelo/la-milpa-online/issues/19)
+## Issue [#19](https://github.com/rolasotelo/milpa-online/issues/19)
 
 ### First match with basic rules and scoring (client side)
 
@@ -36,7 +36,7 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 - Now Milpa and Edges are of type AnyCard[][][] which means that there can be an array of cards on each slot, no limit is provided yet. (rola@hey.com) Oct 2021
 - Now a complete game can be played, and although there is no scoring at the end of each turn nor at the end of the game, a good architecture for this has been developed. The other two moments of scoring will be attended on another PR due to this being already quite large. (rola@hey.com) Oct 2021
 
-## Issue [#22](https://github.com/rolasotelo/la-milpa-online/issues/22)
+## Issue [#22](https://github.com/rolasotelo/milpa-online/issues/22)
 
 ### Score at the end of turn and final score
 
@@ -46,7 +46,7 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 
 - Making the rules for scoring at the end of the turn and atthe end of the game is now properly set up and thers is a full implementation for corn, blue corn and beans. And just as important as that is the system I implemented for storing and dispalying a score history that is so helpful in card games. I will continue with the remaining card rules in different PR due to this one already being long enough. I just want to mention how cool and helpful underscore has been for messing with arrays and objects (rola@hey.com) Nov 2021
 
-## Issue [#25](https://github.com/rolasotelo/la-milpa-online/issues/25)
+## Issue [#25](https://github.com/rolasotelo/milpa-online/issues/25)
 
 ### Implement scoring for Chilli and Pumpkin
 
@@ -60,7 +60,7 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 
 - I really like the idea of implemeting some randomness in the game when it still gives you room to act on. For example with Pumpkin flowers, you can still decide if you want to put something on top of them or not, I'm still not sure what to do with manure, but I will probably work on that next, because it already hapenned to me that I can not end a game because manure cannot been put ot top of anything but empty slots. (rola@hey.com) Nov 2021
 
-## Issue [#27](https://github.com/rolasotelo/la-milpa-online/issues/27)
+## Issue [#27](https://github.com/rolasotelo/milpa-online/issues/27)
 
 ### Implement scoring for Cactus and Coatlicue
 
@@ -70,7 +70,7 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 
 - Now that game has more card rules, I have realized that too many limitations on what cards can be played on top of what card can make for the game being solved so I decided to make not only manure playable on top of other cards, but also corns (Corn, Blue Corn and Red Corn) now will be playable on top of each other, but of course the rule of maximum 2 crops in a slot will still be there. This will make posible to have all the end of game corn conditions satisfied more than once each. Next PR will implement Red Corn and Huitlacoche scoring, which will make natural to handle the new corn interactions (rola@hey.com) Nov 2021
 
-## Issue [#29](https://github.com/rolasotelo/la-milpa-online/issues/29)
+## Issue [#29](https://github.com/rolasotelo/milpa-online/issues/29)
 
 ### Implement scoring for Red Corn and Huitlacoche
 
@@ -78,7 +78,7 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 
 - I will start by making changing rules for all corn colors so they can be playable on top of each other, one thing that I need to keep an eye on is how huitlacoche going to interact with an stack of corns. (rola@hey.com) Nov 2021
 
-## Issue [#31](https://github.com/rolasotelo/la-milpa-online/issues/31)
+## Issue [#31](https://github.com/rolasotelo/milpa-online/issues/31)
 
 ### Implement scoring for Quelites and Cricket
 
@@ -88,7 +88,7 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 
 - I'm still not sure what to implement as a rule for scoring quelites and cricket at the end of the game, or even if one is needed, but I will leave for a revision. Next in the list are Tomatillo and Maguey. (rola@hey.com) Nov 2021
 
-## Issue [#33](https://github.com/rolasotelo/la-milpa-online/issues/33)
+## Issue [#33](https://github.com/rolasotelo/milpa-online/issues/33)
 
 ### Implement scoring for Maguey and Tomatillo
 
@@ -96,7 +96,7 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 
 - 2 more cards to go. Tlaloc and Tomatoe and then some balancing. (rola@hey.com) Nov 2021
 
-## Issue [#35](https://github.com/rolasotelo/la-milpa-online/issues/35)
+## Issue [#35](https://github.com/rolasotelo/milpa-online/issues/35)
 
 ### Implement scoring for Tomatoe and Tlaloc
 
@@ -104,7 +104,7 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 
 - For Tomatoe I'm thinking that I could make it point extra cacao when it is in the same slot with tomatillo and for the scoring at the end of the game maybe scoring extra tomatoe if you surpass 3 tomatoes, which only one player can make it. As for Tlaloc I know that it should interact with the column or row it is immediatly out of, but I'm still not sure how, maybe It can point for every crop in the row or column and have a bonus if the line is full. (rola@hey.com) Nov 2021
 
-## Issue [#37](https://github.com/rolasotelo/la-milpa-online/issues/37)
+## Issue [#37](https://github.com/rolasotelo/milpa-online/issues/37)
 
 ### Welcome page revamp: Herobox
 
@@ -112,7 +112,7 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 
 - This has been a really fruitful PR, a lot of lessons learned regarding fonts, css positioning and svg's, plus internationalization with l18n. I additionally hosted my first svg document in a S3 bucket. In next PR's I will complete the welcome page (Leaderboard and Infographic) plus I will try to put the translations in separate files for then using suspense loading when loading them. (rola@hey.com) Nov 2021
 
-## Issue [#43](https://github.com/rolasotelo/la-milpa-online/issues/43)
+## Issue [#43](https://github.com/rolasotelo/milpa-online/issues/43)
 
 ### Implement Infographic in Welcome page
 
@@ -122,7 +122,7 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 
 - I learned a lot about responsiveness while takling the difficulties of this PR. And not only that but I started using DeepSource and DeepScan to see how good they are and what kind of value they can add for the project. For now, with the little experience that I have using them, they seem promising and I'm learning of antipatterns and even if some times it can be a little anoying to solve the issues, I can see how it is important to have consistent and good patterns. Next PR will be really interesting because I'm planning on implementing a carrousel for the leaderboard on smaller screens. (rola@hey.com) Dec 2021
 
-## Issue [#45](https://github.com/rolasotelo/la-milpa-online/issues/45)
+## Issue [#45](https://github.com/rolasotelo/milpa-online/issues/45)
 
 ### Implement Leaderboard in Welcome page
 
@@ -133,3 +133,11 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/la-milpa-online)
 - Repository name changed to milpa-online. (rola@hey.com) Dec 2021
 
 - Leaderboard section with responsiveness finished. Icons for cards are still missing, I'm planning on having a sprite with around 15 different icons. A direct correspondence between icon id and sprite id will allow for cars to render the right icon. (rola@hey.com) Dec 2021
+
+## Issue [#49](https://github.com/rolasotelo/milpa-online/issues/49)
+
+### Implement responsive design in Match page
+
+    Implement Board and card designs to match page.
+
+- We are back at it. (rola@hey.com) Jan 2022
