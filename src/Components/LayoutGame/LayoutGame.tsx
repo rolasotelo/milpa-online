@@ -12,7 +12,7 @@ interface Props {
 const LayoutGame = (props: Props) => {
   const h = useHistory();
   return (
-    <div className="bg-mexicanBone min-h-screen">
+    <div className="bg-mexicanBone min-h-screen flex flex-col">
       <div className="bg-mexicanBlue">
         <div className="container mx-auto p-2">
           <nav className="flex justify-between text-mexicanBone">
@@ -76,7 +76,7 @@ const LayoutGame = (props: Props) => {
           </nav>
         </div>
       </div>
-      <div className="max-w-7xl flex flex-col justify-center py-4 mx-auto">
+      <div className="max-w-7xl w-full flex-auto flex flex-col justify-center py-4 mx-auto h-full">
         {props.children}
       </div>
     </div>

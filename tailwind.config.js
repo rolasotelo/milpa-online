@@ -35,7 +35,6 @@ module.exports = {
         mexicanBone: "#c7b299",
         mexicanBoneLight: "#C7C3B8",
       },
-      container: {},
       spacing: {
         "60rem": "60rem",
         "35rem": "35rem",
@@ -113,6 +112,7 @@ module.exports = {
         nopal: "353px",
         "corn-box": "156px",
         "leaderboard-card": "172px",
+        "leaderboard-card-small": "133.432px",
         farmer: "504px",
         // ! Old, remove when possible
         "3/8": "37.5%",
@@ -134,6 +134,7 @@ module.exports = {
         "brush-pink-4": "547px",
         "brush-green-1": "504px",
         "leaderboard-card": "232px",
+        "leaderboard-card-small": "180px",
         farmer: "354px",
         // ! Old, remove when possible
         "navbar-height": "50px",
