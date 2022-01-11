@@ -8,7 +8,7 @@ interface PropsWithChildren {
 function Layout(props: PropsWithChildren): ReactElement {
   const { children } = props;
   return (
-    <div className="flex-1 flex flex-row-reverse tablet:flex-col w-full ">
+    <div className="relative flex-1 flex flex-row-reverse tablet:flex-col w-full pr-20 tablet:pr-0">
       {children}
     </div>
   );
@@ -17,7 +17,7 @@ function Card(props: { color: string }) {
   const { color } = props;
   return (
     <div
-      className={`w-leaderboard-card-small h-leaderboard-card-small bg-card-${color}`}
+      className={`tablet:w-leaderboard-card-small tablet:h-leaderboard-card-small tablet:bg-card-${color}`}
     ></div>
   );
 }
@@ -33,7 +33,7 @@ function CardPlaceholder() {
 
 function Cards() {
   return (
-    <div className="flex flex-row justify-between w-20 tablet:w-full p-3 bg-milpaPink-light h-milpa tablet:h-44">
+    <div className="fixed tablet:static right-0 top-20 flex flex-row justify-between w-20 tablet:w-full p-3 bg-milpaPink-light h-mountains tablet:h-44">
       <Card color="green" />
       <Card color="green" />
       <Card color="green" />
@@ -53,7 +53,7 @@ function Milpa() {
 }
 
 function Info() {
-  return <div className="h-milpa w-64 bg-yellow-600"></div>;
+  return <div className="h-80 tablet:h-milpa w-64 bg-yellow-600"></div>;
 }
 
 function Boards() {
