@@ -13,23 +13,54 @@ function Layout(props: PropsWithChildren): ReactElement {
     </div>
   );
 }
-function Card() {
+function Card(props: { color: string }) {
+  const { color } = props;
   return (
-    <div className="w-leaderboard-card-small h-leaderboard-card-small bg-card-pink"></div>
+    <div
+      className={`w-leaderboard-card-small h-leaderboard-card-small bg-card-${color}`}
+    ></div>
+  );
+}
+
+function CardPlaceholder() {
+  return (
+    <div className="w-leaderboard-card-small h-leaderboard-card-small">
+      {" "}
+      1/16
+    </div>
   );
 }
 
 function Cards() {
   return (
-    <div className="w-20 tablet:w-full p-4 bg-milpaPink-light h-52">
-      <Card />
+    <div className="flex flex-row justify-between w-20 tablet:w-full p-3 bg-milpaPink-light h-44">
+      <Card color="green" />
+      <Card color="green" />
+      <Card color="green" />
+      <Card color="green" />
+      <Card color="pink" />
+      <Card color="pink" />
+      <Card color="pink" />
+      <CardPlaceholder />
     </div>
   );
 }
 
+function Milpa() {
+  return <div className="h-milpa w-milpa bg-yellow-800 my-auto"></div>;
+}
+
+function Info() {
+  return <div className="h-milpa w-52 bg-yellow-600 my-auto"></div>;
+}
+
 function Boards() {
   return (
-    <div className="flex-auto w-full p-4 bg-milpaGreen-light ">BOARDS</div>
+    <div className="flex-auto flex flex-row justify-evenly w-full p-4 bg-milpaGreen-light ">
+      <Milpa />
+      <Info />
+      <Milpa />
+    </div>
   );
 }
 

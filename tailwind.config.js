@@ -112,8 +112,9 @@ module.exports = {
         nopal: "353px",
         "corn-box": "156px",
         "leaderboard-card": "172px",
-        "leaderboard-card-small": "133.432px",
+        "leaderboard-card-small": "111.193px",
         farmer: "504px",
+        milpa: "420px",
         // ! Old, remove when possible
         "3/8": "37.5%",
         "2/8": "25%",
@@ -134,8 +135,9 @@ module.exports = {
         "brush-pink-4": "547px",
         "brush-green-1": "504px",
         "leaderboard-card": "232px",
-        "leaderboard-card-small": "180px",
+        "leaderboard-card-small": "150px",
         farmer: "354px",
+        milpa: "420px",
         // ! Old, remove when possible
         "navbar-height": "50px",
       },
