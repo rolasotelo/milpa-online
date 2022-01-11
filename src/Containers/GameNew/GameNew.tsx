@@ -1,5 +1,5 @@
 import React, { ReactElement, ReactNode } from "react";
-import LayoutGame from "../../Components/LayoutGame/LayoutGame";
+import LayoutGameNew from "../../Components/LayoutGame/LayoutGameNew";
 
 interface PropsWithChildren {
   children: ReactNode;
@@ -8,7 +8,7 @@ interface PropsWithChildren {
 function Layout(props: PropsWithChildren): ReactElement {
   const { children } = props;
   return (
-    <div className="flex-1 flex flex-row-reverse tablet:flex-col w-full bg-mexicanBoneLight">
+    <div className="flex-1 flex flex-row-reverse tablet:flex-col w-full ">
       {children}
     </div>
   );
@@ -33,7 +33,7 @@ function CardPlaceholder() {
 
 function Cards() {
   return (
-    <div className="flex flex-row justify-between w-20 tablet:w-full p-3 bg-milpaPink-light h-44">
+    <div className="flex flex-row justify-between w-20 tablet:w-full p-3 bg-milpaPink-light h-milpa tablet:h-44">
       <Card color="green" />
       <Card color="green" />
       <Card color="green" />
@@ -47,16 +47,18 @@ function Cards() {
 }
 
 function Milpa() {
-  return <div className="h-milpa w-milpa bg-yellow-800 my-auto"></div>;
+  return (
+    <div className="h-64 w-64 tablet:h-milpa tablet:w-milpa bg-yellow-800 m-3"></div>
+  );
 }
 
 function Info() {
-  return <div className="h-milpa w-52 bg-yellow-600 my-auto"></div>;
+  return <div className="h-milpa w-64 bg-yellow-600"></div>;
 }
 
 function Boards() {
   return (
-    <div className="flex-auto flex flex-row justify-evenly w-full p-4 bg-milpaGreen-light ">
+    <div className="flex-auto flex flex-col tablet:flex-row justify-evenly items-center w-full tablet:p-4 bg-milpaGreen-light">
       <Milpa />
       <Info />
       <Milpa />
@@ -70,11 +72,11 @@ export default function GameNew(): ReactElement {
     remote: "Gabinkova",
   };
   return (
-    <LayoutGame players={players} scores={["0", "0"]} yourTurn={true}>
+    <LayoutGameNew players={players} scores={["0", "0"]} yourTurn={true}>
       <Layout>
         <Cards />
         <Boards />
       </Layout>
-    </LayoutGame>
+    </LayoutGameNew>
   );
 }
