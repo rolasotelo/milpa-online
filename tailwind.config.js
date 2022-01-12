@@ -115,6 +115,7 @@ module.exports = {
         "leaderboard-card-small": "111.193px",
         farmer: "504px",
         milpa: "450px",
+        "milpa-board-mobile": "270px",
         // ! Old, remove when possible
         "3/8": "37.5%",
         "2/8": "25%",
@@ -138,6 +139,7 @@ module.exports = {
         "leaderboard-card-small": "150px",
         farmer: "354px",
         milpa: "450px",
+        "milpa-board-mobile": "270px",
         // ! Old, remove when possible
         "navbar-height": "50px",
       },

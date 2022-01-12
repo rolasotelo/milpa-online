@@ -47,7 +47,7 @@ function Cards() {
 }
 
 function Slot() {
-  return <div className="tablet:h-14 tablet:w-14 bg-yellow-700"></div>;
+  return <div className="w-9 h-9 tablet:h-14 tablet:w-14 bg-yellow-700"></div>;
 }
 
 function EdgeTopOrBottom() {
@@ -82,8 +82,8 @@ function EdgeMilpaEdge() {
 
 function Milpa() {
   return (
-    <div className="h-64 w-64 tablet:h-milpa tablet:w-milpa bg-yellow-800 m-3 p-2">
-      <div className="grid grid-cols-6 gap-5 place-content-center">
+    <div className="h-milpa-board-mobile w-milpa-board-mobile tablet:h-milpa tablet:w-milpa bg-yellow-800 m-3 p-1 tablet:p-2">
+      <div className="grid grid-cols-6 gap-2 tablet:gap-4 place-content-center h-full">
         <EdgeTopOrBottom />
         <EdgeMilpaEdge />
         <EdgeMilpaEdge />
