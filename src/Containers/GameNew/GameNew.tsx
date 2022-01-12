@@ -46,9 +46,52 @@ function Cards() {
   );
 }
 
+function Slot() {
+  return <div className="tablet:h-14 tablet:w-14 bg-yellow-700"></div>;
+}
+
+function EdgeTopOrBottom() {
+  return (
+    <div className="col-start-2 col-span-4 flex flex-row justify-between">
+      <Slot />
+      <Slot />
+      <Slot />
+      <Slot />
+    </div>
+  );
+}
+
+function EdgeMilpaEdge() {
+  return (
+    <>
+      <div className="col-start-1 col-end-2">
+        <Slot />
+      </div>
+      <div className="col-start-2 col-end-6 flex flex-row justify-between">
+        <Slot />
+        <Slot />
+        <Slot />
+        <Slot />
+      </div>
+      <div className="col-end-7 col-span-1 ...">
+        <Slot />
+      </div>
+    </>
+  );
+}
+
 function Milpa() {
   return (
-    <div className="h-64 w-64 tablet:h-milpa tablet:w-milpa bg-yellow-800 m-3"></div>
+    <div className="h-64 w-64 tablet:h-milpa tablet:w-milpa bg-yellow-800 m-3 p-2">
+      <div className="grid grid-cols-6 gap-5 place-content-center">
+        <EdgeTopOrBottom />
+        <EdgeMilpaEdge />
+        <EdgeMilpaEdge />
+        <EdgeMilpaEdge />
+        <EdgeMilpaEdge />
+        <EdgeTopOrBottom />
+      </div>
+    </div>
   );
 }
 
