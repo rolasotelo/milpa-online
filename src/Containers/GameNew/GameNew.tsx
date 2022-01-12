@@ -17,14 +17,14 @@ function Card(props: { color: string }) {
   const { color } = props;
   return (
     <div
-      className={`tablet:w-leaderboard-card-small tablet:h-leaderboard-card-small tablet:bg-card-${color}`}
+      className={`w-16 h-16 bg-milpaPink-dark tablet:bg-transparent tablet:w-leaderboard-card-small tablet:h-leaderboard-card-small tablet:bg-card-${color}`}
     ></div>
   );
 }
 
 function CardPlaceholder() {
   return (
-    <div className="w-leaderboard-card-small h-leaderboard-card-small">
+    <div className="tablet:w-leaderboard-card-small tablet:h-leaderboard-card-small">
       {" "}
       1/16
     </div>
@@ -33,7 +33,7 @@ function CardPlaceholder() {
 
 function Cards() {
   return (
-    <div className="fixed tablet:static right-0 top-20 flex flex-row justify-between w-20 tablet:w-full p-3 bg-milpaPink-light h-mountains tablet:h-44">
+    <div className="fixed tablet:static right-0 top-20 flex flex-col-reverse tablet:flex-row justify-between items-center w-20 tablet:w-full p-1 tablet:p-3 bg-milpaPink-light h-mountains tablet:h-44">
       <Card color="green" />
       <Card color="green" />
       <Card color="green" />
