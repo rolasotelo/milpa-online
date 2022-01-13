@@ -141,3 +141,4 @@ Changelog for [la-milpa-online](https://github.com/rolasotelo/milpa-online)
     Implement Board and card designs to match page.
 
 - We are back at it. (rola@hey.com) Jan 2022
+- It's been quite a job, trying to create a responsive design of the board for both the web and mobile, because cards need to be visible at all times, and the milpas need to be big enough so you can still touch on every slot and differentiate betweeen crops. I'm still not sure how I will handle showing multiple crops in the same slot. The main problem I faced was growing div's to ocupy containers size, but finally I found that by using flex-1 or flex-auto in the flex items they will grow.
