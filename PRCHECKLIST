@@ -14,6 +14,13 @@
 
 # To name a checklist, create a line entry with the desired filter settings and +title+ Your Checklist Title
 
+--files /src/** +title+ **Changes to src** 🎉
+--files /src/** +task+ Bump version number ⏫.
+
+--files /src/Components/** +title+ **UI Changes** 👩🏾‍💻
+--files /src/Components/** +task+ UI changes visually inspected on Chrome,Safari and Firefox 💻.
+--files /src/Components/** +task+ Visually inspect mobile responsiveness 📱.
+
 --target main +title+ **PR checklist** :checkered_flag:
---target main +task+ Bump version number ⏫
---target main +comment+ All done? merge PR with --ff-only .
+--target main +task+ README.md is up to date 📓.
+--target main +comment+ All done? merge PR with --ff-only.
