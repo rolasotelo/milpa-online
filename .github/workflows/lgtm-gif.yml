@@ -1,0 +1,20 @@
+name: Send LGTM reaction 👍🏾
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review:
+    types: [submitted]
+jobs:
+  lgtm-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: LGTM 👍🏾
+        uses: micnncim/action-lgtm-reaction@master # Set some version.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
+        with:
+          trigger: '[".*looks good to me.*","^lgtm$", "^[gG]ood [jJ]ob!?$"]'
+          override: true
+          source: 'giphy'
