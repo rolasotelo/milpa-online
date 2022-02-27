@@ -8,4 +8,4 @@ jobs:
       - name: Add comment 🤡
         uses: karancode/funghaction@42
         env:
-            GITHUB_TOKEN: ${{ secret.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
