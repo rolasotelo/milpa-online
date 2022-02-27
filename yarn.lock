@@ -1472,6 +1472,11 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.10.2.tgz#0798c03351f0dea1a5a4cabddf26a55a7cbee590"
   integrity sha512-IXf3XA7+XyN7CP9gGh/XB0UxVMlvARGEgGXLubFICsUMGz6Q+DU+i4gGlpOxTjKvXjkJDJC8YdqdKkDj9qZHEQ==
 
+"@rolasotelo/milpa-ruleset@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@rolasotelo/milpa-ruleset/-/milpa-ruleset-1.0.8.tgz#77c71480ea28ae0641e5214846f265644cc66e34"
+  integrity sha512-UypHT/CQ7b0QQwmCTX8nlLVsUaiKinQi1/PR3wuxS3o0mPr6WmD6YSlTNLaz9u+99k8aRxi7oNVyZPYV8fOLqQ==
+
 "@sentry/browser@6.15.0":
   version "6.15.0"
   resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-6.15.0.tgz#7a1d316dd31cedee446e359a21774bf93d1e553d"
