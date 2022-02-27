@@ -1,6 +1,6 @@
 {
   "name": "milpa-online",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Milpa: Online card-game",
   "main": "src/index.js",
   "repository": "git@github.com:rolasotelo/milpa-online.git",
