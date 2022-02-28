@@ -1,17 +1,7 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Route,
-  Switch,
-} from "react-router-dom";
-import CreateOrJoinGameProvider from "./Components/CreateOrJoinGameProvider/CreateOrJoinGameProvider";
-import GameProvider from "./Components/GameProvider/GameProvider";
-import CreateOrJoinGame from "./Containers/CreateOrJoinGame/CreateOrJoinGame";
-import Game from "./Containers/Game/Game";
-import GameNew from "./Containers/GameNew/GameNew";
-import { Welcome } from "./Containers/Welcome";
-import { GameRoutePropsType, RoutePropsType } from "./Realms/Pure/types";
+import {BrowserRouter as Router, Redirect, Route, Switch,} from "react-router-dom";
+import {WelcomePage, GamePage, CreateGamePage} from './pages'
+
 
 interface Props {}
 
@@ -19,14 +9,13 @@ function App({}: Props): JSX.Element {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact component={Welcome} />
-        <Route path="/play/match" exact component={GamePageNew} />
+        <Route path="/" exact component={WelcomePage} />
         <Route path="/play/:gamecode" exact component={GamePage} />
         <Route
           path="/play"
           exact
           render={(props) => {
-            return CreateOrJoinGamePage(props);
+            return CreateGamePage(props);
           }}
         />
         <Redirect to="/" />
@@ -34,25 +23,5 @@ function App({}: Props): JSX.Element {
     </Router>
   );
 }
-
-const CreateOrJoinGamePage = (routerProps: RoutePropsType) => {
-  return (
-    <CreateOrJoinGameProvider routerProps={routerProps}>
-      <CreateOrJoinGame />
-    </CreateOrJoinGameProvider>
-  );
-};
-
-const GamePage = (routerProps: GameRoutePropsType) => {
-  return (
-    <GameProvider routerProps={routerProps}>
-      <Game />
-    </GameProvider>
-  );
-};
-
-const GamePageNew = (routerProps: GameRoutePropsType) => {
-  return <GameNew />;
-};
 
 export default App;
