@@ -1,8 +1,8 @@
 import React, {ReactElement} from "react";
-import LayoutGame from "../../components/LayoutGame/LayoutGame";
+import GameLayout from "./GameLayout";
 import Table from "./Table";
 import Hand from "./Hand";
-import Layout from "./Layout";
+import PlayMatLayout from "./PlayMatLayout";
 
 export default function Game(): ReactElement {
   const players = {
@@ -10,11 +10,11 @@ export default function Game(): ReactElement {
     remote: "Gabinkova",
   };
   return (
-    <LayoutGame players={players} scores={["0", "0"]} yourTurn={true}>
-      <Layout>
+    <GameLayout players={players} scores={["0", "0"]} yourTurn={true}>
+      <PlayMatLayout>
         <Hand />
         <Table />
-      </Layout>
-    </LayoutGame>
+      </PlayMatLayout>
+    </GameLayout>
   );
 }

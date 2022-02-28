@@ -1,6 +1,6 @@
 import {RoutePropsType} from "../Realms/Pure/types";
 import CreateGameProvider from "../providers/CreateGameProvider";
-import CreateOrJoinGame from "../containers/CreateOrJoinGame/CreateOrJoinGame";
+import CreateOrJoinGame from "../containers/CreateGame";
 import React from "react";
 
 

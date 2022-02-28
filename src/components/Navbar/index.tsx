@@ -12,20 +12,20 @@ const Navbar = (props: Props) => {
       <div className="max-w-navbar-width mx-auto">
         <nav className="flex justify-between">
           <button
-            id="menu-button"
-            className={`${ButtonStyling} bg-button-menu focus:bg-button-menu-pressed`}
-          ></button>
+    id="menu-button"
+    className={`${ButtonStyling} bg-button-menu focus:bg-button-menu-pressed`}
+    />
 
           <button
-            onClick={() => {
-              h.push("/");
-            }}
-            className={`${ButtonStyling} bg-button-logo focus:bg-button-logo-pressed`}
-          ></button>
+    onClick={() => {
+      h.push("/");
+    }}
+    className={`${ButtonStyling} bg-button-logo focus:bg-button-logo-pressed`}
+    />
 
           <button
-            className={`${ButtonStyling} bg-button-leaderboard focus:bg-button-leaderboard-pressed`}
-          ></button>
+    className={`${ButtonStyling} bg-button-leaderboard focus:bg-button-leaderboard-pressed`}
+    />
         </nav>
       </div>
     </div>

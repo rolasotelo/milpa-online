@@ -1,8 +1,8 @@
 import { Popover } from "@headlessui/react";
 import React, { LegacyRef, useState } from "react";
 import { usePopper } from "react-popper";
-import useGameContext from "../../Hooks/useGameContext/useGameContext";
 import { ScoreLogType } from "../../Realms/Pure/enums";
+import useGameContext from "../../providers/GameProvider/useGameContext";
 
 interface Props {}
 

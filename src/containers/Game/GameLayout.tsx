@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import { useHistory } from "react-router-dom";
-import { Players } from "../../Realms/Pure/enums";
 
 interface Props {
   children: ReactNode;
@@ -9,7 +8,7 @@ interface Props {
   scores: [string, string];
 }
 
-const LayoutGame = (props: Props) => {
+const GameLayout = (props: Props) => {
   const h = useHistory();
   return (
     <div className="bg-mexicanBone min-h-screen flex flex-col">
@@ -67,4 +66,4 @@ const LayoutGame = (props: Props) => {
   );
 };
 
-export default LayoutGame;
+export default GameLayout;

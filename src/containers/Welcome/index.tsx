@@ -1,10 +1,10 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
-import HeroBox from "../../components/HeroBox";
-import Infographic from "../../components/Infographic/Infographic";
+import HeroBox from "./HeroBox";
+import Infographic from "./Infographic";
 import Layout from "../../components/Layout";
-import Leaderboard from "../../components/Leaderboard/Leaderboard";
+import Leaderboard from "../../components/Leaderboard";
 
 export function Welcome() {
   const { t } = useTranslation();

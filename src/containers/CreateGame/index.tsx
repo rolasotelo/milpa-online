@@ -1,10 +1,10 @@
 import React from "react";
-import { hot } from "react-hot-loader/root";
-import CreateGame from "../../components/CreateGame/CreateGame";
-import JoinGame from "../../components/JoinGame/JoinGame";
+import {hot} from "react-hot-loader/root";
+import CreateGame from "./CreateGame";
+import JoinGame from "./JoinGame";
 import Layout from "../../components/Layout";
-import Nickname from "../../components/Nickname/Nickname";
-import useJoinOrCreateGameContext from "../../providers/CreateGameProvider/useCreateGameContext";
+import Nickname from "./Nickname";
+import useCreateGameContext from "../../providers/CreateGameProvider/useCreateGameContext";
 
 interface Props {}
 
@@ -15,7 +15,7 @@ const HelloTranslator = [
 ];
 
 const CreateOrJoinGame = (props: Props) => {
-  const context = useJoinOrCreateGameContext();
+  const context = useCreateGameContext();
   const HelloBabel = HelloTranslator[Math.floor(Math.random() * 3)];
   return (
     <Layout>

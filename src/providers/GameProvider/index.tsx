@@ -1,8 +1,9 @@
 import React, { createContext} from "react";
-import {GameRoutePropsType} from "../../Realms/Pure/types";
+import {GameRoutePropsType, ScoringHistory} from "../../Realms/Pure/types";
 
 export type GameContextType = {
-    nickname: string | undefined;
+    nickname: string;
+    history: readonly ScoringHistory[];
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -13,10 +14,11 @@ interface Props {
 }
 
 export const GameProvider = (props: Props) => {
-    let nickname: string | undefined = undefined;
+    let nickname: string | undefined = 'Player 1';
+    const history:readonly ScoringHistory[] =[]
 
     return (
-        <GameContext.Provider value={{ nickname }}>
+        <GameContext.Provider value={{ nickname,  history}}>
             {props.children}
         </GameContext.Provider>
     );
