@@ -1,5 +1,6 @@
 import React from "react";
 import Slot from "./Slot";
+
 function EdgeTopOrBottom() {
     return (
         <div className="col-start-2 col-span-4 flex flex-row justify-between">

@@ -1,22 +1,21 @@
+/* eslint-disable no-nested-ternary,react/jsx-props-no-spreading,react/no-array-index-key */
 import { Popover } from "@headlessui/react";
 import React, { LegacyRef, useState } from "react";
 import { usePopper } from "react-popper";
-import { ScoreLogType } from "../../Realms/Pure/enums";
 import useGameContext from "../../providers/GameProvider/useGameContext";
+import { ScoreLogType } from "../../common/enums";
 
-interface Props {}
-
-const ScorePopOver = (props: Props) => {
+function ScorePopOver() {
   const context = useGameContext();
 
-  let [referenceElement, setReferenceElement] = useState(null);
-  let [popperElement, setPopperElement] = useState(null);
-  let { styles, attributes } = usePopper(referenceElement, popperElement, {
+  const [referenceElement, setReferenceElement] = useState(null);
+  const [popperElement, setPopperElement] = useState(null);
+  const { styles, attributes } = usePopper(referenceElement, popperElement, {
     placement: "left-end",
   });
-  const nickname = context.nickname;
+  const { nickname } = context;
 
-  const history = context.history;
+  const { history } = context;
 
   return (
     <Popover className="relative">
@@ -31,7 +30,7 @@ const ScorePopOver = (props: Props) => {
               width: "50px",
               height: "50px",
             }}
-          ></Popover.Button>
+          />
           <Popover.Overlay
             className={`${
               open ? "opacity-30 fixed inset-0" : "opacity-0"
@@ -77,29 +76,27 @@ const ScorePopOver = (props: Props) => {
                       >
                         {item.name}
                       </p>
-                      {item.description.map((description, index) => {
-                        return (
-                          <p
-                            key={index}
-                            className={`text-sm  ${
-                              item.type === ScoreLogType.Turn ||
-                              item.type == ScoreLogType.Final_Score
-                                ? "text-center text-white"
-                                : item.type === ScoreLogType.End_Of_Turn
-                                ? item.name.includes(nickname)
-                                  ? "text-left text-white"
-                                  : "text-right text-white"
-                                : item.type === ScoreLogType.Card_Played
-                                ? item.name.includes(nickname)
-                                  ? "text-left text-gray-700"
-                                  : "text-right text-gray-700"
-                                : "text-center text-white"
-                            }`}
-                          >
-                            {description}
-                          </p>
-                        );
-                      })}
+                      {item.description.map((description, indexTodo) => (
+                        <p
+                          key={indexTodo}
+                          className={`text-sm  ${
+                            item.type === ScoreLogType.Turn ||
+                            item.type === ScoreLogType.Final_Score
+                              ? "text-center text-white"
+                              : item.type === ScoreLogType.End_Of_Turn
+                              ? item.name.includes(nickname)
+                                ? "text-left text-white"
+                                : "text-right text-white"
+                              : item.type === ScoreLogType.Card_Played
+                              ? item.name.includes(nickname)
+                                ? "text-left text-gray-700"
+                                : "text-right text-gray-700"
+                              : "text-center text-white"
+                          }`}
+                        >
+                          {description}
+                        </p>
+                      ))}
                     </div>
                   </div>
                 ))}
@@ -123,6 +120,6 @@ const ScorePopOver = (props: Props) => {
       )}
     </Popover>
   );
-};
+}
 
 export default ScorePopOver;

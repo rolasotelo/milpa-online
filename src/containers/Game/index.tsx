@@ -1,4 +1,4 @@
-import React, {ReactElement} from "react";
+import React, { ReactElement } from "react";
 import GameLayout from "./GameLayout";
 import Table from "./Table";
 import Hand from "./Hand";
@@ -10,7 +10,7 @@ export default function Game(): ReactElement {
     remote: "Gabinkova",
   };
   return (
-    <GameLayout players={players} scores={["0", "0"]} yourTurn={true}>
+    <GameLayout players={players}>
       <PlayMatLayout>
         <Hand />
         <Table />

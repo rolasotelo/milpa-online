@@ -1,6 +1,6 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useMemo, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { RoutePropsType } from "../../Realms/Pure/types";
+import { useHistory } from "react-router-dom";
 
 const RandomNicknames = [
   "Tomate con pena",
@@ -18,15 +18,15 @@ type CreateGameContextType = {
   onChangeNickname: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const CreateGameContext =
-  createContext<CreateGameContextType>(null!);
+export const CreateGameContext = createContext<CreateGameContextType>(null!);
 
 interface Props {
   children: JSX.Element;
-  routerProps: RoutePropsType;
 }
 
-const CreateGameProvider = (props: Props) => {
+function CreateGameProvider(props: Props) {
+  const { children } = props;
+  const history = useHistory();
   const [nickname, setNickname] = useState(
     RandomNicknames[Math.floor(Math.random() * 6)]
   );
@@ -35,21 +35,30 @@ const CreateGameProvider = (props: Props) => {
     setNickname(event.target.value);
   };
 
-  const onClickCreate = () => {
-    props.routerProps.history.push(`/play/${uuidv4()}`, { nickname });
-  };
+  const onClickCreate = useMemo(
+    () => () => {
+      history.push(`/play/${uuidv4()}`, { nickname });
+    },
+    [history, nickname]
+  );
 
-  const onClickJoin = (code: string) => {
-    props.routerProps.history.push(`/play/${code}`, { nickname });
-  };
+  const onClickJoin = useMemo(
+    () => (code: string) => {
+      history.push(`/play/${code}`, { nickname });
+    },
+    [history, nickname]
+  );
+
+  const context = useMemo(
+    () => ({ nickname, onClickCreate, onClickJoin, onChangeNickname }),
+    [nickname, onClickCreate, onClickJoin]
+  );
 
   return (
-    <CreateGameContext.Provider
-      value={{ nickname, onClickCreate, onClickJoin, onChangeNickname }}
-    >
-      {props.children}
+    <CreateGameContext.Provider value={context}>
+      {children}
     </CreateGameContext.Provider>
   );
-};
+}
 
 export default CreateGameProvider;

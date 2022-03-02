@@ -6,7 +6,7 @@ import Infographic from "./Infographic";
 import Layout from "../../components/Layout";
 import Leaderboard from "../../components/Leaderboard";
 
-export function Welcome() {
+export default function Welcome() {
   const { t } = useTranslation();
   const h = useHistory();
   return (

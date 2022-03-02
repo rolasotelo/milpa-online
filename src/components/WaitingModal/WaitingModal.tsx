@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -10,18 +11,19 @@ interface Props {
 }
 
 function WaitingModal(props: Props) {
-  let [isOpen, setIsOpen] = useState(true);
+  const { title, body, buttonText } = props;
+  const [isOpen, setIsOpen] = useState(true);
 
   const openModal = () => {
     setIsOpen(true);
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(props.buttonText);
+    navigator.clipboard.writeText(buttonText);
   };
   const h = useHistory();
 
-  let completeButtonRef = useRef(null);
+  const completeButtonRef = useRef(null);
 
   return (
     <>
@@ -72,9 +74,10 @@ function WaitingModal(props: Props) {
               leaveTo="opacity-0 scale-95"
             >
               <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-mexicanBoneLight shadow-xl rounded-2xl">
-                <button ref={completeButtonRef}></button>
+                <button type="button" ref={completeButtonRef} />
                 <div className="flex justify-center">
                   <button
+                    type="button"
                     onClick={() => {
                       h.push("/");
                     }}
@@ -83,18 +86,16 @@ function WaitingModal(props: Props) {
                       width: "50px",
                       height: "50px",
                     }}
-                  ></button>
+                  />
                 </div>
                 <Dialog.Title
                   as="h3"
                   className="text-lg font-medium leading-6 text-mexicanPink text-center mt-1"
                 >
-                  {props.title}
+                  {title}
                 </Dialog.Title>
                 <div className="mt-2">
-                  <p className="text-sm text-mexicanBlue text-center">
-                    {props.body}
-                  </p>
+                  <p className="text-sm text-mexicanBlue text-center">{body}</p>
                 </div>
 
                 <div className="flex justify-center mt-4">
@@ -103,7 +104,7 @@ function WaitingModal(props: Props) {
                     className="inline-flex justify-center px-4 py-2 text-sm font-medium text-mexicanGreen-dark bg-mexicanGreen-light border border-transparent rounded-md hover:bg-mexicanBone focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
                     onClick={copyToClipboard}
                   >
-                    {props.buttonText}
+                    {buttonText}
                     <img
                       className="ml-2"
                       src={clipboardCopy}

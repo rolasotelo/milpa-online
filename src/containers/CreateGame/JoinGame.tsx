@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+
 interface Props {
   onClickJoin: (code: string) => void;
   text: string;
 }
 
-const JoinGame = (props: Props) => {
+function JoinGame(props: Props) {
+  const { onClickJoin, text } = props;
   const [gameCode, setGameCode] = useState("");
 
   return (
@@ -12,8 +14,9 @@ const JoinGame = (props: Props) => {
       <div className="flex flex-col">
         <div className="mx-auto">
           <button
+            type="button"
             onClick={() => {
-              props.onClickJoin(gameCode);
+              onClickJoin(gameCode);
             }}
             className="bg-button-pink w-52 h-24 mt-4 focus:outline-none focus:bg-button-pink-pressed pl-3 pb-2 focus:pl-2 focus:pb-1"
             style={{
@@ -23,7 +26,7 @@ const JoinGame = (props: Props) => {
               fontSize: "2rem",
             }}
           >
-            {props.text.toUpperCase()}
+            {text.toUpperCase()}
           </button>
         </div>
         <div className="mx-auto">
@@ -39,6 +42,6 @@ const JoinGame = (props: Props) => {
       </div>
     </div>
   );
-};
+}
 
 export default JoinGame;

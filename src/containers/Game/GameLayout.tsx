@@ -1,15 +1,12 @@
 import React, { ReactNode } from "react";
-import { useHistory } from "react-router-dom";
 
 interface Props {
   children: ReactNode;
   players: { local: string | undefined; remote: string };
-  yourTurn: boolean;
-  scores: [string, string];
 }
 
-const GameLayout = (props: Props) => {
-  const h = useHistory();
+function GameLayout(props: Props) {
+  const { players, children } = props;
   return (
     <div className="bg-mexicanBone min-h-screen flex flex-col">
       <div className="bg-mexicanBlue">
@@ -24,7 +21,7 @@ const GameLayout = (props: Props) => {
                 fontSize: "2rem",
               }}
             >
-              <a href="#">{`${props.players.local?.toUpperCase()}`}</a>
+              {`${players.local?.toUpperCase()}`}
             </div>
             <div>
               <div
@@ -37,7 +34,7 @@ const GameLayout = (props: Props) => {
                   textAlign: "center",
                 }}
               >
-                <a href="#">VS</a>
+                VS
               </div>
             </div>
             <div
@@ -50,20 +47,18 @@ const GameLayout = (props: Props) => {
                 textAlign: "right",
               }}
             >
-              <a href="#">
-                {props.players.remote
-                  ? `${props.players.remote.toUpperCase()}`
-                  : "Waiting..."}
-              </a>
+              {players.remote
+                ? `${players.remote.toUpperCase()}`
+                : "Waiting..."}
             </div>
           </nav>
         </div>
       </div>
       <div className="max-w-7xl w-full flex-auto flex flex-col justify-center py-4 mx-auto h-full">
-        {props.children}
+        {children}
       </div>
     </div>
   );
-};
+}
 
 export default GameLayout;

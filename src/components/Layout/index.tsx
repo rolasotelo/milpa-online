@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import Navbar from "../Navbar";
+
 interface Props {
   children: ReactNode;
 }

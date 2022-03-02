@@ -1,13 +1,11 @@
-import {RoutePropsType} from "../Realms/Pure/types";
+import React from "react";
 import CreateGameProvider from "../providers/CreateGameProvider";
 import CreateOrJoinGame from "../containers/CreateGame";
-import React from "react";
 
-
-export default function CreateGamePage(routerProps: RoutePropsType){
-    return (
-        <CreateGameProvider routerProps={routerProps}>
-            <CreateOrJoinGame />
-        </CreateGameProvider>
-    );
-};
+export default function CreateGamePage() {
+  return (
+    <CreateGameProvider>
+      <CreateOrJoinGame />
+    </CreateGameProvider>
+  );
+}

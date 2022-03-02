@@ -117,9 +117,9 @@ function Card(props: {
   date: string;
 }) {
   const { position, score, nickname, date } = props;
-  const background = (position: number): string => {
-    if (position === 1) return "bg-card-gold";
-    if (position > 1 && position < 6) return "bg-card-pink";
+  const background = (backgroundPosition: number): string => {
+    if (backgroundPosition === 1) return "bg-card-gold";
+    if (backgroundPosition > 1 && backgroundPosition < 6) return "bg-card-pink";
     return "bg-card-green";
   };
 

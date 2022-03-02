@@ -1,13 +1,11 @@
-import {GameRoutePropsType} from "../Realms/Pure/types";
-import {GameProvider} from "../providers/GameProvider";
-import Game from "../containers/Game";
 import React from "react";
+import { GameProvider } from "../providers/GameProvider";
+import Game from "../containers/Game";
 
-
-export default function GamePage(routerProps: GameRoutePropsType) {
-    return (
-        <GameProvider routerProps={routerProps}>
-            <Game />
-        </GameProvider>
-    );
-};
+export default function GamePage() {
+  return (
+    <GameProvider>
+      <Game />
+    </GameProvider>
+  );
+}

@@ -1,6 +1,6 @@
 import React from "react";
-import {Welcome} from "../containers/Welcome";
+import Welcome from "../containers/Welcome";
 
-export default function WelcomePage(){
-    return (<Welcome/>)
+export default function WelcomePage() {
+  return <Welcome />;
 }
