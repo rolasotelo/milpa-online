@@ -11,6 +11,7 @@ const newSocket = (roomCode: string, nickname: string | undefined) => {
   });
 
   socket.onAny((event, ...args) => {
+    // eslint-disable-next-line no-console
     console.log(event, args);
   });
 
