@@ -1,6 +1,7 @@
 name: Fun comment 🥸
 on:
-  - pull_request
+  pull_request:
+    types: [opened]
 jobs:
   fun-comment:
     runs-on: ubuntu-latest
