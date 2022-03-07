@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { MiSocket } from "../../common/interfaces";
@@ -27,7 +28,7 @@ export default function useTimeout(
       setIdTimeout(undefined);
     }
     return () => {};
-  }, [history, idTimeout, isGameOngoing, nickname, socket]);
+  }, [isGameOngoing]);
 
   return { isGoingToRedirect: !!idTimeout };
 }

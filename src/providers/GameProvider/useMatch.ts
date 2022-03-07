@@ -52,5 +52,6 @@ export default function useMatch(
     isGameOngoing,
     isGoingToRedirect,
     nickname,
+    roomCode,
   };
 }
