@@ -3,6 +3,7 @@ export enum Event {
   Session_Saved = "session saved",
   Users_In_Room = "users in room",
   Room_Filled = "room filled",
+  New_User_Connected = "new user connected",
   Start_Game = "start game",
   Start_Game_Handshake = "start game handshake",
   Player_Disconnection = "player disconnected",
