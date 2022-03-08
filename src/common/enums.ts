@@ -1,4 +1,4 @@
-export enum Event {
+export enum MatchEvent {
   Connection_Error = "connect_error",
   Session_Saved = "session saved",
   Users_In_Room = "users in room",

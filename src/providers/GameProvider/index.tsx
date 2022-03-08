@@ -42,7 +42,7 @@ export function GameProvider(props: Props) {
       isGameOngoing,
       roomCode,
     }),
-    [nickname, history]
+    [roomCode, isGameOngoing, nickname, history]
   );
 
   return (

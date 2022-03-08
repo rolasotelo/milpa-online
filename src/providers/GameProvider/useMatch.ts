@@ -4,13 +4,15 @@ import { useEffect, useMemo, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Match from "@rolasotelo/milpa-ruleset/dist/classes/Match";
 import useTimeout from "./useTimeout";
-import { Event } from "../../common/enums";
+import { MatchEvent } from "../../common/enums";
 import {
   handleConnection,
   handleConnectionError,
   handleNewUserConnected,
   handleRoomFilled,
   handleSessionSaved,
+  handleStartGame,
+  handleStartGameHandshake,
   handleUsersInRoom,
 } from "./handlers";
 import { MiSocket } from "../../common/interfaces";
@@ -31,19 +33,22 @@ export default function useMatch(
   useEffect(() => {
     handleConnection(socket, nickname);
 
-    socket.on(Event.Connection_Error, (err: Error) => {
+    socket.on(MatchEvent.Connection_Error, (err: Error) => {
       handleConnectionError(err);
     });
 
-    socket.on(Event.Session_Saved, (playerPayload: Readonly<Player>) => {
+    socket.on(MatchEvent.Session_Saved, (playerPayload: Readonly<Player>) => {
       handleSessionSaved(playerPayload, socket, setNickname, setRoomCode);
     });
 
-    socket.on(Event.Users_In_Room, (playersPayload: ReadonlyArray<Player>) => {
-      handleUsersInRoom(playersPayload, setMatch);
-    });
+    socket.on(
+      MatchEvent.Users_In_Room,
+      (playersPayload: ReadonlyArray<Player>) => {
+        handleUsersInRoom(playersPayload, setMatch);
+      }
+    );
 
-    socket.on(Event.Room_Filled, () => {
+    socket.on(MatchEvent.Room_Filled, () => {
       handleRoomFilled(history, nickname);
     });
 
@@ -57,12 +62,24 @@ export default function useMatch(
       handleNewUserConnected(playerPayload, match, setMatch);
     }
 
-    socket.on(Event.New_User_Connected, addPlayerToMatch);
+    socket.on(MatchEvent.New_User_Connected, addPlayerToMatch);
+
+    function startGame() {
+      handleStartGame(roomCode, match, setMatch, socket);
+    }
+
+    socket.on(MatchEvent.Start_Game, startGame);
+
+    const listenerStartGameHandshake = (gameStatus: any) => {
+      handleStartGameHandshake(roomCode, setMatch, gameStatus, socket);
+    };
+    socket.on(MatchEvent.Start_Game_Handshake, listenerStartGameHandshake);
 
     return () => {
-      socket.off(Event.New_User_Connected, addPlayerToMatch);
+      socket.off(MatchEvent.New_User_Connected, addPlayerToMatch);
+      socket.off(MatchEvent.Start_Game, startGame);
     };
-  }, [match, socket]);
+  }, [match, socket, roomCode]);
 
   useEffect(() => {
     history.push(`/play/${roomCode}`, { nickname });
@@ -74,8 +91,10 @@ export default function useMatch(
 
   // DELETE
   if (match) {
-    console.log(JSON.stringify(match.getInfoNecessaryToCloneGame()));
+    console.log("Match info", JSON.stringify(match.getInfo(), null, 2));
   }
+
+  console.log("isGameOngoing", isGameOngoing);
 
   return {
     isGameOngoing,

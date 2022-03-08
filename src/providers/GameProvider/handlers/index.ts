@@ -4,6 +4,8 @@ import handleConnectionError from "./handleConnectionError";
 import handleUsersInRoom from "./handleUsersInRoom";
 import handleNewUserConnected from "./handleNewUserConnected";
 import handleRoomFilled from "./handleRoomFilled";
+import handleStartGame from "./handleStartGame";
+import handleStartGameHandshake from "./handleStartGameHandshake";
 
 export {
   handleUsersInRoom,
@@ -12,4 +14,6 @@ export {
   handleNewUserConnected,
   handleSessionSaved,
   handleRoomFilled,
+  handleStartGame,
+  handleStartGameHandshake,
 };
