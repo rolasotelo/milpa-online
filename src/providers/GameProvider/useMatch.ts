@@ -89,6 +89,28 @@ export default function useMatch(
 
   const { isGoingToRedirect } = useTimeout(nickname, socket, isGameOngoing);
 
+  const nicknames = useMemo(() => {
+    let foeNickname = "...";
+    let youNickname = nickname;
+
+    if (match) {
+      const players = match?.getInfo().players!;
+      Object.keys(players).forEach((playerId: string) => {
+        if (playerId !== socket.userID!)
+          foeNickname = players[playerId].nickname;
+        if (playerId === socket.userID!)
+          youNickname = players[playerId].nickname;
+      });
+      if (match?.isGameOwner) {
+        youNickname += " 👑";
+      } else {
+        foeNickname += " 👑";
+      }
+    }
+
+    return { youNickname, foeNickname };
+  }, [match, socket]);
+
   // DELETE
   if (match) {
     console.log("Match info", JSON.stringify(match.getInfo(), null, 2));
@@ -101,5 +123,7 @@ export default function useMatch(
     isGoingToRedirect,
     nickname,
     roomCode,
+    localNickname: nicknames.youNickname,
+    remoteNickname: nicknames.foeNickname,
   };
 }

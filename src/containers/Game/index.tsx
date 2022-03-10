@@ -7,9 +7,10 @@ import WaitingModal from "../../components/WaitingModal/WaitingModal";
 import useGameContext from "../../providers/GameProvider/useGameContext";
 
 export default function Game(): ReactElement {
+  const { localNickname, remoteNickname } = useGameContext();
   const players = {
-    local: "Rolando",
-    remote: "Gabinkova",
+    local: localNickname,
+    remote: remoteNickname,
   };
   const { isGameOngoing, nickname, roomCode } = useGameContext();
   return (

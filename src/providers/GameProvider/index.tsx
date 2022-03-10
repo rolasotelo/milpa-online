@@ -9,6 +9,8 @@ export type GameContextType = {
   history: readonly ScoringHistory[];
   isGameOngoing: boolean;
   roomCode: string;
+  localNickname: string;
+  remoteNickname: string;
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -27,11 +29,8 @@ export function GameProvider(props: Props) {
 
   const [socket] = useState(newSocket(roomCodeFromProps, realNickname));
 
-  const { nickname, isGameOngoing, roomCode } = useMatch(
-    roomCodeFromProps,
-    nicknameFromProps,
-    socket
-  );
+  const { nickname, isGameOngoing, roomCode, localNickname, remoteNickname } =
+    useMatch(roomCodeFromProps, nicknameFromProps, socket);
 
   const history: readonly ScoringHistory[] = useMemo(() => [], []);
 
@@ -41,8 +40,10 @@ export function GameProvider(props: Props) {
       history,
       isGameOngoing,
       roomCode,
+      localNickname,
+      remoteNickname,
     }),
-    [roomCode, isGameOngoing, nickname, history]
+    [roomCode, isGameOngoing, nickname, history, localNickname, remoteNickname]
   );
 
   return (
