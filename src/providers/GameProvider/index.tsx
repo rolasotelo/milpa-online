@@ -1,5 +1,6 @@
 import React, { createContext, useMemo, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
+import Card from "@rolasotelo/milpa-ruleset/dist/classes/cards/Card";
 import newSocket from "../../common/socket/socket";
 import useMatch from "./useMatch";
 import { ScoringHistory } from "../../common/types";
@@ -11,6 +12,8 @@ export type GameContextType = {
   roomCode: string;
   localNickname: string;
   remoteNickname: string;
+  cropsHand: Card[];
+  goodsHand: Card[];
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -29,8 +32,15 @@ export function GameProvider(props: Props) {
 
   const [socket] = useState(newSocket(roomCodeFromProps, realNickname));
 
-  const { nickname, isGameOngoing, roomCode, localNickname, remoteNickname } =
-    useMatch(roomCodeFromProps, nicknameFromProps, socket);
+  const {
+    nickname,
+    isGameOngoing,
+    roomCode,
+    localNickname,
+    remoteNickname,
+    cropsHand,
+    goodsHand,
+  } = useMatch(roomCodeFromProps, nicknameFromProps, socket);
 
   const history: readonly ScoringHistory[] = useMemo(() => [], []);
 
@@ -42,8 +52,19 @@ export function GameProvider(props: Props) {
       roomCode,
       localNickname,
       remoteNickname,
+      cropsHand,
+      goodsHand,
     }),
-    [roomCode, isGameOngoing, nickname, history, localNickname, remoteNickname]
+    [
+      cropsHand,
+      goodsHand,
+      roomCode,
+      isGameOngoing,
+      nickname,
+      history,
+      localNickname,
+      remoteNickname,
+    ]
   );
 
   return (

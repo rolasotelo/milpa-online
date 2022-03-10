@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Match from "@rolasotelo/milpa-ruleset/dist/classes/Match";
+import Card from "@rolasotelo/milpa-ruleset/dist/classes/cards/Card";
 import useTimeout from "./useTimeout";
 import { MatchEvent } from "../../common/enums";
 import {
@@ -109,14 +110,24 @@ export default function useMatch(
     }
 
     return { youNickname, foeNickname };
-  }, [match, socket]);
+  }, [nickname, match, socket]);
+
+  const goodsHand = useMemo(() => {
+    let hand: Card[] = [];
+    if (match && isGameOngoing) hand = [...match.goodHand];
+    return hand;
+  }, [isGameOngoing, match]);
+
+  const cropsHand = useMemo(() => {
+    let hand: Card[] = [];
+    if (match && isGameOngoing) hand = [...match.cropHand];
+    return hand;
+  }, [isGameOngoing, match]);
 
   // DELETE
   if (match) {
     console.log("Match info", JSON.stringify(match.getInfo(), null, 2));
   }
-
-  console.log("isGameOngoing", isGameOngoing);
 
   return {
     isGameOngoing,
@@ -125,5 +136,7 @@ export default function useMatch(
     roomCode,
     localNickname: nicknames.youNickname,
     remoteNickname: nicknames.foeNickname,
+    cropsHand,
+    goodsHand,
   };
 }

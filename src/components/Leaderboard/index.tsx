@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { PropsWithChildren } from "../../common/interfaces";
+import Card from "../Card/LeaderboardCard";
 
 function BrushStrokes() {
   return (
@@ -64,73 +65,6 @@ function Title() {
       >
         {t("welcome.leaderboard.subtitle")}
       </div>
-    </div>
-  );
-}
-
-function Circle(props: { position: number; score: number }) {
-  const { position, score } = props;
-  return (
-    <div
-      className="flex flex-col text-center ml-5 mt-4 pb-3 h-40 justify-between"
-      style={{
-        fontFamily: "goodlife-serif, sans-serif",
-        fontWeight: 400,
-        fontStyle: "normal",
-        fontSize: "2.25rem",
-      }}
-    >
-      <p>#{position}</p>
-      <p>{score}</p>
-    </div>
-  );
-}
-
-function Rectangle(props: { nickname: string; date: string }) {
-  const { nickname, date } = props;
-  return (
-    <div
-      className="flex flex-col text-center ml-5 pb-1 h-10 justify-between text-milpaBeige-default max-h-20"
-      style={{
-        fontWeight: 400,
-        fontFamily: "bookmania, sans-serif",
-        fontStyle: "normal",
-        fontSize: "1rem",
-      }}
-    >
-      <p
-        style={{
-          fontWeight: 700,
-        }}
-      >
-        {nickname}
-      </p>
-      <p>{date}</p>
-    </div>
-  );
-}
-
-function Card(props: {
-  position: number;
-  score: number;
-  nickname: string;
-  date: string;
-}) {
-  const { position, score, nickname, date } = props;
-  const background = (backgroundPosition: number): string => {
-    if (backgroundPosition === 1) return "bg-card-gold";
-    if (backgroundPosition > 1 && backgroundPosition < 6) return "bg-card-pink";
-    return "bg-card-green";
-  };
-
-  return (
-    <div
-      className={`z-20 w-leaderboard-card ${
-        position === 1 ? "mb-14 tablet:mb-0" : "mb-0"
-      } h-leaderboard-card ${background(position)}`}
-    >
-      <Circle position={position} score={score} />
-      <Rectangle nickname={nickname} date={date} />
     </div>
   );
 }
