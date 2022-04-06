@@ -1,4 +1,4 @@
-import React, { createContext, useMemo, useState } from "react";
+import React, { createContext, useCallback, useMemo, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import Card from "@rolasotelo/milpa-ruleset/dist/classes/cards/Card";
 import newSocket from "../../common/socket/socket";
@@ -46,10 +46,13 @@ export function GameProvider(props: Props) {
     goodsHand,
   } = useMatch(roomCodeFromProps, nicknameFromProps, socket);
 
-  function onClickCard(type: "crop" | "good", index: number) {
-    if (type === "crop") setSelectedCard(cropsHand[index]);
-    if (type === "good") setSelectedCard(goodsHand[index]);
-  }
+  const onClickCard = useCallback(
+    (type: "crop" | "good", index: number) => {
+      if (type === "crop") setSelectedCard(cropsHand[index]);
+      if (type === "good") setSelectedCard(goodsHand[index]);
+    },
+    [cropsHand, goodsHand]
+  );
 
   const history: readonly ScoringHistory[] = useMemo(() => [], []);
 
@@ -67,6 +70,7 @@ export function GameProvider(props: Props) {
       onClickCard,
     }),
     [
+      onClickCard,
       cropsHand,
       goodsHand,
       roomCode,

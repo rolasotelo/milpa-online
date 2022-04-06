@@ -124,11 +124,6 @@ export default function useMatch(
     return hand;
   }, [isGameOngoing, match]);
 
-  // DELETE
-  if (match) {
-    console.log("Match info", JSON.stringify(match.getInfo(), null, 2));
-  }
-
   return {
     isGameOngoing,
     isGoingToRedirect,
