@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 import { MiSocket } from "../interfaces";
 
-const URL = "https://milpa-server.digitalocean.com";
+const URL = "https://milpa-server-4bjk6.ondigitalocean.app";
 
 const newSocket = (roomCode: string, nickname: string | undefined) => {
   const socket: MiSocket = io(URL, {
