@@ -14,6 +14,8 @@ export type GameContextType = {
   remoteNickname: string;
   cropsHand: Card[];
   goodsHand: Card[];
+  selectedCard: Card | null;
+  onClickCard: (type: "crop" | "good", index: number) => void;
 };
 
 export const GameContext = createContext<GameContextType>(null!);
@@ -30,6 +32,8 @@ export function GameProvider(props: Props) {
   const realNickname = nicknameFromProps || "";
   const roomCodeFromProps = params.gamecode;
 
+  const [selectedCard, setSelectedCard] = useState<Card | null>(null);
+
   const [socket] = useState(newSocket(roomCodeFromProps, realNickname));
 
   const {
@@ -41,6 +45,11 @@ export function GameProvider(props: Props) {
     cropsHand,
     goodsHand,
   } = useMatch(roomCodeFromProps, nicknameFromProps, socket);
+
+  function onClickCard(type: "crop" | "good", index: number) {
+    if (type === "crop") setSelectedCard(cropsHand[index]);
+    if (type === "good") setSelectedCard(goodsHand[index]);
+  }
 
   const history: readonly ScoringHistory[] = useMemo(() => [], []);
 
@@ -54,6 +63,8 @@ export function GameProvider(props: Props) {
       remoteNickname,
       cropsHand,
       goodsHand,
+      selectedCard,
+      onClickCard,
     }),
     [
       cropsHand,
@@ -64,6 +75,7 @@ export function GameProvider(props: Props) {
       history,
       localNickname,
       remoteNickname,
+      selectedCard,
     ]
   );
 

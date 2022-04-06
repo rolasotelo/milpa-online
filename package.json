@@ -20,9 +20,6 @@
     "lint": "eslint --cache --ext .js,.ts,.tsx .",
     "test": "yarn lint && jest",
     "test:watch": "jest --watch",
-    "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'docs(📓): Update CHANGELOG.md' && npm version major && git push --tags",
-    "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'docs(📓): Update CHANGELOG.md' && npm version minor && git push --tags",
-    "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'docs(📓): Update CHANGELOG.md' && npm version patch && git push --tags",
     "sprite:buttons": "svg-sprite -s --symbol-dest svgs --symbol-sprite buttons-sprite.svg svgs/individual-icons/buttons/*.svg",
     "sprite:banners": "svg-sprite -s --symbol-dest svg-s--symbol-sprite banners-sprite.svg svgs/individual-icons/banners/*.svg",
     "sprite:create": "svg-sprite -s --symbol-dest svgs --symbol-sprite create-sprite.svg svgs/individual-icons/create/*.svg",
@@ -82,7 +79,7 @@
   "dependencies": {
     "@headlessui/react": "~1.3.0",
     "@popperjs/core": "^2.10.2",
-    "@rolasotelo/milpa-ruleset": "^1.0.8",
+    "@rolasotelo/milpa-ruleset": "^0.1.0",
     "@sentry/react": "^6.15.0",
     "@sentry/tracing": "^6.15.0",
     "i18next": "^21.5.2",

@@ -12,25 +12,31 @@ function CardPlaceholder() {
 }
 
 export default function Hand() {
-  const { cropsHand, goodsHand } = useGameContext();
+  const { cropsHand, goodsHand, onClickCard } = useGameContext();
   return (
     <div className="fixed tablet:static right-0 top-20 flex flex-col-reverse tablet:flex-row justify-between items-center w-20 tablet:w-full p-1 tablet:p-3 bg-milpaPink-light h-mountains tablet:h-44">
-      {cropsHand.map((card) => (
+      {cropsHand.map((card, index) => (
         <Card
           score={card.rule}
           name={card.name}
           short={card.short}
           icon={card.icon}
           color="green"
+          onClick={() => {
+            onClickCard("crop", index);
+          }}
         />
       ))}
-      {goodsHand.map((card) => (
+      {goodsHand.map((card, index) => (
         <Card
           score={card.rule}
           name={card.name}
           short={card.short}
           icon={card.icon}
           color="pink"
+          onClick={() => {
+            onClickCard("good", index);
+          }}
         />
       ))}
       <CardPlaceholder />

@@ -1448,8 +1448,10 @@
   resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.10.2.tgz"
   integrity sha512-IXf3XA7+XyN7CP9gGh/XB0UxVMlvARGEgGXLubFICsUMGz6Q+DU+i4gGlpOxTjKvXjkJDJC8YdqdKkDj9qZHEQ==
 
-"@rolasotelo/milpa-ruleset@../milpa-ruleset":
-  version "1.0.8"
+"@rolasotelo/milpa-ruleset@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@rolasotelo/milpa-ruleset/-/milpa-ruleset-0.1.0.tgz#cbbfa71065554b53859ae0d63c4a077c737e8744"
+  integrity sha512-PC/UoXaThuDk1M09fC5/XICt2G6z0FoFNI4WcKLAQ4//ezgAMS6LpPYWbPFgsKy3i/pdf5lhIhf8XtqTWzzzQg==
 
 "@sentry/browser@6.15.0":
   version "6.15.0"
