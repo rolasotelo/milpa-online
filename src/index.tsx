@@ -17,5 +17,5 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
-var mountNode = document.getElementById("app");
+const mountNode = document.getElementById("app");
 ReactDOM.render(<App />, mountNode);

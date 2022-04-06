@@ -3,6 +3,7 @@
 # To create a new task, use '+task+' followed by the task description.
 # To create a reminder (a non-blocking comment), use '+comment+' followed by the comment text
 +task+ No local configuration (passwords, comments, debugging) has been committed 🔐.
++task+ All linked issues has been addressed 👍🏾.
 
 # To filter when a task is applied, prepend the task/comment/title with one or more of the following filters:
 # '--source' - the source branch
@@ -17,9 +18,9 @@
 --files /src/** +title+ **Changes to src** 🎉
 --files /src/** +task+ Bump version number ⏫.
 
---files /src/Components/** +title+ **UI Changes** 👩🏾‍💻
---files /src/Components/** +task+ UI changes visually inspected on Chrome,Safari and Firefox 💻.
---files /src/Components/** +task+ Visually inspect mobile responsiveness 📱.
+--files /src/components/** +title+ **UI Changes** 👩🏾‍💻
+--files /src/components/** +task+ UI changes visually inspected on Chrome,Safari and Firefox 💻.
+--files /src/components/** +task+ Visually inspect mobile responsiveness 📱.
 
 --target main +title+ **PR checklist** :checkered_flag:
 --target main +task+ README.md is up to date 📓.

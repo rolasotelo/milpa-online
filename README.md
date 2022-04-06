@@ -22,10 +22,6 @@ yarn install
 yarn start
 ```
 
-## Repo diagram 📈
-
-![diagram](./diagram.svg)
-
 ---
 
 Made with 🫀 by Rolando Sotelo. Contact me at rola@hey.com
