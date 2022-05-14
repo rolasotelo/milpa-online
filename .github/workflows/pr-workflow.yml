@@ -12,6 +12,7 @@ on:
 
 jobs:
   labeler:
+    if: ${{!contains( github.event.issue.title, "Snyk" )}}
     name: Label Police 🏷👮🏻‍♂️
     runs-on: ubuntu-latest
     steps:
