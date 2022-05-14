@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from "react";
 import { useHistory } from "react-router-dom";
+import MenuPopOver from "./MenuPopOver";
 
 const ButtonStyling = "w-button-square h-button-square focus:outline-none";
 
@@ -9,12 +10,8 @@ function Navbar() {
   return (
     <div className="bg-milpaBlue-default h-navbar-height">
       <div className="max-w-navbar-width mx-auto">
-        <nav className="flex justify-between">
-          <button
-            type="button"
-            id="menu-button"
-            className={`${ButtonStyling} bg-button-menu focus:bg-button-menu-pressed`}
-          />
+        <nav className="flex justify-between mx-4 lg:mx-0">
+         <MenuPopOver/>
 
           <button
             type="button"
