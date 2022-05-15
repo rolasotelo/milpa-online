@@ -65,15 +65,17 @@ function MenuOptions() {
 function LanguageOptions() {
   const { i18n } = useTranslation();
   const { changeLanguage } = i18n;
-  const change: MouseEventHandler<HTMLButtonElement> = async (e) => {
+
+  const handleClick: MouseEventHandler<HTMLButtonElement>  = React.useCallback(async (e) => {
     const { name: newLanguage } = e.target as EventTargetWithName;
     await changeLanguage(newLanguage);
-  };
+  },[changeLanguage]);
+
   return (Object.keys(Languages).map((lng) => (
     <button
       key={Languages[lng].code}
       name={Languages[lng].code}
-      onClick={change}
+      onClick={handleClick}
       type='button'
       className="flow-root rounded-md px-2 py-2 transition duration-150 ease-in-out hover:bg-milpaPink-light focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 text-sm text-milpaBeige-light"
     >
