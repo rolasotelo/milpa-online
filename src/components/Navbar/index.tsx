@@ -23,6 +23,9 @@ function Navbar() {
 
           <button
             type="button"
+            onClick={() => {
+             window.location.href = '/#leaderboard'
+            }}
             className={`${ButtonStyling} bg-button-leaderboard focus:bg-button-leaderboard-pressed`}
           />
         </nav>

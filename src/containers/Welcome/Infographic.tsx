@@ -1,20 +1,7 @@
 import React, { MouseEventHandler } from "react";
 import { useTranslation } from "react-i18next";
-import { PropsWithChildren } from "../../common/interfaces";
-
-interface LanguagesObject {
-  [index: string]: { nativeName: string; code: string };
-}
-const languages: LanguagesObject = {
-  cz: { nativeName: "Čeština", code: "cz" },
-  es: { nativeName: "Español", code: "es" },
-  en: { nativeName: "English", code: "en" },
-  fr: { nativeName: "Français", code: "fr" },
-};
-
-interface EventTargetWithName extends EventTarget {
-  name: string;
-}
+import { EventTargetWithName, PropsWithChildren } from "../../common/interfaces";
+import { Languages } from "../../common/constants";
 
 function BrushStrokes() {
   return (
@@ -196,10 +183,10 @@ function ChangeLanguage() {
   };
   return (
     <div className="flex flex-row tablet:flex-col flex-wrap w-48">
-      {Object.keys(languages).map((lng) => (
+      {Object.keys(Languages).map((lng) => (
         <button
-          key={languages[lng].code}
-          name={languages[lng].code}
+          key={Languages[lng].code}
+          name={Languages[lng].code}
           className={`${
             resolvedLanguage === lng
               ? "text-mexicanGreen-light underline"
@@ -214,7 +201,7 @@ function ChangeLanguage() {
           type="submit"
           onClick={change}
         >
-          {`${languages[lng].nativeName}`}
+          {`${Languages[lng].nativeName}`}
           &#160;
         </button>
       ))}
@@ -222,7 +209,7 @@ function ChangeLanguage() {
   );
 }
 
-function Languages() {
+function LanguageOptions() {
   return (
     <div className="flex flex-col w-72 items-center mt-5 ml-5 mr-5">
       <WhatIsAMilpa />
@@ -235,7 +222,7 @@ function Infographic() {
   return (
     <Layout>
       <Frame>
-        <Languages />
+        <LanguageOptions />
         <Info />
       </Frame>
     </Layout>
