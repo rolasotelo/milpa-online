@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Labeler 🤖🏷
         uses: fuxingloh/multi-labeler@v1
+        with: 
+          github-token: ${{secrets.TOKEN}}
 
       - name: Check for conventional Commits labels ✨ 🐛 🧰
         uses: docker://agilepathway/pull-request-label-checker:latest
