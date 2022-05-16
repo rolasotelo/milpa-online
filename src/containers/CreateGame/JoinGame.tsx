@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { PropsWithChildren } from "../../common/interfaces";
 
 interface Props {
   onClickJoin: (code: string) => void;
@@ -25,6 +26,18 @@ function JoinButton(props: { onClick: () => void; text: string }) {
   );
 }
 
+function Layout(props: PropsWithChildren) {
+  const {children} = props;
+  return (
+    <div className="w-20.38rem md:w-27.5rem h-32.5rem bg-join-background ring-8 ring-inset ring-milpaBlue-dark m-5">
+      <div className="flex flex-col">
+        {children}
+      </div>
+    </div>
+  )
+
+}
+
 function JoinGame(props: Props) {
   const { onClickJoin } = props;
   const [gameCode, setGameCode] = useState("");
@@ -33,8 +46,7 @@ function JoinGame(props: Props) {
     onClickJoin(gameCode)
   },[onClickJoin,gameCode]);
   return (
-    <div className="w-20.38rem md:w-27.5rem h-32.5rem bg-join-background ring-8 ring-inset ring-milpaBlue-dark m-5">
-      <div className="flex flex-col">
+      <Layout>
         <div className="mx-auto">
          <JoinButton onClick={handleClick} text={t("play.join.button")}/>
         </div>
@@ -48,8 +60,7 @@ function JoinGame(props: Props) {
             }}
           />
         </div>
-      </div>
-    </div>
+      </Layout>
   );
 }
 
