@@ -8,12 +8,12 @@ import useCreateGameContext from "../../providers/CreateGameProvider/useCreateGa
 
 function CreateOrJoinGame() {
   const context = useCreateGameContext();
-  const { onClickCreate, onClickJoin} = context;
+  const { onClickCreate, onClickJoin, nickname, onChangeNickname} = context;
   return (
     <Layout>
       <Nickname
-        nickname={context.nickname}
-        onChange={context.onChangeNickname}
+        nickname={nickname}
+        onChange={onChangeNickname}
       />
       <div className="flex flex-col md:flex-row justify-evenly items-center relative ">
         <CreateGame onClickCreate={onClickCreate} />

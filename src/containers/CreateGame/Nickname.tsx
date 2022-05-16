@@ -20,15 +20,19 @@ function Greeting() {
 
 function NicknameInput(props: Props) {
   const {nickname, onChange} = props;
+  const handleClick = React.useCallback(
+    (event) => {
+      onChange(event);
+    }
+    ,[onChange])
+
   return (
     <div className="md:ml-2">
       <input
         className="placeholder-milpaBlue-dark placeholder-opacity-100 focus:outline-none bg-transparent text-milpaBlue-dark"
         placeholder="Gabinka?"
         value={nickname}
-        onChange={(event) => {
-          onChange(event);
-        }}
+        onChange={handleClick}
       />
     </div>
   )
