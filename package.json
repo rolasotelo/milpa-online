@@ -89,7 +89,7 @@
     "react-hot-loader": "~4.13.0",
     "react-i18next": "^11.16.7",
     "react-popper": "^2.2.5",
-    "react-router-dom": "~5.2.0",
+    "react-router-dom": "~5.3.1",
     "socket.io-client": "~4.1.2",
     "tailwindcss": "~2.2.19",
     "underscore": "~1.13.1",
