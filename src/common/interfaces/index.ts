@@ -9,3 +9,10 @@ export interface PropsWithChildren {
 export interface MiSocket extends Socket<DefaultEventsMap, DefaultEventsMap> {
   userID?: string;
 }
+
+export interface LanguagesObject {
+  [index: string]: { nativeName: string; code: string };
+}
+export interface EventTargetWithName extends EventTarget {
+  name: string;
+}

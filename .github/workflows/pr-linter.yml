@@ -9,7 +9,7 @@ on:
 
 jobs:
   main:
-    if: ${{!contains( github.event.issue.title, "Snyk" )}}
+    if: ${{!contains( github.event.issue.title, 'Snyk' )}}
     name: Validate PR title
     runs-on: ubuntu-latest
     steps:

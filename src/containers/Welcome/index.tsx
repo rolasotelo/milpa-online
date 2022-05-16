@@ -23,7 +23,7 @@ export default function Welcome() {
 
       <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-32 talet:mt-32 mb-6 talet:mb-0  mx-auto" />
 
-      <div className="flex  justify-center">
+      <div id='what_is_a_milpa' className="flex  justify-center">
         <Infographic />
       </div>
       <div className="relative w-20.38rem tablet:w-herobox-web h-10 mx-auto">
@@ -33,7 +33,7 @@ export default function Welcome() {
 
       <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-36 tablet:mt-10 mb-6 talet:mb-0 mx-auto" />
 
-      <div className="flex  justify-center">
+      <div id='leaderboard' className="flex  justify-center">
         <Leaderboard />
       </div>
       <div className="relative w-20.38rem tablet:w-herobox-web h-10 mx-auto ">
