@@ -14,12 +14,11 @@ function CreateOrJoinGame() {
       <Nickname
         nickname={context.nickname}
         onChange={context.onChangeNickname}
-        greeting="Hello"
       />
-      <div className="flex flex-col md:flex-row justify-evenly items-center relative">
+      <div className="flex flex-col md:flex-row justify-evenly items-center relative ">
         <CreateGame onClickCreate={onClickCreate} />
         <JoinGame onClickJoin={onClickJoin} />
-        <div className="absolute inset-x-0 top-32  tablet:top-44 bg-mountains-herobox mx-auto max-w-100vw tablet:w-mountains h-mountains" />
+        <div className="invisible md:visible absolute inset-x-0 top-32  tablet:top-44 bg-mountains-herobox mx-auto max-w-100vw tablet:w-mountains h-mountains" />
       </div>
     </Layout>
   );
