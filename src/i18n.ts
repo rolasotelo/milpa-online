@@ -75,6 +75,16 @@ i18n
                 "Earum deleniti eligendi ducimus iste consequatur accusantium ab.",
             },
           },
+          play: {
+            create: {
+              button: "Create"
+            },
+            join: {
+              button: "Join",
+              paste: "Paste game code here"
+            },
+            greeting: "Bonjour",
+          }
         },
       },
       es: {
@@ -135,6 +145,16 @@ i18n
                 "Earum deleniti eligendi ducimus iste consequatur accusantium ab.",
             },
           },
+          play: {
+            create: {
+              button: "Crear"
+            },
+            join: {
+              button: "Unirse",
+              paste: "Pega el código del juego aquí"
+            },
+            greeting: "Hola",
+          }
         },
       },
       fr: {
@@ -195,6 +215,16 @@ i18n
                 "Earum deleniti eligendi ducimus iste consequatur accusantium ab.",
             },
           },
+          play: {
+            create: {
+              button: "Créer"
+            },
+            join: {
+              button: "Rejoindre",
+              paste: "Collez le code du jeu ici"
+            },
+            greeting: "Bonjour",
+          }
         },
       },
       cz: {
@@ -255,6 +285,16 @@ i18n
                 "Earum deleniti eligendi ducimus iste consequatur accusantium ab.",
             },
           },
+          play: {
+            create: {
+              button: "Créer"
+            },
+            join: {
+              button: "Rejoindre",
+              paste: "Collez le code du jeu ici"
+            },
+            greeting: "Ajoi",
+          }
         },
       },
     },

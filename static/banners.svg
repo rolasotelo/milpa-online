@@ -10,9 +10,59 @@
                 display: inline;
             }
         </style>
-        <symbol viewBox="0 0 797 70" id="green-banner" xmlns="http://www.w3.org/2000/svg"><path opacity=".41" d="M42 22h745v43H42z"/><path fill="#324001" d="M27.38 13.95h737v43h-737z"/><path fill="#7c8c03" d="M34.38 7.95h745v43h-745z"/><path fill="#324001" d="M764.38 56.95l15-6h-15"/><path fill="#98a305" d="M34.38 7.95l-7 6v43l7-6v-43z"/></symbol>
-        <symbol viewBox="0 0 326 70" id="green-banner-mobile" xmlns="http://www.w3.org/2000/svg"><path opacity=".41" d="M9.61 22.12H326v43H9.61z"/><path fill="#324001" d="M3.41 14.07H316.4v43H3.41z"/><path fill="#7c8c03" d="M6.38 8.07h316.39v43H6.38z"/><path fill="#324001" d="M316.39 57.07l6.37-6h-6.37"/><path fill="#98a305" d="M6.38 8.07l-2.97 6v43l2.97-6v-43z"/></symbol>
+        <symbol viewBox="0 0 800 70" id="green-banner"
+                xmlns="http://www.w3.org/2000/svg">
+            <path opacity=".2" stroke="#000" stroke-miterlimit="10" stroke-width="8" d="M11.5 10.5h765.696v35H11.5z"/>
+            <g style="isolation:isolate">
+                <path fill="#3e4602" d="M787.828 57.434l-9.47-6.094.698-29.773 9.47 6.093-.698 29.774z"/>
+                <path fill="#4d5702" d="M33.438 57.434l-9.47-6.094h754.39l9.47 6.094H33.438zM34.135 27.66l-9.47-6.093h754.391l9.47 6.093H34.136z"/>
+                <path fill="#3e4602" d="M33.438 57.434l-9.47-6.094.698-29.773 9.47 6.093-.698 29.774z"/>
+                <path d="M26.467 19.72h770.098l-1.07 45.655H25.399l1.07-45.656zm761.36 37.714l.698-29.774H34.135l-.697 29.774h754.39" fill="#6d7b03"/>
+                <path fill="#6d7b03" d="M788.526 27.66l-.698 29.774H33.438l.697-29.774h754.39z"/>
+                <path fill="#3e4602" d="M25.398 65.375l-9.47-6.093 1.07-45.656 9.47 6.093-1.07 45.656z"/>
+                <path fill="#4d5702" d="M26.467 19.72l-9.47-6.094h770.099l9.47 6.093H26.466z"/>
+            </g>
+        </symbol>
+        <symbol viewBox="0 0 500 70" id="green-banner-mobile"
+                xmlns="http://www.w3.org/2000/svg">
+            <path opacity=".2" stroke="#000" stroke-miterlimit="10" stroke-width="8" d="M11.5 10.5h469.392v35H11.5z"/>
+            <g style="isolation:isolate">
+                <path fill="#3e4602" d="M487.585 57.439l-9.47-6.094.699-29.782 9.469 6.093-.698 29.783z"/>
+                <path fill="#4d5702" d="M28.166 57.439l-9.47-6.094h459.42l9.47 6.094H28.165zM28.864 27.657l-9.47-6.094h459.42l9.47 6.094H28.863z"/>
+                <path fill="#6d7b03" d="M488.283 27.657l-.698 29.782H28.166l.698-29.782h459.42z"/>
+                <path fill="#3e4602" d="M28.166 57.439l-9.47-6.094.698-29.782 9.47 6.094-.698 29.782z"/>
+                <path fill="#3e4602" d="M20.126 65.371l-9.47-6.093 1.07-45.656 9.47 6.093-1.07 45.656z"/>
+                <path fill="#4d5702" d="M21.196 19.715l-9.47-6.093h475.128l9.47 6.093H21.195z"/>
+                <path d="M21.196 19.715h475.127l-1.07 45.656H20.126l1.07-45.656zm466.39 37.724l.697-29.783H28.863l-.697 29.783h459.42" fill="#6d7b03"/>
+            </g>
+        </symbol>
+        <symbol viewBox="0 0 300 50" id="green-input"
+                xmlns="http://www.w3.org/2000/svg">
+            <path opacity=".2" stroke="#000" stroke-miterlimit="10" stroke-width="8" d="M8.5 7.171h277.724v25.396H8.5z"/>
+            <g style="isolation:isolate">
+                <path fill="#3e4602" d="M288.655 38.149l-3.787-2.438.455-19.429 3.788 2.438-.456 19.429z"/>
+                <path fill="#4d5702" d="M20.038 38.149L16.25 35.71h268.618l3.787 2.438H20.038zM20.493 18.72l-3.788-2.438h268.618l3.788 2.438H20.493z"/>
+                <path fill="#6d7b03" d="M289.11 18.72l-.455 19.429H20.038l.455-19.43h268.618z"/>
+                <path fill="#3e4602" d="M20.038 38.149L16.25 35.71l.455-19.429 3.788 2.438-.455 19.429zM11.998 46.09L8.21 43.653 9.037 8.34l3.788 2.437-.827 35.312z"/>
+                <path fill="#4d5702" d="M12.825 10.778L9.037 8.341h284.326l3.788 2.437H12.825z"/>
+                <path d="M12.825 10.778h284.326l-.828 35.312H11.998l.827-35.312zm275.83 27.37l.456-19.428H20.493l-.455 19.429h268.617" fill="#6d7b03"/>
+            </g>
+        </symbol>
+        <symbol viewBox="0 0 300 50" id="pink-input"
+                xmlns="http://www.w3.org/2000/svg">
+            <path opacity=".2" stroke="#000" stroke-miterlimit="10" stroke-width="8" d="M8.5 7.171h277.724v25.396H8.5z"/>
+            <g style="isolation:isolate">
+                <path fill="#6d0d30" d="M288.651 38.149l-3.787-2.438.455-19.429 3.788 2.438-.456 19.429z"/>
+                <path fill="#86103b" d="M20.034 38.149l-3.788-2.438h268.618l3.787 2.438H20.034zM20.49 18.72l-3.788-2.438h268.617l3.788 2.438H20.489z"/>
+                <path fill="#bf1754" d="M289.107 18.72l-.456 19.429H20.034l.455-19.43h268.618z"/>
+                <path fill="#6d0d30" d="M20.034 38.149l-3.788-2.438.456-19.429 3.787 2.438-.455 19.429zM11.994 46.09l-3.788-2.437.828-35.312 3.787 2.437-.827 35.312z"/>
+                <path fill="#86103b" d="M12.821 10.778L9.034 8.341h284.325l3.788 2.437H12.82z"/>
+                <path d="M12.821 10.778h284.326l-.828 35.312H11.994l.827-35.312zm275.83 27.37l.456-19.428H20.489l-.455 19.429h268.617" fill="#bf1754"/>
+            </g>
+        </symbol>
     </defs>
     <use id="green-banner-usage" xlink:href="#green-banner" class="sprite-symbol-usage"></use>
     <use id="green-banner-mobile-usage" xlink:href="#green-banner-mobile" class="sprite-symbol-usage"></use>
+    <use id="green-input-usage" xlink:href="#green-input" class="sprite-symbol-usage"></use>
+    <use id="pink-input-usage" xlink:href="#pink-input" class="sprite-symbol-usage"></use>
 </svg>

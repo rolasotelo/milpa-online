@@ -8,6 +8,7 @@ import useCreateGameContext from "../../providers/CreateGameProvider/useCreateGa
 
 function CreateOrJoinGame() {
   const context = useCreateGameContext();
+  const { onClickCreate, onClickJoin} = context;
   return (
     <Layout>
       <Nickname
@@ -15,9 +16,10 @@ function CreateOrJoinGame() {
         onChange={context.onChangeNickname}
         greeting="Hello"
       />
-      <div className="flex flex-col md:flex-row justify-evenly items-center">
-        <CreateGame onClickCreate={context.onClickCreate} text="Create" />
-        <JoinGame onClickJoin={context.onClickJoin} text="Join" />
+      <div className="flex flex-col md:flex-row justify-evenly items-center relative">
+        <CreateGame onClickCreate={onClickCreate} />
+        <JoinGame onClickJoin={onClickJoin} />
+        <div className="absolute inset-x-0 top-32  tablet:top-44 bg-mountains-herobox mx-auto max-w-100vw tablet:w-mountains h-mountains" />
       </div>
     </Layout>
   );
