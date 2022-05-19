@@ -34,6 +34,8 @@ function Frame(props: PropsWithChildren) {
   const { children } = props;
   return (
     <div className=" relative w-20.38rem mx-auto max-w-100vw md:w-herobox-web h-herobox-web bg-milpaBlue-default ring-8 ring-offset-0 ring-milpaBlue-dark mt-5 md:mt-herobox-top-web">
+      <div className="absolute left-1 top-1 bg-symbol-corner-1 w-8 h-8" />
+      <div className="absolute right-1 top-1 bg-symbol-corner-4 w-8 h-8" />
       {children}
     </div>
   );

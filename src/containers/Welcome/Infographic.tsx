@@ -1,6 +1,9 @@
 import React, { MouseEventHandler } from "react";
 import { useTranslation } from "react-i18next";
-import { EventTargetWithName, PropsWithChildren } from "../../common/interfaces";
+import {
+  EventTargetWithName,
+  PropsWithChildren,
+} from "../../common/interfaces";
 import { Languages } from "../../common/constants";
 
 function BrushStrokes() {
@@ -152,7 +155,7 @@ function WhatIsAMilpa() {
   const { t } = useTranslation();
   return (
     <div
-      className="text-mexicanBone w-48 h-60"
+      className="text-milpaBeige-default w-48 h-60"
       style={{
         fontFamily: "goodlife-sans-condensed, sans-serif",
         fontWeight: 400,
@@ -169,6 +172,7 @@ function Frame(props: PropsWithChildren) {
   const { children } = props;
   return (
     <div className="relative w-20.38rem mx-auto max-w-100vw tablet:w-herobox-web tablet:h-herobox-web bg-milpaBlue-default ring-8 ring-inset ring-milpaBlue-dark">
+      <div className="absolute bottom-3 left-3 bg-symbol-corner-3 w-8 h-8" />
       <div className="flex flex-col tablet:flex-row  h-full">{children}</div>
     </div>
   );
@@ -189,8 +193,8 @@ function ChangeLanguage() {
           name={Languages[lng].code}
           className={`${
             resolvedLanguage === lng
-              ? "text-mexicanGreen-light underline"
-              : "text-mexicanBone"
+              ? "text-milpaGreen-light underline"
+              : "text-milpaBeige-default"
           } my-1 text-left z-30`}
           style={{
             fontWeight: resolvedLanguage === lng ? 700 : 400,

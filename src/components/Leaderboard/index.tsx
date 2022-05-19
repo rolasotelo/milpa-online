@@ -28,6 +28,8 @@ function Frame(props: PropsWithChildren) {
   const { children } = props;
   return (
     <div className="relative w-20.38rem mx-auto max-w-100vw tablet:w-herobox-web h-herobox-web bg-milpaBlue-default ring-8 ring-inset ring-milpaBlue-dark overflow-x-hidden">
+      <div className="absolute left-3 top-3 bg-symbol-corner-1 w-8 h-8" />
+      <div className="invisible tablet:visible absolute left-3 bottom-3 bg-symbol-corner-3 w-8 h-8" />
       <div className="flex flex-col tablet:flex-row  h-full">{children}</div>
     </div>
   );
