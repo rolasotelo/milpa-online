@@ -1,6 +1,9 @@
 import React, { MouseEventHandler } from "react";
 import { useTranslation } from "react-i18next";
-import { EventTargetWithName, PropsWithChildren } from "../../common/interfaces";
+import {
+  EventTargetWithName,
+  PropsWithChildren,
+} from "../../common/interfaces";
 import { Languages } from "../../common/constants";
 
 function BrushStrokes() {
@@ -169,6 +172,7 @@ function Frame(props: PropsWithChildren) {
   const { children } = props;
   return (
     <div className="relative w-20.38rem mx-auto max-w-100vw tablet:w-herobox-web tablet:h-herobox-web bg-milpaBlue-default ring-8 ring-inset ring-milpaBlue-dark">
+      <div className="absolute bottom-3 left-3 bg-symbol-corner-3 w-8 h-8" />
       <div className="flex flex-col tablet:flex-row  h-full">{children}</div>
     </div>
   );

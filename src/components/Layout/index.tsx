@@ -8,7 +8,7 @@ interface Props {
 function Layout(props: Props) {
   const { children } = props;
   return (
-    <div className="bg-milpaBeige-default min-h-screen">
+    <div className="bg-milpaBeige-default min-h-screen overflow-x-hidden">
       <Navbar />
       <div className="flex flex-col mx-auto">{children}</div>
     </div>
