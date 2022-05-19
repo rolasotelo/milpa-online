@@ -18,7 +18,7 @@ export default function Welcome() {
           }}
           text={t("welcome.herobox.callToAction")}
         />
-        <div className="absolute inset-x-0 top-32  tablet:top-44 bg-mountains-herobox mx-auto max-w-100vw h-mountains" />
+        <div className="absolute inset-x-0 top-32  tablet:top-44 bg-mountains-herobox mx-auto h-mountains w-mountains" />
       </div>
 
       <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-32 tablet:mt-36 mb-6 talet:mb-0  mx-auto" />
