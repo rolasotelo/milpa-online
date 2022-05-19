@@ -1,15 +1,15 @@
 comment:
-  header: Hi 👋🏾, there you earthlings 👩🏽‍🌾 👨🏿‍🌾 🐄 🐖 🦃
+  header: Hi 👋🏾 , there you earthlings 👩🏽‍🌾  👨🏿‍🌾  🐄  🐖  🦃
   footer: "\
     ---\n\n\
-    > This is an automated comment created by the 'Label Commenter 🏷' action."
+    > Be kind to animals 🦙"
 
 labels:
   - name: "locked: resolved ✅"
     labeled:
       issue:
         body: |
-          🏷 ( locked: resolved ✅ )
+          🏷 ・[ locked: resolved ✅ ]
           This issue has been **LOCKED** because of it being resolved 👩🏽‍🌾!
 
           The issue has been fixed and is therefore considered resolved.
@@ -21,36 +21,36 @@ labels:
     labeled:
       issue:
         body: |
-          🏷 ( locked: heated 🧯 )
+          🏷 ・[ locked: heated 🧯 ]
           This issue has been **LOCKED** because of heated conversation 🧯!
 
-          We appreciate exciting conversations, as long as they won't become too aggressive and/or emotional.
+          I appreciate exciting conversations, as long as they won't become too aggressive and/or emotional.
         locking: lock
         lock_reason: too heated
       pr:
         body: |
-          🏷 ( locked: heated 🧯 )
+          🏷 ・[ locked: heated 🧯 ]
           This pull-request has been **LOCKED** because of heated conversation 🧯!
 
-          We appreciate exciting conversations, as long as they won't become too aggressive and/or emotional.
+          I appreciate exciting conversations, as long as they won't become too aggressive and/or emotional.
         locking: lock
         lock_reason: too heated
     unlabeled:
       issue:
         body: |
-          Unlabeled -> 🏷 ( locked: heated 🧯 )
+          Unlabeled -> 🏷・ [ locked: heated 🧯 ]
           This issue has been unlocked now 🐖.
         locking: unlock
       pr:
         body: |
-          Unlabeled -> 🏷 ( locked: heated 🧯 )
+          Unlabeled -> 🏷 ・[ locked: heated 🧯 ]
           This pull-request has been unlocked now 🐖.
         locking: unlock
   - name: "locked: spam 👮🏻‍♂️"
     labeled:
       issue:
         body: |
-          🏷 ( locked: spam 👮🏻‍♂️ )
+          🏷 ・[ locked: spam 👮🏻‍♂️ ]
           This issue has been **LOCKED** because of spam 🙊!
 
           Please do not spam messages and/or issues on the issue tracker. You may get blocked from this repository for doing so.
@@ -59,7 +59,7 @@ labels:
         lock_reason: spam
       pr:
         body: |
-          🏷 ( locked: spam 👮🏻‍♂️ )
+          🏷 ・[ locked: spam 👮🏻‍♂️ ]
           This pull-request has been **LOCKED** because of spam 🙊!
 
           Please do not spam messages and/or pull-requests on this project. You may get blocked from this repository for doing so.
@@ -70,58 +70,58 @@ labels:
     labeled:
       issue:
         body: |
-          🏷 ( proposal ✨ )
+          🏷 ・[ proposal ✨ ]
           Thank you @{{ issue.user.login }} for suggesting this 🐄.
 
-          We really appreciate your time and help 🫶🏾.
+          I really appreciate your time and help 🫶🏾.
   - name: "locked: breaking 💥"
     labeled:
       issue:
         body: |
-          🏷 ( locked: breaking 💥 )
+          🏷 ・[ locked: breaking 💥 ]
           This issue has been **LOCKED** because of breaking changes 💩!
 
-          We appreciate exciting contributions, as long as they don't break anything.
+          I appreciate exciting contributions, as long as they don't break anything.
         locking: lock
         lock_reason: breaking changes
       pr:
         body: |
-          🏷 ( locked: breaking 💥 )
+          🏷 ・[ locked: breaking 💥 ]
           This pull-request has been **LOCKED** because of breaking changes 💩!
 
-          We appreciate exciting contributions, as long as they don't break anything.
+          I appreciate exciting contributions, as long as they don't break anything.
         locking: lock
         lock_reason: breaking changes
     unlabeled:
       issue:
         body: |
-          Unlabeled -> 🏷 ( locked: breaking 💥 )
+          Unlabeled -> 🏷 ・[ locked: breaking 💥 ]
           This issue has been unlocked now 🐖.
         locking: unlock
       pr:
         body: |
-          Unlabeled -> 🏷 ( locked: breaking 💥 )
+          Unlabeled -> 🏷 ・[ locked: breaking 💥 ]
           This pull-request has been unlocked now 🐖.
         locking: unlock
   - name: duplicate 👯‍♂️
     labeled:
       issue:
         body: |
-          🏷 ( duplicate 👯‍♂️ )
+          🏷 ・[ duplicate 👯‍♂️ ]
           We really appreciate your time and help, but this issue already exists 🐫.
         action: close
   - name: "effort: 1️⃣3️⃣"
     labeled:
       issue:
         body: |
-          🏷 ( effort: 1️⃣3️⃣ )
+          🏷 ・[ effort: 1️⃣3️⃣ ]
           Bring the pop corn 🍿!
 
           Please someone throw to these brave earthlings a '/giphy machete' or '/giphy you have my sword', or something better maybe, in the comments.          
           Let's show some love and respect 🦃!
       pr:
         body: |
-          🏷 ( effort: 1️⃣3️⃣ )
+          🏷 ・[ effort: 1️⃣3️⃣ ]
           What a team of legends 🫶🏻!
 
           Please someone throw to these brave earthlings a '/giphy machete' or '/giphy you have my sword', or something better maybe, in the comments.          
@@ -130,22 +130,19 @@ labels:
     labeled:
       issue:
         body: |
-          🏷 ( good first issue 👑 )
+          🏷 ・[ good first issue 👑 ]
           This issue is easy for contributing. Everyone can work on this 🐄 🐖 🦃.
-
-          Here at @nantli we are a group of friends wanting to create awereness of animal rights while learning and sharing thechnology 👩🏽‍🌾 👩🏼‍💻.
-          Visit our website [Nantli](https://nantli.xyz) and be kind to animals 🐷!
   - name: "help wanted 🙏🏾"
     labeled:
       issue:
         body: |
-          🏷 ( help wanted 🙏🏾 )
+          🏷 ・[ help wanted 🙏🏾 ]
           Hello, anybody out there 👀 ?
 
           Any help would be very much appreciated 🐧. Maybe a '/ghipy help!' on the comments could do something 🦩.
       pr:
         body: |
-          🏷 ( help wanted 🙏🏾 )
+          🏷 ・[ help wanted 🙏🏾 ]
           Hello, anybody out there 👀 ?
 
           Any help would be very much appreciated 🐧. Maybe a '/ghipy help!' on the comments could do something 🦩.
@@ -153,44 +150,44 @@ labels:
     labeled:
       issue:
         body: |
-          🏷 ( invalid 🙊 )
+          🏷 ・[ invalid 🙊 ]
           Please follow the issue templates 🐈.
         action: close
       pr:
         body: |
-          🏷 ( invalid 🙊 )
+          🏷 ・[ invalid 🙊 ]
           Thank you @{{ pull_request.user.login }} for suggesting this. Please follow the pull request templates 🐈.
         action: close
     unlabeled:
       issue:
         body: |
-          Unlabeled -> 🏷 ( invalid 🙊 )
+          Unlabeled -> 🏷 ・[ invalid 🙊 ]
           Thank you for following the template. The repository owner will reply 🦬.
         action: open
   - name: wontfix 🧌
     labeled:
       issue:
         body: |
-          🏷 ( wontfix 🧌 )
+          🏷 ・[ wontfix 🧌 ]
           This will not be worked on but we appreciate your contribution 🦙.
         action: close
     unlabeled:
       issue:
         body: |
-          🏷 ( wontfix 🧌 )
+          🏷 ・[ wontfix 🧌 ]
           This has become active again 🐖.
         action: open
   - name: "work: clear 🥱"
     labeled:
       issue:
         body: |
-          🏷 ( work: clear 🥱 )
+          🏷 ・[ work: clear 🥱 ]
           In "clear" contexts, your options are obvious, clear and cause-and-effect relationships are apparent to everyone involved.
 
           Here, there are often explicit steps in place that dictate the next stage of the process.
       pr:
         body: |
-          🏷 ( work: clear 🥱 )
+          🏷 ・[ work: clear 🥱 ]
           In "clear" contexts, your options are obvious, clear and cause-and-effect relationships are apparent to everyone involved.
 
           Here, there are often explicit steps in place that dictate the next stage of the process.
@@ -198,13 +195,13 @@ labels:
     labeled:
       issue:
         body: |
-          🏷 ( work: complicated 😬 )
+          🏷 ・[ work: complicated 😬 ]
           "Complicated" problems might have several "correct" solutions. Here, there is a clear relationship between cause and effect, but it may not be visible to everyone, because the problem is... complicated. 
 
           The decision-making approach here is to "Sense then Analyze then Respond." In other words, you need to assess the situation, analyze what is known (often with the help of experts), and decide on the best response, using good practice.
       pr:
         body: |
-          🏷 ( work: complicated 😬 )
+          🏷 ・[ work: complicated 😬 ]
           "Complicated" problems might have several "correct" solutions. Here, there is a clear relationship between cause and effect, but it may not be visible to everyone, because the problem is... complicated. 
 
           The decision-making approach here is to "Sense then Analyze then Respond." In other words, you need to assess the situation, analyze what is known (often with the help of experts), and decide on the best response, using good practice.
@@ -212,13 +209,13 @@ labels:
     labeled:
       issue:
         body: |
-          🏷 ( work: complex 😳 )
+          🏷 ・[ work: complex 😳 ]
           It might be impossible to identify one "correct" solution, or spot cause-and-effect relationships, in "complex" situations.
 
           Complex contexts are often unpredictable, and the best approach here is to "Probe then Sense then Respond." Rather than trying to control the situation or insisting on a plan of action, it's often best to be patient, look for patterns, and encourage a solution to emerge.
       pr:
         body: |
-          🏷 ( work: complex 😳 )
+          🏷 ・[ work: complex 😳 ]
           It might be impossible to identify one "correct" solution, or spot cause-and-effect relationships, in "complex" situations.
 
           Complex contexts are often unpredictable, and the best approach here is to "Probe then Sense then Respond." Rather than trying to control the situation or insisting on a plan of action, it's often best to be patient, look for patterns, and encourage a solution to emerge.
@@ -226,13 +223,13 @@ labels:
     labeled:
       issue:
         body: |
-          🏷 ( work: chaotic 😱 )
+          🏷 ・[ work: chaotic 😱 ]
           In "chaotic" situations, no relationship between cause and effect exists, so your primary goal is to establish order and stability. Crisis and emergency scenarios often fall into this domain.
 
           The decision-making approach here is to "Act then Sense then Respond." You need to act decisively to address the most pressing issues, sense where there is stability and where there isn't, and then respond to move the situation from chaos to complexity.
       pr:
         body: |
-          🏷 ( work: chaotic 😱 )
+          🏷 ・[ work: chaotic 😱 ]
           In "chaotic" situations, no relationship between cause and effect exists, so your primary goal is to establish order and stability. Crisis and emergency scenarios often fall into this domain.
 
           The decision-making approach here is to "Act then Sense then Respond." You need to act decisively to address the most pressing issues, sense where there is stability and where there isn't, and then respond to move the situation from chaos to complexity.
@@ -240,13 +237,13 @@ labels:
     labeled:
       issue:
         body: |
-          🏷 ( type: hotfix 🚑 )
-          Whe need 'nantli' 👨🏿‍🌾 help, now!
+          🏷 ・[ type: hotfix 🚑 ]
+          Whe need help 👨🏿‍🌾, now!
 
-          But please someone put a '/giphy everything is fine' in the comments, so everyone can see that we 'nantlis' always do just fine, under any circunstances 🫣.
+          But please someone put a '/giphy everything is fine' in the comments, so everyone can see that we are just fine 🫣.
       pr:
         body: |
-          🏷 ( type: hotfix 🚑 )
+          🏷 ・[ type: hotfix 🚑 ]
           To the rescue 👨🏿‍🌾 !
 
-          But please someone put a '/giphy we are just fine' in the comments, so everyone can see that we 'nantlis' always do just fine, under any circunstances 🫣.
+          But please someone put a '/giphy we are just fine' in the comments, so everyone can see that we are just fine 🫣.
