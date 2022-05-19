@@ -43,6 +43,9 @@ function JoinGame(props: Props) {
   const handleClick = React.useCallback(() => {
     onClickJoin(gameCode);
   }, [onClickJoin, gameCode]);
+  const handleChange = React.useCallback((event) => {
+    setGameCode(event.target.value);
+  }, []);
   return (
     <Layout>
       <div className="mx-auto">
@@ -53,9 +56,7 @@ function JoinGame(props: Props) {
           className="z-40 placeholder-milpaBeige-default placeholder-opacity-100 h-input-3d w-input-3d text-center bg-pink-input bg-milpaBlue-default focus:outline-none text-milpaBeige-default"
           placeholder={t("play.join.paste")}
           value={gameCode}
-          onChange={(event) => {
-            setGameCode(event.target.value);
-          }}
+          onChange={handleChange}
         />
       </div>
     </Layout>

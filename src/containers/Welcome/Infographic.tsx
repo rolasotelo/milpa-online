@@ -155,7 +155,7 @@ function WhatIsAMilpa() {
   const { t } = useTranslation();
   return (
     <div
-      className="text-mexicanBone w-48 h-60"
+      className="text-milpaBeige-default w-48 h-60"
       style={{
         fontFamily: "goodlife-sans-condensed, sans-serif",
         fontWeight: 400,
@@ -193,8 +193,8 @@ function ChangeLanguage() {
           name={Languages[lng].code}
           className={`${
             resolvedLanguage === lng
-              ? "text-mexicanGreen-light underline"
-              : "text-mexicanBone"
+              ? "text-milpaGreen-light underline"
+              : "text-milpaBeige-default"
           } my-1 text-left z-30`}
           style={{
             fontWeight: resolvedLanguage === lng ? 700 : 400,

@@ -39,11 +39,19 @@ function Option(input: OptionType) {
   const { option } = input;
   const { t } = useTranslation();
   return (
-    <div className="ml-4">
-      <p className="text-sm font-medium text-milpaPink-default">
+    <div className="mx-auto">
+      <p
+        className="font-medium text-milpaBlue-dark text-center"
+        style={{
+          fontFamily: "goodlife-serif, sans-serif",
+          fontWeight: 400,
+          fontStyle: "normal",
+          fontSize: "1.3rem",
+        }}
+      >
         {t(`menu.body.${option}.title`)}
       </p>
-      <p className="text-sm text-milpaBlue-dark">
+      <p className="text-sm text-milpaBeige-light">
         {t(`menu.body.${option}.description`)}
       </p>
     </div>
@@ -55,7 +63,7 @@ function MenuOptions() {
     <a
       key={item.name}
       href={item.href}
-      className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out bg-milpaBeige-light hover:bg-milpaBeige-default focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+      className="-m-3 flex rounded-lg p-2 transition duration-150 ease-in-out bg-milpaGreen-light hover:bg-milpaGreen-default focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
     >
       <Option option={item.option} />
     </a>
@@ -64,7 +72,7 @@ function MenuOptions() {
 
 function LanguageOptions() {
   const { i18n } = useTranslation();
-  const { changeLanguage } = i18n;
+  const { resolvedLanguage, changeLanguage } = i18n;
 
   const handleClick: MouseEventHandler<HTMLButtonElement> = React.useCallback(
     async (e) => {
@@ -80,7 +88,13 @@ function LanguageOptions() {
       name={Languages[lng].code}
       onClick={handleClick}
       type="button"
-      className="flow-root rounded-md px-2 py-2 transition duration-150 ease-in-out hover:bg-milpaPink-light focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 text-sm text-milpaBeige-light"
+      className={`
+      ${
+        resolvedLanguage === lng
+          ? "text-milpaBeige-light underline"
+          : "text-milpaBeige-default"
+      }
+      flow-root rounded-md px-2 py-2 transition duration-150 ease-in-out hover:bg-milpaPink-dark focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 text-sm text-milpaBeige-light`}
     >
       {`${Languages[lng].nativeName}`}
     </button>
@@ -92,7 +106,7 @@ function MenuFooter() {
   return (
     <div className="bg-milpaPink-default p-4">
       <span className="flex items-center p-2">
-        <span className="text-sm font-medium text-milpaBeige-default">
+        <span className="text-sm font-medium text-milpaBeige-light">
           {t("menu.footer.title")} 🌐
         </span>
       </span>
