@@ -12,11 +12,14 @@ on:
 
 jobs:
   labeler:
+    if: ${{ !contains( github.event.issue.title, 'Snyk' ) }}
     name: Label Police 🏷👮🏻‍♂️
     runs-on: ubuntu-latest
     steps:
       - name: Labeler 🤖🏷
         uses: fuxingloh/multi-labeler@v1
+        with: 
+          github-token: ${{secrets.TOKEN}}
 
       - name: Check for conventional Commits labels ✨ 🐛 🧰
         uses: docker://agilepathway/pull-request-label-checker:latest

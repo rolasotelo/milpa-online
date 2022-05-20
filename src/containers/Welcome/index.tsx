@@ -18,12 +18,12 @@ export default function Welcome() {
           }}
           text={t("welcome.herobox.callToAction")}
         />
-        <div className="absolute inset-x-0 top-32  tablet:top-44 bg-mountains-herobox mx-auto max-w-100vw tablet:w-mountains h-mountains" />
+        <div className="absolute inset-x-0 top-32  tablet:top-44 bg-mountains-herobox mx-auto h-mountains w-mountains" />
       </div>
 
-      <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-32 talet:mt-32 mb-6 talet:mb-0  mx-auto" />
+      <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-32 tablet:mt-36 mb-6 talet:mb-0  mx-auto" />
 
-      <div className="flex  justify-center">
+      <div id="what_is_a_milpa" className="flex  justify-center">
         <Infographic />
       </div>
       <div className="relative w-20.38rem tablet:w-herobox-web h-10 mx-auto">
@@ -33,7 +33,7 @@ export default function Welcome() {
 
       <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-36 tablet:mt-10 mb-6 talet:mb-0 mx-auto" />
 
-      <div className="flex  justify-center">
+      <div id="leaderboard" className="flex  justify-center">
         <Leaderboard />
       </div>
       <div className="relative w-20.38rem tablet:w-herobox-web h-10 mx-auto ">

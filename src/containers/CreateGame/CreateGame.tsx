@@ -1,28 +1,38 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   onClickCreate: () => void;
-  text: string;
+}
+
+function PlayButton(props: { onClick: () => void; text: string }) {
+  const { onClick, text } = props;
+  return (
+    <button
+      type="button"
+      className="z-10  bg-button-pink mt-4 w-52 h-24  focus:outline-none focus:bg-button-pink-pressed pl-6 pt-5 focus:pl-4 focus:pt-3 text-milpaBlue-dark"
+      onClick={onClick}
+      style={{
+        fontFamily: "goodlife-serif, sans-serif",
+        fontWeight: 400,
+        fontStyle: "normal",
+        fontSize: "1.75rem",
+      }}
+    >
+      {text}
+    </button>
+  );
 }
 
 function CreateGame(props: Props) {
-  const { onClickCreate, text } = props;
+  const { t } = useTranslation();
+  const { onClickCreate } = props;
   return (
-    <div className="w-20.38rem md:w-27.5rem h-32.5rem bg-create-background ring-8 ring-inset ring-black m-5">
+    <div className="relative z-10 w-20.38rem md:w-27.5rem h-32.5rem bg-create-background ring-8 ring-inset ring-milpaBlue-dark m-5">
+      <div className="absolute left-3 top-3 bg-symbol-corner-1 w-8 h-8" />
+      <div className="absolute right-3 top-3 bg-symbol-corner-4 w-8 h-8" />
       <div className="flex justify-center">
-        <button
-          type="button"
-          className="bg-button-pink w-52 h-24 mt-4 focus:outline-none focus:bg-button-pink-pressed pl-3 pb-2 focus:pl-2 focus:pb-1"
-          onClick={onClickCreate}
-          style={{
-            fontFamily: "goodlife-sans-condensed, sans-serif",
-            fontWeight: 400,
-            fontStyle: "normal",
-            fontSize: "2rem",
-          }}
-        >
-          {text.toUpperCase()}
-        </button>
+        <PlayButton onClick={onClickCreate} text={t("play.create.button")} />
       </div>
     </div>
   );
