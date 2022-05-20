@@ -38,7 +38,7 @@ function CreateOrJoinGame() {
       <Nickname nickname={nickname} onChange={onChangeNickname} />
       <PlayAndJoinSections />
 
-      <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-16 tablet:mt-10 mb-6 talet:mb-0  mx-auto" />
+      <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-10 tablet:mt-10 mb-6 talet:mb-0  mx-auto" />
 
       <div id="what_is_a_milpa" className="flex  justify-center">
         <Infographic />
@@ -48,7 +48,7 @@ function CreateOrJoinGame() {
         <div className="absolute -bottom-28 tablet:bottom-0 -left-44 tablet:-left-20 z-20 bg-nopal  w-nopal h-nopal" />
       </div>
 
-      <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-36 tablet:mt-10 md:mt-14 mb-10 md:mb-14  mx-auto" />
+      <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-36 tablet:mt-10 tablet:mt-14 mb-10 tablet:mb-14  mx-auto" />
     </Layout>
   );
 }

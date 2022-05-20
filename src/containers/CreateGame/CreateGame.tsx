@@ -28,7 +28,7 @@ function CreateGame(props: Props) {
   const { t } = useTranslation();
   const { onClickCreate } = props;
   return (
-    <div className="relative z-10 w-20.38rem md:w-27.5rem h-32.5rem bg-create-background ring-8 ring-inset ring-milpaBlue-dark m-5">
+    <div className="relative z-10 w-20.38rem tablet:w-27.5rem h-32.5rem bg-create-background ring-8 ring-inset ring-milpaBlue-dark m-5">
       <div className="absolute left-3 top-3 bg-symbol-corner-1 w-8 h-8" />
       <div className="absolute right-3 top-3 bg-symbol-corner-4 w-8 h-8" />
       <div className="flex justify-center">

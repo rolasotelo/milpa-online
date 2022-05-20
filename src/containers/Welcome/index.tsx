@@ -18,7 +18,7 @@ export default function Welcome() {
           }}
           text={t("welcome.herobox.callToAction")}
         />
-        <div className="absolute inset-x-0 top-32  tablet:top-44 bg-mountains-herobox mx-auto h-mountains w-mountains" />
+        <div className=" absolute -right-96 top-32 tablet:inset-x-0 tablet:top-44 bg-mountains-herobox mx-auto h-mountains w-mountains" />
       </div>
 
       <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-32 tablet:mt-36 mb-6 talet:mb-0  mx-auto" />
@@ -40,7 +40,7 @@ export default function Welcome() {
         <div className="absolute -bottom-36 tablet:-bottom-16 -left-40 tablet:-left-72 z-20 bg-farmer  w-farmer h-farmer" />
       </div>
 
-      <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-36 tablet:mt-10 md:mt-14 mb-10 md:mb-14  mx-auto" />
+      <div className=" w-symbol-divisor h-symbol-divisor bg-symbol-divisor mt-36 tablet:mt-10 tablet:mt-14 mb-10 tablet:mb-14  mx-auto" />
     </Layout>
   );
 }
