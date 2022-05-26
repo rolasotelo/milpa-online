@@ -77,7 +77,7 @@
     "webpack-dev-server": "~3.11.2"
   },
   "dependencies": {
-    "@headlessui/react": "~1.5.0",
+    "@headlessui/react": "~1.6.0",
     "@popperjs/core": "^2.11.5",
     "@rolasotelo/milpa-ruleset": "^0.1.0",
     "@sentry/react": "^6.15.0",
