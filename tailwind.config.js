@@ -62,6 +62,9 @@ module.exports = {
         "button-blue": "url('/static/buttons.svg#blue-button-usage')",
         "button-blue-pressed":
           "url('/static/buttons.svg#blue-button-pressed-usage')",
+        "button-pink": "url('/static/buttons.svg#pink-button-usage')",
+        "button-pink-pressed":
+          "url('/static/buttons.svg#pink-button-pressed-usage')",
         "nopal-herobox": "url('/static/welcome.svg#nopal-herobox-usage')",
         "milpa-web": "url('/static/welcome.svg#milpa-web-herobox-usage')",
         "milpa-mobile": "url('/static/welcome.svg#milpa-mobile-herobox-usage')",
@@ -75,6 +78,9 @@ module.exports = {
         "green-banner": "url('/static/banners.svg#green-banner-usage')",
         "green-banner-mobile":
           "url('/static/banners.svg#green-banner-mobile-usage')",
+        "green-input": "url('/static/banners.svg#green-input-usage')",
+        "pink-input":
+          "url('/static/banners.svg#pink-input-usage')",
         "brush-green-1": "url('/static/art.svg#brush-green-1-usage')",
         "brush-pink-1": "url('/static/art.svg#brush-pink-1-usage')",
         "brush-pink-2": "url('/static/art.svg#brush-pink-2-usage')",
@@ -97,6 +103,7 @@ module.exports = {
         tablet: "960px",
       },
       width: {
+        "input-3d": "300px",
         "button-square": "50px",
         "herobox-web": "960px",
         mountains: "1366px",
@@ -121,6 +128,7 @@ module.exports = {
         "2/8": "25%",
       },
       height: {
+        "input-3d": "50px",
         "button-square": "50px",
         "herobox-web": "560px",
         mountains: "550px",

@@ -32,7 +32,9 @@ function CreateGameProvider(props: Props) {
   );
 
   const onChangeNickname = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNickname(event.target.value);
+    if(event.target.value.length <= 20){
+      setNickname(event.target.value);
+    }
   };
 
   const onClickCreate = useMemo(
