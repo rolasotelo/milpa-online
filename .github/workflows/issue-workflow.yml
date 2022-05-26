@@ -1,4 +1,4 @@
-name: PR workflow 👩🏽‍🌾👨🏼‍💻
+name: Issue workflow 👩🏽‍🌾👨🏼‍💻
 on:
   issues:
     types: [opened, edited]
@@ -9,3 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: fuxingloh/multi-labeler@v1
+        with: 
+          github-token: ${{secrets.TOKEN}}
