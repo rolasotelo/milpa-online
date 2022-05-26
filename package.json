@@ -1,7 +1,7 @@
 {
   "name": "milpa-online",
   "version": "1.0.1",
-  "description": "Milpa: Online card-game",
+  "description": "Milpa: online card game",
   "main": "src/index.js",
   "repository": "git@github.com:rolasotelo/milpa-online.git",
   "author": "Rolando Sotelo <rola@hey.com>",
@@ -77,7 +77,7 @@
     "webpack-dev-server": "~3.11.2"
   },
   "dependencies": {
-    "@headlessui/react": "~1.5.0",
+    "@headlessui/react": "~1.6.0",
     "@popperjs/core": "^2.11.5",
     "@rolasotelo/milpa-ruleset": "^0.1.0",
     "@sentry/react": "^6.15.0",
@@ -89,10 +89,10 @@
     "react-hot-loader": "~4.13.0",
     "react-i18next": "^11.16.7",
     "react-popper": "^2.2.5",
+    "tailwindcss": "~2.2.2",
     "react-router-dom": "~5.3.1",
     "socket.io-client": "~4.1.2",
-    "tailwindcss": "~2.2.19",
-    "underscore": "~1.13.1",
+    "underscore": "~1.13.3",
     "uuid": "~8.3.2"
   }
 }

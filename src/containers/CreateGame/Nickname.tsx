@@ -9,7 +9,7 @@ interface Props {
 function Greeting() {
   const { t } = useTranslation();
   return (
-    <div className=" md:ml-6 text-milpaBeige-default">
+    <div className=" tablet:ml-6 text-milpaBeige-default">
       <a href="/play">{t("play.greeting").toUpperCase()}</a>
     </div>
   );
@@ -25,7 +25,7 @@ function NicknameInput(props: Props) {
   );
 
   return (
-    <div className="md:ml-2">
+    <div className="tablet:ml-2">
       <input
         className="placeholder-milpaBlue-dark placeholder-opacity-100 focus:outline-none bg-transparent text-milpaBlue-dark"
         placeholder="Gabinka?"
@@ -42,7 +42,7 @@ function Nickname(props: Props) {
   return (
     <div>
       <div
-        className=" w-20.38rem md:w-49.81rem h-4.38rem mx-auto flex justify-around bg-green-banner-mobile md:bg-green-banner md:px-5 pt-6 mt-2 text-2xl md:text-3xl"
+        className=" w-20.38rem tablet:w-49.81rem h-4.38rem mx-auto flex justify-around bg-green-banner-mobile tablet:bg-green-banner tablet:px-5 pt-6 mt-2 text-2xl tablet:text-3xl"
         style={{
           fontFamily: "goodlife-sans-condensed, sans-serif",
           fontWeight: 400,

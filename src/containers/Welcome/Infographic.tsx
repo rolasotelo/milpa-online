@@ -30,8 +30,8 @@ function Layout(props: PropsWithChildren) {
 function Quote() {
   const { t } = useTranslation();
   return (
-    <div className="col-span-5 m-5 tablet:m-0 tablet:w-full h-80  tablet:h-32 bg-milpaBeige-default ring-8 ring-inset ring-milpaBeige-dark drop-shadow-2xl">
-      <div className="flex flex-col ml-5 mr-5  tablet:m-0 items-center h-full justify-center text-milpaGreen-default text-center">
+    <div className="col-span-5 m-5 tablet:m-0 tablet:w-full h-80  tablet:h-32 bg-milpaBeige-default ring-8 ring-inset ring-milpaBlue-dark drop-shadow-2xl">
+      <div className="flex flex-col ml-5 mr-5  tablet:m-0 items-center h-full justify-center text-milpaBlue-dark text-center">
         <p
           className="max-w-lg"
           style={{
@@ -155,7 +155,7 @@ function WhatIsAMilpa() {
   const { t } = useTranslation();
   return (
     <div
-      className="text-milpaBeige-default w-48 h-60"
+      className="text-milpaGreen-light underline tablet:w-48 tablet:h-60 h-40 text-center tablet:text-left"
       style={{
         fontFamily: "goodlife-sans-condensed, sans-serif",
         fontWeight: 400,
@@ -186,7 +186,7 @@ function ChangeLanguage() {
     await changeLanguage(newLanguage);
   };
   return (
-    <div className="flex flex-row tablet:flex-col flex-wrap w-48">
+    <div className="flex flex-row tablet:flex-col flex-wrap w-48 justify-around">
       {Object.keys(Languages).map((lng) => (
         <button
           key={Languages[lng].code}
@@ -195,7 +195,7 @@ function ChangeLanguage() {
             resolvedLanguage === lng
               ? "text-milpaGreen-light underline"
               : "text-milpaBeige-default"
-          } my-1 text-left z-30`}
+          } my-1 text-left z-30 mx-2`}
           style={{
             fontWeight: resolvedLanguage === lng ? 700 : 400,
             fontFamily: "goodlife-sans-condensed, sans-serif",
