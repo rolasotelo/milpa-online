@@ -1,6 +1,5 @@
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  content: ["./src/**/*.html", "./src/**/*.{ts,tsx}", "./src/**/*.css"],
   theme: {
     extend: {
       colors: {
@@ -24,16 +23,6 @@ module.exports = {
           default: "#324001",
           dark: "#1a2601",
         },
-        // ! Old Colors, remove when possible
-        mexicanPink: "#d91a60",
-        mexicanBlue: "#253659",
-        mexicanGreen: {
-          dark: "#1a2601",
-          DEFAULT: "#324001",
-          light: "#7c8c03",
-        },
-        mexicanBone: "#c7b299",
-        mexicanBoneLight: "#C7C3B8",
       },
       spacing: {
         "60rem": "60rem",
@@ -79,8 +68,7 @@ module.exports = {
         "green-banner-mobile":
           "url('/static/banners.svg#green-banner-mobile-usage')",
         "green-input": "url('/static/banners.svg#green-input-usage')",
-        "pink-input":
-          "url('/static/banners.svg#pink-input-usage')",
+        "pink-input": "url('/static/banners.svg#pink-input-usage')",
         "brush-green-1": "url('/static/art.svg#brush-green-1-usage')",
         "brush-pink-1": "url('/static/art.svg#brush-pink-1-usage')",
         "brush-pink-2": "url('/static/art.svg#brush-pink-2-usage')",
@@ -159,17 +147,6 @@ module.exports = {
         "-94px": "-94px",
         "170px": "165px",
       },
-    },
-  },
-  variants: {
-    extend: {
-      backgroundImage: ["hover", "focus"],
-      borderColor: ["disabled"],
-      borderWidth: ["disabled", "hover"],
-      cursor: ["disabled"],
-      padding: ["focus"],
-      ringColor: ["hover"],
-      ringWidth: ["hover"],
     },
   },
   plugins: [],

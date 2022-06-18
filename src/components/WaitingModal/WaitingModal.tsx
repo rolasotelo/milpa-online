@@ -54,7 +54,7 @@ function WaitingModal(props: Props) {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="fixed inset-0 backdrop-blur-md bg-mexicanBlue opacity-40 filter blur-3xl" />
+              <Dialog.Overlay className="fixed inset-0 backdrop-blur-md bg-milpaBlue-default opacity-40 filter blur-3xl" />
             </Transition.Child>
 
             {/* This element is to trick the browser into centering the modal contents. */}
@@ -73,7 +73,7 @@ function WaitingModal(props: Props) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-mexicanBoneLight shadow-xl rounded-2xl">
+              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-milpaBeige-light shadow-xl rounded-2xl">
                 <button type="button" ref={completeButtonRef} />
                 <div className="flex justify-center">
                   <button
@@ -90,18 +90,20 @@ function WaitingModal(props: Props) {
                 </div>
                 <Dialog.Title
                   as="h3"
-                  className="text-lg font-medium leading-6 text-mexicanPink text-center mt-1"
+                  className="text-lg font-medium leading-6 text-milpaPink-default text-center mt-1"
                 >
                   {title}
                 </Dialog.Title>
                 <div className="mt-2">
-                  <p className="text-sm text-mexicanBlue text-center">{body}</p>
+                  <p className="text-sm text-milpaBlue-default text-center">
+                    {body}
+                  </p>
                 </div>
 
                 <div className="flex justify-center mt-4">
                   <button
                     type="button"
-                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-mexicanGreen-dark bg-mexicanGreen-light border border-transparent rounded-md hover:bg-mexicanBone focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-milpaGreen-dark bg-mexicanGreen-light border border-transparent rounded-md hover:bg-mexicanBone focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
                     onClick={copyToClipboard}
                   >
                     {buttonText}

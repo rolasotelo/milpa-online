@@ -8,10 +8,10 @@ interface Props {
 function GameLayout(props: Props) {
   const { players, children } = props;
   return (
-    <div className="bg-mexicanBone min-h-screen flex flex-col">
-      <div className="bg-mexicanBlue">
+    <div className="bg-milpaBeige-default min-h-screen flex flex-col">
+      <div className="bg-milpaBlue-default">
         <div className="container mx-auto p-2">
-          <nav className="flex justify-between text-mexicanBone">
+          <nav className="flex justify-between text-milpaBeige-default">
             <div
               className="self-center w-5/12"
               style={{
@@ -25,7 +25,7 @@ function GameLayout(props: Props) {
             </div>
             <div>
               <div
-                className="self-center w-2/12 text-mexicanPink"
+                className="self-center w-2/12 text-milpaPink-default"
                 style={{
                   fontFamily: "goodlife-sans-condensed, sans-serif",
                   fontWeight: 400,

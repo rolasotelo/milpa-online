@@ -130,7 +130,7 @@ function NavFooter() {
 
       <a
         className="hover:opacity-75"
-        href="https://rolasotelo.xyz"
+        href="https://rolasotelo.tech"
         target="_blank"
         rel="noopener noreferrer"
       >

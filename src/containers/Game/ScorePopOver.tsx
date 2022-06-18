@@ -47,20 +47,20 @@ function ScorePopOver() {
               className="overflow-y-scroll rounded-lg shadow-lg ring-1 ring-black bg-m ring-opacity-5"
               style={{ maxHeight: "40rem" }}
             >
-              <div className="relative  bg-mexicanGreen-dark p-3 flex flex-col">
+              <div className="relative  bg-milpaGreen-dark p-3 flex flex-col">
                 {history.map((item, index) => (
                   <div
                     key={index}
                     className={`flex items-center p-2 m-1 ${
                       item.type === ScoreLogType.Turn
-                        ? "bg-mexicanGreen-light"
+                        ? "bg-milpaGreen-light"
                         : item.type === ScoreLogType.Final_Score
-                        ? "bg-mexicanPink"
+                        ? "bg-milpaPink-default"
                         : item.type === ScoreLogType.End_Of_Turn
-                        ? "bg-mexicanBlue"
+                        ? "bg-milpaPink-default"
                         : item.name.includes(nickname)
-                        ? "bg-mexicanBone"
-                        : "bg-mexicanBoneLight"
+                        ? "bg-milpaBeige-default"
+                        : "bg-milpaBeige-light"
                     } transition duration-150 ease-in-out rounded-lg focus:outline-none`}
                   >
                     <div className="mx-4 w-full">
@@ -101,7 +101,7 @@ function ScorePopOver() {
                   </div>
                 ))}
               </div>
-              <div className="p-4 bg-mexicanGreen-light">
+              <div className="p-4 bg-milpaGreen-light">
                 <p className="flow-root px-2 py-2 transition duration-150 ease-in-out rounded-md  focus:outline-none">
                   <span className="flex items-center">
                     <span className="text-sm font-medium text-gray-900">
