@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from "react";
 import { useHistory } from "react-router-dom";
 import MenuPopOver from "./MenuPopOver";
@@ -21,11 +20,13 @@ function Logo() {
     h.push("/");
   }, [h]);
   return (
+    /* eslint-disable */
     <button
       type="button"
       onClick={handleClick}
       className={`${ButtonStyling} bg-button-logo focus:bg-button-logo-pressed`}
     />
+    /* eslint-enable */
   );
 }
 
@@ -35,11 +36,13 @@ function LeaderBoard() {
   }, []);
 
   return (
+    /* eslint-disable */
     <button
       type="button"
       onClick={handleClick}
       className={`${ButtonStyling} bg-button-leaderboard focus:bg-button-leaderboard-pressed`}
     />
+    /* eslint-enable */
   );
 }
 

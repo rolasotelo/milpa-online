@@ -10,13 +10,13 @@
 </tr>
 </table>
 
-### Here is a working live demo : [milpa.online](https://milpa.online) (WIP 🚧).
+## Here is a working live demo : [milpa.online](https://milpa.online) (WIP 🚧).
 
-## Motivation 💡
+### Motivation 💡
 
 This project is a gift for a group of students in Prague. I knew I wanted to make a board game for them, but it wasn't clear what it should be about until I encountered issue number 84 of 'Arqueología Mexicana' magazine, titled ['Cultivos Mesoamericanos' (Mesoamerican Crops)](https://arqueologiamexicana.mx/ediciones-especiales/e84-cultivos-mesoamericanos-las-especies-que-mexico-dio-al-mundo). With this project I wanted to enhance my software engineering skills and share a bit of mexico 🇲🇽 and my love for boardgames with others.
 
-## Install and Run 🏃🏿
+### Install and Run 🏃🏿
 
 ```shell
 yarn install

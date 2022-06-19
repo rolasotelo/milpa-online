@@ -107,8 +107,9 @@ function Modal(props: Props) {
       leaveTo="opacity-0 scale-95"
     >
       <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-milpaBeige-light shadow-xl rounded-2xl">
-        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+        {/* eslint-disable */}
         <button type="button" ref={completeButtonRef} />
+        {/* eslint-enable */}
         <Logo />
         <ModalTitle title={title} body={body} />
         <GameCodeButton buttonText={buttonText} />
