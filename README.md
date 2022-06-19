@@ -1,6 +1,6 @@
 # [Milpa Card Game](https://milpa.online) 🌵
 
-# ![Milpa responsive](screenshots/promo.png)
+![Milpa responsive](screenshots/promo.png)
 
 <table>
 <tr>

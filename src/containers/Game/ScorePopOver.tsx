@@ -1,4 +1,4 @@
-/* eslint-disable no-nested-ternary, react/jsx-props-no-spreading */
+/* eslint-disable */
 import { Popover } from "@headlessui/react";
 import React, { LegacyRef, useState } from "react";
 import { usePopper } from "react-popper";

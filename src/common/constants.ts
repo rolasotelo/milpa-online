@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 import { LanguagesObject } from "./interfaces";
 
 export const WAITING_TIME = 60 * 5;

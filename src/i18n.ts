@@ -232,24 +232,24 @@ i18n
           menu: {
             body: {
               play: {
-                title: "Play",
-                description: "Let the best Milpa win 🏆!",
+                title: "Hrát si",
+                description: "Ať vyhraje nejlepší Milpa 🏆!",
               },
               home: {
-                title: "Home",
-                description: "Home page 🌽",
+                title: "Domov",
+                description: "Domovská stránka 🌽",
               },
               rules: {
-                title: "Rules",
-                description: "Learn to play the game 👓",
+                title: "Pravidla",
+                description: "Naučte se hrát hru 👓",
               },
               about: {
-                title: "About",
-                description: "What is a Milpa 🌵?",
+                title: "O",
+                description: "Co je to Milpa 🌵?",
               },
             },
             footer: {
-              title: "Languages",
+              title: "Jazyky",
             },
           },
           welcome: {
