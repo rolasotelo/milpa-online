@@ -82,7 +82,7 @@
     "@headlessui/react": "~1.6.3",
     "@popperjs/core": "^2.11.5",
     "@rolasotelo/milpa-ruleset": "^0.1.0",
-    "@sentry/react": "^6.15.0",
+    "@sentry/react": "^6.19.6",
     "@sentry/tracing": "^6.15.0",
     "i18next": "^21.8.3",
     "i18next-browser-languagedetector": "^6.1.4",
