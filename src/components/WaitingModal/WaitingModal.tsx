@@ -37,13 +37,14 @@ function Overlay() {
 
 function Logo() {
   const h = useHistory();
+  function onClick() {
+    h.push("/");
+  }
   return (
     <div className="flex justify-center">
       <button
         type="button"
-        onClick={() => {
-          h.push("/");
-        }}
+        onClick={onClick}
         className="bg-button-logo focus:bg-button-logo-pressed focus:outline-none"
         style={{
           width: "50px",
@@ -73,9 +74,11 @@ function ModalTitle(props: { title: string; body: string }) {
 
 function GameCodeButton(props: { buttonText: string }) {
   const { buttonText } = props;
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(buttonText).then(() => {});
-  };
+  function copyToClipboard() {
+    navigator.clipboard.writeText(buttonText).catch(() => {
+      window.location.reload();
+    });
+  }
   return (
     <div className="flex justify-center mt-4">
       <button
@@ -135,12 +138,16 @@ function WaitingModal(props: Props) {
   const { title, body, buttonText } = props;
   const isOpen = true;
   const completeButtonRef = useRef(null);
+  const onClose = () => {
+    window.location.reload();
+  };
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog
         as="div"
         className="fixed inset-0 z-10 overflow-y-auto"
-        onClose={() => {}}
+        onClose={onClose}
         initialFocus={completeButtonRef}
       >
         <OverlayAndModal title={title} body={body} buttonText={buttonText} />
