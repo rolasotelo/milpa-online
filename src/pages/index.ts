@@ -1,9 +1,5 @@
-import WelcomePage from './WelcomePage'
+import WelcomePage from "./WelcomePage";
 import CreateGamePage from "./CreateGamePage";
-import GamePage from './GamePage'
+import GamePage from "./GamePage";
 
-export {
-    WelcomePage,
-    CreateGamePage,
-    GamePage
-}
+export { WelcomePage, CreateGamePage, GamePage };

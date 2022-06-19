@@ -32,7 +32,7 @@ function CreateGameProvider(props: Props) {
   );
 
   const onChangeNickname = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if(event.target.value.length <= 20){
+    if (event.target.value.length <= 20) {
       setNickname(event.target.value);
     }
   };

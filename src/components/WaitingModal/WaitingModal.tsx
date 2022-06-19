@@ -44,6 +44,7 @@ function Logo() {
     <div className="flex justify-center">
       <button
         type="button"
+        name="copy code to clipboard"
         onClick={onClick}
         className="bg-button-logo focus:bg-button-logo-pressed focus:outline-none"
         style={{

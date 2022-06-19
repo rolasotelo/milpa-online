@@ -2,6 +2,6 @@
 
 ##### Chores
 
-* **🛠 / config⚙️  :**
-  *  Update PRCHECKLIST (a010768c)
-  *  Add PRCHECKLIST (dea09d2a)
+- **🛠 / config⚙️ :**
+  - Update PRCHECKLIST (a010768c)
+  - Add PRCHECKLIST (dea09d2a)
