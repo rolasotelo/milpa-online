@@ -1,4 +1,4 @@
-/* eslint-disable no-nested-ternary,react/jsx-props-no-spreading,react/no-array-index-key */
+/* eslint-disable no-nested-ternary, react/jsx-props-no-spreading */
 import { Popover } from "@headlessui/react";
 import React, { LegacyRef, useState } from "react";
 import { usePopper } from "react-popper";
@@ -48,9 +48,9 @@ function ScorePopOver() {
               style={{ maxHeight: "40rem" }}
             >
               <div className="relative  bg-milpaGreen-dark p-3 flex flex-col">
-                {history.map((item, index) => (
+                {history.map((item) => (
                   <div
-                    key={index}
+                    key={new Date().getTime()}
                     className={`flex items-center p-2 m-1 ${
                       item.type === ScoreLogType.Turn
                         ? "bg-milpaGreen-light"
@@ -76,9 +76,9 @@ function ScorePopOver() {
                       >
                         {item.name}
                       </p>
-                      {item.description.map((description, indexTodo) => (
+                      {item.description.map((description) => (
                         <p
-                          key={indexTodo}
+                          key={new Date().getTime()}
                           className={`text-sm  ${
                             item.type === ScoreLogType.Turn ||
                             item.type === ScoreLogType.Final_Score

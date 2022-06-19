@@ -1,7 +1,5 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import { Dialog, Transition } from "@headlessui/react";
-import React, { Fragment, useRef } from "react";
-import { useHistory } from "react-router-dom";
+import React, { Fragment, useRef, useCallback } from "react";
 import clipboardCopy from "../../common/icons/clipboard-copy.svg";
 
 interface Props {
@@ -36,17 +34,11 @@ function Overlay() {
 }
 
 function Logo() {
-  const h = useHistory();
-  function onClick() {
-    h.push("/");
-  }
   return (
     <div className="flex justify-center">
-      <button
-        type="button"
-        name="copy code to clipboard"
-        onClick={onClick}
-        className="bg-button-logo focus:bg-button-logo-pressed focus:outline-none"
+      <span
+        id="copy-button"
+        className="bg-button-logo"
         style={{
           width: "50px",
           height: "50px",
@@ -75,11 +67,11 @@ function ModalTitle(props: { title: string; body: string }) {
 
 function GameCodeButton(props: { buttonText: string }) {
   const { buttonText } = props;
-  function copyToClipboard() {
+  const copyToClipboard = React.useCallback(() => {
     navigator.clipboard.writeText(buttonText).catch(() => {
       window.location.reload();
     });
-  }
+  }, [buttonText]);
   return (
     <div className="flex justify-center mt-4">
       <button
@@ -115,6 +107,7 @@ function Modal(props: Props) {
       leaveTo="opacity-0 scale-95"
     >
       <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-milpaBeige-light shadow-xl rounded-2xl">
+        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
         <button type="button" ref={completeButtonRef} />
         <Logo />
         <ModalTitle title={title} body={body} />
@@ -139,9 +132,9 @@ function WaitingModal(props: Props) {
   const { title, body, buttonText } = props;
   const isOpen = true;
   const completeButtonRef = useRef(null);
-  const onClose = () => {
+  const onClose = useCallback(() => {
     window.location.reload();
-  };
+  }, []);
 
   return (
     <Transition appear show={isOpen} as={Fragment}>

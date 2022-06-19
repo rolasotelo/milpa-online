@@ -20,7 +20,7 @@ on:
 
 jobs:
   main:
-    if: ${{!contains( github.context.payload.pull_request.title, 'Snyk' )}}
+    if: ${{!contains( github.event.pull_request.title, 'Snyk' )}}
     name: Validate PR title ✨ 🐛
     runs-on: ubuntu-latest
     steps:
