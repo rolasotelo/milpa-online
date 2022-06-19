@@ -23,24 +23,24 @@ i18n
             body: {
               play: {
                 title: "Play",
-                description: "Let the best Milpa win 🏆!"
+                description: "Let the best Milpa win 🏆!",
               },
               home: {
                 title: "Home",
-                description: "Home page 🌽"
+                description: "Home page 🌽",
               },
               rules: {
                 title: "Rules",
-                description: "Learn to play the game 👓"
+                description: "Learn to play the game 👓",
               },
               about: {
                 title: "About",
-                description: "What is a Milpa 🌵?"
-              }
+                description: "What is a Milpa 🌵?",
+              },
             },
             footer: {
-              title: "Languages"
-            }
+              title: "Languages",
+            },
           },
           welcome: {
             herobox: {
@@ -77,14 +77,14 @@ i18n
           },
           play: {
             create: {
-              button: "Create"
+              button: "Create",
             },
             join: {
               button: "Join",
-              paste: "Paste game code here"
+              paste: "Paste game code here",
             },
             greeting: "Bonjour",
-          }
+          },
         },
       },
       es: {
@@ -93,24 +93,24 @@ i18n
             body: {
               play: {
                 title: "Jugar",
-                description: "Que gane la mejor Milpa 🏆!"
+                description: "Que gane la mejor Milpa 🏆!",
               },
               home: {
                 title: "Inicio",
-                description: "Pantalla de inicio 🌽"
+                description: "Pantalla de inicio 🌽",
               },
               rules: {
                 title: "Reglas",
-                description: "Aprende a jugar 👓"
+                description: "Aprende a jugar 👓",
               },
               about: {
                 title: "Acerca de Milpa",
-                description: "Qué es una Milpa 🌵?"
-              }
+                description: "Qué es una Milpa 🌵?",
+              },
             },
             footer: {
-              title: "Idiomas"
-            }
+              title: "Idiomas",
+            },
           },
           welcome: {
             herobox: {
@@ -147,14 +147,14 @@ i18n
           },
           play: {
             create: {
-              button: "Crear"
+              button: "Crear",
             },
             join: {
               button: "Unirse",
-              paste: "Pega el código del juego aquí"
+              paste: "Pega el código del juego aquí",
             },
             greeting: "Hola",
-          }
+          },
         },
       },
       fr: {
@@ -163,24 +163,24 @@ i18n
             body: {
               play: {
                 title: "Jouer",
-                description: "Que le meilleur Milpa gagne 🏆!"
+                description: "Que le meilleur Milpa gagne 🏆!",
               },
               home: {
                 title: "Page d'accueil",
-                description: "Page d'accueil 🌽"
+                description: "Page d'accueil 🌽",
               },
               rules: {
                 title: "Règles",
-                description: "Apprendre à jouer le jeu 👓"
+                description: "Apprendre à jouer le jeu 👓",
               },
               about: {
                 title: "En savoir plus",
-                description: "Qu'est-ce qu'une Milpa? 🌵?"
-              }
+                description: "Qu'est-ce qu'une Milpa? 🌵?",
+              },
             },
             footer: {
-              title: "Langues"
-            }
+              title: "Langues",
+            },
           },
           welcome: {
             herobox: {
@@ -217,14 +217,14 @@ i18n
           },
           play: {
             create: {
-              button: "Créer"
+              button: "Créer",
             },
             join: {
               button: "Rejoindre",
-              paste: "Collez le code du jeu ici"
+              paste: "Collez le code du jeu ici",
             },
             greeting: "Bonjour",
-          }
+          },
         },
       },
       cz: {
@@ -232,25 +232,25 @@ i18n
           menu: {
             body: {
               play: {
-                title: "Play",
-                description: "Let the best Milpa win 🏆!"
+                title: "Hrát si",
+                description: "Ať vyhraje nejlepší Milpa 🏆!",
               },
               home: {
-                title: "Home",
-                description: "Home page 🌽"
+                title: "Domov",
+                description: "Domovská stránka 🌽",
               },
               rules: {
-                title: "Rules",
-                description: "Learn to play the game 👓"
+                title: "Pravidla",
+                description: "Naučte se hrát hru 👓",
               },
               about: {
-                title: "About",
-                description: "What is a Milpa 🌵?"
-              }
+                title: "O",
+                description: "Co je to Milpa 🌵?",
+              },
             },
             footer: {
-              title: "Languages"
-            }
+              title: "Jazyky",
+            },
           },
           welcome: {
             herobox: {
@@ -287,14 +287,14 @@ i18n
           },
           play: {
             create: {
-              button: "Créer"
+              button: "Créer",
             },
             join: {
               button: "Rejoindre",
-              paste: "Collez le code du jeu ici"
+              paste: "Collez le code du jeu ici",
             },
             greeting: "Ajoi",
-          }
+          },
         },
       },
     },

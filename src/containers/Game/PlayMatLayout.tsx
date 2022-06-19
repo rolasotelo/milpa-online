@@ -1,14 +1,14 @@
-import React, {ReactElement, ReactNode} from "react";
+import React, { ReactElement, ReactNode } from "react";
 
 interface PropsWithChildren {
-    children: ReactNode;
+  children: ReactNode;
 }
 
 export default function PlayMatLayout(props: PropsWithChildren): ReactElement {
-    const { children } = props;
-    return (
-        <div className="relative flex-1 flex flex-row-reverse tablet:flex-col w-full pr-20 tablet:pr-0">
-            {children}
-        </div>
-    );
+  const { children } = props;
+  return (
+    <div className="relative flex-1 flex flex-row-reverse tablet:flex-col w-full pr-20 tablet:pr-0">
+      {children}
+    </div>
+  );
 }

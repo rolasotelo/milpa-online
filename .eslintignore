@@ -1,4 +1,8 @@
 *.js
+src/common/interfaces/index.ts
+src/i18n.ts
+src/pages/index.ts
+src/common/constants.ts
 
 ### VisualStudioCode template
 .vscode/*

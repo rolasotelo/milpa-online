@@ -1,24 +1,56 @@
-name: Comment GIF 🙊
-
+# Art by lgbeard
+#                              .-----.
+#                             /7  .  (
+#                            /   .-.  \
+#                           /   /   \  \
+#                          / `  )   (   )
+#                         / `   )   ).  \
+#                       .'  _.   \_/  . |
+#      .--.           .' _.' )`.        |
+#     (    `---...._.'   `---.'_)    ..  \
+#      \            `----....___    `. \  |
+#       `.           _ ----- _   `._  )/  |
+#         `.       /"  \   /"  \`.  `._   |
+#           `.    ((O)` ) ((O)` ) `.   `._\
+#             `-- '`---'   `---' )  `.    `-.
+#                /                  ` \      `-.
+#              .'                      `.       `.
+#             /                     `  ` `.       `-.
+#      .--.   \ ===._____.======. `    `   `. .___.--`     .''''.
+#     ' .` `-. `.                )`. `   ` ` \          .' . '  8)
+#    (8  .  ` `-.`.               ( .  ` `  .`\      .'  '    ' /
+#     \  `. `    `-.               ) ` .   ` ` \  .'   ' .  '  /
+#      \ ` `.  ` . \`.    .--.     |  ` ) `   .``/   '  // .  /
+#       `.  ``. .   \ \   .-- `.  (  ` /_   ` . / ' .  '/   .'
+#         `. ` \  `  \ \  '-.   `-'  .'  `-.  `   .  .'/  .'
+#           \ `.`.  ` \ \    ) /`._.`       `.  ` .  .'  /
+#     LGB    |  `.`. . \ \  (.'               `.   .'  .'
+#         __/  .. \ \ ` ) \                     \.' .. \__
+#  .-._.-'     '"  ) .-'   `.                   (  '"     `-._.--.
+# (_________.-====' / .' /\_)`--..__________..-- `====-. _________)
+#                  (.'(.'
+# 6400
+---
+name: Comment GIF
 on:
   issues:
     types: [opened]
   pull_request:
     types: [opened]
   issue_comment:
-    types: [created, edited]
+    types: [created]
 
 jobs:
   giphy-generator:
-    name: GIPHY Generator 🐒
+    name: Comment with GIF 😆
     runs-on: ubuntu-latest
     steps:
-      - name: GIPHY Generator
+      - name: GIPHY generator 🤡
         id: giphy_generator
         uses: iamhughes/giphy-generator@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-          GIPHY_TOKEN: ${{ secrets.GIPHY_TOKEN }} # This token should be created on giphy.com: https://developers.giphy.com/dashboard/?create=true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIPHY_TOKEN: ${{ secrets.GIPHY_TOKEN }}
         with:
-          rating: 'g'
-          lang: 'en'
+          rating: "g"
+          lang: "en"
